@@ -1,0 +1,13 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: localhost
+    database_port: 3306
+    database_name: testGit
+    database_user: root
+    database_password: BDvTyk8PPTVoZa4b
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: atlantis112014@gmail.com
+    mailer_password: R!eineSylvidR@2016
+    secret: fvdfdgbd5bdfg45fg4b5fg4b4fgb54é54454
+    locale: fr
