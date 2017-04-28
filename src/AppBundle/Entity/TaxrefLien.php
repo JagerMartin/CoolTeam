@@ -66,7 +66,7 @@ class TaxrefLien
     /**
      * @var int
      *
-     * @ORM\Column(name="CT_SP_ID", type="integer", unique=true)
+     * @ORM\Column(name="CT_SP_ID", type="integer")
      */
     private $ctSpId;
 

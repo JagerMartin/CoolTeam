@@ -11,13 +11,12 @@ namespace AppBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Taxref;
-use AppBundle\Entity\TaxrefLien;
 
 class LoadTaxref implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-       $taxrefCsv = fopen(dirname(__FILE__).'/Files/taxref.csv', 'r');
+       $taxrefCsv = fopen(dirname(__FILE__).'/Resources/taxref.csv', 'r');
        $i = 0;
         while(!feof($taxrefCsv)) {
             $line = fgetcsv($taxrefCsv, 600, ';');
