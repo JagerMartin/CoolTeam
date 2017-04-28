@@ -23,21 +23,21 @@ class LoadTaxref implements FixtureInterface
 
             if($i > 0){
                 $taxref[$i] = new Taxref();
-                $taxref[$i]->setRegne($line[0]);
+                $taxref[$i]->setReign($line[0]);
                 $taxref[$i]->setPhylum($line[1]);
-                $taxref[$i]->setClasse($line[2]);
-                $taxref[$i]->setOrdre($line[3]);
-                $taxref[$i]->setFamille($line[4]);
-                $taxref[$i]->setCdNom($line[5]);
+                $taxref[$i]->setCategory($line[2]);
+                $taxref[$i]->setOrder($line[3]);
+                $taxref[$i]->setFamily($line[4]);
+                $taxref[$i]->setCdName($line[5]);
                 $taxref[$i]->setCdTaxsup($line[6]);
                 $taxref[$i]->setCdRef($line[7]);
-                $taxref[$i]->setRang($line[8]);
-                $taxref[$i]->setLbNom($line[9]);
-                $taxref[$i]->setLbAuteur($line[10]);
-                $taxref[$i]->setNomComplet($line[11]);
-                $taxref[$i]->setNomValide($line[12]);
-                $taxref[$i]->setNomVern($line[13]);
-                $taxref[$i]->setNomVernEng($line[14]);
+                $taxref[$i]->setRank($line[8]);
+                $taxref[$i]->setLbName($line[9]);
+                $taxref[$i]->setLbAuthor($line[10]);
+                $taxref[$i]->setFullName($line[11]);
+                $taxref[$i]->setValidName($line[12]);
+                $taxref[$i]->setVernacularName($line[13]);
+                $taxref[$i]->setEngVernacularName($line[14]);
                 $taxref[$i]->setHabitat($line[15]);
                 $taxref[$i]->setFr($line[16]);
                 $taxref[$i]->setGf($line[17]);
@@ -57,7 +57,7 @@ class LoadTaxref implements FixtureInterface
                 $taxref[$i]->setPf($line[31]);
                 $taxref[$i]->setCli($line[32]);
 
-                if($taxref[$i]->getRegne() != null){
+                if($taxref[$i]->getReign() != null){
                     $manager->persist($taxref[$i]);
                 }
             }

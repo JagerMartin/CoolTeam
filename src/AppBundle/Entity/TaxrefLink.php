@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TaxrefLink
  *
- * @ORM\Table(name="taxref_lien")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TaxrefLienRepository")
+ * @ORM\Table(name="taxref_link")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TaxrefLinkRepository")
  */
-class TaxrefLien
+class TaxrefLink
 {
     /**
      * @var int
@@ -26,7 +26,7 @@ class TaxrefLien
      *
      * @ORM\Column(name="CT_NAME", type="string", length=255)
      */
-    private $ctNom;
+    private $ctName;
 
     /**
      * @var string
@@ -40,14 +40,14 @@ class TaxrefLien
      *
      * @ORM\Column(name="CT_AUTHORS", type="string", length=255)
      */
-    private $ctAuteurs;
+    private $ctAuthors;
 
     /**
      * @var string
      *
      * @ORM\Column(name="CT_TITLE", type="string", length=255)
      */
-    private $ctTitre;
+    private $ctTitle;
 
     /**
      * @var string
@@ -59,9 +59,9 @@ class TaxrefLien
     /**
      * @var int
      *
-     * @ORM\Column(name="CD_NOM", type="integer", unique=true)
+     * @ORM\Column(name="CD_NAME", type="integer", unique=true)
      */
-    private $cdNom;
+    private $cdName;
 
     /**
      * @var int
@@ -89,28 +89,30 @@ class TaxrefLien
     }
 
 
+
+
     /**
-     * Set ctNom
+     * Set ctName
      *
-     * @param string $ctNom
+     * @param string $ctName
      *
-     * @return TaxrefLien
+     * @return TaxrefLink
      */
-    public function setCtNom($ctNom)
+    public function setCtName($ctName)
     {
-        $this->ctNom = $ctNom;
+        $this->ctName = $ctName;
 
         return $this;
     }
 
     /**
-     * Get ctNom
+     * Get ctName
      *
      * @return string
      */
-    public function getCtNom()
+    public function getCtName()
     {
-        return $this->ctNom;
+        return $this->ctName;
     }
 
     /**
@@ -118,7 +120,7 @@ class TaxrefLien
      *
      * @param string $ctType
      *
-     * @return TaxrefLien
+     * @return TaxrefLink
      */
     public function setCtType($ctType)
     {
@@ -138,51 +140,51 @@ class TaxrefLien
     }
 
     /**
-     * Set ctAuteurs
+     * Set ctAuthors
      *
-     * @param string $ctAuteurs
+     * @param string $ctAuthors
      *
-     * @return TaxrefLien
+     * @return TaxrefLink
      */
-    public function setCtAuteurs($ctAuteurs)
+    public function setCtAuthors($ctAuthors)
     {
-        $this->ctAuteurs = $ctAuteurs;
+        $this->ctAuthors = $ctAuthors;
 
         return $this;
     }
 
     /**
-     * Get ctAuteurs
+     * Get ctAuthors
      *
      * @return string
      */
-    public function getCtAuteurs()
+    public function getCtAuthors()
     {
-        return $this->ctAuteurs;
+        return $this->ctAuthors;
     }
 
     /**
-     * Set ctTitre
+     * Set ctTitle
      *
-     * @param string $ctTitre
+     * @param string $ctTitle
      *
-     * @return TaxrefLien
+     * @return TaxrefLink
      */
-    public function setCtTitre($ctTitre)
+    public function setCtTitle($ctTitle)
     {
-        $this->ctTitre = $ctTitre;
+        $this->ctTitle = $ctTitle;
 
         return $this;
     }
 
     /**
-     * Get ctTitre
+     * Get ctTitle
      *
      * @return string
      */
-    public function getCtTitre()
+    public function getCtTitle()
     {
-        return $this->ctTitre;
+        return $this->ctTitle;
     }
 
     /**
@@ -190,7 +192,7 @@ class TaxrefLien
      *
      * @param string $ctUrl
      *
-     * @return TaxrefLien
+     * @return TaxrefLink
      */
     public function setCtUrl($ctUrl)
     {
@@ -210,27 +212,27 @@ class TaxrefLien
     }
 
     /**
-     * Set cdNom
+     * Set cdName
      *
-     * @param integer $cdNom
+     * @param integer $cdName
      *
-     * @return TaxrefLien
+     * @return TaxrefLink
      */
-    public function setCdNom($cdNom)
+    public function setCdName($cdName)
     {
-        $this->cdNom = $cdNom;
+        $this->cdName = $cdName;
 
         return $this;
     }
 
     /**
-     * Get cdNom
+     * Get cdName
      *
      * @return integer
      */
-    public function getCdNom()
+    public function getCdName()
     {
-        return $this->cdNom;
+        return $this->cdName;
     }
 
     /**
@@ -238,7 +240,7 @@ class TaxrefLien
      *
      * @param integer $ctSpId
      *
-     * @return TaxrefLien
+     * @return TaxrefLink
      */
     public function setCtSpId($ctSpId)
     {
@@ -262,7 +264,7 @@ class TaxrefLien
      *
      * @param string $urlSp
      *
-     * @return TaxrefLien
+     * @return TaxrefLink
      */
     public function setUrlSp($urlSp)
     {
