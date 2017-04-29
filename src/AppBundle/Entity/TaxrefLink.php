@@ -66,7 +66,7 @@ class TaxrefLink
     /**
      * @var int
      *
-     * @ORM\Column(name="CT_SP_ID", type="integer")
+     * @ORM\Column(name="CT_SP_ID", type="string", length=255)
      */
     private $ctSpId;
 
