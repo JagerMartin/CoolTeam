@@ -1,109 +1,156 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
         <title>{% block title %}{% endblock %}- Nos amis les oiseaux</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        {% block stylesheets %}
-            {# On charge le CSS de bootstrap depuis le site directement #}
-            <!-- Latest compiled and minified CSS Bootstrap -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block stylesheets %}
 
-            <!-- Compiled and minified CSS Materialize-->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+      <!-- Font-Awesome --> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-            <!-- Optional theme -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet" />
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.css" rel="stylesheet" />
-            <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" integrity="sha384-awusxf8AUojygHf2+joICySzB780jVvQaVCAt1clU3QsyAitLGul28Qxb2r1e5g+" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/uikit.css" integrity="sha256-dnakD7OjGK657EGkv7imIUDhu5WRQKkZ4Y0k/m+Ex30=" crossorigin="anonymous" />
+ 
 
-            <!-- Font-Awesome -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slideshow.css" integrity="sha256-oU7mavaw6f+AHKxLBpLCylY9e3ixtVSHvnPWGizP+Ls=" crossorigin="anonymous" />
 
-            <!-- Font material-icon -->
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons " rel="stylesheet">
-            <!-- style local -->
-            {% stylesheets 'bundles/app/css/style.css' filter='cssrewrite' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slidenav.css" integrity="sha256-0LM8tYNfZKyWvr++XhcKo0/mud1u8fxerKRoLVzWgmI=" crossorigin="anonymous" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slider.css" integrity="sha256-rdG/2Cyo2XQ3eSE1XXJKuVy/YE1OcDKu4p9X9JrbD/s=" crossorigin="anonymous" />
 
 
-        {% endblock %}
+        <!-- style local -->
 
-    </head>
+        <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
 
-    <body contenteditable="false">
-        <div id="mySidenav" class="sidenav">
-            <a href="{{ path('app_home') }}" id="accueil">Accueil</a>
-            <a href="/register" id="inscrire">S'inscrire</a>
-            <a href="{{ path('fos_user_security_login') }}" id="identifier">S'identifier</a>
-            <a href="#" id="rechercher">Rechercher</a>
-            <a href="#" id="contact">Contact</a>
+
+
+    {% endblock %}
+
+  </head>
+
+    <body>
+
+<!-- barre outils -->
+        <div class="tm-navbar tm-navbar-overlay tm-navbar-transparent tm-navbar-contrast" data-uk-sticky='{"media":767,"showup":true,"animation":"uk-animation-slide-top","top":".uk-sticky-placeholder + *","clsinactive":"tm-navbar-transparent tm-navbar-contrast"}'>
+            <div class="uk-container uk-container-center uk-margin-top">
+                <nav class="uk-navbar">
+                    <a class="uk-navbar-brand" href="/">LOGO
+                       <!--<img class="tm-logo uk-responsive-height" src="img/LOGO.png" alt="">
+                       <img class="tm-logo-contrast uk-responsive-height" src="img/LOGO.png" alt="">-->
+                    </a>
+
+                    <!-- Menu-->
+                    <div class="uk-navbar-flip uk-hidden-small">
+                        <ul class="uk-navbar-nav">
+                            <li class=" uk-active">
+                                <a href="/">Accueil</a>
+                           </li>
+                            <li class="">
+                                <a href="/login">S'inscrire</a>
+                            </li>
+                            <li class="">
+                                <a href="/register">S'identifier</a>
+                            </li>
+                            <li class="">
+                                <a href="/search">Rechercher</a>
+                            </li>
+                            <li class="">
+                                <a href="/contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="uk-navbar-flip uk-visible-small">
+                        <a href="#offcanvas" class="uk-navbar-toggle" data-uk-offcanvas></a>
+                    </div>
+                </nav>
+            </div>
         </div>
-        {% block body %}{% endblock %}
-        {% block sidebar %}{% endblock %}
-
-        <footer class="page-footer teal">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Nos Amis les oiseaux</h5>
-                        <p class="grey-text text-lighten-4">Nous sommmes une association, qui permet aux passionnés d'ornitologie de pouvoir approfondir leur connaissance en la matière. Blablabla blabla blablablabla blabla blabla blabla</p>
+    {% block body %}{% endblock %}
+    {% block sidebar %}{% endblock %}
 
 
-                    </div>
-                    <div class="col l3 s12">
-                        <h5 class="white-text">liens</h5>
-                        <ul>
-                            <li><a class="white-text" href="#!">Link 1</a></li>
-                            <li><a class="white-text" href="#!">Link 2</a></li>
-                            <li><a class="white-text" href="#!">Link 3</a></li>
-                            <li><a class="white-text" href="#!">Link 4</a></li>
+        <div id="offcanvas" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
+                <div class="uk-panel uk-text-center">
+                    <a href="/">LOGO
+                        <!--<img src="img/LOGO.png" alt="">-->
+                    </a>
+                </div>
+                <ul class="uk-nav uk-nav-offcanvas">
+                    <li class=" uk-active">
+                        <a href="#/">Accueil</a>
+                   </li>
+                    <li class="">
+                        <a href="#/login">S'inscrire</a>
+                    </li>
+                    <li class="">
+                        <a href="#/register">S'identifier</a>
+                    </li>
+                    <li class="">
+                        <a href="#/search">Rechercher</a>
+                    </li>
+                    <li class="">
+                        <a href="#/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+<!-- Footer -->
+    <div id="tm-footer" class="tm-footer uk-block uk-block-secondary uk-contrast">
+        <div class="uk-container uk-container-center">
+            <section class="uk-grid uk-grid-match" data-uk-grid-margin>
+                <div class="uk-width-medium-1-1">
+                    <div class="uk-panel  uk-text-center ">
+                        <ul class="uk-grid uk-grid-medium uk-flex uk-flex-center">
+                            <li>
+                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-github"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-twitter"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-linkedin-square"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-user"></a>
+                            </li>
                         </ul>
-                    </div>
-                    <div class="col l3 s12">
-                        <h5 class="white-text">liens</h5>
-                        <ul>
-                            <li><a class="white-text" href="#!">Link 1</a></li>
-                            <li><a class="white-text" href="#!">Link 2</a></li>
-                            <li><a class="white-text" href="#!">Link 3</a></li>
-                            <li><a class="white-text" href="#!">Link 4</a></li>
-                        </ul>
+    
+                                <p>CoolTeam &copy; 2017 - <a href="#">CoolTeam Development</a></p>
                     </div>
                 </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    Made by <a class="brown-text text-lighten-3" href="http://#">Equipe TheCoolTeam</a>
-                </div>
-            </div>
-        </footer>
+            </section>
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/uikit.js" integrity="sha256-Ar7wtszG/Jiy6S3pCB2YX/IjkXLLsI93eLCJihxYkYk=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/slideshow.js" integrity="sha256-usivqGFOOWHTrsxiZFSldVW5uC9uRluHCtXFUSChRyM=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/slideshow-fx.js" integrity="sha256-PcIzVS4CHF/oPoFubWaB1Xe4enTqCiAQWNwEEC49lXw=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/slider.js" integrity="sha256-DqL5t4OgDHSG6mHGRHfz9Klp3rNtcVsaXuLysfKmOPs=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/parallax.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/grid-parallax.js" integrity="sha256-FbFl0kVGQgPUktO+P/i7/z/iGh0sfc1a464AhFfaI58=" crossorigin="anonymous"></script>
 
 
-        {% block javascripts %}
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-            <!-- Compiled and minified JavaScript materialize -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.fr.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js" integrity="sha256-IxYUmOOk74FUrcx5FEMOHVmTJDb7ZAwnC/ivo/OQGxg=" crossorigin="anonymous"></script>
 
-            {% javascripts '@AppBundle/Resources/public/js/*' %}
-            <script src="{{ asset_url }}"></script>
 
-            {% endjavascripts %}
-            <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAO_v27-oCD_ti14IDTxtruZCg_6Tmc-3E&callback=initMap">
-            </script>
+        
+        <!-- js local -->
+        <script src="{{ asset('js/main.js') }}"></script>
 
-        {% endblock %}
-    </body>
+    {% endblock %}
+</body>
+
 </html>
