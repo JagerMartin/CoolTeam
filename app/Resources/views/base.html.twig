@@ -1,13 +1,156 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}- Nos amis les oiseaux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block stylesheets %}
+
+      <!-- Font-Awesome --> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/uikit.css" integrity="sha256-dnakD7OjGK657EGkv7imIUDhu5WRQKkZ4Y0k/m+Ex30=" crossorigin="anonymous" />
+ 
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slideshow.css" integrity="sha256-oU7mavaw6f+AHKxLBpLCylY9e3ixtVSHvnPWGizP+Ls=" crossorigin="anonymous" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slidenav.css" integrity="sha256-0LM8tYNfZKyWvr++XhcKo0/mud1u8fxerKRoLVzWgmI=" crossorigin="anonymous" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slider.css" integrity="sha256-rdG/2Cyo2XQ3eSE1XXJKuVy/YE1OcDKu4p9X9JrbD/s=" crossorigin="anonymous" />
+
+
+        <!-- style local -->
+
+        <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+
+
+
+    {% endblock %}
+
+  </head>
+
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+<!-- barre outils -->
+        <div class="tm-navbar tm-navbar-overlay tm-navbar-transparent tm-navbar-contrast" data-uk-sticky='{"media":767,"showup":true,"animation":"uk-animation-slide-top","top":".uk-sticky-placeholder + *","clsinactive":"tm-navbar-transparent tm-navbar-contrast"}'>
+            <div class="uk-container uk-container-center uk-margin-top">
+                <nav class="uk-navbar">
+                    <a class="uk-navbar-brand" href="/">LOGO
+                       <!--<img class="tm-logo uk-responsive-height" src="img/LOGO.png" alt="">
+                       <img class="tm-logo-contrast uk-responsive-height" src="img/LOGO.png" alt="">-->
+                    </a>
+
+                    <!-- Menu-->
+                    <div class="uk-navbar-flip uk-hidden-small">
+                        <ul class="uk-navbar-nav">
+                            <li class=" uk-active">
+                                <a href="/">Accueil</a>
+                           </li>
+                            <li class="">
+                                <a href="/login">S'inscrire</a>
+                            </li>
+                            <li class="">
+                                <a href="/register">S'identifier</a>
+                            </li>
+                            <li class="">
+                                <a href="/search">Rechercher</a>
+                            </li>
+                            <li class="">
+                                <a href="/contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="uk-navbar-flip uk-visible-small">
+                        <a href="#offcanvas" class="uk-navbar-toggle" data-uk-offcanvas></a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    {% block body %}{% endblock %}
+    {% block sidebar %}{% endblock %}
+
+
+        <div id="offcanvas" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
+                <div class="uk-panel uk-text-center">
+                    <a href="/">LOGO
+                        <!--<img src="img/LOGO.png" alt="">-->
+                    </a>
+                </div>
+                <ul class="uk-nav uk-nav-offcanvas">
+                    <li class=" uk-active">
+                        <a href="#/">Accueil</a>
+                   </li>
+                    <li class="">
+                        <a href="#/login">S'inscrire</a>
+                    </li>
+                    <li class="">
+                        <a href="#/register">S'identifier</a>
+                    </li>
+                    <li class="">
+                        <a href="#/search">Rechercher</a>
+                    </li>
+                    <li class="">
+                        <a href="#/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+<!-- Footer -->
+    <div id="tm-footer" class="tm-footer uk-block uk-block-secondary uk-contrast">
+        <div class="uk-container uk-container-center">
+            <section class="uk-grid uk-grid-match" data-uk-grid-margin>
+                <div class="uk-width-medium-1-1">
+                    <div class="uk-panel  uk-text-center ">
+                        <ul class="uk-grid uk-grid-medium uk-flex uk-flex-center">
+                            <li>
+                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-github"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-twitter"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-linkedin-square"></a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-user"></a>
+                            </li>
+                        </ul>
+    
+                                <p>CoolTeam &copy; 2017 - <a href="#">CoolTeam Development</a></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/uikit.js" integrity="sha256-Ar7wtszG/Jiy6S3pCB2YX/IjkXLLsI93eLCJihxYkYk=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/slideshow.js" integrity="sha256-usivqGFOOWHTrsxiZFSldVW5uC9uRluHCtXFUSChRyM=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/slideshow-fx.js" integrity="sha256-PcIzVS4CHF/oPoFubWaB1Xe4enTqCiAQWNwEEC49lXw=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/slider.js" integrity="sha256-DqL5t4OgDHSG6mHGRHfz9Klp3rNtcVsaXuLysfKmOPs=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/parallax.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/grid-parallax.js" integrity="sha256-FbFl0kVGQgPUktO+P/i7/z/iGh0sfc1a464AhFfaI58=" crossorigin="anonymous"></script>
+
+
+
+
+
+        
+        <!-- js local -->
+        <script src="{{ asset('js/main.js') }}"></script>
+
+    {% endblock %}
+</body>
+
 </html>
