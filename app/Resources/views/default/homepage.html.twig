@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}{{ parent() }} Accueil{% endblock %}
+
+
+{% block body %}
+
+<!-- Image d'En-tête-->
+	<div id="tm-hero" class="tm-hero uk-block uk-block-large uk-cover-background uk-flex uk-flex-middle tm-hero-padding uk-contrast" style="background-image: url('img/b2.jpg');">
+		<div class="uk-container uk-container-center">
+			<section class="uk-grid uk-grid-match" data-uk-grid-margin>
+				<div class="uk-width-medium-1-1">
+					<div class="uk-panel  uk-text-center ">
+						<h1 class="uk-heading-large uk-margin-large-bottom">Nos Amis les oiseaux.</h1>
+						<h2 class="uk-heading-large uk-margin-large-bottom">Venez nous aider à recenser les espèces.</h2>
+							<!--<a class="uk-button uk-button-large" href="/workflow">Plus d'info</a>
+								<a class="uk-button uk-button-large" href="/me">Rejoignez nous!</a>-->
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div id="tm-main" class="tm-main uk-block uk-block-default">
+
+	<!-- A propos -->
+		<div class="uk-container uk-container-center">
+			<div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+				<main class="uk-width-1-1">
+					<!--titre du container A propos-->
+					<article class="uk-article uk-text-center">									
+						<h1 class="uk-h1">A propos de l'association.</h1>
+					<!--Descriptif du container A propos-->
+						<p class="uk-width-medium uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed.</p>
+					</article>				
+				</main>
+			</div>
+		</div>		
+
+	<!-- Caroussel d'image + description -->
+		<div class="uk-container uk-container-center">
+			<div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+				<main class="uk-width-1-1">
+					<article class="uk-article uk-text-center">
+					<!--titre du container caroussel-->
+						<h1 class="uk-h1">Les 10 denières images.</h1>
+					</article>
+					<!-- Slider -->	
+					<div class="uk-slidenav-position" data-uk-slideshow>
+                   		<ul class="uk-slideshow uk-overlay-active"  data-uk-slideshow="{autoplay:true}" style="height: 411px;">
+                   			<li aria-hidden="false" style="opacity: 1; height: 250px;">
+                   				<img src="img/b4.jpg" alt="">
+ 	                           	<div class="uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-slide-right uk-width-1-4">
+                                	<h3>Description</h3>
+                                	<p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
+                                	<button class="uk-button uk-button-primary">Plus d'info</button>
+                            	</div>                   			
+                   			</li>
+                   			<li aria-hidden="false" style="opacity: 1; height: 250px;">
+                   				<img src="img/b5.jpg" alt="">
+ 	                           	<div class="uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-slide-right uk-width-1-4">
+                                	<h3>Description</h3>
+                                	<p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
+                                	<button class="uk-button uk-button-primary">Plus d'info</button>
+                            	</div>                   			
+                   			</li>
+                   			<li aria-hidden="false" style="opacity: 1; height: 250px;">
+                   				<img src="img/b6.jpg" alt="">
+ 	                           	<div class="uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-slide-right uk-width-1-4">
+                                	<h3>Description</h3>
+                                	<p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
+                                	<button class="uk-button uk-button-primary">Plus d'info</button>
+                            	</div>                   			
+                   			</li>                   			                   			
+                   		</ul>
+                    		<a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
+                    		<a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>						
+                    </div>
+            
+                    
+				</main>
+			</div>
+		</div>			
+	<!-- Dernier ajouts + carte google -->
+		<div class="uk-container uk-container-center">
+			<div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+				<main class="uk-width-1-1">
+					<article class="uk-article uk-text-center">
+					<!--titre du container derniers ajouts-->
+						<h1 class="uk-h1">Nos 10 derniers ajouts.</h1>
+
+						<div class="uk-grid">
+							<div class="uk-width-medium-1-2 uk-margin-large-bottom">
+								<h4 class="uk-h2">Description Rouge Gorge</h4>
+								<p class="uk-width-large-4-6 uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros.</p>
+							</div>
+							<div class="uk-width-medium-1-2 uk-margin-large-bottom">
+                    
+	                        	<h4 class="uk-h2">Carte google</h4>
+	                        	<iframe id="map" class="js_required" src="https://maps.google.com/?ie=UTF8&amp;ll=47.1362,-2.1918&amp;t=h&amp;z=10&amp;output=embed"></iframe>
+                    
+							</div>
+						</div>
+					</article>								
+				</main>
+			</div>
+		</div>			
+	<!-- Parallax -->
+		<div class="uk-container uk-container-center">
+			<div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+				<main class="uk-width-1-1">
+					<div class="test-hero-bg" data-uk-parallax="{bg:-500}" style="background-size: auto auto; background-repeat: no-repeat; background-position: 50% 0px;"></div>				
+				</main>
+			</div>
+		</div>		
+	<!-- Compteurs -->
+		<div class="uk-container uk-container-center">
+			<div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+				<main class="uk-width-1-1">
+					<article class="uk-article uk-text-center">
+					<!--titre du container Compteur-->
+						<h1 class="uk-h1">Compteurs</h1>
+					<!--Descriptif du container Compteur-->
+						<p class="uk-width-medium uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed.</p>
+					<!--Compteur 1-->
+						<div class="uk-grid">
+							<div class="uk-width-medium-1-4 uk-margin-large-bottom">
+								<h2 class="uk-h2">200</h2>
+								<h3 class="uk-h2">Observateurs</h3>
+								<p class="uk-width-large-4-6 uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies eros.</p>
+							</div>
+							<div class="uk-width-medium-1-4 uk-margin-large-bottom">
+								<h2 class="uk-h2">20</h2>
+								<h3 class="uk-h2">Naturalistes</h3>
+								<p class="uk-width-large-4-6 uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies eros.</p>
+							</div>
+							<div class="uk-width-medium-1-4 uk-margin-large-bottom">
+								<h2 class="uk-h2">5122</h2>
+								<h3 class="uk-h2">Espèces recencées</h3>
+								<p class="uk-width-large-4-6 uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies eros.</p>
+							</div>
+							<div class="uk-width-medium-1-4 uk-margin-large-bottom">
+								<h2 class="uk-h2">150</h2>
+								<h3 class="uk-h2">Observations</h3>
+								<p class="uk-width-large-4-6 uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies eros.</p>
+							</div>							
+						</div>
+					</article>
+				</main>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
