@@ -86,3 +86,24 @@ assetic:
     use_controller: "%kernel.debug%"
     filters:
       cssrewrite: ~
+
+# VichUploader Configuration
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        taxref_file:
+            uri_prefix: taxref
+            upload_destination: '%kernel.root_dir%/../app/Resources/taxref'
+            namer: vich_uploader.namer_origname
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        taxref_link_file:
+                    uri_prefix: taxreflink
+                    upload_destination: '%kernel.root_dir%/../app/Resources/taxreflink'
+                    namer: vich_uploader.namer_origname
+                    inject_on_load:     true
+                    delete_on_update:   true
+                    delete_on_remove:   true
