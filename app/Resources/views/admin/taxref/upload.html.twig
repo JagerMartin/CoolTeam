@@ -1,0 +1,89 @@
+<!--
+
+
+
+
+
+
+
+PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
+
+
+
+
+
+
+
+-->
+
+{% form_theme taxrefForm 'bootstrap_3_layout.html.twig' %}
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Page upload temporaire</title>
+
+    {% block stylesheets %}
+
+        <!-- Font-Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+    {% endblock %}
+
+</head>
+
+<body>
+    <h1 class="text-center">Page temporaire - Mise à jour référentiel taxref</h1>
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            {% for message in app.session.flashbag.get('info') %}
+                <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+            {% endfor %}
+            {% for message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h2>Table TAXREF</h2>
+            {{ form_start(taxrefForm) }}
+            {{ form_widget(taxrefForm) }}
+            <button type="submit" class="btn btn-primary" formnovalidate>Charger</button>
+            {{ form_end(taxrefForm) }}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h2> Table TAXREF_LIEN </h2>
+            {{ form_start(taxrefLinkForm) }}
+            {{ form_widget(taxrefLinkForm) }}
+            <br><button type="submit" class="btn btn-primary" formnovalidate>Charger</button>
+            {{ form_end(taxrefLinkForm) }}
+        </div>
+    </div>
+    <hr>
+
+
+
+{% block javascripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% endblock %}
+</body>
+
+</html>

@@ -93,17 +93,15 @@ vich_uploader:
 
     mappings:
         taxref_file:
-            uri_prefix: taxref
+            uri_prefix: ../app/Resources/taxref
             upload_destination: '%kernel.root_dir%/../app/Resources/taxref'
-            namer: vich_uploader.namer_origname
             inject_on_load:     true
             delete_on_update:   true
             delete_on_remove:   true
 
         taxref_link_file:
-                    uri_prefix: taxreflink
-                    upload_destination: '%kernel.root_dir%/../app/Resources/taxreflink'
-                    namer: vich_uploader.namer_origname
-                    inject_on_load:     true
-                    delete_on_update:   true
-                    delete_on_remove:   true
+            uri_prefix: ../app/Resources/taxreflink
+            upload_destination: '%kernel.root_dir%/../app/Resources/taxreflink'
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
