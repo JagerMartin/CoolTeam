@@ -72,12 +72,14 @@ class TaxrefController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($taxrefLinkFile);
             $em->flush();
+            // Rechargement de la table à partir du dernier fichier uploadé
+            $this->get('app.reload_taxref_link')->reloadTaxrefLink();
 
-            $this->addFlash('info', 'La table taxref_link a bien été téléchargée.');
+            $this->addFlash('info', 'La table taxref_link a bien été mise à jour.');
             return $this->redirectToRoute('upload_taxref');
         }
 
-        $this->addFlash('error', 'La table taxref_link n\'a pas été téléchargée.');
+        $this->addFlash('error', 'Echec de la mise à jour de la table taxref_link.');
         return $this->redirectToRoute('upload_taxref');
     }
 }

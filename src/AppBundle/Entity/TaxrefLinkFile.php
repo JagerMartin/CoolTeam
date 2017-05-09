@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TaxrefLinkFileRepository")
  * @ORM\Table(name="taxref_link_file")
  * @Vich\Uploadable
  */
@@ -23,7 +23,7 @@ class TaxrefLinkFile
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="taxref_link_file", fileNameProperty="fileName", size="imageSize")
+     * @Vich\UploadableField(mapping="taxref_link_file", fileNameProperty="fileName", size="fileSize")
      *
      * @var File
      */
