@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Vue d'une observation{% endblock %}
+
+{% block body %}
+
+    <div>
+        {{ observation.id }}
+    </div>
+    <div>
+        {{ observation.datetime|date('d/m/y h:i') }}
+    </div>
+    <div>
+        {{ observation.sex }}
+    </div>
+    <div>
+        {{ observation.comment }}
+    </div>
+    <div>
+        {{ observation.latitude }}
+    </div>
+    <div>
+        {{ observation.longitude }}
+    </div>
+    <div>
+        {{ observation.department }}
+    </div>
+
+{% endblock %}
