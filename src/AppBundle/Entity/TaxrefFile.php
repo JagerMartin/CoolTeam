@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TaxrefFileRepository")
  * @ORM\Table(name="taxref_file")
  * @Vich\Uploadable
  */

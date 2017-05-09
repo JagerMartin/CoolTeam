@@ -10,3 +10,9 @@ services:
             - "@doctrine.orm.entity_manager"
             - "@vich_uploader.templating.helper.uploader_helper"
 
+    app.reload_taxref:
+            class: AppBundle\Utils\ReloadTaxref
+            arguments:
+                - "@doctrine.orm.entity_manager"
+                - "@vich_uploader.templating.helper.uploader_helper"
+

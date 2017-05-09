@@ -58,7 +58,7 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
             <h2>Table TAXREF</h2>
             {{ form_start(taxrefForm) }}
             {{ form_widget(taxrefForm) }}
-            <button type="submit" class="btn btn-primary" formnovalidate>Charger</button>
+            <button id="loadTaxrefButton" type="submit" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Chargement en cours..." formnovalidate>Charger</button>
             {{ form_end(taxrefForm) }}
         </div>
     </div>
@@ -68,7 +68,7 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
             <h2> Table TAXREF_LIEN </h2>
             {{ form_start(taxrefLinkForm) }}
             {{ form_widget(taxrefLinkForm) }}
-            <br><button type="submit" class="btn btn-primary" formnovalidate>Charger</button>
+            <br><button id="loadTaxrefLinkButton" type="submit" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Chargement en cours..." formnovalidate>Charger</button>
             {{ form_end(taxrefLinkForm) }}
         </div>
     </div>
@@ -82,6 +82,12 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        $('#loadTaxrefLinkButton, #loadTaxrefButton').on('click', function() {
+            $(this).button('loading');
+        });
+    </script>
 
 {% endblock %}
 </body>
