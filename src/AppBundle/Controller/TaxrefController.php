@@ -49,13 +49,17 @@ class TaxrefController extends Controller
             $em->persist($taxrefFile);
             $em->flush();
             // Rechargement de la table à partir du dernier fichier uploadé
-            $this->get('app.reload_taxref')->reloadTaxref();
+            $success = $this->get('app.reload_taxref')->reloadTaxref();
 
-            $this->addFlash('info', 'La table taxref a bien été mise à jour.');
+            if ($success){
+                $this->addFlash('info', 'La table taxref a bien été mise à jour.');
+            } else {
+                $this->addFlash('error', 'Le fichier entré pour recharger la table est incorrect.');
+            }
             return $this->redirectToRoute('upload_taxref');
         }
 
-        $this->addFlash('error', 'Echec de la mise à jour de la table taxref.');
+        $this->addFlash('error', 'Le fichier doit être renseigné au format csv pour recharger la table.');
         return $this->redirectToRoute('upload_taxref');
     }
 
@@ -75,13 +79,17 @@ class TaxrefController extends Controller
             $em->persist($taxrefLinkFile);
             $em->flush();
             // Rechargement de la table à partir du dernier fichier uploadé
-            $this->get('app.reload_taxref_link')->reloadTaxrefLink();
+            $success = $this->get('app.reload_taxref_link')->reloadTaxrefLink();
 
-            $this->addFlash('info', 'La table taxref_link a bien été mise à jour.');
+            if ($success){
+                $this->addFlash('info', 'La table taxref a bien été mise à jour.');
+            } else {
+                $this->addFlash('error', 'Le fichier entré pour recharger la table est incorrect.');
+            }
             return $this->redirectToRoute('upload_taxref');
         }
 
-        $this->addFlash('error', 'Echec de la mise à jour de la table taxref_link.');
+        $this->addFlash('error', 'Le fichier doit être renseigné au format csv pour recharger la table.');
         return $this->redirectToRoute('upload_taxref');
     }
 }

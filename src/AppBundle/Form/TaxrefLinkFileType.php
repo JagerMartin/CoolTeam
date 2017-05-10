@@ -21,7 +21,7 @@ class TaxrefLinkFileType extends AbstractType
                     'message' => 'Vous devez télécharger un fichier'
                 ))
             ),
-            'label' => 'Fichier taxref_lien au format CSV :'
+            'label' => 'Fichier taxref_lien :'
         ));
     }
 

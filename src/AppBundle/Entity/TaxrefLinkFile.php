@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TaxrefLinkFileRepository")
@@ -24,7 +25,10 @@ class TaxrefLinkFile
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="taxref_link_file", fileNameProperty="fileName", size="fileSize")
-     *
+     * @Assert\File(
+     *     mimeTypes = {"text/csv", "text/plain"},
+     *     mimeTypesMessage = "Le fichier doit être au format csv"
+     * )
      * @var File
      */
     private $taxrefLinkFile;

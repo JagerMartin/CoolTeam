@@ -15,4 +15,3 @@ services:
             arguments:
                 - "@doctrine.orm.entity_manager"
                 - "@vich_uploader.templating.helper.uploader_helper"
-

@@ -56,6 +56,7 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <h2>Table TAXREF</h2>
+            <i>Format csv avec séparateur ";" et encodage utf-8 attendu</i>
             {{ form_start(taxrefForm) }}
             {{ form_widget(taxrefForm) }}
             <button id="loadTaxrefButton" type="submit" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Chargement en cours..." formnovalidate>Charger</button>
@@ -66,6 +67,7 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <h2> Table TAXREF_LIEN </h2>
+            <i>Format csv avec séparateur ";" et encodage utf-8 attendu</i>
             {{ form_start(taxrefLinkForm) }}
             {{ form_widget(taxrefLinkForm) }}
             <br><button id="loadTaxrefLinkButton" type="submit" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Chargement en cours..." formnovalidate>Charger</button>

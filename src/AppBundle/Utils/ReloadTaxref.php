@@ -30,12 +30,27 @@ class ReloadTaxref
 
     public function reloadTaxref()
     {
-        $this->resetTable();
-
         $serializer = new Serializer([new ObjectNormalizer()], [new CsvEncoder($delimiter = ';')]);
-        $data = $serializer->decode(file_get_contents($this->getLastFileUrl()), 'csv');
 
+        $data = $serializer->decode(file_get_contents($this->getLastFileUrl()), 'csv');
+        $success = $this->checkData($data); // Vérification du contenu du fichier avant chargement
+        if(!$success){
+            return false;
+        }
+
+        $this->resetTable();
         $this->loadTable($data);
+        return true;
+    }
+
+    private function checkData($data)
+    {
+        if(array_key_exists('LB_NOM', $data[0]) && array_key_exists('CD_NOM', $data[0])
+        && array_key_exists('FAMILLE', $data[0])){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private function resetTable()
