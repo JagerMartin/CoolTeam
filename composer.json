@@ -26,7 +26,8 @@
         "symfony/symfony": "3.2.*",
         "twig/twig": "^1.0||^2.0",
         "symfony/assetic-bundle": "^2.8",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "vich/uploader-bundle": "1.4.0"
         
     },
     "require-dev": {

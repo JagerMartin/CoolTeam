@@ -4,6 +4,14 @@ parameters:
     #parameter_name: value
 
 services:
-    #service_name:
-    #    class: AppBundle\Directory\ClassName
-    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    app.reload_taxref_link:
+        class: AppBundle\Utils\ReloadTaxrefLink
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@vich_uploader.templating.helper.uploader_helper"
+
+    app.reload_taxref:
+            class: AppBundle\Utils\ReloadTaxref
+            arguments:
+                - "@doctrine.orm.entity_manager"
+                - "@vich_uploader.templating.helper.uploader_helper"
