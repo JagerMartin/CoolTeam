@@ -45,6 +45,9 @@ class ReloadTaxrefLink
 
     private function checkData($data)
     {
+        if(empty($data)){
+            return false;
+        }
         if(array_key_exists('URL_SP', $data[0]) && array_key_exists('CD_NOM', $data[0])){
             return true;
         } else {

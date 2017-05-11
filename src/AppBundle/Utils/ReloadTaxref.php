@@ -45,6 +45,9 @@ class ReloadTaxref
 
     private function checkData($data)
     {
+        if(empty($data)){
+            return false;
+        }
         if(array_key_exists('LB_NOM', $data[0]) && array_key_exists('CD_NOM', $data[0])
         && array_key_exists('FAMILLE', $data[0])){
             return true;
