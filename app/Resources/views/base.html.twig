@@ -12,12 +12,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/uikit.css" integrity="sha256-dnakD7OjGK657EGkv7imIUDhu5WRQKkZ4Y0k/m+Ex30=" crossorigin="anonymous" />
- 
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slideshow.css" integrity="sha256-oU7mavaw6f+AHKxLBpLCylY9e3ixtVSHvnPWGizP+Ls=" crossorigin="anonymous" />
-
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slideshow.css" integrity="sha256-oU7mavaw6f+AHKxLBpLCylY9e3ixtVSHvnPWGizP+Ls=" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slidenav.css" integrity="sha256-0LM8tYNfZKyWvr++XhcKo0/mud1u8fxerKRoLVzWgmI=" crossorigin="anonymous" />
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slider.css" integrity="sha256-rdG/2Cyo2XQ3eSE1XXJKuVy/YE1OcDKu4p9X9JrbD/s=" crossorigin="anonymous" />
 
 
@@ -37,7 +33,7 @@
         <div class="tm-navbar tm-navbar-overlay tm-navbar-transparent tm-navbar-contrast" data-uk-sticky='{"media":767,"showup":true,"animation":"uk-animation-slide-top","top":".uk-sticky-placeholder + *","clsinactive":"tm-navbar-transparent tm-navbar-contrast"}'>
             <div class="uk-container uk-container-center uk-margin-top">
                 <nav class="uk-navbar">
-                    <a class="uk-navbar-brand" href="/">LOGO
+                    <a class="uk-navbar-brand" href="{{ path('home') }}">LOGO
                        <!--<img class="tm-logo uk-responsive-height" src="img/LOGO.png" alt="">
                        <img class="tm-logo-contrast uk-responsive-height" src="img/LOGO.png" alt="">-->
                     </a>
@@ -45,21 +41,20 @@
                     <!-- Menu-->
                     <div class="uk-navbar-flip uk-hidden-small">
                         <ul class="uk-navbar-nav">
-                            <li class=" uk-active">
-                                <a href="/">Accueil</a>
-                           </li>
-                            <li class="">
-                                <a href="/login">S'inscrire</a>
-                            </li>
-                            <li class="">
-                                <a href="/register">S'identifier</a>
-                            </li>
-                            <li class="">
-                                <a href="/search">Rechercher</a>
-                            </li>
-                            <li class="">
-                                <a href="/contact">Contact</a>
-                            </li>
+                            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                <li class="">
+                                    <a href="{{ path('dashboard') }}"> Hello {{ app.user.username }}</a><br><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> LOGOUT</a>
+                                </li>
+                            {% else %}
+                                <li class="">
+                                    <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+                                </li>
+                                <li class="">
+                                    <a href="{{ path('fos_user_security_login') }}">S'identifier</a>
+                                    {#<a href="#modal" data-uk-modal="{center:true}">S'identifier</a>#}
+                                </li>
+
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="uk-navbar-flip uk-visible-small">
@@ -68,7 +63,7 @@
                 </nav>
             </div>
         </div>
-    {% block body %}{% endblock %}
+    {% block body %}{% block container %}{% endblock %}{% endblock %}
     {% block sidebar %}{% endblock %}
 
 
@@ -80,25 +75,30 @@
                     </a>
                 </div>
                 <ul class="uk-nav uk-nav-offcanvas">
-                    <li class=" uk-active">
-                        <a href="#/">Accueil</a>
-                   </li>
-                    <li class="">
-                        <a href="#/login">S'inscrire</a>
-                    </li>
-                    <li class="">
-                        <a href="#/register">S'identifier</a>
-                    </li>
-                    <li class="">
-                        <a href="#/search">Rechercher</a>
-                    </li>
-                    <li class="">
-                        <a href="#/contact">Contact</a>
-                    </li>
+                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                        <li class="uk-active">
+                            <a href="{{ path('dashboard') }}"> Bonjour {{ app.user.username }}</a>
+                        </li>
+                    {% else %}
+                        <li class="">
+                            <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+                        </li>
+                        <li class="">
+                            <a href="{{ path('fos_user_security_login') }}">S'identifier</a>
+                            {#<a href="#modal" data-uk-modal="{center:true}">S'identifier</a>#}
+                        </li>
+
+                    {% endif %}
                 </ul>
             </div>
         </div>
 
+<div id="modal" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
+    <div class="uk-modal-dialog uk-modal-dialog-small">
+        <button type="button" class="uk-modal-close uk-close"></button>
+        <h1>S'identifier</h1>
+    </div>
+</div>
 <!-- Footer -->
     <div id="tm-footer" class="tm-footer uk-block uk-block-secondary uk-contrast">
         <div class="uk-container uk-container-center">
@@ -119,7 +119,7 @@
                                 <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-user"></a>
                             </li>
                         </ul>
-    
+
                                 <p>CoolTeam &copy; 2017 - <a href="#">CoolTeam Development</a></p>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
 
     {% block javascripts %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/uikit.js" integrity="sha256-Ar7wtszG/Jiy6S3pCB2YX/IjkXLLsI93eLCJihxYkYk=" crossorigin="anonymous"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/slideshow.js" integrity="sha256-usivqGFOOWHTrsxiZFSldVW5uC9uRluHCtXFUSChRyM=" crossorigin="anonymous"></script>
@@ -146,7 +146,7 @@
 
 
 
-        
+
         <!-- js local -->
         <script src="{{ asset('js/main.js') }}"></script>
 
