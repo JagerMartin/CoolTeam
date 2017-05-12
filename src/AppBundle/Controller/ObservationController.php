@@ -3,10 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Observation;
-use AppBundle\Form\Type\ObservationInitType;
+use AppBundle\Form\ObservationInitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class ObservationController extends Controller
@@ -17,18 +16,20 @@ class ObservationController extends Controller
      */
     public function observationAddAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
         $observation = new Observation();
+        $observation->setDatetime(new \DateTime());
+        
+        $em = $this->getDoctrine()->getManager();
         $em->persist($observation);
 
-        $form = $this->createForm(ObservationInitType::class, $observation)
-            ->add('submit', SubmitType::class, array(
-                'label' => 'Valider'
-            ));
+        dump($observation);
+
+        $form = $this->createForm(ObservationInitType::class, $observation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
+            $this->addFlash('info', "Observation ajoutée.");
             return $this->redirectToRoute('app_observation', array(
                 'id' => $observation->getId()
             ));

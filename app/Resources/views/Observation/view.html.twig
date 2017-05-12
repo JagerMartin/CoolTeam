@@ -1,29 +1,57 @@
-{% extends "::base.html.twig" %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Page affichage observation</title>
 
-{% block title %}Vue d'une observation{% endblock %}
+    {% block stylesheets %}
 
-{% block body %}
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
-    <div>
-        {{ observation.id }}
-    </div>
-    <div>
-        {{ observation.datetime|date('d/m/y h:i') }}
-    </div>
-    <div>
-        {{ observation.sex }}
-    </div>
-    <div>
-        {{ observation.comment }}
-    </div>
-    <div>
-        {{ observation.latitude }}
-    </div>
-    <div>
-        {{ observation.longitude }}
-    </div>
-    <div>
-        {{ observation.department }}
-    </div>
+    {% endblock %}
 
-{% endblock %}
+</head>
+
+<body>
+<h1 class="text-center">Ajout d'une observation</h1>
+<hr/>
+
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        {% for message in app.session.flashbag.get('info') %}
+            <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+        {% endfor %}
+        {% for message in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div>
+            {{ observation.id }}
+        </div>
+        <div>
+            {{ observation.datetime|date('d/m/y h:i') }}
+        </div>
+        <div>
+            {{ observation.sex }}
+        </div>
+        <div>
+            {{ observation.comment }}
+        </div>
+        <div>
+            {{ observation.latitude }}
+        </div>
+        <div>
+            {{ observation.longitude }}
+        </div>
+        <div>
+            {{ observation.department }}
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

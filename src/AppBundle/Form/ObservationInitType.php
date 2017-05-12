@@ -1,10 +1,11 @@
 <?php
-namespace AppBundle\Form\Type;
+namespace AppBundle\Form;
 
 use SC\DatetimepickerBundle\Form\Type\DatetimeType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,25 +15,27 @@ class ObservationInitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('datetime', DatetimeType::class, array('label' => 'Date et heure',
-                'pickerOptions' =>
-                    array('format' => 'dd/mm/yyyy - hh:ii',
-                        'weekStart' => 0,
-                        'autoclose' => true,
-                        'startView' => 'month',
-                        'minView' => 'hour',
-                        'maxView' => 'decade',
-                        'todayBtn' => true,
-                        'todayHighlight' => true,
-                        'keyboardNavigation' => true,
-                        'language' => 'fr',
-                        'forceParse' => true,
-                        'minuteStep' => 5,
-                        'pickerReferer ' => 'default',
-                        'pickerPosition' => 'bottom-right',
-                        'viewSelect' => 'hour',
-                        'showMeridian' => false
-                    )))
+            ->add('datetime', DatetimeType::class, array(
+                'label' => 'Date et heure',
+                'pickerOptions' => array(
+                    'format' => 'dd/mm/yyyy - hh:ii',
+                    'weekStart' => 0,
+                    'autoclose' => true,
+                    'startView' => 'month',
+                    'minView' => 'hour',
+                    'maxView' => 'decade',
+                    'todayBtn' => true,
+                    'todayHighlight' => true,
+                    'keyboardNavigation' => true,
+                    'language' => 'fr',
+                    'forceParse' => true,
+                    'minuteStep' => 5,
+                    'pickerReferer ' => 'default',
+                    'pickerPosition' => 'bottom-right',
+                    'viewSelect' => 'hour',
+                    'showMeridian' => false
+                )
+            ))
             ->add('sex', ChoiceType::class, array(
                 'label' => 'Sexe',
                 'choices' => array(
@@ -49,14 +52,19 @@ class ObservationInitType extends AbstractType
                     '27 - Eure' => 'eure',
                     '76 - Seine-Maritime' => 'seine-maritime'
                 )
-            ));
+            ))
+            ->add('submit', SubmitType::class, array(
+                'label' => 'Valider',
+                'attr' => array(
+                    'class' => 'btn-default btn btn-primary pull-right'
+                )))
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            //'data_class' => 'Louvre\BookingBundle\Entity\Commande',
-            //'locale' => 'fr'
+            'data_class' => 'AppBundle\Entity\Observation'
         ));
     }
 }

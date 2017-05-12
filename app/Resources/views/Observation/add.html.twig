@@ -1,51 +1,97 @@
-{% extends "::base.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 
-{% block title %}Ajout d'une observation{% endblock %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Page ajout observation</title>
 
-{% block body %}
+    {% block stylesheets %}
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+    {% endblock %}
+
+    {% block javascripts %}
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script>
+
+        </script>
+
+    {% endblock %}
+</head>
+
+<body>
 
 
-    {{ form_stylesheet(form) }}
-
-    {{ form_javascript(form) }}
 
 
-    {{ form_start(form) }}
-    <div>
-        {{ form_label(form.datetime, 'Date et heure' ) }}
-        {{ form_widget(form.datetime) }}
-        {{ form_errors(form.datetime) }}
+
+
+<h1 class="text-center">Ajout d'une observation</h1>
+<hr/>
+
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        {% for message in app.session.flashbag.get('info') %}
+            <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+        {% endfor %}
+        {% for message in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+        {% endfor %}
     </div>
-    <div>
-        {{ form_label(form.sex, 'Sexe' ) }}
-        {{ form_widget(form.sex) }}
-        {{ form_errors(form.sex) }}
-    </div>
-    <div>
-        {{ form_label(form.comment, 'Commentaire' ) }}
-        {{ form_widget(form.comment) }}
-        {{ form_errors(form.comment) }}
-    </div>
-    <div>
-        {{ form_label(form.latitude, 'Latitude' ) }}
-        {{ form_widget(form.latitude) }}
-        {{ form_errors(form.latitude) }}
-    </div>
-    <div>
-        {{ form_label(form.longitude, 'Longitude' ) }}
-        {{ form_widget(form.longitude) }}
-        {{ form_errors(form.longitude) }}
-    </div>
-    <div>
-        {{ form_label(form.department, 'Département' ) }}
-        {{ form_widget(form.department) }}
-        {{ form_errors(form.department) }}
-    </div>
+</div>
 
-    {{ form_end(form) }}
+{{ form_stylesheet(form) }}
 
-{% endblock %}
+{{ form_javascript(form) }}
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        {{ form_start(form) }}
+        <div>
+            {{ form_label(form.datetime, 'Date et heure' ) }}
+            {{ form_widget(form.datetime) }}
+            {{ form_errors(form.datetime) }}
+        </div>
+        <div>
+            {{ form_label(form.sex, 'Sexe' ) }}
+            {{ form_widget(form.sex) }}
+            {{ form_errors(form.sex) }}
+        </div>
+        <div>
+            {{ form_label(form.comment, 'Commentaire' ) }}
+            {{ form_widget(form.comment) }}
+            {{ form_errors(form.comment) }}
+        </div>
+        <div>
+            {{ form_label(form.latitude, 'Latitude' ) }}
+            {{ form_widget(form.latitude) }}
+            {{ form_errors(form.latitude) }}
+        </div>
+        <div>
+            {{ form_label(form.longitude, 'Longitude' ) }}
+            {{ form_widget(form.longitude) }}
+            {{ form_errors(form.longitude) }}
+        </div>
+        <div>
+            {{ form_label(form.department, 'Département' ) }}
+            {{ form_widget(form.department) }}
+            {{ form_errors(form.department) }}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

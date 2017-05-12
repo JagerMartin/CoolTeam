@@ -63,19 +63,13 @@ class Observation
      */
     private $department;
 
-
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="users")
-     * @ORM\JoinColumn(name="user_id", nullable=false)
+     * @var boolean
+     *
+     * @ORM\Column(name="valide", type="boolean")
      */
-    //private $user;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Taxref", inversedBy="cdNames")
-     * @ORM\JoinColumn(name="CD_NAME", nullable=false)
-     */
-    //private $taxref;
-
+    private $valide;
+    
 
     /**
      * Get id
@@ -232,50 +226,26 @@ class Observation
     }
 
     /**
-     * Set user
+     * Set valide
      *
-     * @param \AppBundle\Entity\User $user
+     * @param boolean $valide
      *
      * @return Observation
      */
-    public function setUser(\AppBundle\Entity\User $user)
+    public function setValide($valide)
     {
-        $this->user = $user;
+        $this->valide = $valide;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get valide
      *
-     * @return \AppBundle\Entity\User
+     * @return boolean
      */
-    public function getUser()
+    public function getValide()
     {
-        return $this->user;
-    }
-
-    /**
-     * Set taxref
-     *
-     * @param \AppBundle\Entity\Taxref $taxref
-     *
-     * @return Observation
-     */
-    public function setTaxref(\AppBundle\Entity\Taxref $taxref)
-    {
-        $this->taxref = $taxref;
-
-        return $this;
-    }
-
-    /**
-     * Get taxref
-     *
-     * @return \AppBundle\Entity\Taxref
-     */
-    public function getTaxref()
-    {
-        return $this->taxref;
+        return $this->valide;
     }
 }
