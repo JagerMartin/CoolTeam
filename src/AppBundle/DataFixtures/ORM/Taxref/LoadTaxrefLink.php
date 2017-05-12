@@ -6,7 +6,7 @@
  * Time: 09:06
  */
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM\Taxref;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;

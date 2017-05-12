@@ -1,0 +1,7 @@
+AppBundle\Entity\User:
+    admin:
+        username: 'admin'
+        plainPassword: 'admin'
+        role: ['ROLE_SUPER_ADMIN']
+        email: <email()>
+        enabled: true
