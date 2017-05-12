@@ -268,6 +268,7 @@ class Observation
 
     /**
      * Set status
+<<<<<<< HEAD
      *
      * @param integer $status
      *
