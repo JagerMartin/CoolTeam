@@ -38,6 +38,13 @@ class Observation
     /**
      * @var string
      *
+     * @ORM\Column(name="observation", type="text", nullable=true)
+     */
+    private $observation;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="comment", type="text", nullable=true)
      */
     private $comment;
@@ -64,17 +71,17 @@ class Observation
     private $department;
 
     /**
-     * @var boolean
+     * @var int
      *
-     * @ORM\Column(name="valide", type="boolean")
+     * @ORM\Column(name="status", type="integer")
      */
-    private $valide;
-    
+    private $status;
+
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -127,6 +134,30 @@ class Observation
     public function getSex()
     {
         return $this->sex;
+    }
+
+    /**
+     * Set observation
+     *
+     * @param string $observation
+     *
+     * @return Observation
+     */
+    public function setObservation($observation)
+    {
+        $this->observation = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Get observation
+     *
+     * @return string
+     */
+    public function getObservation()
+    {
+        return $this->observation;
     }
 
     /**
@@ -226,26 +257,26 @@ class Observation
     }
 
     /**
-     * Set valide
+     * Set status
      *
-     * @param boolean $valide
+     * @param integer $status
      *
      * @return Observation
      */
-    public function setValide($valide)
+    public function setStatus($status)
     {
-        $this->valide = $valide;
+        $this->status = $status;
 
         return $this;
     }
 
     /**
-     * Get valide
+     * Get status
      *
-     * @return boolean
+     * @return integer
      */
-    public function getValide()
+    public function getStatus()
     {
-        return $this->valide;
+        return $this->status;
     }
 }
