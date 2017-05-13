@@ -42,6 +42,7 @@ class Observation
      */
     private $observation;
 
+
     /**
      * @var string
      *
@@ -268,7 +269,6 @@ class Observation
 
     /**
      * Set status
-<<<<<<< HEAD
      *
      * @param integer $status
      *
