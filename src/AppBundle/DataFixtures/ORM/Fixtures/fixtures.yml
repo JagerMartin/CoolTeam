@@ -5,3 +5,13 @@ AppBundle\Entity\User:
         role: ['ROLE_SUPER_ADMIN']
         email: <email()>
         enabled: true
+
+AppBundle\Entity\Observation:
+    observation_{1..1000}:
+        datetime: <dateTimeBetween('-300 days', 'now')>
+        observation: <text(300)>
+        latitude: <latitude()>
+        longitude: <longitude()>
+        department: <numberBetween(1, 95)>
+        status: 1
+        taxref: <cdNames()>

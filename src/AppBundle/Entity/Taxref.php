@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Taxref
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="reign", type="string", length=255)
@@ -59,7 +50,9 @@ class Taxref
     /**
      * @var int
      *
+     * @ORM\Id
      * @ORM\Column(name="CD_NAME", type="integer", unique=true)
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $cdName;
 
