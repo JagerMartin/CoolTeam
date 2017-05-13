@@ -48,7 +48,7 @@ class Observation
      * @ORM\Column(name="comment", type="text", nullable=true)
      */
     private $comment;
-
+    
     /**
      * @var float
      *
@@ -77,6 +77,16 @@ class Observation
      */
     private $status;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Taxref")
+     * @ORM\JoinColumn(referencedColumnName="CD_NAME", name="taxref_CD_NAME")
+     */
+    private $taxref;
+    
+    public function __construct()
+    {
+        $this->taxref = new Taxref();
+    }
 
     /**
      * Get id
@@ -278,5 +288,29 @@ class Observation
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set taxref
+     *
+     * @param \AppBundle\Entity\Taxref $taxref
+     *
+     * @return Observation
+     */
+    public function setTaxref(\AppBundle\Entity\Taxref $taxref = null)
+    {
+        $this->taxref = $taxref;
+
+        return $this;
+    }
+
+    /**
+     * Get taxref
+     *
+     * @return \AppBundle\Entity\Taxref
+     */
+    public function getTaxref()
+    {
+        return $this->taxref;
     }
 }

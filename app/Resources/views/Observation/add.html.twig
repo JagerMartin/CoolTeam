@@ -30,10 +30,6 @@
 <body>
 
 
-
-
-
-
 <h1 class="text-center">Ajout d'une observation</h1>
 <hr/>
 
@@ -51,7 +47,13 @@
 {{ form_stylesheet(form) }}
 
 {{ form_javascript(form) }}
-
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h4>Nom : {{ observation.taxref.vernacularName }}</h4>
+        <h4>Nom complet : {{ observation.taxref.fullName }}</h4>
+        <h4>Famille : {{ observation.taxref.family }}</h4>
+    </div>
+</div>
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
         {{ form_start(form) }}
@@ -89,7 +91,6 @@
         {{ form_end(form) }}
     </div>
 </div>
-
 
 
 </body>

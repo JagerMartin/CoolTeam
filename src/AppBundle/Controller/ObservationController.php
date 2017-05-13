@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Observation;
+use AppBundle\Entity\Taxref;
 use AppBundle\Form\ObservationInitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -11,13 +12,15 @@ use Symfony\Component\HttpFoundation\Request;
 class ObservationController extends Controller
 {
     /**
-     * @Route("/observation/add", name="app_observation_add")
+     * @Route("/observation/add/{cdName}", name="app_observation_add", defaults={"cdName" = 3762})
      *
      */
-    public function observationAddAction(Request $request)
+    public function observationAddAction(Request $request, $cdName)
     {
         $observation = new Observation();
         $observation->setDatetime(new \DateTime());
+        
+        $observation->setTaxref($this->getDoctrine()->getManager()->getRepository('AppBundle:Taxref')->findOneBy(array('cdName' => $cdName)));
         
         $em = $this->getDoctrine()->getManager();
         $em->persist($observation);
@@ -36,7 +39,8 @@ class ObservationController extends Controller
         }
 
         return $this->render(':Observation:add.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'observation' => $observation
         ));
     }
 
