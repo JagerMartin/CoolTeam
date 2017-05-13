@@ -6,18 +6,19 @@
  * Time: 14:33
  */
 
-namespace AppBundle\DataFixtures\ORM\Fixtures;
+namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Nelmio\Alice\Fixtures;
 
-class LoadFixtures implements FixtureInterface
+class LoadFixtures implements FixtureInterface, OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
         Fixtures::load(
-            __DIR__.'/fixtures.yml',
+            __DIR__.'/Resources/fixtures.yml',
             $manager,
             [
                'providers' => [$this]

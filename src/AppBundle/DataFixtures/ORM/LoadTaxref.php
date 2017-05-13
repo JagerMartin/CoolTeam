@@ -6,13 +6,14 @@
  * Time: 05:30
  */
 
-namespace AppBundle\DataFixtures\ORM\Taxref;
+namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Taxref;
 
-class LoadTaxref implements FixtureInterface
+class LoadTaxref implements FixtureInterface, OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
