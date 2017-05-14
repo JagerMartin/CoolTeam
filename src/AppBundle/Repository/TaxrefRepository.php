@@ -17,4 +17,22 @@ class TaxrefRepository extends \Doctrine\ORM\EntityRepository
             ->groupBy('t.family')
             ;
     }
+
+    public function getSpeciesWithLbNameLike($val)
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.lbName LIKE :val')
+            ->setParameter('val', '%'.$val.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getSpeciesWithVernNameLike($val)
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.vernacularName LIKE :val')
+            ->setParameter('val', '%'.$val.'%')
+            ->getQuery()
+            ->getResult();
+    }
 }
