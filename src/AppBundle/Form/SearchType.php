@@ -24,7 +24,7 @@ class SearchType extends AbstractType
             ->add('name', TextType::class, array(
                 'label' => 'Nom de l\'espèce :'
             ))
-            ->add('familiy', EntityType::class, array(
+            ->add('family', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Taxref',
                 'choice_label' => 'family',
                 'placeholder' => 'Choisir',

@@ -35,27 +35,34 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
 </head>
 
 <body>
-<h1 class="text-center">Rechercher</h1>
 
-<div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-        {% for message in app.session.flashbag.get('info') %}
-            <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
-        {% endfor %}
-        {% for message in app.session.flashbag.get('error') %}
-            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
-        {% endfor %}
+<div class="row col-sm-12 text-center">
+    <h2>Rechercher par nom, par famille ou par département </h2>
+    <hr>
+    <div class="row col-sm-12">
+        <div class="col-sm-8 col-sm-offset-2">
+            {% for message in app.session.flashbag.get('info') %}
+                <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+            {% endfor %}
+            {% for message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-
-<hr>
-<div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="row col-sm-12">
         {{ form_start(form) }}
-        {{ form_row(form.name) }}
-        {{ form_row(form.familiy) }}
-        {{ form_row(form.department) }}
-        <button type="submit" class="btn btn-primary" formnovalidate>Rechercher</button>
+        <div class="col-sm-3 col-sm-offset-1">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="col-sm-3 col-sm-offset-1">
+            {{ form_row(form.family) }}
+        </div>
+        <div class="col-sm-3 col-sm-offset-1">
+            {{ form_row(form.department) }}
+        </div>
+    </div>
+    <div class="row col-sm-6 col-sm-offset-3">
+        <button type="submit" class="btn btn-primary form-control" formnovalidate>Rechercher</button>
         {{ form_end(form) }}
     </div>
 </div>
@@ -72,6 +79,8 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
 
     <!-- JQUERY UI POUR AUTOCOMPLETION -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="{{ asset('js/search.js') }}"></script>
 
     <script>
         $(document).ready(function() {
