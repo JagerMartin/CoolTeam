@@ -98,7 +98,7 @@ class LoadUserData
      */
     public function getOrder()
     {
-        return 2;
+        return 4;
     }
 
 }
