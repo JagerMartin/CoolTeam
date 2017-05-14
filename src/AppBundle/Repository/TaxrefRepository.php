@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class TaxrefRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getFamilyList()
+    {
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.family', 'ASC')
+            ->groupBy('t.family')
+            ;
+    }
 }
