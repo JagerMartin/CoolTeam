@@ -5,9 +5,26 @@
 
 
 {% block body %}
+	<div class="uk-cover-background uk-position-relative" style="height: 600px; background-image: url('{{ asset('img/b5.jpg') }}') ;">
+		<img class="uk-invisible" src="{{ asset('img/b5.jpg') }}" alt="" width="600" height="400">
 
-<!-- Image d'En-tête-->
-	<div id="tm-hero" class="tm-hero uk-block uk-block-large uk-cover-background uk-flex uk-flex-middle tm-hero-padding uk-contrast" style="background-image: url('img/b2.jpg');">
+		<div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-column-reverse">
+			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box">ACCUEIL</div>
+			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box uk-margin-bottom">ASSOCIATION</div>
+			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box uk-margin-bottom">MODE D'EMPLOI</div>
+			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box uk-margin-bottom">RECHERCHER</div>
+			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box uk-margin-bottom">APPRENDRE A OBSERVER</div>
+			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box uk-margin-bottom"><a href="#">CONTACT</a></div>
+		</div>
+		<div class="uk-position-cover uk-flex uk-flex-center uk-flex-middle">
+			<div style="background: rgba(236, 249, 232, 0.8); font-size: 50px; line-height: 75px; color: #fff;">
+			<h1 class="uk-heading-large uk-margin-large-bottom">Nos Amis les oiseaux.</h1>
+			<h2 class="uk-heading-large uk-margin-large-bottom">Venez nous aider à recenser les espèces.</h2></div>
+		</div>
+	</div>
+
+<!-- Image d'En-tête
+	<div id="tm-hero" class="tm-hero uk-block uk-block-large uk-cover-background uk-flex uk-flex-middle tm-hero-padding uk-contrast" style="background-image: url('{{ asset('img/b2.jpg') }}');">
 		<div class="uk-container uk-container-center">
 			<section class="uk-grid uk-grid-match" data-uk-grid-margin>
 				<div class="uk-width-medium-1-1">
@@ -15,12 +32,12 @@
 						<h1 class="uk-heading-large uk-margin-large-bottom">Nos Amis les oiseaux.</h1>
 						<h2 class="uk-heading-large uk-margin-large-bottom">Venez nous aider à recenser les espèces.</h2>
 							<!--<a class="uk-button uk-button-large" href="/workflow">Plus d'info</a>
-								<a class="uk-button uk-button-large" href="/me">Rejoignez nous!</a>-->
+								<a class="uk-button uk-button-large" href="/me">Rejoignez nous!</a>
 					</div>
 				</div>
 			</section>
 		</div>
-	</div>
+	</div>-->
 
 	<div id="tm-main" class="tm-main uk-block uk-block-default">
 
@@ -50,7 +67,7 @@
 					<div class="uk-slidenav-position" data-uk-slideshow>
                    		<ul class="uk-slideshow uk-overlay-active"  data-uk-slideshow="{autoplay:true}" style="height: 411px;">
                    			<li aria-hidden="false" style="opacity: 1; height: 250px;">
-                   				<img src="img/b4.jpg" alt="">
+                   				<img src="{{ asset('img/b4.jpg') }}" alt="">
  	                           	<div class="uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-slide-right uk-width-1-4">
                                 	<h3>Description</h3>
                                 	<p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
@@ -58,7 +75,7 @@
                             	</div>                   			
                    			</li>
                    			<li aria-hidden="false" style="opacity: 1; height: 250px;">
-                   				<img src="img/b5.jpg" alt="">
+                   				<img src="{{ asset('img/b5.jpg') }}" alt="">
  	                           	<div class="uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-slide-right uk-width-1-4">
                                 	<h3>Description</h3>
                                 	<p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
@@ -66,7 +83,7 @@
                             	</div>                   			
                    			</li>
                    			<li aria-hidden="false" style="opacity: 1; height: 250px;">
-                   				<img src="img/b6.jpg" alt="">
+                   				<img src="{{ asset('img/b6.jpg') }}" alt="">
  	                           	<div class="uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-slide-right uk-width-1-4">
                                 	<h3>Description</h3>
                                 	<p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>

@@ -1,0 +1,256 @@
+2017-02-18 17:36:57.1739|WARN|thread: 1|StandardUserErrors|Showing user error Failed to create a new commit.
+GitHub.IO.ProcessException: fatal: pathspec 'www/data/quizz0.json' did not match any files
+2017-02-18 17:26:30.6218|INFO|thread: 1|CommandLineHandler|Parsing command line arguments:
+2017-02-18 17:26:30.7080|INFO|thread: 1|CommandLineHandler|Unprocessed args: 
+2017-02-18 17:26:30.7519|INFO|thread: 1|AppInstance|Starting up as master instance of GitHub Desktop
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| #########################################
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| GitHub Desktop started. VERSION: 3.3.3.0
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| Build version: bc4735a097cc8cc1e98a3dddd8ca10ffd83cbb68
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| ***************************************
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| ***                                 ***
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| ***                                 ***
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| ***        Have a problem?          ***
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| ***    Email support@github.com     ***
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| ***      and include this file      ***
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| ***                                 ***
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| ***                                 ***
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| ***************************************
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| OS Version: Windows 10 10.0.14393.0 amd64
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| CLR Version: 4.0.30319.42000
+2017-02-18 17:26:31.1077|INFO|thread: 5|StartupLogging| Current culture: fr-FR
+2017-02-18 17:26:31.1317|INFO|thread: 5|StartupLogging| Environment.CurrentDirectory: C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4
+2017-02-18 17:26:31.1317|INFO|thread: 5|StartupLogging| currentProcess.StartInfo.WorkingDirectory: 
+2017-02-18 17:26:31.1317|INFO|thread: 5|StartupLogging| Terminal Services session: no
+2017-02-18 17:26:31.1317|INFO|thread: 5|StartupLogging| Location: C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4\GitHub.exe
+2017-02-18 17:26:31.1783|INFO|thread: 5|StartupLogging| ActivationUri: https://github-windows.s3.amazonaws.com/GitHub.application
+2017-02-18 17:26:31.1783|INFO|thread: 5|StartupLogging| System.Environment.CommandLine: C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4\GitHub.exe
+2017-02-18 17:26:31.4545|INFO|thread: 5|GitEnvironment|Process set up with this SSH Agent info: (null):(null)
+2017-02-18 17:26:31.4545|INFO|thread: 5|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files\PHP\v7.0;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Brackets\command;C:\Program Files\MySQL\MySQL Server 5.1\bin;C:\Program Files\OpenVPN\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Druide\Antidote 8\Programmes64\;C:\Program Files (x86)\Druide\Antidote 8\Programmes32\;C:\laragon\bin\composer;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\bin;C:\laragon\bin;C:\Users\MisterX\AppData\Local\Microsoft\WindowsApps;C:\Program Files\PHP\v7.0;C:\Program Files\Docker Toolbox;C:\Users\MisterX\AppData\Roaming\npm;C:\Users\MisterX\AppData\Local\Android\sdk\platform-tools;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:26:31.4786|INFO|thread: 4|HardwareRenderingHelper|Making a WMI query to discover any video PNPID entries
+2017-02-18 17:26:31.5611|INFO|thread: 5|StartupLogging| =====================================================
+2017-02-18 17:26:31.5611|INFO|thread: 5|StartupLogging|  DIAGNOSTICS                                        |
+2017-02-18 17:26:31.5611|INFO|thread: 5|StartupLogging| =====================================================
+2017-02-18 17:26:31.6246|INFO|thread: 5|StartupLogging| Git Extracted: 'True:
+2017-02-18 17:26:31.6246|INFO|thread: 5|StartupLogging| PortableGit Dir Exists: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11'
+2017-02-18 17:26:31.6246|INFO|thread: 5|StartupLogging| Git Executable Exists: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe'
+2017-02-18 17:26:31.6246|ERROR|thread: 5|StartupLogging| MISSING PATH!!: 'C:\Program Files\Docker\Docker\Resources\bin'
+2017-02-18 17:26:31.6631|INFO|thread: 5|StartupLogging| ----------------------------------------------------
+2017-02-18 17:26:31.6631|INFO|thread: 5|StartupLogging| PATH: C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files\PHP\v7.0;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Brackets\command;C:\Program Files\MySQL\MySQL Server 5.1\bin;C:\Program Files\OpenVPN\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Druide\Antidote 8\Programmes64\;C:\Program Files (x86)\Druide\Antidote 8\Programmes32\;C:\laragon\bin\composer;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\bin;C:\laragon\bin;C:\Users\MisterX\AppData\Local\Microsoft\WindowsApps;C:\Program Files\PHP\v7.0;C:\Program Files\Docker Toolbox;C:\Users\MisterX\AppData\Roaming\npm;C:\Users\MisterX\AppData\Local\Android\sdk\platform-tools
+2017-02-18 17:26:32.4700|INFO|thread: 1|HardwareRenderingHelper|Your video card appears to support hardware rendering. If this isn't the case and you see glitches
+2017-02-18 17:26:32.4700|INFO|thread: 1|HardwareRenderingHelper|set the GH_FORCE_SW_RENDERING environment variable to 1
+2017-02-18 17:26:32.4981|INFO|thread: 5|StartupLogger|Proxy information: (None)
+2017-02-18 17:26:32.4981|INFO|thread: 5|StartupLogger|Couldn't fetch creds for proxy
+2017-02-18 17:26:32.6722|INFO|thread: 1|App|Checking whether application is network deployed: True
+2017-02-18 17:26:32.6722|INFO|thread: 1|App|Shortcut C:\Users\MisterX\AppData\Local\GitHub\GitHub.appref-ms exists? True
+2017-02-18 17:26:33.2737|INFO|thread: 1|ClickOnceAppIconHelper|Updating registry with our application icon 'C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4\Images\App.ico'
+2017-02-18 17:26:34.0767|INFO|thread: 5|PortablePackageManager|Already extracted PortableGit.7z, returning 100%
+2017-02-18 17:26:34.7677|INFO|thread: 5|MsysGitCertificateInstaller|Found certificate cache, loaded 156 certificates
+2017-02-18 17:26:34.8414|INFO|thread: 5|MsysGitCertificateInstaller|Created certificate bundle with 173 entries
+2017-02-18 17:26:35.1689|INFO|thread: 5|StartupSequence|Took 1807ms to Update certificate bundle from system store
+2017-02-18 17:26:35.3902|INFO|thread: 4|BlobCacheUtils|Vacuuming C:\Users\MisterX\AppData\Local\GitHub\images.cache.db
+2017-02-18 17:26:39.2518|INFO|thread: 1|CommandLineToolsExtractor|Portable Git and Git LFS are already extracted
+2017-02-18 17:26:39.2606|INFO|thread: 1|GitClient|Installing git lfs filters
+2017-02-18 17:26:39.2606|INFO|thread: 1|GitEnvironment|Process set up with this SSH Agent info: (null):(null)
+2017-02-18 17:26:39.2606|INFO|thread: 1|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:26:39.2830|INFO|thread: 1|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'lfs install --force ', Working Directory: C:\Users\MisterX\AppData\Local\Temp\
+2017-02-18 17:26:39.3999|INFO|thread: 1|ReactiveScreen|Activating GitHub.ViewModels.ShellViewModel.
+2017-02-18 17:26:39.3999|INFO|thread: 1|ReactiveScreen|Activating GitHub.ViewModels.DashboardViewModel.
+2017-02-18 17:26:43.4325|INFO|thread: 4|SoftwareUpdateViewModel|Checking for new version
+2017-02-18 17:26:49.1141|INFO|thread: 1|PortablePackageManager|Already extracted gitignore.7z, returning 100%
+2017-02-18 17:26:50.9932|WARN|thread: 9|LoginCache|Could not get login for host 'GitHub.HostAddress'
+System.Collections.Generic.KeyNotFoundException: The given key 'login:null' was not present in the cache.
+2017-02-18 17:26:52.5410|INFO|thread: 4|SoftwareUpdateViewModel|New version available: 3.3.4.0
+2017-02-18 17:26:52.7192|INFO|thread: 1|RepositoryHost|Log in from cache for login 'atlantis112016' to host 'https://api.github.com/' SUCCEEDED
+2017-02-18 17:26:52.9838|INFO|thread:23|ApplicationShellInitializer|Running post login tasks. ~/.gitconfig is set up with user.name = 'Atlantis11' and user.email = 'atlantis11@libertysurf.fr'
+2017-02-18 17:26:53.0320|INFO|thread:23|SshKeyHelper|Found existing SSH key pair
+2017-02-18 17:26:53.5243|INFO|thread:15|DashboardViewModel|Selected repository 'atlantis112016/LearnApp'
+2017-02-18 17:26:53.5438|INFO|thread: 4|SshProcessManager|Starting ssh-agent.exe
+2017-02-18 17:26:53.6180|INFO|thread: 4|PortablePackageManager|Already extracted lfs-amd64.7z, returning 100%
+2017-02-18 17:26:53.7599|INFO|thread:15|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 1 at GitClient.cs:605
+2017-02-18 17:26:53.8055|INFO|thread: 9|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 1 at GitClient.cs:605 after waiting 0.0454978s
+2017-02-18 17:26:53.8055|INFO|thread:15|AsyncReaderWriterLock|Acquiring exclusive scheduler for operation 2 at GitClient.cs:583
+2017-02-18 17:26:54.7273|INFO|thread:13|AsyncReaderWriterLock|Released concurrent scheduler for operation: 1 at GitClient.cs:605 after blocking 0.921269s
+2017-02-18 17:26:54.7273|INFO|thread: 9|AsyncReaderWriterLock|Acquired exclusive scheduler for operation: 2 at GitClient.cs:583 after waiting 0.9207258s
+2017-02-18 17:26:55.6614|INFO|thread: 9|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 3 at GitClient.cs:600
+2017-02-18 17:26:55.9320|INFO|thread: 9|DashboardViewModel|Took 2235ms to Create RepositoryViewModel for location E:\AppsIonic\OCP4
+2017-02-18 17:26:55.9320|INFO|thread: 9|AsyncReaderWriterLock|Released exclusive scheduler for operation: 2 at GitClient.cs:583 after blocking 1.2031927s
+2017-02-18 17:26:55.9320|INFO|thread:25|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 3 at GitClient.cs:600 after waiting 0.2723804s
+2017-02-18 17:26:56.0391|INFO|thread:25|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 4 at RepositoryViewModel.cs:319
+2017-02-18 17:26:56.0391|INFO|thread:13|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 4 at RepositoryViewModel.cs:319 after waiting 0.0017069s
+2017-02-18 17:26:56.0391|INFO|thread:25|AsyncReaderWriterLock|Released concurrent scheduler for operation: 3 at GitClient.cs:600 after blocking 0.1092422s
+2017-02-18 17:26:56.0887|INFO|thread:23|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:26:56.0887|INFO|thread:23|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:26:56.2222|INFO|thread: 9|AsyncReaderWriterLock|Released concurrent scheduler for operation: 4 at RepositoryViewModel.cs:319 after blocking 0.1816215s
+2017-02-18 17:26:56.2392|INFO|thread:23|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin\ssh-add.exe', Args: '"C:\Users\MisterX\.ssh\github_rsa"', Working Directory: C:\Users\MisterX\AppData\Local\Temp\
+2017-02-18 17:26:57.6511|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 5 at GitClient.cs:195
+2017-02-18 17:26:57.6511|INFO|thread:25|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 5 at GitClient.cs:195 after waiting 9.9E-05s
+2017-02-18 17:26:57.6511|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 6 at RepositoryModel.cs:596
+2017-02-18 17:26:57.6721|INFO|thread: 4|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 7 at RepositoryModel.cs:596
+2017-02-18 17:26:57.6721|INFO|thread:13|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 6 at RepositoryModel.cs:596 after waiting 0.0223054s
+2017-02-18 17:26:57.6991|INFO|thread: 4|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 7 at RepositoryModel.cs:596 after waiting 0.026909s
+2017-02-18 17:26:57.6991|INFO|thread: 9|AsyncReaderWriterLock|Released concurrent scheduler for operation: 5 at GitClient.cs:195 after blocking 0.0516797s
+2017-02-18 17:26:57.7577|INFO|thread:25|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 8 at NewPullRequestViewModel.cs:245
+2017-02-18 17:26:57.7577|INFO|thread: 9|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 8 at NewPullRequestViewModel.cs:245 after waiting 0.0010034s
+2017-02-18 17:26:57.7577|INFO|thread: 4|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 9 at GitClient.cs:267
+2017-02-18 17:26:57.7577|INFO|thread: 4|AsyncReaderWriterLock|Released concurrent scheduler for operation: 7 at RepositoryModel.cs:596 after blocking 0.0639634s
+2017-02-18 17:26:57.7577|INFO|thread:25|AsyncReaderWriterLock|Released concurrent scheduler for operation: 6 at RepositoryModel.cs:596 after blocking 0.0892599s
+2017-02-18 17:26:57.7577|INFO|thread:13|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 9 at GitClient.cs:267 after waiting 0.0005262s
+2017-02-18 17:26:57.7747|INFO|thread: 4|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:26:57.7747|INFO|thread: 4|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:26:57.7747|INFO|thread: 4|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'status --untracked-files=all --porcelain -z ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:26:57.9870|INFO|thread:25|AsyncReaderWriterLock|Released concurrent scheduler for operation: 8 at NewPullRequestViewModel.cs:245 after blocking 0.2275832s
+2017-02-18 17:26:58.2477|INFO|thread:25|BackgroundFetcher|Got a refresh period for E:\AppsIonic\OCP4\.git of 300 seconds
+2017-02-18 17:26:58.2477|INFO|thread:25|BackgroundFetcher|Added a delay for E:\AppsIonic\OCP4\.git of 14498 milliseconds
+2017-02-18 17:26:58.2552|INFO|thread: 9|ConcurrentRepositoryConnection|Took 403ms to git status
+2017-02-18 17:26:58.2552|INFO|thread: 9|ConcurrentRepositoryConnection|Took 406ms to git status and parse output
+2017-02-18 17:26:59.6722|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 10 at GitClient.cs:588
+2017-02-18 17:27:00.1494|INFO|thread: 4|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 10 at GitClient.cs:588 after waiting 0.4770684s
+2017-02-18 17:27:00.1494|INFO|thread:25|AsyncReaderWriterLock|Released concurrent scheduler for operation: 10 at GitClient.cs:588 after blocking 0.0099889s
+2017-02-18 17:27:00.1784|INFO|thread: 9|NewCommitViewModel|Took 2415ms to load files for E:\AppsIonic\OCP4
+2017-02-18 17:27:00.1784|INFO|thread: 9|AsyncReaderWriterLock|Released concurrent scheduler for operation: 9 at GitClient.cs:267 after blocking 2.4150294s
+2017-02-18 17:27:01.0417|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 11 at BranchesViewModel.cs:356
+2017-02-18 17:27:01.0417|INFO|thread: 9|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 11 at BranchesViewModel.cs:356 after waiting 0.0001156s
+2017-02-18 17:27:01.0417|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 12 at RepositoryViewModel.cs:319
+2017-02-18 17:27:01.0417|INFO|thread: 4|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 12 at RepositoryViewModel.cs:319 after waiting 3.39E-05s
+2017-02-18 17:27:01.0883|INFO|thread:25|AsyncReaderWriterLock|Released concurrent scheduler for operation: 11 at BranchesViewModel.cs:356 after blocking 0.0462719s
+2017-02-18 17:27:01.1073|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 13 at GitClient.cs:600
+2017-02-18 17:27:01.1073|INFO|thread:25|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 13 at GitClient.cs:600 after waiting 2.92E-05s
+2017-02-18 17:27:01.1874|INFO|thread: 1|NewPullRequestViewModel|No matching pull request found, clearing selection...
+2017-02-18 17:27:01.3762|INFO|thread: 1|NewCommitViewModel|Took 1198ms to render file list for E:\AppsIonic\OCP4
+2017-02-18 17:27:01.3762|INFO|thread: 1|AsyncReaderWriterLock|Released concurrent scheduler for operation: 12 at RepositoryViewModel.cs:319 after blocking 0.328903s
+2017-02-18 17:27:01.3762|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 14 at RepositoryViewModel.cs:319
+2017-02-18 17:27:01.3901|INFO|thread: 4|AsyncReaderWriterLock|Released concurrent scheduler for operation: 13 at GitClient.cs:600 after blocking 0.2833614s
+2017-02-18 17:27:01.3901|INFO|thread:25|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 14 at RepositoryViewModel.cs:319 after waiting 0.0112466s
+2017-02-18 17:27:01.6534|INFO|thread: 4|AsyncReaderWriterLock|Released concurrent scheduler for operation: 14 at RepositoryViewModel.cs:319 after blocking 0.2627767s
+2017-02-18 17:27:01.7454|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 15 at RepositoryViewModel.cs:319
+2017-02-18 17:27:01.7454|INFO|thread: 4|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 15 at RepositoryViewModel.cs:319 after waiting 0.0012908s
+2017-02-18 17:27:01.8160|INFO|thread: 9|AsyncReaderWriterLock|Released concurrent scheduler for operation: 15 at RepositoryViewModel.cs:319 after blocking 0.0693795s
+2017-02-18 17:27:17.6808|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 16 at GitClient.cs:381
+2017-02-18 17:27:17.6808|INFO|thread: 9|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 16 at GitClient.cs:381 after waiting 0.0001057s
+2017-02-18 17:27:17.7108|INFO|thread: 4|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:27:17.7108|INFO|thread: 4|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:27:17.7108|INFO|thread: 4|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'diff-tree -r -z --no-renames --name-status 4b825dc642cb6eb9a060e54bf8d69288fbee4904 c38bc505adbc38badbf46ebb39f2dd5c87fd7779 ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:27:18.0483|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 17 at ICommittedFileForklift.cs:95
+2017-02-18 17:27:18.0483|INFO|thread:32|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 17 at ICommittedFileForklift.cs:95 after waiting 0.0010417s
+2017-02-18 17:27:18.1098|INFO|thread:13|AsyncReaderWriterLock|Released concurrent scheduler for operation: 17 at ICommittedFileForklift.cs:95 after blocking 0.0608192s
+2017-02-18 17:27:18.2563|INFO|thread:30|AsyncReaderWriterLock|Released concurrent scheduler for operation: 16 at GitClient.cs:381 after blocking 0.5760363s
+2017-02-18 17:27:22.0872|INFO|thread: 1|SelectedCommitViewModel|Took 4418ms to load files for commit ae3d1bc in repo E:\AppsIonic\OCP4
+2017-02-18 17:32:12.1906|INFO|thread:31|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 18 at BranchSynchronizer.cs:141
+2017-02-18 17:32:12.2357|INFO|thread:35|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 18 at BranchSynchronizer.cs:141 after waiting 0.0443187s
+2017-02-18 17:32:12.3155|INFO|thread:34|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:32:12.3155|INFO|thread:34|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:32:12.3155|INFO|thread:34|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'fetch --prune --recurse-submodules=on-demand origin ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:32:12.9794|INFO|thread:10|BackgroundFetcher|Got a refresh period for E:\AppsIonic\OCP4\.git of 300 seconds
+2017-02-18 17:32:12.9794|INFO|thread:10|BackgroundFetcher|Added a delay for E:\AppsIonic\OCP4\.git of 11402 milliseconds
+2017-02-18 17:32:13.0379|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 19 at GitClient.cs:600
+2017-02-18 17:32:13.0379|INFO|thread: 1|NewPullRequestViewModel|No matching pull request found, clearing selection...
+2017-02-18 17:32:13.0379|INFO|thread:34|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 19 at GitClient.cs:600 after waiting 0.0007555s
+2017-02-18 17:32:13.0379|INFO|thread:31|AsyncReaderWriterLock|Released concurrent scheduler for operation: 19 at GitClient.cs:600 after blocking 0.011416s
+2017-02-18 17:32:14.5858|INFO|thread:41|ConcurrentRepositoryConnection|Pruning merged local branches
+2017-02-18 17:32:14.5858|INFO|thread:41|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:32:14.5858|INFO|thread:41|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:32:14.5858|INFO|thread:41|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'branch --merged master ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:32:14.6073|INFO|thread:41|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:32:14.6073|INFO|thread:41|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:32:14.6073|INFO|thread:41|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'log -g --abbrev-commit --pretty=oneline HEAD -n 2500 ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:32:14.6833|INFO|thread:23|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 20 at GitClient.cs:195
+2017-02-18 17:32:14.6833|INFO|thread:34|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 20 at GitClient.cs:195 after waiting 3.63E-05s
+2017-02-18 17:32:14.6833|INFO|thread:23|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 21 at RepositoryModel.cs:596
+2017-02-18 17:32:14.6833|INFO|thread:40|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 21 at RepositoryModel.cs:596 after waiting 5.8E-05s
+2017-02-18 17:32:14.6833|INFO|thread:37|AsyncReaderWriterLock|Released concurrent scheduler for operation: 18 at BranchSynchronizer.cs:141 after blocking 2.4487011s
+2017-02-18 17:32:14.7009|INFO|thread:31|AsyncReaderWriterLock|Released concurrent scheduler for operation: 20 at GitClient.cs:195 after blocking 0.0175627s
+2017-02-18 17:32:14.7109|INFO|thread:41|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 22 at GitClient.cs:267
+2017-02-18 17:32:14.7109|INFO|thread:36|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 22 at GitClient.cs:267 after waiting 3.71E-05s
+2017-02-18 17:32:14.7109|INFO|thread:41|AsyncReaderWriterLock|Released concurrent scheduler for operation: 21 at RepositoryModel.cs:596 after blocking 0.0270018s
+2017-02-18 17:32:14.7109|INFO|thread:38|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:32:14.7109|INFO|thread:38|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:32:14.7109|INFO|thread:38|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'status --untracked-files=all --porcelain -z ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:32:14.8410|INFO|thread:41|ConcurrentRepositoryConnection|Took 113ms to git status
+2017-02-18 17:32:14.8410|INFO|thread:41|ConcurrentRepositoryConnection|Took 113ms to git status and parse output
+2017-02-18 17:32:14.9268|INFO|thread:41|NewCommitViewModel|Took 215ms to load files for E:\AppsIonic\OCP4
+2017-02-18 17:32:14.9268|INFO|thread:41|AsyncReaderWriterLock|Released concurrent scheduler for operation: 22 at GitClient.cs:267 after blocking 0.215581s
+2017-02-18 17:32:14.9828|INFO|thread: 1|NewCommitViewModel|Took 56ms to render file list for E:\AppsIonic\OCP4
+2017-02-18 17:32:14.9828|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 23 at RepositoryViewModel.cs:319
+2017-02-18 17:32:14.9828|INFO|thread:38|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 23 at RepositoryViewModel.cs:319 after waiting 2.72E-05s
+2017-02-18 17:32:15.0028|INFO|thread:40|AsyncReaderWriterLock|Released concurrent scheduler for operation: 23 at RepositoryViewModel.cs:319 after blocking 0.02003s
+2017-02-18 17:36:12.1669|INFO|thread: 1|RepositoryHost|Log in from cache for login 'atlantis112016' to host 'https://api.github.com/' SUCCEEDED
+2017-02-18 17:36:12.1669|INFO|thread: 1|AsyncReaderWriterLock|Acquiring exclusive scheduler for operation 24 at BranchSynchronizer.cs:220
+2017-02-18 17:36:12.1669|INFO|thread:23|AsyncReaderWriterLock|Acquired exclusive scheduler for operation: 24 at BranchSynchronizer.cs:220 after waiting 0.0001302s
+2017-02-18 17:36:12.2154|INFO|thread:40|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:12.2154|INFO|thread:40|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:12.2154|INFO|thread:40|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'pull --progress --rebase --prune origin master ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:12.3404|INFO|thread:40|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:12.3404|INFO|thread:40|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:12.3404|INFO|thread:40|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'pull --progress --prune origin master ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:13.4496|INFO|thread:31|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 25 at RepositoryModel.cs:596
+2017-02-18 17:36:13.4496|INFO|thread:23|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 25 at RepositoryModel.cs:596 after waiting 0.0007985s
+2017-02-18 17:36:13.4496|INFO|thread: 1|BranchSynchronizer|Completing sync for E:\AppsIonic\OCP4 - master
+2017-02-18 17:36:13.4496|INFO|thread:30|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 26 at GitClient.cs:267
+2017-02-18 17:36:13.4496|INFO|thread:40|AsyncReaderWriterLock|Released exclusive scheduler for operation: 24 at BranchSynchronizer.cs:220 after blocking 1.2778569s
+2017-02-18 17:36:13.4496|INFO|thread:40|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 26 at GitClient.cs:267 after waiting 0.0001547s
+2017-02-18 17:36:13.4496|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 27 at RepositoryViewModel.cs:319
+2017-02-18 17:36:13.4496|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 28 at GitClient.cs:195
+2017-02-18 17:36:13.4496|INFO|thread: 1|AsyncReaderWriterLock|Acquiring concurrent scheduler for operation 29 at RepositoryModel.cs:596
+2017-02-18 17:36:13.4496|INFO|thread: 1|BranchSynchronizer|Took 1281ms to sync repository E:\AppsIonic\OCP4 - master
+2017-02-18 17:36:13.4656|INFO|thread:42|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:13.4656|INFO|thread:42|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:13.4656|INFO|thread:42|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'status --untracked-files=all --porcelain -z ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:13.4656|INFO|thread:23|AsyncReaderWriterLock|Released concurrent scheduler for operation: 25 at RepositoryModel.cs:596 after blocking 0.0164298s
+2017-02-18 17:36:13.4656|INFO|thread:23|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 27 at RepositoryViewModel.cs:319 after waiting 0.0155905s
+2017-02-18 17:36:13.4656|INFO|thread:25|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 28 at GitClient.cs:195 after waiting 0.017183s
+2017-02-18 17:36:13.4656|INFO|thread:22|AsyncReaderWriterLock|Acquired concurrent scheduler for operation: 29 at RepositoryModel.cs:596 after waiting 0.0172268s
+2017-02-18 17:36:13.4915|INFO|thread:17|AsyncReaderWriterLock|Released concurrent scheduler for operation: 29 at RepositoryModel.cs:596 after blocking 0.02114s
+2017-02-18 17:36:13.4915|INFO|thread:18|AsyncReaderWriterLock|Released concurrent scheduler for operation: 28 at GitClient.cs:195 after blocking 0.0229342s
+2017-02-18 17:36:13.4915|INFO|thread:24|AsyncReaderWriterLock|Released concurrent scheduler for operation: 27 at RepositoryViewModel.cs:319 after blocking 0.0333037s
+2017-02-18 17:36:13.6012|INFO|thread:42|ConcurrentRepositoryConnection|Took 131ms to git status
+2017-02-18 17:36:13.6012|INFO|thread:42|ConcurrentRepositoryConnection|Took 131ms to git status and parse output
+2017-02-18 17:36:13.6772|INFO|thread:42|NewCommitViewModel|Took 225ms to load files for E:\AppsIonic\OCP4
+2017-02-18 17:36:13.6772|INFO|thread:42|AsyncReaderWriterLock|Released concurrent scheduler for operation: 26 at GitClient.cs:267 after blocking 0.2250414s
+2017-02-18 17:36:13.6772|INFO|thread: 1|NewCommitViewModel|Took 12ms to render file list for E:\AppsIonic\OCP4
+2017-02-18 17:36:55.4334|INFO|thread: 1|AsyncReaderWriterLock|Acquiring exclusive scheduler for operation 30 at ICommitCreator.cs:89
+2017-02-18 17:36:55.4334|INFO|thread:17|AsyncReaderWriterLock|Acquired exclusive scheduler for operation: 30 at ICommitCreator.cs:89 after waiting 0.0001109s
+2017-02-18 17:36:55.4334|INFO|thread:10|ExclusiveRepositoryConnection|Creating Commit
+2017-02-18 17:36:55.5174|INFO|thread:10|ExclusiveRepositoryConnection|Creating new commit with 120 file(s). Pb Quiz
+
+voir quiz.js, services.js, score.js
+
+2017-02-18 17:36:55.5229|INFO|thread:10|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:55.5229|INFO|thread:10|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:55.5229|INFO|thread:10|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all ".idea/compiler.xml" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:55.6330|INFO|thread:22|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:55.6330|INFO|thread:22|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:55.6330|INFO|thread:22|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all ".idea/copyright/profiles_settings.xml" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:55.7438|INFO|thread:10|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:55.7438|INFO|thread:10|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:55.7438|INFO|thread:10|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all ".idea/misc.xml" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:55.8666|INFO|thread:18|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:55.8666|INFO|thread:18|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:55.8666|INFO|thread:18|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all ".idea/OCP4.iml" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:55.9844|INFO|thread:13|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:55.9844|INFO|thread:13|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:55.9844|INFO|thread:13|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all ".idea/vcs.xml" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:56.0912|INFO|thread:25|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:56.0912|INFO|thread:25|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:56.0912|INFO|thread:25|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all ".idea/workspace.xml" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:56.2149|INFO|thread:23|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:56.2149|INFO|thread:23|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:56.2149|INFO|thread:23|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all "bower.json" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:56.3190|INFO|thread:10|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:56.3190|INFO|thread:10|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:56.3190|INFO|thread:10|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all "config.xml" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:56.4343|INFO|thread:23|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:56.4343|INFO|thread:23|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:56.4343|INFO|thread:23|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all "www/css/style.css" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:56.6191|INFO|thread:10|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:56.6191|INFO|thread:10|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:56.6191|INFO|thread:10|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all "www/data/Cours.json" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:56.7360|INFO|thread:18|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:56.7360|INFO|thread:18|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:56.7360|INFO|thread:18|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all "www/data/listeCours.json" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:56.8400|INFO|thread:24|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:56.8400|INFO|thread:24|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:56.8400|INFO|thread:24|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all "www/data/listeRDV.json" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:56.9391|INFO|thread:10|GitEnvironment|Process set up with this SSH Agent info: 1488:/tmp/ssh-6mIpOL3oagIu/agent.6200
+2017-02-18 17:36:56.9391|INFO|thread:10|GitEnvironment|PATH is C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\bin;C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\usr\share\git-tfs;C:\Users\MisterX\AppData\Local\Apps\2.0\DZW5YW1E.XP2\E095O7V7.9NQ\gith..tion_317444273a93ac29_0003.0003_665ccbdbd3c2d8d4;C:\Users\MisterX\AppData\Local\GitHub\lfs-amd64_1.3.1;C:\WINDOWS\System32;C:\Windows\Microsoft.NET\Framework\v4.0.30319\
+2017-02-18 17:36:56.9391|INFO|thread:10|ProcessWrapper|Starting: Process - FileName: 'C:\Users\MisterX\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd\git.exe', Args: 'add --all "www/data/quizz0.json" ', Working Directory: E:\AppsIonic\OCP4\
+2017-02-18 17:36:57.0357|INFO|thread:18|AsyncReaderWriterLock|Released exclusive scheduler for operation: 30 at ICommitCreator.cs:89 after blocking 1.6021508s

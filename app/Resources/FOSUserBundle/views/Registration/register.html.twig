@@ -1,0 +1,17 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <h4 class="card-panel teal lighten-2 white-head">S'enregistrer</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            {% block fos_user_content %}
+                {% include "@FOSUser/Registration/register_content.html.twig" %}
+            {% endblock fos_user_content %}
+        </div>
+    </div>
+{% endblock body %}
+

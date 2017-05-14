@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
     /**
-     * @Route("/users", name="app_user")
+     * @Route("/users", name="users")
      *
      */
     public function observAction()
