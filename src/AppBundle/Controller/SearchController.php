@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Taxref;
 use AppBundle\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -107,7 +108,7 @@ class SearchController extends Controller
     }
 
     // renvoie la réponse quand la recherche a été effectuée par un LB_NAME
-    private function searchByLbName($name)
+    private function searchByLbName($name, $page)
     {
         $em = $this->getDoctrine()->getManager();
         $specie = $em->getRepository('AppBundle:Taxref')->findOneBy(array('lbName' => $name));
@@ -123,7 +124,7 @@ class SearchController extends Controller
         $em = $this->getDoctrine()->getManager();
         $speciesList = $em->getRepository('AppBundle:Taxref')->findBy(array('vernacularName' => $name));
         if(count($speciesList) < 2){ // Si le nom vernaculaire n'est associé qu'à une espèce alors afficher la fiche espèce directement
-            return $this->searchByLbName($speciesList[0]->getLbName());
+            return $this->searchByLbName($speciesList[0]->getLbName(), $page);
         }
 
         return $this->renderView('search/_speciesList.html.twig', array(
@@ -140,7 +141,22 @@ class SearchController extends Controller
     // renvoie la réponse quand la recherche a été effectyée par famille
     private function searchByFamily($family, $page)
     {
-        return 'family';
+        $em = $this->getDoctrine()->getManager();
+
+        // Récupération de la liste des espèces pour la page demandée
+        $nbPerPage = Taxref::SEARCH_NUM_ITEMS;
+        $speciesList = $em->getRepository('AppBundle:Taxref')->getSpeciesByFamily($family, $page, $nbPerPage);
+        $nbPageTotal = ceil(count($speciesList)/$nbPerPage);
+
+        if($page>$nbPageTotal && $page != 1){
+            return $this->renderView('search/_error.html.twig', array('message' => 'La page demandée n\'existe pas.'));
+        }
+
+        return $this->renderView('search/_speciesList.html.twig', array(
+            'speciesList' => $speciesList,
+            'nbPageTotal' => $nbPageTotal,
+            'page' => $page
+        ));
     }
 
 }

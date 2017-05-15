@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Taxref
 {
+    const SEARCH_NUM_ITEMS = 12;
+
     /**
      * @var string
      *

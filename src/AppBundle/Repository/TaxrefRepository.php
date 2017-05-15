@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * TaxrefRepository
  *
@@ -34,5 +36,25 @@ class TaxrefRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('val', '%'.$val.'%')
             ->getQuery()
             ->getResult();
+    }
+
+    public function getSpeciesByFamily($family, $page, $nbPerPage)
+    {
+        $query = $this->createQueryBuilder('t')
+            ->where('t.family = :family')
+            ->setParameter('family', $family)
+            ->orderBy('t.lbName', 'DESC')
+            ->getQuery()
+        ;
+
+        $query
+            // On définit l'annonce à partir de laquelle commencer la liste
+            ->setFirstResult(($page-1)*$nbPerPage)
+            // Ainsi que le nombre d'annonce à afficher sur une page
+            ->setMaxResults($nbPerPage)
+        ;
+
+        // On retourne l'objet Paginator correspondant à la requête construite
+        return new Paginator($query, true);
     }
 }
