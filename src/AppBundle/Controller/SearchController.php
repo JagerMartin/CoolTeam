@@ -20,7 +20,6 @@ class SearchController extends Controller
 {
     /**
      * @Route("/rechercher", name="app_search")
-     *
      */
     public function searchAction()
     {
@@ -64,6 +63,72 @@ class SearchController extends Controller
                 'list' => json_encode($list)
             ), 200);
 
+    }
+
+    /**
+     * @Route("/rechercher/rafraichir", name="app_search_refresh")
+     * @Method("POST")
+     */
+    public function searchAjaxAction(Request $request)
+    {
+        if (!$request->isXmlHttpRequest()) {
+            return new JsonResponse(array('message' => 'You can access this only using AJAX !'), 400);
+        }
+
+        $name = $request->request->get('name');
+        $family = $request->request->get('family');
+        $department = $request->request->get('department');
+        $page = $request->request->get('page');
+
+        if($name != ""){ // RECHERCHE PAR NOM
+            $taxrefRepository =  $this->getDoctrine()->getManager()->getRepository('AppBundle:Taxref');
+
+            if($taxrefRepository->findBy(array('lbName' => $name))){ // => RECHERCHE PAR LB_NOM
+                $response = $this->searchByLbName($name, $page);
+
+            } elseif($taxrefRepository->findBy(array('vernacularName' => $name))) { // RECHERCHE PAR NOM VERNACULAIRE
+                $response = $this->searchByVernName($name, $page);
+
+            } else {
+                $response = $this->renderView('search/_error.html.twig', array('message' => 'L\'espèce recherchée n\'existe pas.'));
+            }
+
+        } elseif($department != 0){ // RECHERCHE PAR DEPARTEMENT
+            $response = $this->searchByDepartment($department, $page);
+
+        } elseif($family != ""){ // RECHERCHE PAR FAMILLE
+            $response = $this->searchByFamily($family, $page);
+
+        } else { // SI AUCUN CRITERE DE RECHERCHE => AFFICHE ERREUR
+            $response = $this->renderView('search/_error.html.twig', array('message' => 'Vous devez indiquer un critère de recherche.'));
+        }
+
+        return new JsonResponse(array('response' => $response), 200);
+    }
+
+    private function searchByLbName($name)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $specie = $em->getRepository('AppBundle:Taxref')->findOneBy(array('lbName' => $name));
+
+        return $this->renderView('search/_specie.html.twig', array(
+            'specie' => $specie
+        ));
+    }
+
+    private function searchByVernName($name, $page)
+    {
+        return 'vernacular_name';
+    }
+
+    private function searchByDepartment($department, $page)
+    {
+        return 'department';
+    }
+
+    private function searchByFamily($family, $page)
+    {
+        return 'family';
     }
 
 }
