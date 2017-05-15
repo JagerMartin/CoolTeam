@@ -106,6 +106,7 @@ class SearchController extends Controller
         return new JsonResponse(array('response' => $response), 200);
     }
 
+    // renvoie la réponse quand la recherche a été effectuée par un LB_NAME
     private function searchByLbName($name)
     {
         $em = $this->getDoctrine()->getManager();
@@ -116,16 +117,27 @@ class SearchController extends Controller
         ));
     }
 
+    // renvoie la réponse quand la recherche a été effectuée par un nom vernaculaire
     private function searchByVernName($name, $page)
     {
-        return 'vernacular_name';
+        $em = $this->getDoctrine()->getManager();
+        $speciesList = $em->getRepository('AppBundle:Taxref')->findBy(array('vernacularName' => $name));
+        if(count($speciesList) < 2){ // Si le nom vernaculaire n'est associé qu'à une espèce alors afficher la fiche espèce directement
+            return $this->searchByLbName($speciesList[0]->getLbName());
+        }
+
+        return $this->renderView('search/_speciesList.html.twig', array(
+            'speciesList' => $speciesList
+        ));
     }
 
+    // renvoie la réponse quand la recherche a été effectuée par département
     private function searchByDepartment($department, $page)
     {
         return 'department';
     }
 
+    // renvoie la réponse quand la recherche a été effectyée par famille
     private function searchByFamily($family, $page)
     {
         return 'family';

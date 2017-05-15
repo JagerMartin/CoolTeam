@@ -1,0 +1,22 @@
+<div class="row">
+    {% for specie in speciesList %}
+        <div class="col-sm-4">
+            <p><strong>{{ specie.lbName }}</strong></p>
+            <a href="{{ path('app_search') }}" id="{{ specie.lbName }}" class="btn btn-primary btn-md seeSpecie">Voir la fiche</a>
+        </div>
+    {% else %}
+        <p class="text-center">Pas encore d'espèce observée dans cette région.</p>
+    {% endfor %}
+</div>
+
+{% if nbPageTotal is defined %}
+    {% if nbPageTotal > 1 %}
+        <ul class="pagination">
+            {% for p in range(1, nbPageTotal) %}
+                <li{% if p == page %} class="active"{% endif %}>
+                    <a href="{{ path('app_search') }}">{{ p }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endif %}

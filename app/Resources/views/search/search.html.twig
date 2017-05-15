@@ -146,6 +146,11 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
                                     triggerSearch();
                                     pageChanged = true;
                                 });
+                                $('.seeSpecie').click(function(e) {
+                                    e.preventDefault();
+                                    name = $(this).attr('id');
+                                    triggerSearch();
+                                });
                                 if(pageChanged){
                                     pageChanged = false;
                                     window.scrollTo(0, 0);
