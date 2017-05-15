@@ -135,7 +135,27 @@ class SearchController extends Controller
     // renvoie la réponse quand la recherche a été effectuée par département
     private function searchByDepartment($department, $page)
     {
-        return 'department';
+        $em = $this->getDoctrine()->getManager();
+
+        // Récupération de la liste des espèces pour la page demandée
+        $nbPerPage = Taxref::SEARCH_NUM_ITEMS;
+        $observationsList = $em->getRepository('AppBundle:Observation')->getSpeciesByDepartment($department, $page, $nbPerPage);
+        $nbPageTotal = ceil(count($observationsList)/$nbPerPage);
+
+        if($page>$nbPageTotal && $page != 1){
+            return $this->renderView('search/_error.html.twig', array('message' => 'La page demandée n\'existe pas.'));
+        }
+
+        $speciesList = array(); // Récupération de l'entité taxref uniquement pour chaque observation
+        foreach ($observationsList as $observation){
+            $speciesList[] = $observation->getTaxref();
+        }
+
+        return $this->renderView('search/_speciesList.html.twig', array(
+            'speciesList' => $speciesList,
+            'nbPageTotal' => $nbPageTotal,
+            'page' => $page
+        ));
     }
 
     // renvoie la réponse quand la recherche a été effectyée par famille

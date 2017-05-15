@@ -61,7 +61,7 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
             {{ form_row(form.department) }}
         </div>
         <div class="col-sm-6 col-sm-offset-3">
-            <button id="searchBtn" type="submit" class="btn btn-primary form-control" formnovalidate>Rechercher</button>
+            <button id="searchBtn" type="submit" class="btn btn-primary form-control" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Recherche en cours..." formnovalidate>Rechercher</button>
             {{ form_end(form) }}
         </div>
     </div>
@@ -79,10 +79,10 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <!-- JQUERY UI POUR AUTOCOMPLETION -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
     <script src="{{ asset('js/search.js') }}"></script>
 
@@ -118,7 +118,6 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
             var family = "";
             var department = 0;
             var page = 1;
-            var pageChanged = false;
 
             $('#searchBtn').click(function(e) {
                 e.preventDefault();
@@ -128,6 +127,7 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
                 page = 1;
 
                 triggerSearch();
+                $('#searchBtn').button('loading');
             });
 
             function triggerSearch(){
@@ -140,29 +140,35 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
                         if (typeof jqXHR.responseJSON !== 'undefined') {
                             if (jqXHR.responseJSON.hasOwnProperty('response')) {
                                 $('#searchView').html(jqXHR.responseJSON.response);
-                                $('.pagination a').click(function(e) {
-                                    e.preventDefault();
-                                    page = $(this).text();
-                                    triggerSearch();
-                                    pageChanged = true;
-                                });
-                                $('.seeSpecie').click(function(e) {
-                                    e.preventDefault();
-                                    name = $(this).attr('id');
-                                    triggerSearch();
-                                });
-                                if(pageChanged){
-                                    pageChanged = false;
-                                    window.scrollTo(0, 0);
-                                }
+                                initializeListeners();
                             }
                         } else {
                             alert('Error');
                         }
+                        $('#searchBtn').button('reset');
                     })
                     .fail(function () {
+                        $('#searchBtn').button('reset');
                         alert('Failed');
                     });
+            }
+
+            // =======================================================
+            // INITIALISATION LISTENERS APRES REQUETE AJAX
+            // =======================================================
+
+            function initializeListeners(){
+                $('.pagination a').click(function(e) {
+                    e.preventDefault();
+                    page = $(this).text();
+                    triggerSearch();
+                });
+
+                $('.seeSpecie').click(function(e) {
+                    e.preventDefault();
+                    name = $(this).attr('id');
+                    triggerSearch();
+                });
             }
 
         });

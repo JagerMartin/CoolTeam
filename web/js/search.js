@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     // ================================================
-    //
+    // UN SEUL CHAMP REMPLIS A LA FOIS DANS LE FORM
     // ================================================
 
     $('#search_name').keyup(function(){

@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * ObservationRepository
@@ -10,4 +11,26 @@ namespace AppBundle\Repository;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getSpeciesByDepartment($department, $page, $nbPerPage)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->where('o.department = :department')
+            ->setParameter('department', (int) $department)
+            ->leftjoin('o.taxref', 't', 'WITH')
+            ->orderBy('t.lbName', 'ASC')
+            ->groupBy('t.lbName')
+            ->getQuery()
+        ;
+
+        $query
+            // On définit l'annonce à partir de laquelle commencer la liste
+            ->setFirstResult(($page-1)*$nbPerPage)
+            // Ainsi que le nombre d'annonce à afficher sur une page
+            ->setMaxResults($nbPerPage)
+        ;
+
+        // On retourne l'objet Paginator correspondant à la requête construite
+        return new Paginator($query, true);
+
+    }
 }

@@ -43,7 +43,7 @@ class TaxrefRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->createQueryBuilder('t')
             ->where('t.family = :family')
             ->setParameter('family', $family)
-            ->orderBy('t.lbName', 'DESC')
+            ->orderBy('t.lbName', 'ASC')
             ->getQuery()
         ;
 
