@@ -129,7 +129,8 @@ class SearchController extends Controller
             return $this->renderView('search/_error.html.twig', array('message' => 'La page demandée n\'existe pas.'));
         }
 
-        $map = new Map();
+        // Création de la carte avec les observations
+        $map = $this->get('app.create_map_with_observations')->createMapWithObservations($observationsList);
 
         return $this->renderView('search/_specie.html.twig', array(
             'specie' => $specie,
