@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Observation
 {
+    const SEARCH_NUM_ITEMS = 9;
+
     /**
      * @var int
      *

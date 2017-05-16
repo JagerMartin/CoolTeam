@@ -12,6 +12,6 @@ AppBundle\Entity\Observation:
         observation: <text(300)>
         latitude: <latitude()>
         longitude: <longitude()>
-        department: <numberBetween(1, 95)>
+        department: <departments()>
         status: 1
         taxref: <cdNames()>

@@ -1,8 +1,10 @@
 <div class="row">
     {% for specie in speciesList %}
         <div class="col-sm-3">
-            <p><strong>{{ specie.lbName }}</strong></p>
-            <a href="{{ path('app_search') }}" id="{{ specie.lbName }}" class="btn btn-primary btn-md seeSpecie">Voir la fiche</a>
+            <div style="margin: 10px; padding: 10px; border: 1px solid black;">
+                <p><strong>{{ specie.lbName }}</strong></p>
+                <a href="{{ path('app_search') }}" id="{{ specie.lbName }}" class="btn btn-primary btn-md seeSpecie">Voir la fiche</a>
+            </div>
         </div>
     {% else %}
         <p class="text-center">Pas encore d'espèce observée dans cette région.</p>

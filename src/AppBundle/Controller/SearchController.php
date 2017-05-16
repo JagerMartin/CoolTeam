@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Observation;
 use AppBundle\Entity\Taxref;
 use AppBundle\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -30,6 +31,7 @@ class SearchController extends Controller
             'form' => $form->createView()
         ));
     }
+
 
     /**
      * @Route("/rechercher/autocompletion", name="app_search_autocomplete")
@@ -66,6 +68,7 @@ class SearchController extends Controller
 
     }
 
+
     /**
      * @Route("/rechercher/rafraichir", name="app_search_refresh")
      * @Method("POST")
@@ -94,7 +97,7 @@ class SearchController extends Controller
                 $response = $this->renderView('search/_error.html.twig', array('message' => 'L\'espèce recherchée n\'existe pas.'));
             }
 
-        } elseif($department != 0){ // RECHERCHE PAR DEPARTEMENT
+        } elseif($department != ""){ // RECHERCHE PAR DEPARTEMENT
             $response = $this->searchByDepartment($department, $page);
 
         } elseif($family != ""){ // RECHERCHE PAR FAMILLE
@@ -107,18 +110,36 @@ class SearchController extends Controller
         return new JsonResponse(array('response' => $response), 200);
     }
 
-    // renvoie la réponse quand la recherche a été effectuée par un LB_NAME
+
+    /*
+     * Renvoie la réponse quand la recherche a été effectuée PAR LB_NAME
+     */
     private function searchByLbName($name, $page)
     {
         $em = $this->getDoctrine()->getManager();
         $specie = $em->getRepository('AppBundle:Taxref')->findOneBy(array('lbName' => $name));
 
+        // Récupération des observations associées
+        $nbPerPage = Observation::SEARCH_NUM_ITEMS;
+        $observationsList = $em->getRepository('AppBundle:Observation')->getObservationsBySpecie($name, $page, $nbPerPage);
+        $nbPageTotal = ceil(count($observationsList)/$nbPerPage);
+
+        if($page>$nbPageTotal && $page != 1){
+            return $this->renderView('search/_error.html.twig', array('message' => 'La page demandée n\'existe pas.'));
+        }
+
         return $this->renderView('search/_specie.html.twig', array(
-            'specie' => $specie
+            'specie' => $specie,
+            'observationsList' => $observationsList,
+            'nbPageTotal' => $nbPageTotal,
+            'page' => $page
         ));
     }
 
-    // renvoie la réponse quand la recherche a été effectuée par un nom vernaculaire
+
+    /*
+     * Renvoie la réponse quand la recherche a été effectuée PAR NOM VERNACULAIRE
+     */
     private function searchByVernName($name, $page)
     {
         $em = $this->getDoctrine()->getManager();
@@ -132,7 +153,10 @@ class SearchController extends Controller
         ));
     }
 
-    // renvoie la réponse quand la recherche a été effectuée par département
+
+    /*
+     * Renvoie la réponse quand la recherche a été effectuée PAR DEPARTEMENT
+     */
     private function searchByDepartment($department, $page)
     {
         $em = $this->getDoctrine()->getManager();
@@ -158,7 +182,10 @@ class SearchController extends Controller
         ));
     }
 
-    // renvoie la réponse quand la recherche a été effectyée par famille
+
+    /*
+     * Renvoie la réponse quand la recherche a été effectuée PAR FAMILLE
+     */
     private function searchByFamily($family, $page)
     {
         $em = $this->getDoctrine()->getManager();

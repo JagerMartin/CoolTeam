@@ -15,7 +15,7 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('o')
             ->where('o.department = :department')
-            ->setParameter('department', (int) $department)
+            ->setParameter('department', $department)
             ->leftjoin('o.taxref', 't', 'WITH')
             ->orderBy('t.lbName', 'ASC')
             ->groupBy('t.lbName')
@@ -31,6 +31,34 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
 
         // On retourne l'objet Paginator correspondant à la requête construite
         return new Paginator($query, true);
+    }
 
+    public function getObservationsBySpecie($lbName, $page, $nbPerPage)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->leftjoin('o.taxref', 't', 'WITH')
+            ->where('t.lbName = :lbName')
+            ->setParameter('lbName', $lbName)
+            ->orderBy('o.datetime', 'DESC')
+            ->getQuery()
+        ;
+
+        $query
+            // On définit l'annonce à partir de laquelle commencer la liste
+            ->setFirstResult(($page-1)*$nbPerPage)
+            // Ainsi que le nombre d'annonce à afficher sur une page
+            ->setMaxResults($nbPerPage)
+        ;
+
+        // On retourne l'objet Paginator correspondant à la requête construite
+        return new Paginator($query, true);
+    }
+
+    public function getDepartmentList()
+    {
+        return $this->createQueryBuilder('o')
+            ->orderBy('o.department', 'ASC')
+            ->groupBy('o.department')
+            ;
     }
 }
