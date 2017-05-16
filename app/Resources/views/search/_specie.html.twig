@@ -14,6 +14,9 @@
 <hr>
 <div class="row">
     <h2>Observations</h2>
+    <div>
+        <a href="{{ path('app_observation_add', {'cdName': specie.cdName}) }}" class="btn btn-primary">Ajouter une observation</a>
+    </div>
     {% for observation in observationsList %}
         <div class="col-sm-8 col-sm-offset-2">
             <div style="margin: 10px; padding: 10px; border: 1px solid black; display: flex; justify-content: space-between;">
