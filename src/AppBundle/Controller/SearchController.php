@@ -12,6 +12,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Observation;
 use AppBundle\Entity\Taxref;
 use AppBundle\Form\SearchType;
+use Ivory\GoogleMap\Map;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -128,11 +129,14 @@ class SearchController extends Controller
             return $this->renderView('search/_error.html.twig', array('message' => 'La page demandée n\'existe pas.'));
         }
 
+        $map = new Map();
+
         return $this->renderView('search/_specie.html.twig', array(
             'specie' => $specie,
             'observationsList' => $observationsList,
             'nbPageTotal' => $nbPageTotal,
-            'page' => $page
+            'page' => $page,
+            'map' => $map
         ));
     }
 

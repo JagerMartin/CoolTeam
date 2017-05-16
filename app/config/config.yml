@@ -114,3 +114,9 @@ vich_uploader:
 sc_datetimepicker:
     picker: ~
 
+# IvoryGoogleMap Configuration
+ivory_google_map:
+    map:
+        debug: "%kernel.debug%"
+        language: "%locale%"
+        api_key: "%google_map_api_key%"
