@@ -34,7 +34,7 @@ class LoadUserData
         $userManager = $this->container->get('fos_user.user_manager');
 
         $user = $userManager->createUser();
-        $user->setUsername('admin');
+        $user->setUsername('admin1');
         $user->setEmail('admin@exemple.com');
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
