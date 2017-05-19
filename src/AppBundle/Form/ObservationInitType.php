@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 use SC\DatetimepickerBundle\Form\Type\DatetimeType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -44,7 +45,7 @@ class ObservationInitType extends AbstractType
                     'Inconnu' => 'inconnu'
                 ), 'expanded' => true, 'multiple' => false
             ))
-            ->add('comment', TextareaType::class)
+            ->add('observation', TextareaType::class)
             ->add('latitude', NumberType::class)
             ->add('longitude', NumberType::class)
             ->add('department', ChoiceType::class, array(
@@ -58,6 +59,9 @@ class ObservationInitType extends AbstractType
                 'attr' => array(
                     'class' => 'btn-default btn btn-primary pull-right'
                 )))
+            ->add('pictures', CollectionType::class, array(
+                    'entry_type' => PictureType::class)
+            )
         ;
     }
 

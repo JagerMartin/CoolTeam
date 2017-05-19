@@ -28,27 +28,52 @@
 </div>
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
+        <h4>Nom : {{ observation.taxref.vernacularName }}</h4>
+        <h4>Nom complet : {{ observation.taxref.fullName }}</h4>
+        <h4>Famille : {{ observation.taxref.family }}</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
         <div>
-            {{ observation.id }}
+            <p>Date et heure : {{ observation.datetime|date('d/m/y - h:i') }}</p>
         </div>
         <div>
-            {{ observation.datetime|date('d/m/y h:i') }}
+            <p>Sexe : {{ observation.sex }}</p>
         </div>
         <div>
-            {{ observation.sex }}
+            <p>Observation : {{ observation.observation }}</p>
         </div>
         <div>
-            {{ observation.comment }}
+            <p>Commentaire : {{ observation.comment }}</p>
         </div>
         <div>
-            {{ observation.latitude }}
+            <p>Latitude : {{ observation.latitude }}</p>
         </div>
         <div>
-            {{ observation.longitude }}
+            <p>Longitude : {{ observation.longitude }}</p>
         </div>
         <div>
-            {{ observation.department }}
+            <p>Département : {{ observation.department }}</p>
         </div>
+        <div>
+            <p>Statut : {{ observation.status }}</p>
+        </div>
+
+        <div>
+            <div class="row">
+                {% for picture in observation.pictures %}
+                    <div class="col-sm-4">
+                        <div class="col-sm-12">
+                            <div class="thumbnail">
+                                <img src="../../../../{{ vich_uploader_asset(picture, 'imageFile') }}" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
     </div>
 </div>
 

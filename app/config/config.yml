@@ -104,6 +104,12 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
 
+        observation_picture:
+            uri_prefix: ../web/pictures
+            upload_destination: '%kernel.root_dir%/../web/pictures'
+            namer: vich_uploader.namer_uniqid
+            inject_on_load:     true
+
 # DateTimePicker Configuration
 sc_datetimepicker:
     picker: ~

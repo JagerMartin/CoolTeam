@@ -21,7 +21,41 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <script>
+            $(function () {
 
+                // Ici on attend que le fichier soit sélectionné
+                $('.file_input_0, .file_input_1, .file_input_2').on('change', function (e) {
+                    var inputClass = "";
+                    if ($(this).hasClass('file_input_0')) {
+                        inputClass = 'file_input_0';
+                    } else if ($(this).hasClass('file_input_1')) {
+                        inputClass = 'file_input_1';
+                    } else {
+                        inputClass = 'file_input_2';
+                    }
+
+                    var files = $(this)[0].files;
+
+                    if (files.length > 0) {
+                        // On part du principe qu'il n'y qu'un seul fichier
+                        // étant donné que l'on a pas renseigné l'attribut "multiple"
+                        var file = files[0],
+                            $image_preview = $('#image_preview_' + inputClass);
+
+                        // Ici on injecte les informations recoltées sur le fichier pour l'utilisateur
+                        // On affiche l'image
+                        $image_preview.find('.thumbnail').removeClass('hidden');
+                        $image_preview.find('img').attr('src', window.URL.createObjectURL(file));
+                    }
+                });
+
+                // Ici Bouton Annuler
+                $('#image_preview_file_input_0, #image_preview_file_input_1, #image_preview_file_input_2').find('button[type="button"]').on('click', function (e) {
+                    e.preventDefault();
+                    $('.' + $(this).attr('id')).val('');
+                    $('#image_preview_' + $(this).attr('id')).find('.thumbnail').addClass('hidden');
+                });
+            });
         </script>
 
     {% endblock %}
@@ -48,14 +82,14 @@
 
 {{ form_javascript(form) }}
 <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-sm-8 col-sm-offset-2">
         <h4>Nom : {{ observation.taxref.vernacularName }}</h4>
         <h4>Nom complet : {{ observation.taxref.fullName }}</h4>
         <h4>Famille : {{ observation.taxref.family }}</h4>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-sm-8 col-sm-offset-2">
         {{ form_start(form) }}
         <div>
             {{ form_label(form.datetime, 'Date et heure' ) }}
@@ -68,9 +102,9 @@
             {{ form_errors(form.sex) }}
         </div>
         <div>
-            {{ form_label(form.comment, 'Commentaire' ) }}
-            {{ form_widget(form.comment) }}
-            {{ form_errors(form.comment) }}
+            {{ form_label(form.observation, 'Observation' ) }}
+            {{ form_widget(form.observation) }}
+            {{ form_errors(form.observation) }}
         </div>
         <div>
             {{ form_label(form.latitude, 'Latitude' ) }}
@@ -87,12 +121,34 @@
             {{ form_widget(form.department) }}
             {{ form_errors(form.department) }}
         </div>
-
-        {{ form_end(form) }}
+        <div>
+            <div class="row">
+                {% for picture in form.pictures %}
+                    <div class="col-sm-4">
+                        {{ form_label(picture.imageFile, 'Photo... :' ) }}
+                        {{ form_widget(picture.imageFile, { 'attr': {'class': 'file_input_' ~ x} }) }}
+                        {{ form_errors(picture.imageFile) }}
+                        <div id="image_preview_file_input_{{ loop.index0 }}" class="col-sm-12">
+                            <div class="thumbnail hidden">
+                                <img src="http://placehold.it/5" alt="">
+                                <div class="caption">
+                                    <p>
+                                        <button type="button" id="file_input_{{ x }}"
+                                                class="btn btn-default btn-danger">Annuler
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
+</div>
 
-
+{{ form_end(form) }}
 </body>
 
 </html>
