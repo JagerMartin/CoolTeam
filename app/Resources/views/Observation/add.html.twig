@@ -123,6 +123,7 @@
         </div>
         <div>
             <div class="row">
+                {% set x = 0 %}
                 {% for picture in form.pictures %}
                     <div class="col-sm-4">
                         {{ form_label(picture.imageFile, 'Photo... :' ) }}
@@ -141,6 +142,7 @@
                             </div>
                         </div>
                     </div>
+                    {% set x = x + 1 %}
                 {% endfor %}
             </div>
         </div>

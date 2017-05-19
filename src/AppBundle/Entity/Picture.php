@@ -127,7 +127,6 @@ class Picture
      */
     public function setObservation(\AppBundle\Entity\Observation $observation = null)
     {
-        $observation->addPicture($this);
         $this->observation = $observation;
 
         return $this;

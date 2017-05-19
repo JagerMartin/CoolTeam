@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ObservationController extends Controller
 {
     /**
-     * @Route("/observation/add/{cdName}", name="app_observation_add", defaults={"cdName" = 3762})
+     * @Route("/observation/add/{cdName}", name="app_observation_add")
      *
      */
     public function observationAddAction(Request $request, $cdName)
@@ -82,6 +82,8 @@ class ObservationController extends Controller
     public function observationAction(Observation $observation)
     {
         $observation->setTaxref($this->getDoctrine()->getManager()->getRepository('AppBundle:Taxref')->findOneBy(array('cdName' => $observation->getTaxref()->getCdName())));
+
+        $observation->setPictures($this->getDoctrine()->getManager()->getRepository('AppBundle:Picture')->findBy(array('observation' => $observation)));
 
         return $this->render(':Observation:view.html.twig', array(
             'observation' => $observation
