@@ -10,4 +10,17 @@ namespace AppBundle\Repository;
  */
 class PictureRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getPicturesWithCdName($cdName)
+    {
+        return $this->createQueryBuilder('p')
+            ->leftjoin('p.observation', 'o', 'WITH')
+            ->leftJoin('o.taxref', 't', 'WITH')
+            ->where('t.cdName = :cdName')
+            ->setParameter('cdName', $cdName)
+            ->orderBy('p.updatedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+
+    }
 }

@@ -1,0 +1,6 @@
+
+{% if picture is not null %}
+    <img src="../{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ picture.imageName }}" style="width: 100%"/>
+{% else %}
+    <img src="{{ absolute_url(asset('img/profile_vide.jpg')) }}" alt="Avatar vide" style="width: 100%"/>
+{% endif %}

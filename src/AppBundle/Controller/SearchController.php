@@ -211,4 +211,15 @@ class SearchController extends Controller
         ));
     }
 
+    public function specieImageAction($cdName)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $pictures = $em->getRepository('AppBundle:Picture')->getPicturesWithCdName($cdName);
+        $picture = $pictures ? $pictures[0] : null;
+
+        return $this->render('search/_picture.html.twig', array(
+            'picture' => $picture
+        ));
+    }
+
 }
