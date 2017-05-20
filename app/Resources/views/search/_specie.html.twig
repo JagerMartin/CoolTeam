@@ -1,8 +1,14 @@
 <div class="row">
     <div class="col-sm-6">
         <h1>Fiche espèce</h1>
+        {{ render(controller(
+        'AppBundle:Search:specieImage',
+        { 'cdName': specie.cdName }
+        )) }}
         <p>Nom :<strong> {{ specie.lbName }}</strong></p>
         <p>Nom vernaculaire :<strong> {{ specie.vernacularName }}</strong></p>
+        <p>Odre :<strong> {{ specie.order }}</strong></p>
+        <p>Famille :<strong> {{ specie.family }}</strong></p>
         <p>Découvert par : <strong> {{ specie.lbAuthor }}</strong></p>
     </div>
     <div class="col-sm-6">
@@ -20,6 +26,16 @@
     {% for observation in observationsList %}
         <div class="col-sm-8 col-sm-offset-2">
             <div style="margin: 10px; padding: 10px; border: 1px solid black; display: flex; justify-content: space-between;">
+                <div>
+                {% for picture in observation.pictures %}
+                    {% if loop.first %}
+                        <img src="../{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ picture.imageName }}" style="width: 50px; height: 60px;"/>
+                    {% endif %}
+                {% else %}
+                    <img src="{{ absolute_url(asset('img/profile_vide.jpg')) }}" alt="Avatar vide" style="width: 50px; height: 60px;"/>
+                {% endfor %}
+                {{ observation.pictures.count }} photos
+                </div>
                 <div style="width: 50px;"><strong>{{ observation.datetime|date('d/m/Y') }}</strong></div>
                 <div style="width: 50px;"><strong>{{ observation.datetime|date('h') }}h{{ observation.datetime|date('i') }}</strong></div>
                 <div style="width: 300px;">Département :<strong> {{ observation.department }}</strong></div>
