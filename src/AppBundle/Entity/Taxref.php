@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Taxref
 {
+    const SEARCH_NUM_ITEMS = 12;
+
     /**
      * @var string
      *
@@ -244,19 +246,6 @@ class Taxref
      * @ORM\Column(name="cli", type="string", length=255, nullable=true)
      */
     private $cli;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-
 
     /**
      * Set reign

@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-sm-6">
+        <h1>Fiche espèce</h1>
+        {{ render(controller(
+        'AppBundle:Search:specieImage',
+        { 'cdName': specie.cdName }
+        )) }}
+        <p>Nom :<strong> {{ specie.lbName }}</strong></p>
+        <p>Nom vernaculaire :<strong> {{ specie.vernacularName }}</strong></p>
+        <p>Odre :<strong> {{ specie.order }}</strong></p>
+        <p>Famille :<strong> {{ specie.family }}</strong></p>
+        <p>Découvert par : <strong> {{ specie.lbAuthor }}</strong></p>
+    </div>
+    <div class="col-sm-6">
+        {{ ivory_google_map(map) }}
+        {{ ivory_google_api([map]) }}
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <h2>Observations</h2>
+    <div>
+        <a href="{{ path('app_observation_add', {'cdName': specie.cdName}) }}" class="btn btn-primary">Ajouter une observation</a>
+    </div>
+    {% for observation in observationsList %}
+        <div class="col-sm-8 col-sm-offset-2">
+            <div style="margin: 10px; padding: 10px; border: 1px solid black; display: flex; justify-content: space-between;">
+                <div>
+                {% for picture in observation.pictures %}
+                    {% if loop.first %}
+                        <img src="../{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ picture.imageName }}" style="width: 50px; height: 60px;"/>
+                    {% endif %}
+                {% else %}
+                    <img src="{{ absolute_url(asset('img/profile_vide.jpg')) }}" alt="Avatar vide" style="width: 50px; height: 60px;"/>
+                {% endfor %}
+                {{ observation.pictures.count }} photos
+                </div>
+                <div style="width: 50px;"><strong>{{ observation.datetime|date('d/m/Y') }}</strong></div>
+                <div style="width: 50px;"><strong>{{ observation.datetime|date('h') }}h{{ observation.datetime|date('i') }}</strong></div>
+                <div style="width: 300px;">Département :<strong> {{ observation.department }}</strong></div>
+            </div>
+        </div>
+    {% else %}
+        <p class="text-center">Pas encore d'observation pour cette espèce.</p>
+    {% endfor %}
+</div>
+
+{% if nbPageTotal is defined %}
+    {% if nbPageTotal > 1 %}
+        <ul class="pagination">
+            {% for p in range(1, nbPageTotal) %}
+                <li{% if p == page %} class="active"{% endif %}>
+                    <a href="{{ path('app_search') }}">{{ p }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endif %}

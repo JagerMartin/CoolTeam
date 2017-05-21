@@ -1,0 +1,180 @@
+<!--
+
+
+
+
+PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
+
+
+
+
+-->
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Rechercher</title>
+
+    {% block stylesheets %}
+
+        <!-- Font-Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- JQUERY UI POUR AUTOCOMPLETION -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+<div class="container text-center">
+    <h2>Rechercher par nom, par famille ou par département </h2>
+    <hr>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            {% for message in app.session.flashbag.get('info') %}
+                <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+            {% endfor %}
+            {% for message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        {{ form_start(form) }}
+        <div class="col-sm-3 col-sm-offset-1">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="col-sm-3 col-sm-offset-1">
+            {{ form_row(form.family) }}
+        </div>
+        <div class="col-sm-3 col-sm-offset-1">
+            {{ form_row(form.department) }}
+        </div>
+        <div class="col-sm-6 col-sm-offset-3">
+            <button id="searchBtn" type="submit" class="btn btn-primary form-control" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Recherche en cours..." formnovalidate>Rechercher</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <hr>
+    <div id="searchView">
+
+    </div>
+</div>
+
+
+
+
+{% block javascripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <!-- JQUERY UI POUR AUTOCOMPLETION -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script src="{{ asset('js/search.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            // ================================================
+            // AUTOCOMPLETION NOM ESPECE
+            // ================================================
+            $('#search_name').autocomplete({
+                source : function(request, response){
+                    var val = $('#search_name').val();
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ path('app_search_autocomplete') }}',
+                        data: 'val='+val,
+
+                        success: function(donnee){
+                            var list = JSON.parse(donnee['list']);
+                            response(list);
+                        }
+
+                    });
+                },
+                minLength: 3
+            });
+
+            // ================================================
+            // REQUETE AJAX RECHERCHE
+            // ================================================
+            var name = "";
+            var family = "";
+            var department = "";
+            var page = 1;
+
+            $('#searchBtn').click(function(e) {
+                e.preventDefault();
+                name = $('#search_name').val();
+                family = $('#search_family').val();
+                department = $('#search_department').val();
+                page = 1;
+
+                triggerSearch();
+                $('#searchBtn').button('loading');
+            });
+
+            function triggerSearch(){
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('app_search_refresh') }}',
+                    data: 'name=' + name + '&family=' + family + '&department=' + department + '&page=' + page
+                })
+                    .done(function (data, textStatus, jqXHR) {
+                        if (typeof jqXHR.responseJSON !== 'undefined') {
+                            if (jqXHR.responseJSON.hasOwnProperty('response')) {
+                                $('#searchView').html(jqXHR.responseJSON.response);
+                                initializeListeners();
+                            }
+                        } else {
+                            alert('Error');
+                        }
+                        $('#searchBtn').button('reset');
+                    })
+                    .fail(function () {
+                        $('#searchBtn').button('reset');
+                        alert('Failed');
+                    });
+            }
+
+            // =======================================================
+            // INITIALISATION LISTENERS APRES REQUETE AJAX
+            // =======================================================
+
+            function initializeListeners(){
+                $('.pagination a').click(function(e) {
+                    e.preventDefault();
+                    page = $(this).text();
+                    triggerSearch();
+                });
+
+                $('.seeSpecie').click(function(e) {
+                    e.preventDefault();
+                    name = $(this).attr('id');
+                    triggerSearch();
+                });
+            }
+
+        });
+    </script>
+
+{% endblock %}
+</body>
+
+</html>

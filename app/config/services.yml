@@ -11,7 +11,10 @@ services:
             - "@vich_uploader.templating.helper.uploader_helper"
 
     app.reload_taxref:
-            class: AppBundle\Utils\ReloadTaxref
-            arguments:
-                - "@doctrine.orm.entity_manager"
-                - "@vich_uploader.templating.helper.uploader_helper"
+        class: AppBundle\Utils\ReloadTaxref
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@vich_uploader.templating.helper.uploader_helper"
+
+    app.create_map_with_observations:
+        class: AppBundle\Utils\CreateMapWithObservations

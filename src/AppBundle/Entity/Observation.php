@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Observation
 {
+    const SEARCH_NUM_ITEMS = 9;
+
     /**
      * @var int
      *
@@ -41,6 +44,7 @@ class Observation
      * @ORM\Column(name="observation", type="text", nullable=true)
      */
     private $observation;
+
 
     /**
      * @var string
@@ -73,7 +77,7 @@ class Observation
     /**
      * @var int
      *
-     * @ORM\Column(name="status", type="integer")
+     * @ORM\Column(name="status", type="integer", nullable=true)
      */
     private $status;
 
@@ -82,10 +86,16 @@ class Observation
      * @ORM\JoinColumn(referencedColumnName="CD_NAME", name="taxref_CD_NAME")
      */
     private $taxref;
-    
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Picture", mappedBy="observation", cascade={"persist"})
+     */
+    private $pictures;
+
     public function __construct()
     {
         $this->taxref = new Taxref();
+        $this->pictures = new ArrayCollection();
     }
 
     /**
@@ -312,5 +322,57 @@ class Observation
     public function getTaxref()
     {
         return $this->taxref;
+    }
+
+    /**
+     * Add picture
+     *
+     * @param \AppBundle\Entity\Picture $picture
+     *
+     * @return Observation
+     */
+    public function addPicture(\AppBundle\Entity\Picture $picture)
+    {
+        $this->pictures[] = $picture;
+
+        if ($picture) {
+            $picture->setObservation($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove picture
+     *
+     * @param \AppBundle\Entity\Picture $picture
+     */
+    public function removePicture(\AppBundle\Entity\Picture $picture)
+    {
+        $this->pictures->removeElement($picture);
+    }
+
+    /**
+     * Get pictures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+    /**
+     * Set pictures
+     *
+     * @param ArrayCollection $pictures
+     *
+     * @return Observation
+     */
+    public function setPictures($pictures = null)
+    {
+        $this->pictures = $pictures;
+
+        return $this;
     }
 }
