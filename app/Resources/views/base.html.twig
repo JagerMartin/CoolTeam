@@ -7,146 +7,68 @@
     <meta name="description" content="">
     <meta name="author" content="">
     {% block stylesheets %}
-
-      <!-- Font-Awesome --> 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/uikit.css" integrity="sha256-dnakD7OjGK657EGkv7imIUDhu5WRQKkZ4Y0k/m+Ex30=" crossorigin="anonymous" />
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slideshow.css" integrity="sha256-oU7mavaw6f+AHKxLBpLCylY9e3ixtVSHvnPWGizP+Ls=" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slidenav.css" integrity="sha256-0LM8tYNfZKyWvr++XhcKo0/mud1u8fxerKRoLVzWgmI=" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/slider.css" integrity="sha256-rdG/2Cyo2XQ3eSE1XXJKuVy/YE1OcDKu4p9X9JrbD/s=" crossorigin="anonymous" />
-
-
-        <!-- style local -->
-
-        <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
-
-
+        <!-- Font Amiko -->
+        <link href="https://fonts.googleapis.com/css?family=Amiko" rel="stylesheet">
+        <!-- Font Roboto -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <!-- Font Titillium web -->
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset('css/global/bootstrap.min.css') }}" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="{{ asset('css/global/mdb.min.css') }}" rel="stylesheet">
+        <!-- Preloader -->
+        <link href="{{ asset('css/global/preloader.css') }}" rel="stylesheet">
+        <!-- Footer -->
+        <link href="{{ asset('css/global/footer.css') }}" rel="stylesheet">
 
     {% endblock %}
 
   </head>
 
     <body>
-
-<!-- barre outils -->
-        <div class="tm-navbar tm-navbar-overlay tm-navbar-transparent tm-navbar-contrast" data-uk-sticky='{"media":767,"showup":true,"animation":"uk-animation-slide-top","top":".uk-sticky-placeholder + *","clsinactive":"tm-navbar-transparent tm-navbar-contrast"}'>
-            <div class="uk-container uk-container-center uk-margin-top">
-                <nav class="uk-navbar">
-                    <a class="uk-navbar-brand" href="{{ path('home') }}">LOGO
-                       <!--<img class="tm-logo uk-responsive-height" src="img/LOGO.png" alt="">
-                       <img class="tm-logo-contrast uk-responsive-height" src="img/LOGO.png" alt="">-->
-                    </a>
-
-                    <!-- Menu-->
-                    <div class="uk-navbar-flip uk-hidden-small">
-                        <ul class="uk-navbar-nav">
-                            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                                <li class="">
-                                    <a href="{{ path('dashboard') }}"> Hello {{ app.user.username }}</a><br><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> LOGOUT</a>
-                                </li>
-                            {% else %}
-                                <li class="">
-                                    <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
-                                </li>
-                                <li class="">
-                                    <a href="{{ path('fos_user_security_login') }}">S'identifier</a>
-                                    {#<a href="#modal" data-uk-modal="{center:true}">S'identifier</a>#}
-                                </li>
-
-                            {% endif %}
-                        </ul>
-                    </div>
-                    <div class="uk-navbar-flip uk-visible-small">
-                        <a href="#offcanvas" class="uk-navbar-toggle" data-uk-offcanvas></a>
-                    </div>
-                </nav>
+    <div id="preloader" style="display: none;">
+        <div class="verticalcenter">
+            <div class="text-center">
+                <div id="status"> <div class="preloader-wrapper big active">
+                        <div class="preloader-wrapper big active">
+                            <div class="preloader-wrapper big active">
+                                <div class="preloader-wrapper big active">
+                                    <div class="spinner-layer spinner-blue-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div><div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div><div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
             </div>
         </div>
+    </div>
     {% block body %}{% block container %}{% endblock %}{% endblock %}
     {% block sidebar %}{% endblock %}
 
 
-        <div id="offcanvas" class="uk-offcanvas">
-            <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
-                <div class="uk-panel uk-text-center">
-                    <a href="/">LOGO
-                        <!--<img src="img/LOGO.png" alt="">-->
-                    </a>
-                </div>
-                <ul class="uk-nav uk-nav-offcanvas">
-                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                        <li class="uk-active">
-                            <a href="{{ path('dashboard') }}"> Bonjour {{ app.user.username }}</a>
-                        </li>
-                    {% else %}
-                        <li class="">
-                            <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
-                        </li>
-                        <li class="">
-                            <a href="{{ path('fos_user_security_login') }}">S'identifier</a>
-                            {#<a href="#modal" data-uk-modal="{center:true}">S'identifier</a>#}
-                        </li>
-
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-
-<div id="modal" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
-    <div class="uk-modal-dialog uk-modal-dialog-small">
-        <button type="button" class="uk-modal-close uk-close"></button>
-        <h1>S'identifier</h1>
-    </div>
-</div>
-<!-- Footer -->
-    <div id="tm-footer" class="tm-footer uk-block uk-block-secondary uk-contrast">
-        <div class="uk-container uk-container-center">
-            <section class="uk-grid uk-grid-match" data-uk-grid-margin>
-                <div class="uk-width-medium-1-1">
-                    <div class="uk-panel  uk-text-center ">
-                        <ul class="uk-grid uk-grid-medium uk-flex uk-flex-center">
-                            <li>
-                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-github"></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-twitter"></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-linkedin-square"></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="#" class="uk-icon-hover uk-icon-small uk-icon-user"></a>
-                            </li>
-                        </ul>
-
-                                <p>CoolTeam &copy; 2017 - <a href="#">CoolTeam Development</a></p>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
 
     {% block javascripts %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <!-- JQuery -->
+        <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/uikit.js" integrity="sha256-Ar7wtszG/Jiy6S3pCB2YX/IjkXLLsI93eLCJihxYkYk=" crossorigin="anonymous"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="{{ asset('js/tether.min.js') }}"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/slideshow.js" integrity="sha256-usivqGFOOWHTrsxiZFSldVW5uC9uRluHCtXFUSChRyM=" crossorigin="anonymous"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/slideshow-fx.js" integrity="sha256-PcIzVS4CHF/oPoFubWaB1Xe4enTqCiAQWNwEEC49lXw=" crossorigin="anonymous"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/slider.js" integrity="sha256-DqL5t4OgDHSG6mHGRHfz9Klp3rNtcVsaXuLysfKmOPs=" crossorigin="anonymous"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/parallax.js"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/grid-parallax.js" integrity="sha256-FbFl0kVGQgPUktO+P/i7/z/iGh0sfc1a464AhFfaI58=" crossorigin="anonymous"></script>
-
-
-
-
-
-
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
         <!-- js local -->
         <script src="{{ asset('js/main.js') }}"></script>
 

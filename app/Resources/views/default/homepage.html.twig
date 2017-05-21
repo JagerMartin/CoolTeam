@@ -1,172 +1,627 @@
 {% extends 'base.html.twig' %}
 
-
 {% block title %}{{ parent() }} Accueil{% endblock %}
 
+	{% block stylesheets %}
+		{{ parent() }}
+		<!-- Template styles -->
+		<link href="{{ asset('css/homepage.css') }}" rel="stylesheet">
+	{% endblock %}
 
 {% block body %}
-	<div class="uk-cover-background uk-position-relative" style="height: 600px; background-image: url('{{ asset('img/b5.jpg') }}') ;">
-		<img class="uk-invisible" src="{{ asset('img/b5.jpg') }}" alt="" width="600" height="400">
+	<!-- HEADER-->
+	<header class="container-fluid">
+		<div class="container">
+			<!-- Bouton hamburger -->
+			<button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#collapseEx2" aria-controls="collapseEx2" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="row">
+				<div class="col-12" >
+					<div class="row">
+						<!-- MENU -->
+						<div class="col-2" style="margin-top:180px;" >
+							<nav class="menu" id="collapseEx2">
+								<div class="d-flex flex-column">
+									<a href="{{ path('home') }}" class="btn btn-default teal lighten-3 menuB">Accueil</a>
+									<a href="{{ path('association') }}" class="btn btn-default teal lighten-2 menuB" >L'Association</a>
+									<a href="{{ path('modeemploi') }}" class="btn btn-default teal menuB">Comment ça <br>marche?</a>
+									<a href="{{ path('home') }}" type="button" class="btn btn-default teal darken-1 menuB">Rechercher</a>
+									<a href="{{ path('apprendreObserver') }}" class="btn btn-default teal darken-3 menuB">Apprendre <br>à Observer</a>
+									<a href="{{ path('contact') }}" class="btn btn-default teal darken-4 menuB">Contact</a>
+								</div>
+							</nav>
+						</div>
+						<!-- Logo -->
+						<div class="col-1 logo" style="margin-top:60px;">
+							<img src="{{ asset('img/homepage/logo.png') }}">
+						</div>
+						<!-- S'inscrire | S'identifier -->
+						<div class="col-2 offset-6 sisi">
+							<ul class="list-inline" style="text-align: right">
+                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+								<li class="list-inline-item">
+									<a href="{{ path('dashboard') }}"> Bonjour {{ app.user.username }}</a>
+								</li>
+                                {% else %}
+								<li class="list-inline-item"><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
+								<li class="list-inline-item">|</li>
+								<li class="list-inline-item vertical-divider"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin">S'identifier</a></li>
+								{% endif %}
+							</ul>
 
-		<div class="uk-position-cover uk-flex uk-flex-center uk-flex-column uk-flex-column-reverse">
-			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box">ACCUEIL</div>
-			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box uk-margin-bottom">ASSOCIATION</div>
-			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box uk-margin-bottom">MODE D'EMPLOI</div>
-			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box uk-margin-bottom">RECHERCHER</div>
-			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box uk-margin-bottom">APPRENDRE A OBSERVER</div>
-			<div class="uk-width-1-6 uk-height-1-5 uk-panel uk-panel-box uk-margin-bottom"><a href="#">CONTACT</a></div>
-		</div>
-		<div class="uk-position-cover uk-flex uk-flex-center uk-flex-middle">
-			<div style="background: rgba(236, 249, 232, 0.8); font-size: 50px; line-height: 75px; color: #fff;">
-			<h1 class="uk-heading-large uk-margin-large-bottom">Nos Amis les oiseaux.</h1>
-			<h2 class="uk-heading-large uk-margin-large-bottom">Venez nous aider à recenser les espèces.</h2></div>
-		</div>
-	</div>
-
-<!-- Image d'En-tête
-	<div id="tm-hero" class="tm-hero uk-block uk-block-large uk-cover-background uk-flex uk-flex-middle tm-hero-padding uk-contrast" style="background-image: url('{{ asset('img/b2.jpg') }}');">
-		<div class="uk-container uk-container-center">
-			<section class="uk-grid uk-grid-match" data-uk-grid-margin>
-				<div class="uk-width-medium-1-1">
-					<div class="uk-panel  uk-text-center ">
-						<h1 class="uk-heading-large uk-margin-large-bottom">Nos Amis les oiseaux.</h1>
-						<h2 class="uk-heading-large uk-margin-large-bottom">Venez nous aider à recenser les espèces.</h2>
-							<!--<a class="uk-button uk-button-large" href="/workflow">Plus d'info</a>
-								<a class="uk-button uk-button-large" href="/me">Rejoignez nous!</a>
+						</div>
 					</div>
 				</div>
-			</section>
+			</div>
 		</div>
-	</div>-->
+        {# modal login #}
+		<!--Modal: Login Form-->
+		<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog cascading-modal" role="document">
+				<!--Content-->
+				<div class="modal-content">
 
-	<div id="tm-main" class="tm-main uk-block uk-block-default">
-
-	<!-- A propos -->
-		<div class="uk-container uk-container-center">
-			<div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
-				<main class="uk-width-1-1">
-					<!--titre du container A propos-->
-					<article class="uk-article uk-text-center">									
-						<h1 class="uk-h1">A propos de l'association.</h1>
-					<!--Descriptif du container A propos-->
-						<p class="uk-width-medium uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed.</p>
-					</article>				
-				</main>
-			</div>
-		</div>		
-
-	<!-- Caroussel d'image + description -->
-		<div class="uk-container uk-container-center">
-			<div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
-				<main class="uk-width-1-1">
-					<article class="uk-article uk-text-center">
-					<!--titre du container caroussel-->
-						<h1 class="uk-h1">Les 10 denières images.</h1>
-					</article>
-					<!-- Slider -->	
-					<div class="uk-slidenav-position" data-uk-slideshow>
-                   		<ul class="uk-slideshow uk-overlay-active"  data-uk-slideshow="{autoplay:true}" style="height: 411px;">
-                   			<li aria-hidden="false" style="opacity: 1; height: 250px;">
-                   				<img src="{{ asset('img/b4.jpg') }}" alt="">
- 	                           	<div class="uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-slide-right uk-width-1-4">
-                                	<h3>Description</h3>
-                                	<p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
-                                	<button class="uk-button uk-button-primary">Plus d'info</button>
-                            	</div>                   			
-                   			</li>
-                   			<li aria-hidden="false" style="opacity: 1; height: 250px;">
-                   				<img src="{{ asset('img/b5.jpg') }}" alt="">
- 	                           	<div class="uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-slide-right uk-width-1-4">
-                                	<h3>Description</h3>
-                                	<p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
-                                	<button class="uk-button uk-button-primary">Plus d'info</button>
-                            	</div>                   			
-                   			</li>
-                   			<li aria-hidden="false" style="opacity: 1; height: 250px;">
-                   				<img src="{{ asset('img/b6.jpg') }}" alt="">
- 	                           	<div class="uk-overlay-panel uk-overlay-right uk-overlay-background uk-overlay-slide-right uk-width-1-4">
-                                	<h3>Description</h3>
-                                	<p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
-                                	<button class="uk-button uk-button-primary">Plus d'info</button>
-                            	</div>                   			
-                   			</li>                   			                   			
-                   		</ul>
-                    		<a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
-                    		<a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>						
-                    </div>
-            
-                    
-				</main>
-			</div>
-		</div>			
-	<!-- Dernier ajouts + carte google -->
-		<div class="uk-container uk-container-center">
-			<div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
-				<main class="uk-width-1-1">
-					<article class="uk-article uk-text-center">
-					<!--titre du container derniers ajouts-->
-						<h1 class="uk-h1">Nos 10 derniers ajouts.</h1>
-
-						<div class="uk-grid">
-							<div class="uk-width-medium-1-2 uk-margin-large-bottom">
-								<h4 class="uk-h2">Description Rouge Gorge</h4>
-								<p class="uk-width-large-4-6 uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros.</p>
-							</div>
-							<div class="uk-width-medium-1-2 uk-margin-large-bottom">
-                    
-	                        	<h4 class="uk-h2">Carte google</h4>
-	                        	<iframe id="map" class="js_required" src="https://maps.google.com/?ie=UTF8&amp;ll=47.1362,-2.1918&amp;t=h&amp;z=10&amp;output=embed"></iframe>
-                    
-							</div>
+					<!--Header-->
+					<div class="modal-header light-blue darken-3 white-text">
+						<button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="title"><i class="fa fa-user"></i> Log in</h4>
+					</div>
+					<!--Body-->
+					<div class="modal-body">
+						<div class="md-form form-sm">
+							<i class="fa fa-envelope prefix"></i>
+							<input type="text" id="form30" class="form-control">
+							<label for="form30">Your email</label>
 						</div>
-					</article>								
-				</main>
-			</div>
-		</div>			
-	<!-- Parallax -->
-		<div class="uk-container uk-container-center">
-			<div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
-				<main class="uk-width-1-1">
-					<div class="test-hero-bg" data-uk-parallax="{bg:-500}" style="background-size: auto auto; background-repeat: no-repeat; background-position: 50% 0px;"></div>				
-				</main>
-			</div>
-		</div>		
-	<!-- Compteurs -->
-		<div class="uk-container uk-container-center">
-			<div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
-				<main class="uk-width-1-1">
-					<article class="uk-article uk-text-center">
-					<!--titre du container Compteur-->
-						<h1 class="uk-h1">Compteurs</h1>
-					<!--Descriptif du container Compteur-->
-						<p class="uk-width-medium uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed.</p>
-					<!--Compteur 1-->
-						<div class="uk-grid">
-							<div class="uk-width-medium-1-4 uk-margin-large-bottom">
-								<h2 class="uk-h2">200</h2>
-								<h3 class="uk-h2">Observateurs</h3>
-								<p class="uk-width-large-4-6 uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies eros.</p>
-							</div>
-							<div class="uk-width-medium-1-4 uk-margin-large-bottom">
-								<h2 class="uk-h2">20</h2>
-								<h3 class="uk-h2">Naturalistes</h3>
-								<p class="uk-width-large-4-6 uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies eros.</p>
-							</div>
-							<div class="uk-width-medium-1-4 uk-margin-large-bottom">
-								<h2 class="uk-h2">5122</h2>
-								<h3 class="uk-h2">Espèces recencées</h3>
-								<p class="uk-width-large-4-6 uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies eros.</p>
-							</div>
-							<div class="uk-width-medium-1-4 uk-margin-large-bottom">
-								<h2 class="uk-h2">150</h2>
-								<h3 class="uk-h2">Observations</h3>
-								<p class="uk-width-large-4-6 uk-container-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies eros.</p>
-							</div>							
+
+						<div class="md-form form-sm">
+							<i class="fa fa-lock prefix"></i>
+							<input type="password" id="form31" class="form-control">
+							<label for="form31">Your password</label>
 						</div>
-					</article>
-				</main>
+
+						<div class="text-center mt-2">
+							<button class="btn btn-info">Log in <i class="fa fa-sign-in ml-1"></i></button>
+						</div>
+
+					</div>
+					<!--Footer-->
+					<div class="modal-footer">
+						<div class="options text-center text-md-right mt-1">
+							<p>Not a member? <a href="#">Sign Up</a></p>
+							<p>Forgot <a href="#">Password?</a></p>
+						</div>
+						<button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close <i class="fa fa-times-circle ml-1"></i></button>
+					</div>
+				</div>
+				<!--/.Content-->
+			</div>
+		</div>
+		<!--Modal: Login Form-->
+	</header>
+	<!-- FIN HEADER -->
+
+	<!--Carousel-->
+	<div class="container-fluid monCarousel">
+		<div id="myCarousel1" class="carousel slide carousel-fade" data-ride="carousel">
+			<!--Indicators-->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel1" data-slide-to="1"></li>
+				<li data-target="#myCarousel1" data-slide-to="2"></li>
+			</ol>
+			<!--/.Indicators-->
+			<!--Slides-->
+			<div class="carousel-inner" role="listbox">
+				<!--First slide-->
+				<div class="carousel-item active">
+					<img src="{{ asset('img/homepage/carousselheader/1.jpg') }}" alt="First slide">
+				</div>
+				<!--/First slide-->
+				<!--Second slide-->
+				<div class="carousel-item">
+					<img src="{{ asset('img/homepage/carousselheader/2.jpg') }}" alt="Second slide">
+				</div>
+				<!--/Second slide-->
+				<!--Third slide-->
+				<div class="carousel-item">
+					<img src="{{ asset('img/homepage/carousselheader/3.jpg') }}" alt="Third slide">
+				</div>
+				<!--/Third slide-->
+			</div>
+			<!--/.Slides-->
+		</div>
+		<!--/.Carousel Wrapper-->
+	</div>
+	<!--/.Carousel -->
+
+	<!-- QUI SOMMES NOUS -->
+	<div class="container-fluid">
+		<div class="container" style="margin-top: 70px;text-align: center;">
+			<div class="row">
+				<div class="col-2 align-self-center" >
+					<img src="{{ asset('img/homepage/cercleqsn/cercle1.png') }}" class="wow fadeInDown" style="height:200px; width:200px;">
+				</div>
+				<div class="col-6 offset-1" >
+					<h2>QUI SOMMES NOUS?</h2>
+					<p style="margin-top: 70px;"> « Nos Amis Les Oiseaux » est une association à but non lucratif regroupant plus de 1 000 passionnés d’ornithologie qui s’emploient chaque jour à protéger et préserver les espèces.</p>
+					<p style="margin-bottom: 70px;">Aujourd’hui, l’association NAO relève un nouveau défi : collecter des observations à grande échelle afin d’alimenter activement un programme de recherche du CNRS visant à étudier les effets du climat, de l’urbanisation et de l’agriculture sur la biodiversité.</p>
+				</div>
+				<div class="col-2 offset-1 align-self-center" >
+					<img src="{{ asset('img/homepage/cercleqsn/cercle2.png') }}" class="wow fadeInDown" style="height:200px; width:200px;">
+				</div>
 			</div>
 		</div>
 	</div>
+	<!-- END QUI SOMMES NOUS -->
 
+	<!-- DECOUVREZ NOTRE APPLICATION PARALLAX -->
+	<div class="container-fluid dna parallax1 parallax">
+		<section class="parallax" id="section1">
+			<div class="view">
+				<img src="{{ asset('img/homepage/parallax/overlal.png') }}" class="img-fluid">
+				<div class="mask pattern-1">
+					<!-- Titre -->
+					<div class="container">
+						<div class="row">
+							<div class="col-10 offset-2" style="color: #ffffff;margin-top: 50px;margin-bottom: 50px;">
+								<h2>Découvrez notre application participative</h2>
+							</div>
+						</div>
+						<!-- Texte -->
+						<div class="row">
+							<div class="col-2 offset-2">
+								<img src="{{ asset('img/homepage/logo.png') }}">
+							</div>
+							<div class="col-6  offset-2" style="text-align: center; padding-top: 19px;margin-bottom: 19px;background: #37474F;  background: rgba(0, 0, 0, .4);">
+								<p class="white-text">Vous êtes amateur d’oiseaux et vous aimez les observer dans votre vie quotidienne ou au cours de vos promenades?</p>
+								<p class="white-text">Vous êtes un professionnel de la nature, ornithologue ou naturaliste, et vous souhaitez participer bénévolement à la validation de centaines d’observations d’oiseaux ?</p>
+								<p class="white-text">Grâce à notre application participative, partagez votre passion et prenez part à un grand programme de recherche et de protection des oiseaux !</p>
+							</div>
+						</div>
+						<!-- BOUTON -->
+						<div class="row">
+							<div class="col-3  offset-8" style="margin-top: 29px;margin-bottom: 29px;">
+								<button type="button" class="btn btn-default teal darken-1">Je participe!</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<!-- END DECOUVREZ NOTRE APPLICATION -->
+
+	<!-- OBSERVER ET RESPECTER-->
+	<div class="container-fluid">
+		<div class="container">
+			<!--TITRE-->
+			<div class="row">
+				<div class="col-10 offset-1" style="margin-top:70px;text-align: center;">
+					<h2> OBSERVER ET RESPECTER </h2>
+				</div>
+			</div>
+			<!--TEXTE-->
+			<div class="row vdivide" style="margin-top:70px;">
+				<div class="col-4" style="text-align: center;">
+					<p>Apprendre à observer</p>
+					<p  style="margin-bottom:80px;">Que vous soyez débutant ou plus expert, voici quelques conseils utiles pour augmenter vos chances d'observer les oiseaux dans les meilleures conditions : quand les observer, ce qu’il faut emporter, les techniques d’observation et ce qu’il faut noter.</p>
+				</div>
+				<div class="col-4" style="text-align: center;">
+					<p>Charte du respect</p>
+					<p>Les observer c’est utile, mais les respecter c’est essentiel !</p>
+					<p>Les conséquences du dérangement peuvent être désastreuses.</p>
+					<p  style="margin-bottom:80px;">Suivez nos conseils pour limiter les risques de déranger les oiseaux pendant vos observations.</p>
+
+				</div>
+				<div class="col-4" style="text-align: center;">
+					<p>Rechercher un oiseau</p>
+					<p style="margin-bottom:80px;">Grâce à nos fiches d’identification, nous vous aidons à identifier les oiseaux que vous observez : effectuez une recherche par nom, famille ou lieu, puis accédez aux données sur l’espèce, sa répartition géographique, des photos et les commentaires des observateurs.</p>
+				</div>
+			</div>
+			<!--BOUTONS-->
+			<div class="row vdivide" style="margin-bottom: 70px">
+				<div class="col-4" style="text-align: center;">
+					<button type="button" class="btn btn-default teal darken-1">Apprendre à Observer</button>
+				</div>
+				<div class="col-4" style="text-align: center;">
+					<button type="button" class="btn btn-default teal darken-1">Ne pas les déranger</button>
+				</div>
+				<div class="col-4" style="text-align: center;">
+					<button type="button" class="btn btn-default teal darken-1">Rechercher un oiseau</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- END OBSERVER ET RESPECTER-->
+
+	<!-- SLIDER -->
+	<div class="container-fluid slider" >
+		<div id="myCarousel2" class="carousel slide carousel-fade" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel2" data-slide-to="1"></li>
+				<li data-target="#myCarousel2" data-slide-to="2"></li>
+				<li data-target="#myCarousel2" data-slide-to="3"></li>
+				<li data-target="#myCarousel2" data-slide-to="4"></li>
+			</ol>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<!-- First slide -->
+				<div class="item active">
+					<div class="container-fluid mask pattern-6 overlaytest overlaySlide">
+						<div class="row">
+							<div class="col-1 sliderTitre"></div>
+							<div class="col-6  sliderTitre">
+								<h3>Guêpier d'Europe</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-6 offset-1 sliderParag">
+								Merops apiaster Linnaeus
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3 offset-1 sliderListe">
+								<ul>
+									<li>Ordre: </li>
+									<li>Famille: </li>
+									<li>Nom Anglais: </li>
+									<li>Découvert en : </li>
+								</ul>
+							</div>
+							<div class="col-3 offset-1 sliderListe2">
+								<ul>
+									<li>Coraciiformes</li>
+									<li>Meropidae</li>
+									<li>European Beater</li>
+									<li>1758</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-5 offset-1" style="text-align: center;">
+								<button type="button" class="btn btn-default teal darken-1">Voir la fiche</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.item -->
+				<!-- Second slide -->
+				<div class="item">
+					<div class="container-fluid mask pattern-6 overlaytest overlaySlide">
+						<div class="row">
+							<div class="col-1 sliderTitre"></div>
+							<div class="col-6  sliderTitre">
+								<h3>Guêpier d'Europe</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-6 offset-1 sliderParag">
+								Merops apiaster Linnaeus
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3 offset-1 sliderListe">
+								<ul>
+									<li>Ordre: </li>
+									<li>Famille: </li>
+									<li>Nom Anglais: </li>
+									<li>Découvert en : </li>
+								</ul>
+							</div>
+							<div class="col-3 offset-1 sliderListe2">
+								<ul>
+									<li>Coraciiformes</li>
+									<li>Meropidae</li>
+									<li>European Beater</li>
+									<li>1758</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-5 offset-1" style="text-align: center;">
+								<button type="button" class="btn btn-default teal darken-1">Voir la fiche</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.item -->
+				<!-- Third slide -->
+				<div class="item ">
+					<div class="container-fluid mask pattern-6 overlaytest overlaySlide">
+						<div class="row">
+							<div class="col-1 sliderTitre"></div>
+							<div class="col-6  sliderTitre">
+								<h3>Guêpier d'Europe</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-6 offset-1 sliderParag">
+								Merops apiaster Linnaeus
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3 offset-1 sliderListe">
+								<ul>
+									<li>Ordre: </li>
+									<li>Famille: </li>
+									<li>Nom Anglais: </li>
+									<li>Découvert en : </li>
+								</ul>
+							</div>
+							<div class="col-3 offset-1 sliderListe2">
+								<ul>
+									<li>Coraciiformes</li>
+									<li>Meropidae</li>
+									<li>European Beater</li>
+									<li>1758</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-5 offset-1" style="text-align: center;">
+								<button type="button" class="btn btn-default teal darken-1">Voir la fiche</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.item -->
+			</div>
+			<!-- /.carousel-inner -->
+		</div>
+	</div>
+	<!-- END SLIDER -->
+	<!-- DERNIERS AJOUTS -->
+	<div class="container-fluid da" >
+		<div class="container">
+			<div class="row">
+				<div class="col-12" style="text-align:center;">
+					<h2>DERNIERS AJOUTS</h2>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 70px;">
+				<div class="col-3 offset-1">
+					<!-- Cercles photos avec texte -->
+					<div class="row espcercle">
+						<div class="col-6" style="padding: 0;">
+							<img src="{{ asset('img/homepage/cercleda/cercle1.jpg') }}" class="rounded-circle" alt="">
+						</div>
+						<div class="col-6 myB">
+							<button type="button" class="btn btn-default">01/02/2017<p>Mouette de buler</p></button>
+						</div>
+					</div>
+					<div class="row espcercle">
+						<div class="col-6" style="padding: 0;">
+							<img src="{{ asset('img/homepage/cercleda/cercle2.jpg') }}" class="rounded-circle" alt="">
+						</div>
+						<div class="col-6 myB">
+							<button type="button" class="btn btn-default">01/04/2017<p class="pnom">Buse féroce</p></button>
+						</div>
+					</div>
+					<div class="row espcercle">
+						<div class="col-6" style="padding: 0;">
+							<img src="{{ asset('img/homepage/cercleda/cercle3.jpg') }}" class="rounded-circle" alt="">
+						</div>
+						<div class="col-6 myB">
+							<button type="button" class="btn btn-default">01/06/2017<p class="pnom">Hibou grand-duc</p></button>
+						</div>
+					</div>
+					<div class="row espcercle">
+						<div class="col-6" style="padding: 0;">
+							<img src="{{ asset('img/homepage/cercleda/cercle4.jpg') }}" class="rounded-circle" alt="">
+						</div>
+						<div class="col-6 myB">
+							<button type="button" class="btn btn-default">01/08/2017<p class="pnom">Merle épaulé jaune</p></button>
+						</div>
+					</div>
+					<div class="row espcercle">
+						<div class="col-6" style="padding: 0;">
+							<img src="{{ asset('img/homepage/cercleda/cercle5.jpg') }}" class="rounded-circle" alt="">
+						</div>
+						<div class="col-6 myB">
+							<button type="button" class="btn btn-default">01/10/2017<p class="pnom">Martin pêcheur</p></button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Map Google-->
+				<div class="col-6 offset-1 map">
+					<div id="googleMap" style="width:100%;height: 100%;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END DERNIERS AJOUTS -->
+
+	<!-- PARALLAX -->
+	<div class="container-fluid parallax2 parallax">
+		<!--Main parallax wrapper-->
+		<section class="parallax" id="section2">
+		</section>
+	</div>
+	<!-- END PARALLAX -->
+
+	<!-- COMPTEURS -->
+	<div class="container-fluid cpteurs">
+		<div class="container">
+			<div class="row">
+				<div class="col-10 offset-1 align-content-center">
+					<h3>Grâce à ce site participatif, chaque observation que vous nous transmettez est vitale pour nous aider à alimenter notre programme de recherche. Nous vous remercions pour votre participation !</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 project">
+					<h2 id="counter">0</h2>
+					<h3 class="h3bis">Observateurs</h3>
+
+				</div>
+				<div class="col-md-3 project">
+					<h2 id="counter1">0</h2>
+					<h3 class="h3bis">Naturalistes</h3>
+				</div>
+				<div class="col-md-3 project">
+					<h2 id="counter2">0</h2>
+					<h3 class="h3bis">Espèces recencées</h3>
+				</div>
+
+				<div class="col-md-3 project">
+					<h2 id="counter3">0</h2>
+					<h3 class="h3bis">Observations</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END COMPTEURS -->
+
+	<!-- PARTENAIRES -->
+	<div class="container-fluid partenaires">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h2>Nos partenaires</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-2">
+					<img src="{{ asset('img/homepage/partenaires/1.png') }}">
+				</div>
+				<div class="col-2 offset-2">
+					<img src="{{ asset('img/homepage/partenaires/2.png') }}">
+				</div>
+				<div class="col-1 offset-1">
+					<img src="{{ asset('img/homepage/partenaires/3.png') }}">
+				</div>
+				<div class="col-2 offset-2">
+					<img src="{{ asset('img/homepage/partenaires/4.png') }}">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END PARTENAIRES -->
+
+	<!-- RESEAUX SOCIAUX -->
+	<div class="container-fluid rs">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 offset-3">
+					<h2 style="text-align: center">Suivez-nous sur les réseaux sociaux</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-2 offset-4">
+					<a href="https://fr-fr.facebook.com/"><img src="{{ asset('img/homepage/facebook.png') }}" style="text-align: center"></a>
+				</div>
+				<div class="col-2">
+					<a href="https://www.instagram.com/?hl=fr"><img src="{{ asset('img/homepage/instagram.png') }}" style="text-align: center"></a>
+				</div>
+			</div>
+			<!-- pour remonter dans la page-->
+			<div class="row">
+				<div class="col-1 offset-11">
+					<div class="pull-right" style="height: 45px;width: 45px;">
+						<a class="btn-large red waves-effect waves-light">
+							<i class="fa fa-pencil-square" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END RESEAUX SOCIAUX -->
+
+{% block footer %}
+	{{ include('footer.html.twig') }}
+{% endblock %}
+
+	{% block javascripts %}
+		{{ parent() }}
+		<script>
+			//Carousel Header
+			$('#myCarousel1, #myCarousel2').carousel({
+				interval: 10000
+			});
+			//Animation cercle
+			new WOW().init();
+			// Map google
+			function myMap() {
+				var mapProp= {
+					center:new google.maps.LatLng(51.508742,-0.120850),
+					zoom:5,
+				};
+				var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			}
+
+			/**********/
+			/*compteur*/
+			/*********/
+			$(document).ready(function(){
+				$(".bhide").click(function(){
+					$(".hideObj").slideDown();
+					$(this).hide(); //.attr()
+					return false;
+				});
+				$(".bhide2").click(function(){
+					$(".container.hideObj2").slideDown();
+					$(this).hide(); // .attr()
+					return false;
+				});
+
+				$('.heart').mouseover(function(){
+					$(this).find('i').removeClass('fa-heart-o').addClass('fa-heart');
+				}).mouseout(function(){
+					$(this).find('i').removeClass('fa-heart').addClass('fa-heart-o');
+				});
+
+				function sdf_FTS(_number,_decimal,_separator)
+				{
+					var decimal=(typeof(_decimal)!='undefined')?_decimal:2;
+					var separator=(typeof(_separator)!='undefined')?_separator:'';
+					var r=parseFloat(_number)
+					var exp10=Math.pow(10,decimal);
+					r=Math.round(r*exp10)/exp10;
+					rr=Number(r).toFixed(decimal).toString().split('.');
+					b=rr[0].replace(/(\d{1,3}(?=(\d{3})+(?:\.\d|\b)))/g,"\$1"+separator);
+					r=(rr[1]?b+'.'+rr[1]:b);
+
+					return r;
+				}
+
+				setTimeout(function(){
+					$('#counter').text('0');
+					$('#counter1').text('0');
+					$('#counter2').text('0');
+					$('#counter3').text('0');
+
+					setInterval(function(){
+
+						var curval=parseInt($('#counter').text());
+						var curval1=parseInt($('#counter1').text().replace(' ',''));
+						var curval2=parseInt($('#counter2').text());
+						var curval3=parseInt($('#counter3').text());
+						if(curval<=200-1){
+							$('#counter').text(curval+1);
+						}
+						if(curval1<=150-1){
+							$('#counter1').text(curval1+1);
+						}
+						if(curval2<=3000-10){
+							$('#counter2').text(curval2+10);
+						}
+						if(curval3<=245-1){
+							$('#counter3').text(curval3+1);
+						}
+					}, 2);
+
+				}, 500);
+			});
+		</script>
+		<!-- Google Map-->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDThgBoY_tT3lW01wNvaKY6O-JTsPvHuyM&callback=myMap"></script>
+	{% endblock %}
 {% endblock %}

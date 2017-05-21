@@ -1,18 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ parent() }} - Apprendre à observer{% endblock %}
 
-
-{% block body %}
- {% block container %}
-<hr class="uk-grid-divider">
-<div class="uk-grid" data-uk-grid-margin>
-
-    <div class="uk-width-medium-2-3">
-        <div class="uk-panel uk-panel-header">
-
-            <h3 class="uk-panel-title">Apprendre à Observer</h3>
-        </div>
-    </div>
-
-</div>
+{% block body %}{% block container %}
+    {% block footer %}
+        {{ include("footer.html.twig") }}
+    {% endblock %}
 {% endblock %}

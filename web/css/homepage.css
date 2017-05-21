@@ -1,0 +1,419 @@
+/* TEMPLATE STYLES */
+
+/* Necessary for full page carousel*/
+
+/* POLICES  */
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100,100italic,500,400italic,500italic,700,700italic,900italic,900');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Amiko');
+
+.roboto { font-family: 'Roboto', sans-serif; }
+.titillium { font-family: 'Titillium Web', sans-serif;}
+.amiko { font-family: 'Amiko'; }
+
+html,body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Roboto;
+}
+a, a:hover {
+    text-decoration: none;
+}
+
+/***************************************/
+/*  BARRE VERTICAL SEPARATION COLONNES*/
+/*************************************/
+.row.vdivide [class*='col-']:not(:last-child):after {
+  background: #2b2b2b;
+  width: 1px;
+  content: "";
+  display:block;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  right: 0;
+  min-height: 70px;
+}
+
+/******************
+ ******************
+ **    HEADER    **
+ ******************
+ ******************/
+header {
+    position: relative;
+    background-color: transparent;
+    height: 900px;
+    z-index: 1;
+}
+
+/********************
+ *  BOUTONS MENU    *
+ ********************/
+.menuB {
+    width: 150px;
+    height: 40px;
+    font-family: Titillium Web;
+    font-weight: 700;  
+    font-size: 13px; 
+    padding:4px 0 4px 0px;
+    margin:0 0 3px 0;
+}
+
+/**************
+ *    logo    *
+ **************/
+.logo {
+    max-height:300px; 
+    max-width: 163px;
+}
+
+/********************************
+ *  S'inscrire | S'identifier   *
+ ********************************/
+.sisi {
+    padding:0;
+    margin-top:32px; 
+    height:30px;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: Titillium Web;
+    color: #ffffff
+}
+.sisi a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/*******************
+ *    Caroussel    *
+ *******************/
+.monCarousel {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 0;
+    position: absolute;
+    left:0px;
+    top: 0px;
+    width: 100%;
+    height: 900px;
+    z-index: 0;
+}
+.view {
+    height: 100%;
+}
+
+/* Carousel*/
+.carousel,
+.carousel-item,
+.active {
+    height: 100%;
+}
+.carousel-inner {
+    height: 100%;
+}
+
+/*****************************************
+ *****************************************
+ **     DECOUVREZ NOTRE APPLICATION     **
+ *****************************************
+ *****************************************/
+ .dna {
+    padding:0;
+ }
+
+/******************
+ ******************
+ **    SLIDER    **
+ ******************
+ ******************/
+.slider {
+    padding: 0;
+    margin:0;
+    height: 525px;
+    background-color: #00134c;
+}
+#myCarousel2 .item:nth-child(1) {
+    background-image: url(../img/homepage/caroussel2/1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*opacity: 0.4;*/
+}
+#myCarousel2 .item:nth-child(2)  {
+    background-image: url(../img/homepage/caroussel2/2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#myCarousel2 .item:nth-child(3) {
+    background-image: url(../img/homepage/caroussel2/3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#myCarousel2 .item:nth-child(4) {
+    background-image: url(../img/homepage/caroussel2/4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#myCarousel2 .item:nth-child(5) {
+    background-image: url(../img/homepage/caroussel2/5.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/******* Overlay + texte ********/
+.slider .overlaytest {
+  background: #333;
+  background: rgba(0, 0, 0, .4);
+  position: relative;
+  float: right;
+  z-index: 500;
+  width: 35%;
+  height: 100%;
+}
+.overlaySlide {
+    font-family: Roboto;
+    color: #ffffff;
+}
+.overlaySlide .sliderTitre {
+    height: 40px;
+    margin-top: 66px;
+    border-bottom: solid;
+    border-color: #ffffff;
+    font-size: 23px;
+    font-weight: bold;
+    text-align: left;
+    color:#80cbc4;
+}
+
+.overlaySlide .sliderParag {
+    border-color: #ffffff;
+    font-size: 15px;
+    font-style: italic;
+    text-align: left;
+    padding-bottom: 0;
+}
+
+.overlaySlide .sliderListe {
+    border-color: #ffffff;
+    font-size: 18px;
+    text-align: left;
+    margin-top: 64px;
+    margin-bottom: 71px;
+    padding:0 0 0 18px;
+    color:#80cbc4;
+}
+
+.overlaySlide .sliderListe2 {
+    border-color: #ffffff;
+    font-size: 15px;
+    text-align: left;
+    margin-top: 64px;
+    margin-bottom: 71px;
+    padding:0;
+    line-height:27px;
+}
+.overlaySlide .sliderListe .sliderListe2 ul{
+    margin-top: 29px;
+}
+.slider button {
+    margin-left: 60px;
+    width: 100%;
+}
+/***************************
+ ***************************
+ **    DERNIERS AJOUTS    **
+ ***************************
+ **************************/
+ .da {
+    margin-top: 70px;
+    font-family: Roboto;
+    font-size: 15px;
+ }
+.da img {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    padding: 0;
+    z-index:901;
+}
+ .da .row {
+    padding: 0;
+}
+ .da .espcercle {
+    margin-bottom: 15px;    
+ }
+ .myB {
+    margin-right: 0%;
+    margin-left: 25%;
+    margin-top:3%;
+    padding: 0;
+    position: absolute;
+    z-index:900;
+
+ }
+ .da button {
+    padding-top: 5px;
+    padding-bottom: 0;
+    padding-left: 12px;
+    padding-right: 5px;
+    height: 70px;
+    width: 200px;
+    border-radius: 25px 25px 25px 25px;
+    background-color: #009688;
+    text-transform:capitalize;
+    font-family: Roboto;
+    font-size: 15px;
+
+ }
+ .da h2 {
+    color: #2b2b2b;
+ }
+.da p {
+    padding: 0px;
+    margin:.5em 0;
+    line-height: .9em;
+    font-size: 18px;
+}
+.da .pnom {
+    font-size: 18px;
+}
+ .da .mappy {
+    height: 560px;
+    padding: 0;
+}
+
+/********************
+ ********************
+ **    PARALLAX    **
+ ********************
+ ********************/
+.parallax1 {
+    padding: 0;
+    margin-top:70px;
+    background-color: #256;
+    height: 500px;
+}
+#section1 {
+    padding: 0;
+    background-image: url("../img/homepage/parallax/1.jpg");
+    width: 100%;
+    height: 500px;
+}
+.parallax2 {
+    padding: 0;
+    margin-top:70px;
+    background-color: #256;
+    height: 300px;
+}
+#section2 {
+    padding: 0;
+    background-image: url("../img/homepage/parallax/2.jpg");
+    width: 100%;
+    height: 300px;
+}
+
+/***************************
+ ***************************
+ **       Compteurs       **
+ ***************************
+ ***************************/
+.cpteurs {
+    padding: 0;
+    margin-top:70px;
+    margin-bottom: 70px;
+    text-align: center;
+}
+.cpteurs h2 {
+    padding: 0;
+    margin-top: 70px;
+    font-size: 55px;
+    color: #00897b;
+}
+.cpteurs h3 {
+    padding: 0;
+    font-size: 20px;
+    color: #2b2b2b;
+    font-weight: 400;
+}
+.cpteurs .h3bis {
+    margin-top: 49px;
+    color:#004d40;
+}
+
+/***************************
+ ***************************
+ **    NOS PARTENAIRES    **
+ ***************************
+ ***************************/
+.partenaires {
+    padding: 0;
+    margin-top:70px;
+    text-align: center;
+    background-color: #80cbc4;
+    padding-bottom: 46px;
+}
+.partenaires h2 {
+    color: #2b2b2b;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+/***************************
+ ***************************
+ **    RESEAUX SOCIAUX    **
+ ***************************
+ ***************************/
+.rs {
+
+    padding: 0;
+    margin-top:70px;
+    text-align: center;
+    margin-bottom:70px;
+
+}
+.rs h2 {
+    color: #2b2b2b;
+    margin-bottom: 28px;
+}
+
+
+/********************************
+ ********************************
+ **   LES DIFFERENTS MEDIAS    **
+ ********************************
+ ********************************/
+
+/* Extra small devices (portrait phones, less than 576px) */ 
+@media (max-width: 575px) { 
+
+
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767px) {
+
+    .carousel {
+        display: none;
+    }
+
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+
+}
+
