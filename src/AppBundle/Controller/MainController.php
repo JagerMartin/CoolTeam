@@ -14,7 +14,21 @@ class MainController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/homepage.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        // Récupération des 5 dernières observations
+        $lastObservations = $em->getRepository('AppBundle:Observation')->findBy(array(), array('datetime' => 'DESC'), 5, 0);
+
+        // Génération de la carte pour ces observations
+        $map = $this->get('app.create_map_with_observations')->createMapWithObservations($lastObservations);
+        $map->setHtmlId('map_home_canvas');
+        $map->setStylesheetOptions(array('width' => '100%', 'height' => '100%'));
+        $map->setMapOption('zoom', 1);
+
+        return $this->render('default/homepage.html.twig', array(
+            'map' => $map,
+            'lastObservations' => $lastObservations
+        ));
     }
 
     /**
