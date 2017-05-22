@@ -62,6 +62,22 @@ class LoadFixtures implements FixtureInterface, OrderedFixtureInterface
         return $genera[$key];
     }
 
+    public function latitudeFrance()
+    {
+        return $this->frand(43, 50, 6); // Latitude de la france environ entre 43 et 50
+    }
+
+    public function longitudeFrance()
+    {
+        return $this->frand(-1, 6, 6); // Longitude de la france environ entre -1 et 6
+    }
+
+    // Méthode de randomisation de chiffres à virgule
+    private function frand($min, $max, $decimals = 0) {
+        $scale = pow(10, $decimals);
+        return mt_rand($min * $scale, $max * $scale) / $scale;
+    }
+
     /**
     +     * Get the order of this fixture
     +     * @return integer

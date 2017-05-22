@@ -18,13 +18,20 @@ class CreateMapWithObservations
 {
     public function createMapWithObservations($observations, $random = true){
         $map = new Map();
-        $map->setMapOption('zoom', 0);
+        $map->setMapOption('zoom', 5);
+        $map->setCenter(new Coordinate(47.208744, 2.651214));
 
         foreach ($observations as $observation){
             $latitude = $random ? $this->addRandomizedOffset($observation->getLatitude()) : $observation->getLatitude();
             $longitude = $random ? $this->addRandomizedOffset($observation->getLongitude()) : $observation->getLongitude();
 
-            $circle = new Circle(new Coordinate($latitude, $longitude), 10000, ['clickable' => false]);
+            $circle = new Circle(new Coordinate($latitude, $longitude), 50000, ['clickable' => false]);
+            $circle->setOptions(array(
+                'fillColor' => '#EABE66',
+                'fillOpacity' => 0.9,
+                'strokeColor' => '#e0a01f',
+                'strokeWeight' => 0.5
+            ));
             $map->getOverlayManager()->addCircle($circle);
         }
 

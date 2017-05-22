@@ -10,8 +10,8 @@ AppBundle\Entity\Observation:
     observation_{1..1000}:
         datetime: <dateTimeBetween('-300 days', 'now')>
         observation: <text(300)>
-        latitude: <latitude()>
-        longitude: <longitude()>
+        latitude: <latitudeFrance()>
+        longitude: <longitudeFrance()>
         department: <departments()>
         status: 1
         taxref: <cdNames()>
