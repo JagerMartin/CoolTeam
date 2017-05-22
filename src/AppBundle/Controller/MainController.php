@@ -23,7 +23,6 @@ class MainController extends Controller
         $map = $this->get('app.create_map_with_observations')->createMapWithObservations($lastObservations);
         $map->setHtmlId('map_home_canvas');
         $map->setStylesheetOptions(array('width' => '100%', 'height' => '100%'));
-        $map->setMapOption('zoom', 1);
 
         return $this->render('default/homepage.html.twig', array(
             'map' => $map,
