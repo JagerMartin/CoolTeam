@@ -1,0 +1,110 @@
+/************************************
+ ************************************
+ **   Auteur : Fabienne BERNARD    **
+ **       Date : 22/05/2017        **
+ ** Projet : Nos amis les oiseaux  **
+ ************************************
+ ************************************/
+
+/* POLICES  */
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,300italic,300,100,100italic,500,400italic,500italic,700,700italic,900italic,900');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Amiko');
+
+.roboto { font-family: 'Roboto', sans-serif; }
+.titillium { font-family: 'Titillium Web', sans-serif;}
+.amiko { font-family: 'Amiko'; }
+
+html,body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Roboto;
+}
+a, a:hover {
+    text-decoration: none;
+}
+
+/******************
+ ******************
+ **    HEADER    **
+ ******************
+ ******************/
+header {
+    position: relative;
+    background-color: transparent;
+    z-index: 1;
+}
+
+/********************
+ *  BOUTONS MENU    *
+ ********************/
+.menuB {
+    width: 150px;
+    height: 40px;
+    font-family: Titillium Web;
+    font-weight: 600;
+    font-size: 13px;
+    padding-left: 0px;
+    padding-right: 0px;
+     /* espace entre les boutons*/
+    margin:0 0 3px 0;
+}
+.menuB .textcourt {
+    vertical-align: middle;
+}
+.textlong {
+    padding-top:4px;
+}
+
+/**************
+ *    logo    *
+ **************/
+.logo {
+    margin-top:32px;
+    max-height: 180px;
+    max-width: 98px;
+}
+
+/********************************
+ *  S'inscrire | S'identifier   *
+ ********************************/
+.sisi {
+    padding:0;
+    margin-top:32px;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: Titillium Web;
+    color: #ffffff;
+    text-transform: uppercase;
+
+}
+.sisi a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/**************************
+ **************************
+ ** Apprendre à observer **
+ **************************/
+.aogeneral {
+    margin: 0;
+    height:100%;
+    width: 100%;
+    background-image: url("../img/apprendreaobserver/aofond.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.aogeneral .blockPioupiou {
+    position: relative;
+    z-index: 40;
+}
+.aogeneral .blockItems {
+
+}
+.aogeneral .blockText {
+
+}

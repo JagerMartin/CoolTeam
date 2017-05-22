@@ -1,8 +1,52 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block title %}{{ parent() }} - Apprendre à observer{% endblock %}
 
-{% block body %}{% block container %}
-    {% block footer %}
+{% block body %}
+
+    <div class="container container-fluid aogeneral" style="position: relative;">
+        {{ include("header.html.twig") }}
+        <div class="container contGen" style="margin-bottom: 170px;">
+            <img src="{{ asset('img/apprendreaobserver/aobird.png') }}" style="position: absolute;z-index: 202; margin-left: 60px; margin-top: -5%" >
+            <div class="row">
+                <div class="col-2" style="margin: 0;padding: 0;">
+                    {{ include('menu.html.twig') }}
+                </div>
+                <div class="col-10" style="background-color:green;">Menu
+                    <div class="row">
+                        <div class="col-2 offset-2" class="blockPioupiou">
+                            <!--<img src="{{ asset('img/apprendreaobserver/aobird.png') }}" >-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 offset-1" style="background-color: #0D47A1">
+                            <p>dnfjksdfgsdh</p>
+                            <hr>
+                            <p>dfngkdfgdfklgj</p>
+                            <hr>
+                            <p>gkdfjgkldjg</p>
+                            <hr>
+                            <p>zefjzefjsdkljfkl</p>
+                            <hr>
+                            <p>zefjzefjsdkljfkl</p>
+                        </div>
+                        <div class="col-8" style="background-color: #0D47A1">
+                            <p>dfnsdjbnfsfjksdbnfsfjnsdkfnfddddddddddddddddddddddddddddddddddddddddd<br>dsfsdklfnsdjknfjksdbnfgsjfgndjgfbgd
+                            dsbnsdjfsjkfnsdjk jsnvjdbnvjkdbfgvjkd jsdfndkjfbgsdfjkbg sdfgbgfsdjkgbdfjgbsg,mùsldk sdl jsdklfnskl fnhskldfskldj</p>
+                        </div>
+                    </div>
+                    <div class="row" style="background-color: #0D47A1">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         {{ include("footer.html.twig") }}
-    {% endblock %}
+    </div>
 {% endblock %}
