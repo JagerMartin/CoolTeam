@@ -11,36 +11,173 @@
     <div class="container container-fluid aogeneral" style="position: relative;">
         {{ include("header.html.twig") }}
         <div class="container contGen" style="margin-bottom: 170px;">
-            <img src="{{ asset('img/apprendreaobserver/aobird.png') }}" style="position: absolute;z-index: 202; margin-left: 60px; margin-top: -5%" >
+            <!-- image du piou -->
+            <img src="{{ asset('img/apprendreaobserver/aobird.png') }}" style="position: absolute;z-index: 202; margin-left: 40%; margin-top: -15px" >
+
             <div class="row">
+                <!-- MENU Général gauche-->
                 <div class="col-2" style="margin: 0;padding: 0;">
                     {{ include('menu.html.twig') }}
                 </div>
-                <div class="col-10" style="background-color:green;">Menu
+                <!-- Bloc Text et menu-->
+                <div class="col-10" style="margin: 0;">
                     <div class="row">
-                        <div class="col-2 offset-2" class="blockPioupiou">
-                            <!--<img src="{{ asset('img/apprendreaobserver/aobird.png') }}" >-->
+                        <div class="col-2 offset-1" style="margin-top: 47px">
+                                <a href="#aoquand" class="btn btn-link aobutton align-middle">Quand les observer?</a>
+                                <a href="#aoemporter" class="btn btn-link aobutton align-middle">Que faut-il emporter?</a>
+                                <a href="#aocomment" class="btn btn-link aobutton align-middle">Comment les observer?</a>
+                                <a href="#aonoter" class="btn btn-link aobutton align-middle">Que faut-il noter?</a>
+                                <a href="#aocharte" class="btn btn-link aobutton align-middle">Charte du respect et de la protection des oiseaux</a>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2 offset-1" style="background-color: #0D47A1">
-                            <p>dnfjksdfgsdh</p>
-                            <hr>
-                            <p>dfngkdfgdfklgj</p>
-                            <hr>
-                            <p>gkdfjgkldjg</p>
-                            <hr>
-                            <p>zefjzefjsdkljfkl</p>
-                            <hr>
-                            <p>zefjzefjsdkljfkl</p>
-                        </div>
-                        <div class="col-8" style="background-color: #0D47A1">
-                            <p>dfnsdjbnfsfjksdbnfsfjnsdkfnfddddddddddddddddddddddddddddddddddddddddd<br>dsfsdklfnsdjknfjksdbnfgsjfgndjgfbgd
-                            dsbnsdjfsjkfnsdjk jsnvjdbnvjkdbfgvjkd jsdfndkjfbgsdfjkbg sdfgbgfsdjkgbdfjgbsg,mùsldk sdl jsdklfnskl fnhskldfskldj</p>
-                        </div>
-                    </div>
-                    <div class="row" style="background-color: #0D47A1">
 
+                        <div class="col-8 blocText">
+                            <div class="col-4 offset-4" style="padding-top:20px;background-color: #00695c;color:#ffffff;margin-top: -5%;margin-bottom: 0;height:60px;text-align: center">APPRENDRE A OBSERVER</div>
+                            <!--Card-->
+                            <div class="card card-cascade narrower" style="background-color: transparent;">
+                                <!--Quand les observer-->
+                                <div class="card-block" id="aoquand" style="padding-left: 0" >
+                                    <!--Titre-->
+                                    <h4 class="card-title">Quand les Observer?</h4>
+                                    <p class="card-text" style="padding-left: 10%">
+                                            <!--Titre secondaire-->
+                                        <h5>A QUELLE HEURE ?</h5>
+                                            <ul class="ulbloctext">
+                                                <li class="libloctext">
+                                                    Les oiseaux sont en général plus actifs le matin (une 1/2h avant le lever du soleil, puis pendant 4 ou 5 heures) pour se nourrir et défendre leur territoire après la nuit, puis l’activité reprend en fin de journée.
+                                                </li>
+                                                <li class="libloctext">
+                                                    Lors du nourrissage des jeunes, les allers-retours vers le nid durent parfois toute la journée.
+                                                </li>
+                                                <li class="libloctext">
+                                                    Certains oiseaux sont actifs de nuit : chouettes, hiboux, engoulevents, canards et certains passereaux.
+                                                </li>
+                                            </ul>
+                                        <!--Titre secondaire-->
+                                        <h5> LES SAISONS</h5>
+                                        <ul class="ulbloctext">
+                                            <li class="libloctext">
+                                                Le printemps est une excellente saison pour observer les oiseaux : ils sont très actifs pour défendre leur territoire, chercher une femelle, construire le nid et nourrir les jeunes. Les chants résonnent partout. Les mâles arborent leur plus beau plumage et sont postés bien en vue pour surveiller leur territoire.
+                                            </li>
+                                            <li class="libloctext">
+                                                L'été, les oiseaux commençent à se faire plus discrets. Ils muent en renouvelant leur plumage (on trouve alors beaucoup de plumes). Ils occupent tout leur temps à élever et nourrir leurs jeunes.
+                                            </li>
+                                            <li class="libloctext">
+                                                L'automne est la saison des migrations : des millions d'oiseaux survolent notre pays, avec tous les jeunes de l’année, et certains s'arrêtent en route pour se reposer.
+                                            </li>
+                                            <li class="libloctext">
+                                                L'hiver est la saison la plus creuse, mais quelques espèces d'oiseaux venant du Nord et de l'Est de l'Europe hivernent chez nous (oiseaux d'eau et passereaux). On peut aussi parfois observer des oiseaux plus rares.
+                                            </li>
+                                        </ul>
+                                        <h5>ASTUCES METEO</h5>
+                                        <ul class="ulbloctext">
+                                            <li class="libloctext">
+                                                En général, les oiseaux sont plus actifs lors des journées ensoleillées sans trop de vent.
+                                            </li>
+                                            <li class="libloctext">
+                                                Par temps très chaud,  vous les trouverez plutôt vers les plans d'eau.
+                                            </li>
+                                            <li class="libloctext">
+                                                La pluie les oblige souvent à s’arrêter pour se protéger, dans des sites parfois assez insolites !
+                                            </li>
+                                            <li class="libloctext">
+                                                Observez le vent : il peut par exemple pousser les oiseaux vers la côte.
+                                            </li>
+                                        </ul>
+                                    </p>
+                                    <p style="margin-left: 17%"><a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">JE CREE MON COMPTE</a> <a href="" class="btn btn-primary">J'observe un oiseau</a></p>
+                                </div>
+                                <!--/.Card content-->
+
+                                <!--QUE FAUT Il EMPORTER -->
+                                <div class="card-block" id="aoemporter" style="display:none;">
+                                    <h5 class="red-text"></h5>
+                                    <!--Title-->
+                                    <h4 class="card-title">Que faut-il emporter?</h4>
+                                    <!--Text-->
+                                    <p class="card-text">
+                                        LE MATERIEL
+                                        •	des jumelles
+                                        •	éventuellement une longue-vue, avec un trépied pour la stabiliser et réaliser des observations sans trembler.
+                                        •	un appareil photo
+                                        •	un guide d'identification des oiseaux que vous trouverez sur ce site (lien vers fiche de recherche)
+                                        •	pour prendre des notes : vous pouvez noter et déposez vos observations directement sur notre site (lien vers une fiche d’espèce pour exemple)
+                                        •	des fichiers MP3 pour écouter et comparer les chants entendus.
+                                        LES VETEMENTS
+                                        •	Soyez le plus discret possible : évitez les vêtements aux couleurs vives, choisissez des tons proches du paysage.
+                                        •	Par temps frais, emportez des vêtements chauds pour ne pas vous refroidir si vous prévoyez de longues heures d'observation !
+                             </p>
+                                    <p style="text-align: center"><a class="btn btn-primary">JE CREE MON COMPTE</a></p>
+                                </div>
+                                <!--/.Card content-->
+
+                                <!--Comment les observer -->
+                                <div class="card-block" id="aocomment" style="display:none;">
+                                    <h5 class="red-text"></h5>
+                                    <!--Title-->
+                                    <h4 class="card-title">Que faut-il emporter?</h4>
+                                    <!--Text-->
+                                    <p class="card-text">
+                                        LE MATERIEL
+                                        •	des jumelles
+                                        •	éventuellement une longue-vue, avec un trépied pour la stabiliser et réaliser des observations sans trembler.
+                                        •	un appareil photo
+                                        •	un guide d'identification des oiseaux que vous trouverez sur ce site (lien vers fiche de recherche)
+                                        •	pour prendre des notes : vous pouvez noter et déposez vos observations directement sur notre site (lien vers une fiche d’espèce pour exemple)
+                                        •	des fichiers MP3 pour écouter et comparer les chants entendus.
+                                        LES VETEMENTS
+                                        •	Soyez le plus discret possible : évitez les vêtements aux couleurs vives, choisissez des tons proches du paysage.
+                                        •	Par temps frais, emportez des vêtements chauds pour ne pas vous refroidir si vous prévoyez de longues heures d'observation !
+                                    </p>
+                                    <p style="text-align: center"><a class="btn btn-primary">JE CREE MON COMPTE</a></p>
+                                </div>
+                                <!--/.Card content-->
+
+                                <!--Que faut-il noter -->
+                                <div class="card-block" id="aonoter" style="display:none;">
+                                    <h5 class="red-text"></h5>
+                                    <!--Title-->
+                                    <h4 class="card-title">Que faut-il emporter?</h4>
+                                    <!--Text-->
+                                    <p class="card-text">
+                                        LE MATERIEL
+                                        •	des jumelles
+                                        •	éventuellement une longue-vue, avec un trépied pour la stabiliser et réaliser des observations sans trembler.
+                                        •	un appareil photo
+                                        •	un guide d'identification des oiseaux que vous trouverez sur ce site (lien vers fiche de recherche)
+                                        •	pour prendre des notes : vous pouvez noter et déposez vos observations directement sur notre site (lien vers une fiche d’espèce pour exemple)
+                                        •	des fichiers MP3 pour écouter et comparer les chants entendus.
+                                        LES VETEMENTS
+                                        •	Soyez le plus discret possible : évitez les vêtements aux couleurs vives, choisissez des tons proches du paysage.
+                                        •	Par temps frais, emportez des vêtements chauds pour ne pas vous refroidir si vous prévoyez de longues heures d'observation !
+                                    </p>
+                                    <p style="text-align: center"><a class="btn btn-primary">JE CREE MON COMPTE</a></p>
+                                </div>
+                                <!--/.Card content-->
+
+                                <!--Que charte -->
+                                <div class="card-block" id="aocharte" style="display:none;">
+                                    <h5 class="red-text"></h5>
+                                    <!--Title-->
+                                    <h4 class="card-title">Que faut-il emporter?</h4>
+                                    <!--Text-->
+                                    <p class="card-text">
+                                        LE MATERIEL
+                                        •	des jumelles
+                                        •	éventuellement une longue-vue, avec un trépied pour la stabiliser et réaliser des observations sans trembler.
+                                        •	un appareil photo
+                                        •	un guide d'identification des oiseaux que vous trouverez sur ce site (lien vers fiche de recherche)
+                                        •	pour prendre des notes : vous pouvez noter et déposez vos observations directement sur notre site (lien vers une fiche d’espèce pour exemple)
+                                        •	des fichiers MP3 pour écouter et comparer les chants entendus.
+                                        LES VETEMENTS
+                                        •	Soyez le plus discret possible : évitez les vêtements aux couleurs vives, choisissez des tons proches du paysage.
+                                        •	Par temps frais, emportez des vêtements chauds pour ne pas vous refroidir si vous prévoyez de longues heures d'observation !
+                                    </p>
+                                    <p style="text-align: center"><a class="btn btn-primary">JE CREE MON COMPTE</a></p>
+                                </div>
+                                <!--/.Card content-->
+                            </div>
+                            <!--/.Card-->
+                        </div>
                     </div>
                 </div>
             </div>

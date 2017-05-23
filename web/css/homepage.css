@@ -54,10 +54,18 @@ header {
     width: 150px;
     height: 40px;
     font-family: Titillium Web;
-    font-weight: 700;  
-    font-size: 13px; 
-    padding:4px 0 4px 0px;
+    font-weight: 600;
+    font-size: 13px;
+    padding-left: 0px;
+    padding-right: 0px;
+    /* espace entre les boutons*/
     margin:0 0 3px 0;
+}
+.menuB .textcourt {
+    vertical-align: middle;
+}
+.textlong {
+    padding-top:4px;
 }
 
 /**************
@@ -271,7 +279,7 @@ header {
     padding: 0px;
     margin:.5em 0;
     line-height: .9em;
-    font-size: 18px;
+    font-size: 17px;
 }
 .da .pnom {
     font-size: 18px;

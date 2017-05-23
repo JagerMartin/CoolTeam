@@ -29,29 +29,6 @@
   </head>
 
     <body>
-    <div id="preloader" style="display: none;">
-        <div class="verticalcenter">
-            <div class="text-center">
-                <div id="status"> <div class="preloader-wrapper big active">
-                        <div class="preloader-wrapper big active">
-                            <div class="preloader-wrapper big active">
-                                <div class="preloader-wrapper big active">
-                                    <div class="spinner-layer spinner-blue-only">
-                                        <div class="circle-clipper left">
-                                            <div class="circle"></div>
-                                        </div><div class="gap-patch">
-                                            <div class="circle"></div>
-                                        </div><div class="circle-clipper right">
-                                            <div class="circle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div></div>
-            </div>
-        </div>
-    </div>
     {% block body %}{% block container %}{% endblock %}{% endblock %}
     {% block sidebar %}{% endblock %}
 
@@ -85,8 +62,6 @@
 
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
-        <!-- js local -->
-        <script src="{{ asset('js/main.js') }}"></script>
 
         <!-- TTT Newsletter -->
         <script>

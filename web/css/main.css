@@ -97,14 +97,67 @@ header {
     background-image: url("../img/apprendreaobserver/aofond.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: Roboto;
+    font-size: 15px;
 }
 .aogeneral .blockPioupiou {
-    position: relative;
-    z-index: 40;
+    position: absolute;
+    z-index: 202;
+    margin-left: 40%;
+    margin-top: -35px
 }
-.aogeneral .blockItems {
-
+.aogeneral .aobutton {
+    background-color: #ffffff;
+    background: rgba(255, 255, 255, .4);
+    font-size: 15px;
+    text-transform: inherit;
+    height: 60px;
+    width: 115%;
+    margin: 0;
+    color: #2b2b2b;
+    padding-right: 4px;
+    padding-left: 4px;
 }
-.aogeneral .blockText {
+.aogeneral a, a:hover{
+    text-decoration: none;
+}
 
+.aogeneral .blocText {
+    margin-top: 47px;
+    padding: 0;
+    background: #ffffff;
+    background: rgba(255, 255, 255, .4);
+}
+.aogeneral h4 {
+    text-align: right;
+    border-bottom-style: solid;
+    border-bottom-width: medium;
+    border-bottom-color: #00695c;
+    width: 40%;
+    padding-left: 0;
+    padding-top: 0%;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.aogeneral h5 {
+    padding-left: 31px;
+    padding-top: 28px;
+}
+.aogeneral p {
+    text-align: justify;
+}
+.aogeneral .ulbloctext {
+    padding-left: 70px;
+    text-align: justify;
+    padding-right: 30px;
+    line-height: 130%;
+    margin-bottom: 0;
+}
+.aogeneral .libloctext {
+    padding-bottom: 13px;
+    list-style-type: none; /* on annule la puce par défaut */
+    background-image: url(../img/puce.png); /* on affiche l'image souhaitée */
+    background-repeat: no-repeat; /* on annule la répétition par défaut */
+    background-position: left 40%; /* on positionne où l'on veut */
+    padding-left: 25px; /* pour éviter la superposition du contenu */
 }
