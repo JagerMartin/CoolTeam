@@ -62,7 +62,7 @@
 
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
-
+        
         <!-- TTT Newsletter -->
         <script>
         $(function(){
@@ -96,6 +96,12 @@
         });
 
         </script>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
+    {% block monscript %}{% endblock %}
+
     {% endblock %}
 </body>
 

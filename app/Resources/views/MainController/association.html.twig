@@ -1,18 +1,107 @@
 {% extends 'base.html.twig' %}
-{% block title %}{{ parent() }} - L'association{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+{% endblock %}
 
+{% block title %}{{ parent() }} - L'Association{% endblock %}
 
 {% block body %}
- {% block container %}
-<hr class="uk-grid-divider">
-<div class="uk-grid" data-uk-grid-margin>
 
-    <div class="uk-width-medium-2-3">
-        <div class="uk-panel uk-panel-header">
-
-            <h3 class="uk-panel-title">A propos de l'association</h3>
+    <div class="container container-fluid assocgeneral" style="position: relative;">
+        {{ include("header.html.twig") }}
+        <div class="container contGen" style="margin-bottom: 170px;">
+            <!-- image du piou -->
+            <img src="{{ asset('img/association/assbird.png') }}" style="position: absolute;z-index: 202; margin-left: 79%; margin-top: -40px" >
+            <div class="row">
+                <!-- MENU Général gauche-->
+                <div class="col-2" style="margin: 0;padding: 0;">
+                    {{ include('menu.html.twig') }}
+                </div>
+                <!-- Bloc Menu et texte à côté du menu principal-->
+                <div class="col-10" style="margin: 0;">
+                    <div class="row">
+                        <!-- Bloc Texte -->
+                        <div class="col-10 blocText">
+                            <!-- Titre du cadre -->
+                            <div class="col-4 offset-4 titreCadre" >L'ASSOCIATION</div>
+                            <!-- les différents textes-->
+                                <div class="card card-cascade narrower" style="background-color: transparent;">
+                                <!-- L'association -->
+                                <p class="card-block" >
+                                    <!--Titre-->
+                                    <h4 class="card-title">L'association</h4>
+                                    <!--Paragraphe 1-->
+                                    <p class="card-text" style="padding-left: 10%">
+                                        L’association Nos Amis Les Oiseaux a été créée en 2010 et regroupe aujourd’hui plus de 1200 passionnés d’ornithologie
+                                        qui œuvrent chaque jour pour la protection et la préservation des espèces.
+                                    </p>
+                                    <!--Paragraphe 2-->
+                                    <p class="card-text" style="padding-left: 10%">
+                                        L’association NAO a été fondée par Michel Dujardin, actuel président, vétérinaire
+                                        et directeur d’un centre de soins de la faune sauvage.
+                                    </p>
+                                    <!--Paragraphe 3-->
+                                    <p class="card-text" style="padding-left: 10%;margin-bottom: 0">
+                                        Grâce à son réseau d’adhérents et de bénévoles,
+                                        l’association NAO est activement engagée dans plusieurs actions concrètes :
+                                    </p>
+                                    <!-- Liste -->
+                                    <ul class="ulbloctext">
+                                            <li class="libloctext">
+                                                Collecte de fonds pour la construction de refuges,
+                                            </li>
+                                            <li class="libloctext">
+                                                Accueil dans des centres de soins et de sauvegarde d’oiseaux blessés, tombés du nid ou mazoutés,
+                                            </li>
+                                            <li class="libloctext">
+                                                Conseil auprès des collectivités régionales et locales, notamment pour la préservation du patrimoine naturel lors de projets d’infrastructures,
+                                            </li>
+                                            <li class="libloctext">
+                                                Signalement d’infractions relatives à la protection de la nature et de l’environnement,
+                                            </li>
+                                            <li class="libloctext">
+                                                Education et sensibilisation : organisation d’ateliers, de visites guidées, de conférences et d’expositions,
+                                            </li>
+                                            <li class="libloctext">
+                                                Participation à des programmes de recherche nationaux et internationaux.
+                                            </li>
+                                        </ul>
+                                    <!-- Bouton -->
+                                    <p class="card-text pbouton" style="margin-bottom: 40px">
+                                        <a href="http://helloasso.com" class="btn btn-primary teal darken-3">DEVENIR MEMBRE</a>
+                                    </p>
+                                <!--Titre-->
+                                <h4 class="card-title" style="width: 40%">Le programme de recherche</h4>
+                                <p class="card-text" style="padding-left: 10%">
+                                </p>
+                                <p class="card-text" style="padding-left: 10%">
+                                    Aujourd’hui, pour franchir une nouvelle étape, l’association NAO a relevé
+                                    le défi de collecter des observations à grande échelle afin d’alimenter activement
+                                    un programme de recherche du CNRS qui vise à étudier les effets du climat,
+                                    de l’urbanisation et de l’agriculture sur la biodiversité.
+                                </p>
+                                <p class="card-text" style="padding-left: 10%">
+                                    L’enjeu de ce programme inédit est de vérifier et de mettre en évidence,
+                                    de manière incontestable, les menaces actuelles sur l’équilibre de notre environnement naturel,
+                                    afin de pouvoir exercer une influence significative sur les politiques environnementales des années
+                                    à venir, au niveau national et international.
+                                </p>
+                                <p class="card-text" style="padding-left: 10%">
+                                    Grâce à notre site participatif, chaque observation que vous nous transmettez est vitale pour
+                                    la réussite de ce défi ! Alors aidez-nous dès maintenant à protéger les oiseaux et la nature !
+                                </p>
+                                <p class="card-text pbouton" style="margin-top: 20px">
+                                    <a href="{{ path('modeemploi') }}" class="btn btn-primary teal darken-3">COMMENT CA MARCHE</a>
+                                </p>
+                                </div>
+                            <!--/.les différents textes-->
+                        </div>
+                        <!--/ End Block texte -->
+                    </div>
+                </div>
+            </div>
         </div>
+        {{ include("footer.html.twig") }}
     </div>
-
-</div>
 {% endblock %}
