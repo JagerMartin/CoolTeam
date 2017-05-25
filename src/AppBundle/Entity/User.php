@@ -83,7 +83,7 @@ class User extends BaseUser
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */
@@ -97,6 +97,11 @@ class User extends BaseUser
      */
     private $updatedAt;
 
+
+    /**
+     * @var boolean
+     */ // Attribut non persisté en base de donnée
+    private $isNewsletterSubscriber;
 
 
     public function __construct()
@@ -127,6 +132,14 @@ class User extends BaseUser
         }
 
         return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 
     /**
@@ -343,5 +356,15 @@ class User extends BaseUser
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    public function getIsNewsletterSubscriber()
+    {
+        return $this->isNewsletterSubscriber;
+    }
+
+    public function setIsNewsletterSubscriber($isNewsletterSubscriber)
+    {
+        $this->isNewsletterSubscriber = $isNewsletterSubscriber;
     }
 }

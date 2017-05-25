@@ -1,0 +1,122 @@
+<!--
+
+
+
+
+
+
+
+PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN
+
+
+
+
+
+
+
+-->
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+
+    {% block stylesheets %}
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <style>
+
+        </style>
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 class="text-center">Mon profil</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            {% for message in app.session.flashbag.get('info') %}
+                <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+            {% endfor %}
+            {% for message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {{ form_start(form) }}
+    <div class="row">
+        <h3>Mes informations</h3>
+        <p><strong>Prénom :</strong> {{ user.firstName }}</p>
+        <p><strong>Nom :</strong> {{ user.lastName }}</p>
+        <p><strong>Status :</strong>
+            {% if user.hasRole('ROLE_OBSERVER') %}
+                Observateur <br/> Vous souhaitez passer pro ? (...)
+            {% elseif user.hasRole('ROLE_NATURALIST') %}
+                Naturaliste
+            {% elseif user.hasRole('ROLE_ADMINISTRATIF') %}
+                Administrateur
+            {% elseif user.hasRole('ROLE_SUPER_ADMIN') %}
+                Super administrateur
+            {% endif %}
+        </p>
+        <p>
+            <img src="../../../../{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.imageName }}" style="width: 110px; height: 130px;"/>
+            {{ form_row(form.imageFile) }}
+        </p>
+    </div>
+    <hr>
+    <div class="row">
+        <h3>Me concernant</h3>
+        {{ form_row(form.organization) }}
+        {{ form_row(form.observationFrequency) }}
+        {{ form_row(form.speciality) }}
+    </div>
+    <hr>
+    <div class="row">
+        <h3>Mon compte</h3>
+        {{ form_row(form.email) }}
+        {{ form_row(form.plainPassword) }}
+    </div>
+    <hr>
+    <div class="row">
+        <h3>Newsletter</h3>
+        {{ form_row(form.isNewsletterSubscriber) }}
+    </div>
+    <hr>
+    <div class="row">
+        <button type="submit" formnovalidate>Enregistrer</button>
+        {{ form_end(form) }}
+    </div>
+
+</div>
+
+
+
+
+{% block javascripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        $(function(){
+
+        });
+    </script>
+
+{% endblock %}
+</body>
+
+</html>

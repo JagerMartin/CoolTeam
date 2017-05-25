@@ -1,9 +1,12 @@
 <?php
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Newsletter;
 use AppBundle\Entity\User;
+use AppBundle\Form\UserProfileType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,6 +38,52 @@ class UserController extends Controller
         $em->flush();
 
         return new JsonResponse(array('message' => 'OK'), 200);
+    }
+
+    /**
+     * @Route("/admin/utilisateurs/profile/{id}", name="admin_user_profile", requirements={"id": "\d+"})
+     * @Security("has_role('ROLE_OBSERVER')")
+     */
+    public function userProfileAction(Request $request, User $user)
+    {
+        // Le profil d'un utilisateur ne peut être consulter que par l'utilisateur lui même ou par un admin
+        $currentUser = $this->get('security.token_storage')->getToken()->getUser();
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMINISTRATIF') && !($user->getId() == $currentUser->getId())) {
+            throw $this->createAccessDeniedException();
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $newsletterRepository = $em->getRepository('AppBundle:Newsletter');
+        $newsletter = $newsletterRepository->findBy(array('email' => $user->getEmail()));
+        // Vérification si l'utilisateur du profil à afficher est inscrit à la newsletter
+        $newsletter ? $user->setIsNewsletterSubscriber(true) : $user->setIsNewsletterSubscriber(false);
+
+        $form = $this->createForm(UserProfileType::class, $user);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $userManager = $this->get('fos_user.user_manager');
+            $userManager->updateUser($user);
+
+            // Gestion de l'inscription à la newsletter
+            $newsletter = $newsletterRepository->findOneBy(array('email' => $user->getEmail()));
+            if($user->getIsNewsletterSubscriber()){ // Si il souhaite recevoir la newsletter
+                if(!$newsletter){ // Si il n'est pas déjà inscrit
+                    $newsletter = new Newsletter();
+                    $newsletter->setEmail($user->getEmail());
+                    $em->persist($newsletter);
+                }
+            } else { // Si il ne souhaite pas recevoir la newsletter
+                if($newsletter){ // Si il est inscrit sur la liste
+                    $em->remove($newsletter);
+                }
+            }
+            $em->flush();
+        }
+
+        return $this->render('adminController/users/profile.html.twig', array(
+            'form' => $form->createView(),
+            'user' => $user,
+        ));
     }
 
     /**
@@ -96,4 +145,5 @@ class UserController extends Controller
             'adminCount' => $adminCount
         ));
     }
+
 }
