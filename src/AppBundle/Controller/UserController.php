@@ -21,8 +21,8 @@ class UserController extends Controller
             return new JsonResponse(array('message' => 'You can access this only using AJAX !'), 400);
         }
 
-        $IDs = json_decode($request->request->get('IDs'));
-        $enabled = (bool) $request->request->get('enabled');
+        $IDs = json_decode($request->request->get('IDs')); // Récupération de la liste des ID des utilisateurs à modifier
+        $enabled = (bool) $request->request->get('enabled'); // Récupération de l'état dans lequel faire passer les utilisateurs
 
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('AppBundle:User');
