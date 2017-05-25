@@ -110,6 +110,13 @@ vich_uploader:
             namer: vich_uploader.namer_uniqid
             inject_on_load:     true
 
+        user_profile_photo:
+            uri_prefix: ../web/uploads/profile
+            upload_destination: '%kernel.root_dir%/../web/uploads/profile'
+            namer: vich_uploader.namer_uniqid
+            inject_on_load:     true
+            delete_on_remove:   true
+
 # DateTimePicker Configuration
 sc_datetimepicker:
     picker: ~
