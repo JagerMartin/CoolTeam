@@ -6,6 +6,27 @@ AppBundle\Entity\User:
         email: <email()>
         enabled: true
 
+    observer{1..50}:
+        username (unique): <firstName()><lastName()>
+        plainPassword: 'observer'
+        role: ['ROLE_OBSERVER']
+        email (unique): 'test+<numberBetween(1, 1000)>@gmail.com'
+        enabled: <boolean(75)>
+        firstName: <firstName()>
+        lastName: <lastName()>
+        registrationDate: <dateTimeBetween('-300 days', 'now')>
+
+    naturalist{1..25}:
+        username (unique): <firstName()><lastName()>
+        plainPassword: 'naturalist'
+        role: ['ROLE_NATURALIST']
+        email (unique): 'test+<numberBetween(1, 1000)>@gmail.com'
+        enabled: <boolean(75)>
+        firstName: <firstName()>
+        lastName: <lastName()>
+        registrationDate: <dateTimeBetween('-300 days', 'now')>
+
+
 AppBundle\Entity\Observation:
     observation_{1..1000}:
         datetime: <dateTimeBetween('-300 days', 'now')>
