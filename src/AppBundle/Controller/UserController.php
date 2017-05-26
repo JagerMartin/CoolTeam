@@ -63,21 +63,8 @@ class UserController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             $userManager = $this->get('fos_user.user_manager');
             $userManager->updateUser($user);
-
             // Gestion de l'inscription à la newsletter
-            $newsletter = $newsletterRepository->findOneBy(array('email' => $user->getEmail()));
-            if($user->getIsNewsletterSubscriber()){ // Si il souhaite recevoir la newsletter
-                if(!$newsletter){ // Si il n'est pas déjà inscrit
-                    $newsletter = new Newsletter();
-                    $newsletter->setEmail($user->getEmail());
-                    $em->persist($newsletter);
-                }
-            } else { // Si il ne souhaite pas recevoir la newsletter
-                if($newsletter){ // Si il est inscrit sur la liste
-                    $em->remove($newsletter);
-                }
-            }
-            $em->flush();
+            $this->manageNewsletterSubscription($user);
 
             $this->addFlash('info', 'Les informations ont bien été enregistrées');
             $this->redirectToRoute('admin_user_profile', array('id' => $user->getId()));
@@ -87,6 +74,28 @@ class UserController extends Controller
             'form' => $form->createView(),
             'user' => $user,
         ));
+    }
+
+    // Méthode privée déchargeant userProfileAction de le gestion de l'inscription à la newsletter
+    private function manageNewsletterSubscription(User $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $newsletterRepository = $em->getRepository('AppBundle:Newsletter');
+
+        // Gestion de l'inscription à la newsletter
+        $newsletter = $newsletterRepository->findOneBy(array('email' => $user->getEmail()));
+        if($user->getIsNewsletterSubscriber()){ // Si il souhaite recevoir la newsletter
+            if(!$newsletter){ // Si il n'est pas déjà inscrit
+                $newsletter = new Newsletter();
+                $newsletter->setEmail($user->getEmail());
+                $em->persist($newsletter);
+            }
+        } else { // Si il ne souhaite pas recevoir la newsletter
+            if($newsletter){ // Si il est inscrit sur la liste
+                $em->remove($newsletter);
+            }
+        }
+        $em->flush();
     }
 
     /**
