@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Newsletter
@@ -25,6 +26,11 @@ class Newsletter
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Vous devez entrer une adresse e-mail.")
+     * @Assert\Email(
+     *     message = "L'email '{{ value }}' est invalide.",
+     *     checkMX = true
+     * )
      */
     private $email;
 

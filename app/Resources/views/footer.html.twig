@@ -5,8 +5,7 @@
             <div class="row">
                 <div class="col-4 blocnewsletter">
                     <h6>Inscrivez-vous à notre newsletter</h6>
-                    <input id="input_text" type="email" placeholder="Votre E-mail" style="background-color: #ffffff";>
-                    <button type="button" class="btn btn-default btn-sm mybutton">OK</button>
+                    {{ render(controller('AppBundle:Main:newsletter')) }}
                 </div>
                 <div class="col-4 blocsadherer" style="text-align: center">
                     <h6>Devenez membre de l'association</h6>
