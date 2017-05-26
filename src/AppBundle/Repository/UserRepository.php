@@ -51,6 +51,28 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         return new Paginator($query, true);
     }
 
+    public function getAdministrators($page, $nbPerPage)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :admin')
+            ->setParameter('admin', '%ROLE_ADMINISTRATIF%')
+            ->orWhere('u.roles LIKE :super')
+            ->setParameter('super', '%ROLE_SUPER_ADMIN%')
+            ->orderBy('u.registrationDate', 'DESC')
+            ->getQuery()
+        ;
+
+        $query
+            // On définit l'annonce à partir de laquelle commencer la liste
+            ->setFirstResult(($page-1)*$nbPerPage)
+            // Ainsi que le nombre d'annonce à afficher sur une page
+            ->setMaxResults($nbPerPage)
+        ;
+
+        // On retourne l'objet Paginator correspondant à la requête construite
+        return new Paginator($query, true);
+    }
+
     public function getUsersCount()
     {
         return $this->createQueryBuilder('u')

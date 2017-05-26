@@ -78,6 +78,9 @@ class UserController extends Controller
                 }
             }
             $em->flush();
+
+            $this->addFlash('info', 'Les informations ont bien été enregistrées');
+            $this->redirectToRoute('admin_user_profile', array('id' => $user->getId()));
         }
 
         return $this->render('adminController/users/profile.html.twig', array(
@@ -106,7 +109,7 @@ class UserController extends Controller
                 $usersList = $repository->getUsersByRole($page, $nbPerPage, "ROLE_NATURALIST");
                 break;
             case "administrateurs":
-                $usersList = $repository->getUsersByRole($page, $nbPerPage, "ROLE_ADMIN");
+                $usersList = $repository->getAdministrators($page, $nbPerPage);
                 break;
             default:
                 $usersList = $repository->getUsers($page, $nbPerPage);
@@ -135,7 +138,7 @@ class UserController extends Controller
         $userCount = $repository->getUsersCount();
         $observerCount = $repository->getUsersCountByRole("ROLE_OBSERVER");
         $naturalistCount = $repository->getUsersCountByRole("ROLE_NATURALIST");
-        $adminCount = $repository->getUsersCountByRole("ROLE_ADMIN");
+        $adminCount = $repository->getUsersCountByRole("ROLE_ADMINISTRATIF") + $repository->getUsersCountByRole("ROLE_SUPER_ADMIN");
 
         return $this->render('adminController/users/_user_list_menu.html.twig', array(
             'filter' => $filter,
