@@ -70,7 +70,12 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN
             {% endif %}
         </p>
         <p>
-            <img src="../../../../{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.imageName }}" style="width: 110px; height: 130px;"/>
+            {% if user.imageFile is not null %}
+                <img src="../../../../{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.imageName }}" style="width: 110px; height: 130px;"/>
+            {% else %}
+                <img src="{{ absolute_url(asset('img/no-photos.png')) }}" alt="Avatar vide" style="width: 110px; height: 130px;"/>
+            {% endif %}
+
             {{ form_row(form.imageFile) }}
         </p>
     </div>
