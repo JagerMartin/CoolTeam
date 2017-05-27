@@ -7,12 +7,56 @@
 {% block title %}{{ parent() }} - Apprendre à observer{% endblock %}
 
 {% block body %}
-
-    <div class="container container-fluid aogeneral" style="position: relative;">
+<body id="aofond">
+    <div class="container container-fluid aogeneral" style="position: relative;margin-bottom: 0">
         {{ include("header.html.twig") }}
         <div class="container contGen" style="margin-bottom: 170px;">
             <!-- image du piou -->
             <img src="{{ asset('img/apprendreaobserver/aobird.png') }}" style="position: absolute;z-index: 202; margin-left: 40%; margin-top: -15px" >
+                <!--Modal: Login Form-->
+                <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog cascading-modal" role="document">
+                        <!--Content-->
+                        <div class="modal-content">
+                            <!--Header-->
+                            <div class="modal-header light-blue darken-3 white-text">
+                                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
+                            </div>
+                            <!--Body-->
+                            <div class="modal-body">
+                                <div class="md-form form-sm">
+                                    <i class="fa fa-envelope prefix"></i>
+                                    <input type="text" id="form30" class="form-control">
+                                    <label for="form30">Your email</label>
+                                </div>
+
+                                <div class="md-form form-sm">
+                                    <i class="fa fa-lock prefix"></i>
+                                    <input type="password" id="form31" class="form-control">
+                                    <label for="form31">Your password</label>
+                                </div>
+
+                                <div class="text-center mt-2">
+                                    <button class="btn btn-info">Log in <i class="fa fa-sign-in ml-1"></i></button>
+                                </div>
+
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <div class="options text-center text-md-right mt-1">
+                                    <p>Not a member? <a href="#">Sign Up</a></p>
+                                    <p>Forgot <a href="#">Password?</a></p>
+                                </div>
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close <i class="fa fa-times-circle ml-1"></i></button>
+                            </div>
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+                <!--Modal: Login Form-->
             <div class="row">
                 <!-- MENU Général gauche-->
                 <div class="col-2" style="margin: 0;padding: 0;">
@@ -36,7 +80,7 @@
                             <!-- Titre du cadre -->
                             <div class="col-4 offset-4 titreCadre" >APPRENDRE A OBSERVER</div>
                             <!-- les différents textes-->
-                            <div class="card card-cascade narrower" style="background-color: transparent;">
+                            <!--<div class="card card-cascade narrower" style="background-color: transparent;">-->
                                 <!-- Quand les observer -->
                                 <div class="card-block" id="aoquand" style="padding-left: 0" >
                                     <!--Titre-->
@@ -237,7 +281,7 @@
                                    <p style="margin-left: 17%"><a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary teal darken-3">JE CREE MON COMPTE</a> <a href="" class="btn btn-primary teal darken-3">J'observe un oiseau</a></p>
                                 </div>
                                 <!--/.Charte-->
-                            </div>
+                            <!--</div>-->
                             <!--/.les différents textes-->
                         </div>
                         <!--/ End Block texte -->
@@ -245,6 +289,8 @@
                 </div>
             </div>
         </div>
-        {{ include("footer.html.twig") }}
     </div>
+    {% block footer %}
+        {{ include('footer.html.twig') }}
+    {% endblock %}
 {% endblock %}

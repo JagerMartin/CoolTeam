@@ -1,3 +1,8 @@
+/************************************************************
+ * Permet de masquer/faire apparaitre les div de la page    *
+ * Aprendre à observer en cliquant sur les différents item  *
+ * du menu                                                  *
+ ************************************************************/
 $(document).ready(function(){
     $("#aoemporterclick").click(function(){
         $("#aoemporter").show();
@@ -34,4 +39,12 @@ $(document).ready(function(){
         $("#aonoter").hide();
         $("#aocharte").show();
     });
+});
+
+/********************************************
+ * initialize les tooltips pour l'aide dans *
+ * l'ajout d'observations (info-bulle)      *
+ ********************************************/
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
 });

@@ -7,18 +7,65 @@
 {% block title %}{{ parent() }} - L'Association{% endblock %}
 
 {% block body %}
-
-    <div class="container container-fluid assocgeneral" style="position: relative;">
+<body id="assocfond">
+    <div class="container container-fluid assocgeneral" style="position: relative;margin-bottom: 0%">
         {{ include("header.html.twig") }}
         <div class="container contGen" style="margin-bottom: 170px;">
+
             <!-- image du piou -->
             <img src="{{ asset('img/association/assbird.png') }}" style="position: absolute;z-index: 202; margin-left: 79%; margin-top: -40px" >
+
+            {# modal login #}
+            <!--Modal: Login Form-->
+            <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog cascading-modal" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header light-blue darken-3 white-text">
+                            <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="md-form form-sm">
+                                <i class="fa fa-envelope prefix"></i>
+                                <input type="text" id="form30" class="form-control">
+                                <label for="form30">Your email</label>
+                            </div>
+
+                            <div class="md-form form-sm">
+                                <i class="fa fa-lock prefix"></i>
+                                <input type="password" id="form31" class="form-control">
+                                <label for="form31">Your password</label>
+                            </div>
+
+                            <div class="text-center mt-2">
+                                <button class="btn btn-info">Log in <i class="fa fa-sign-in ml-1"></i></button>
+                            </div>
+
+                        </div>
+                        <!--Footer-->
+                        <div class="modal-footer">
+                            <div class="options text-center text-md-right mt-1">
+                                <p>Not a member? <a href="#">Sign Up</a></p>
+                                <p>Forgot <a href="#">Password?</a></p>
+                            </div>
+                            <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close <i class="fa fa-times-circle ml-1"></i></button>
+                        </div>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+            <!--Modal: Login Form-->
             <div class="row">
                 <!-- MENU Général gauche-->
                 <div class="col-2" style="margin: 0;padding: 0;">
                     {{ include('menu.html.twig') }}
                 </div>
-                <!-- Bloc Menu et texte à côté du menu principal-->
+                <!-- Bloc texte à côté du menu principal-->
                 <div class="col-10" style="margin: 0;">
                     <div class="row">
                         <!-- Bloc Texte -->
@@ -26,10 +73,9 @@
                             <!-- Titre du cadre -->
                             <div class="col-4 offset-4 titreCadre" >L'ASSOCIATION</div>
                             <!-- les différents textes-->
-                                <div class="card card-cascade narrower" style="background-color: transparent;">
-                                <!-- L'association -->
                                 <p class="card-block" >
-                                    <!--Titre-->
+
+                                    <!--Titre l'association-->
                                     <h4 class="card-title">L'association</h4>
                                     <!--Paragraphe 1-->
                                     <p class="card-text" style="padding-left: 10%">
@@ -71,37 +117,82 @@
                                     <p class="card-text pbouton" style="margin-bottom: 40px">
                                         <a href="http://helloasso.com" class="btn btn-primary teal darken-3">DEVENIR MEMBRE</a>
                                     </p>
-                                <!--Titre-->
-                                <h4 class="card-title" style="width: 40%">Le programme de recherche</h4>
-                                <p class="card-text" style="padding-left: 10%">
-                                </p>
-                                <p class="card-text" style="padding-left: 10%">
-                                    Aujourd’hui, pour franchir une nouvelle étape, l’association NAO a relevé
-                                    le défi de collecter des observations à grande échelle afin d’alimenter activement
-                                    un programme de recherche du CNRS qui vise à étudier les effets du climat,
-                                    de l’urbanisation et de l’agriculture sur la biodiversité.
-                                </p>
-                                <p class="card-text" style="padding-left: 10%">
-                                    L’enjeu de ce programme inédit est de vérifier et de mettre en évidence,
-                                    de manière incontestable, les menaces actuelles sur l’équilibre de notre environnement naturel,
-                                    afin de pouvoir exercer une influence significative sur les politiques environnementales des années
-                                    à venir, au niveau national et international.
-                                </p>
-                                <p class="card-text" style="padding-left: 10%">
-                                    Grâce à notre site participatif, chaque observation que vous nous transmettez est vitale pour
-                                    la réussite de ce défi ! Alors aidez-nous dès maintenant à protéger les oiseaux et la nature !
-                                </p>
-                                <p class="card-text pbouton" style="margin-top: 20px">
-                                    <a href="{{ path('modeemploi') }}" class="btn btn-primary teal darken-3">COMMENT CA MARCHE</a>
-                                </p>
-                                </div>
+
+                                    <!--Titre le programme de recherche-->
+                                    <h4 class="card-title" style="width: 40%">Le programme de recherche</h4>
+                                    <p class="card-text" style="padding-left: 10%">
+                                        Aujourd’hui, pour franchir une nouvelle étape, l’association NAO a relevé
+                                        le défi de collecter des observations à grande échelle afin d’alimenter activement
+                                        un programme de recherche du CNRS qui vise à étudier les effets du climat,
+                                        de l’urbanisation et de l’agriculture sur la biodiversité.
+                                    </p>
+                                    <p class="card-text" style="padding-left: 10%">
+                                        L’enjeu de ce programme inédit est de vérifier et de mettre en évidence,
+                                        de manière incontestable, les menaces actuelles sur l’équilibre de notre environnement naturel,
+                                        afin de pouvoir exercer une influence significative sur les politiques environnementales des années
+                                        à venir, au niveau national et international.
+                                    </p>
+                                    <p class="card-text" style="padding-left: 10%">
+                                        Grâce à notre site participatif, chaque observation que vous nous transmettez est vitale pour
+                                        la réussite de ce défi ! Alors aidez-nous dès maintenant à protéger les oiseaux et la nature !
+                                    </p>
+                                    <p class="card-text pbouton" style="margin-top: 20px;margin-bottom: 40px">
+                                        <a href="{{ path('modeemploi') }}" class="btn btn-primary teal darken-3">COMMENT CA MARCHE</a>
+                                    </p>
+
+                                    <!--Titre Nos partenaires-->
+                                    <h4 class="card-title" style="width: 25%">Nos partenaires</h4>
+                                        <div class="container" style="margin-bottom: 65px;">
+                                            <div class="row">
+                                                <!-- Ligue -->
+                                                <div class="col-2 offset-1" style="text-align: center">
+                                                    <div class="row">
+                                                        <img src="{{ asset('img/homepage/partenaires/1.png') }}" style="width: auto;height: 70%;" alt="LPO">
+                                                    </div>
+                                                    <div class="row" style="padding-top: 8px;">
+                                                        Ligue pour la protection <br>des oiseaux
+                                                    </div>
+                                                </div>
+                                                <!-- Museum -->
+                                                <div class="col-2 offset-1" style="text-align: center">
+                                                    <div class="row">
+                                                        <img src="{{ asset('img/homepage/partenaires/2.png') }}" style="width: auto;height: 50%;" alt="LPO">
+                                                    </div>
+                                                    <div class="row" style="padding-top: 11px;">
+                                                        Museum National <br> d'histoire naturelle
+                                                    </div>
+                                                </div>
+                                                <!-- Conservatoire du littoral -->
+                                                <div class="col-2 offset-1" style="text-align: center">
+                                                    <div class="row" >
+                                                        <img src="{{ asset('img/homepage/partenaires/4.png') }}" style="width: 50%;height: 50%;" alt="LPO">
+                                                    </div>
+                                                    <div class="row" >
+                                                        Conservatiore du<br>littoral
+                                                    </div>
+                                                </div>
+                                                <!-- CNRS -->
+                                                <div class="col-2" style="text-align: center">
+                                                    <div class="row">
+                                                        <img src="{{ asset('img/homepage/partenaires/3.png') }}" style="width: auto;height: 50%;" alt="LPO">
+                                                    </div>
+                                                    <div class="row" style="padding-top: 18px;">
+                                                        Centre National de <br>la Recherche Scientifique
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                            </div>
                             <!--/.les différents textes-->
-                        </div>
+                        <!-- </div> -->
                         <!--/ End Block texte -->
                     </div>
                 </div>
             </div>
         </div>
-        {{ include("footer.html.twig") }}
     </div>
+    {% block footer %}
+        {{ include('footer.html.twig') }}
+    {% endblock %}
 {% endblock %}
