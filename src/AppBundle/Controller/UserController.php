@@ -15,6 +15,20 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class UserController extends Controller
 {
     /**
+     * @Route("admin/utilisateurs/promouvoir/naturaliste/{id}", name="admin_user_promote_naturalist", requirements={"id": "\d+"})
+     */
+    public function promoteNaturalistAction(User $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user->setRoles(array('ROLE_NATURALIST'));
+        $em->persist($user);
+        $em->flush();
+
+        $this->addFlash('info', 'L\'utilisateur "'.$user->getFirstName().' '.$user->getLastName().'" a été promu naturaliste.');
+        return $this->redirectToRoute('admin_user_list');
+    }
+
+    /**
      * @Route("/admin/utilisateurs/status", name="admin_user_status")
      * @Method("POST")
      */

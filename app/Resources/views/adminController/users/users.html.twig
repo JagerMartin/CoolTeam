@@ -103,7 +103,7 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
                         {% elseif 'ROLE_NATURALIST' in user.roles %}
                             Naturaliste
                         {% elseif 'ROLE_OBSERVER' in user.roles %}
-                            Observateur
+                            <a href="{{ path('admin_user_promote_naturalist', {'id': user.id}) }}"><i class="fa fa-caret-square-o-up fa-lg" aria-hidden="true"></i></a> Observateur
                         {% endif %}
                     </td>
                     <td>
