@@ -98,8 +98,10 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
                         {{ user.email }}
                     </td>
                     <td>
-                        {% if 'ROLE_ADMINISTRATIF' in user.roles or 'ROLE_SUPER_ADMIN' in user.roles %}
+                        {% if 'ROLE_SUPER_ADMIN' in user.roles %}
                             Administrateur
+                        {% elseif 'ROLE_ADMINISTRATIF' in user.roles %}
+                            Administratif
                         {% elseif 'ROLE_NATURALIST' in user.roles %}
                             Naturaliste
                         {% elseif 'ROLE_OBSERVER' in user.roles %}
