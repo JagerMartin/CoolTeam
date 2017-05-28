@@ -91,7 +91,7 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
@@ -123,9 +123,8 @@ class User extends BaseUser
      */
     public function setImageFile(File $image = null)
     {
-        $this->imageFile = $image;
-
         if ($image) {
+            $this->imageFile = $image;
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
