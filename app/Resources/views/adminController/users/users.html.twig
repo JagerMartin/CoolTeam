@@ -109,7 +109,7 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
                         {% endif %}
                     </td>
                     <td>
-
+                        <a href="mailto:{{ user.email }}"><span class="glyphicon glyphicon-envelope"></span></a>
                     </td>
                     <td>
                         <a href="{{ path('admin_user_profile', {'id': user.id}) }}">Voir</a>
