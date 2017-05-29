@@ -32,7 +32,7 @@
                         <img src="../{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ picture.imageName }}" style="width: 50px; height: 60px;"/>
                     {% endif %}
                 {% else %}
-                    <img src="{{ absolute_url(asset('img/profile_vide.jpg')) }}" alt="Avatar vide" style="width: 50px; height: 60px;"/>
+                    <img src="{{ absolute_url(asset('img/no-photos.png')) }}" alt="Avatar vide" style="width: 50px; height: 60px;"/>
                 {% endfor %}
                 {{ observation.pictures.count }} photos
                 </div>
