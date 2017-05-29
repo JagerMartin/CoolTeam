@@ -1,4 +1,4 @@
 <a href="{{ path('admin_user_list', {'filter': 'tous'}) }}" {% if filter == "tous" %} class="activeFilter" {% endif %}>Tous ({{ userCount }})</a> &nbsp;|&nbsp;
 <a href="{{ path('admin_user_list', {'filter': 'observateurs'}) }}" {% if filter == "observateurs" %} class="activeFilter" {% endif %}>Observateur ({{ observerCount }})</a> &nbsp;|&nbsp;
 <a href="{{ path('admin_user_list', {'filter': 'naturalistes'}) }}" {% if filter == "naturalistes" %} class="activeFilter" {% endif %}>Naturaliste ({{ naturalistCount }})</a> &nbsp;|&nbsp;
-<a href="{{ path('admin_user_list', {'filter': 'administrateurs'}) }}" {% if filter == "administrateurs" %} class="activeFilter" {% endif %}>Administrateur ({{ adminCount }})</a>
+<a href="{{ path('admin_user_list', {'filter': 'administrateurs'}) }}" {% if filter == "administrateurs" %} class="activeFilter" {% endif %}>Administrateur/Administratifs ({{ adminCount }})</a>
