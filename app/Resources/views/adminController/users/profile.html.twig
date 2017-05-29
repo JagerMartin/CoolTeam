@@ -56,11 +56,12 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN
     {{ form_start(form) }}
     <div class="row">
         <h3>Mes informations</h3>
-        <p><strong>Prénom :</strong> {{ user.firstName }}</p>
-        <p><strong>Nom :</strong> {{ user.lastName }}</p>
+        {{ form_row(form.firstName) }}
+        {{ form_row(form.lastName) }}
         <p><strong>Status :</strong>
             {% if user.hasRole('ROLE_OBSERVER') %}
-                Observateur <br/> Vous souhaitez passer pro ? (...)
+                Observateur <br/> Vous souhaitez passer pro ? Joignez-nous une copie de votre carte pro par mail contact@gmail.com
+                <a href="mailto:contact@gmail.com" class="btn btn-default">PASSER PRO !</a>
             {% elseif user.hasRole('ROLE_NATURALIST') %}
                 Naturaliste
             {% elseif user.hasRole('ROLE_ADMINISTRATIF') %}
