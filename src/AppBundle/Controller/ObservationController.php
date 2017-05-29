@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Observation;
-use AppBundle\Entity\Picture;
 use AppBundle\Form\ObservationInitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -17,35 +16,27 @@ class ObservationController extends Controller
      */
     public function observationAddAction(Request $request, $cdName)
     {
-        $observation = new Observation();
-        $observation->setDatetime(new \DateTime());
-        $observation->setTaxref($this->getDoctrine()->getManager()->getRepository('AppBundle:Taxref')->findOneBy(array('cdName' => $cdName)));
-        
         $em = $this->getDoctrine()->getManager();
+        $observation = new Observation();
         $em->persist($observation);
+        $observation->setDatetime(new \DateTime());
+        // Récupération des informations dans la taxref
+        $observation->setTaxref($this->getDoctrine()->getManager()->getRepository('AppBundle:Taxref')->findOneBy(array('cdName' => $cdName)));
+        // Vérification des informations récupérées
+        if ($observation->getTaxref() === null) {
+            $this->addFlash('danger', "Veuillez revoir votre recherche");
+            return $this->redirectToRoute('app_search');
+        }
+        $this->get('app.pictures')->generate($observation);
 
-        // faire un service
-        $observation->addPicture(new Picture());
-        $observation->addPicture(new Picture());
-        $observation->addPicture(new Picture());
-
-        $form = $this->createForm(ObservationInitType::class, $observation, array(
-            'attr' => array('id' => 'observation_form')
-        ));
+        $form = $this->createForm(ObservationInitType::class, $observation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            // service suppression filename
-            $pictures = $observation->getPictures();
-            foreach ($pictures as $picture) {
-                if(!$picture->getImageFile()) {
-                    $observation->removePicture($picture);
-                }
-            }
-
+            $observation->setStatus(Observation::PENDING);
+            $this->get('app.pictures')->deleteEmptyPicture($observation);
             $em->flush();
-            $this->addFlash('info', "Observation ajoutée.");
+            $this->addFlash('info', "Observation ajoutée");
             return $this->redirectToRoute('app_observation', array(
                 'id' => $observation->getId()
             ));
@@ -63,7 +54,7 @@ class ObservationController extends Controller
      */
     public function observationUpdateAction()
     {
-        return $this->render('::base.html.twig');
+        return $this->render(':Observation:update.html.twig');
     }
 
     /**

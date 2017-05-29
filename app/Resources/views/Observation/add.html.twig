@@ -1,84 +1,118 @@
-{% extends ':adminController/dashboard:dashboardbase.html.twig'%}
-{% form_theme form 'bootstrap_3_layout.html.twig' %}
-{% block title %}Ajout d'une Observation - {{ parent() }}{% endblock %}
-{% block body %}
-    {% block container %}
-        <div class="container-fluid" id="viewobserv">
-            <!-- Page Heading -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header" style="font-size: 25px;font-weight: 600;color: #ffffff;text-transform: uppercase">
-                        <i class="fa fa-eye"></i> Ajout d'une Observation
-                    </h1>
-                </div>
-            </div>
-            <!-- Messages d'info/d'erreur -->
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2">
-                    {% for message in app.session.flashbag.get('info') %}
-                        <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
-                    {% endfor %}
-                    {% for message in app.session.flashbag.get('error') %}
-                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
-                    {% endfor %}
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Page ajout observation</title>
 
-            {{ form_stylesheet(form) }}
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{{ asset('css/observation.css') }}" rel="stylesheet"/>
+
+    <!-- Besoin datepicker -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/pictures.js') }}"></script>
+    <!-- Besoin localisation -->
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyA6jv-xrqUOdmXVq6BnYVYXVWnm0T1wSg4&sensor=false"></script>
+
+    <script src="{{ asset('js/localization.js') }}"></script>
+
+
+</head>
+
+<body onload="defaultMap();">
+
+
+<h1 class="text-center">Déposer une observation</h1>
+<hr/>
+
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        {% for message in app.session.flashbag.get('info') %}
+            <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+        {% endfor %}
+        {% for message in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+        {% endfor %}
+    </div>
+</div>
+
+{{ form_stylesheet(form) }}
+
+{{ form_javascript(form) }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Tous les éléments sont obligatoires sauf les photos.</p>
+            <h4>Famille : {{ observation.taxref.family }}</h4>
+            <h4>Lb_name : {{ observation.taxref.lbName }}</h4>
+            <h4>Nom_vernaculaire : {{ observation.taxref.vernacularName }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{ form_start(form) }}
             <div class="row">
-                <div class="col-lg-6">
-                    <h4>Nom : {{ observation.taxref.vernacularName }}</h4>
-                    <h4>Nom complet : {{ observation.taxref.fullName }}</h4>
-                    <h4>Famille : {{ observation.taxref.family }}</h4>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_label(form.datetime, 'Date et heure' ) }}
+                        {{ form_widget(form.datetime, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.datetime) }}
+                    </div>
+                    <div>
+                        {{ form_label(form.sex, 'Sexe' ) }}
+                        {{ form_widget(form.sex) }}
+                        {{ form_errors(form.sex) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.observation, 'Observation' ) }}
+                        {{ form_widget(form.observation, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.observation) }}
+                    </div>
+                    <p>Localisation :</p>
+                    <div>
+                        <button type="button" class="btn btn-primary" onclick="initialize()">Me Géolocaliser</button>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.latitude, 'Latitude' ) }}
+                        {{ form_widget(form.latitude, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.latitude) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.longitude, 'Longitude' ) }}
+                        {{ form_widget(form.longitude, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.longitude) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.department, 'Département' ) }}
+                        {{ form_widget(form.department, {'attr': {'class': 'form-control', 'readonly': 'readonly'}}) }}
+                        {{ form_errors(form.department) }}
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary" onclick="codeLatLng()">Voir sur la carte</button>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div id="map_canvas"></div>
                 </div>
             </div>
+            <hr/>
             <div class="row">
-                <div class="col-lg-6">
-                {{ form_start(form) }}
-                <div>
-                    {{ form_label(form.datetime, 'Date et heure' ) }}
-                    {{ form_widget(form.datetime) }}
-                    {{ form_errors(form.datetime) }}
-                </div>
-                <div>
-                    {{ form_label(form.sex, 'Sexe' ) }}
-                    {{ form_widget(form.sex) }}
-                    {{ form_errors(form.sex) }}
-                </div>
-                <div>
-                    {{ form_label(form.observation, 'Observation' ) }}
-                    {{ form_widget(form.observation) }}
-                    {{ form_errors(form.observation) }}
-                </div>
-                <div>
-                    {{ form_label(form.latitude, 'Latitude' ) }}
-                    {{ form_widget(form.latitude) }}
-                    {{ form_errors(form.latitude) }}
-                </div>
-                <div>
-                    {{ form_label(form.longitude, 'Longitude' ) }}
-                    {{ form_widget(form.longitude) }}
-                    {{ form_errors(form.longitude) }}
-                </div>
-                <div>
-                    {{ form_label(form.department, 'Département' ) }}
-                    {{ form_widget(form.department) }}
-                    {{ form_errors(form.department) }}
-                </div>
-                <div>
+                <div class="col-sm-12">
+                    <p>Photos (3 maximum) : </p>
                     <div class="row">
-                        {% set x = 0 %}
                         {% for picture in form.pictures %}
-                            <div class="col-lg-5 col-sm-5">
-                                {{ form_label(picture.imageFile, 'Photo... :' ) }}
-                                {{ form_widget(picture.imageFile, { 'attr': {'class': 'file_input_' ~ x} }) }}
+                            <div class="col-sm-2">
                                 {{ form_errors(picture.imageFile) }}
-                                <div id="image_preview_file_input_{{ loop.index0 }}" class="col-sm-12">
+                                {{ form_widget(picture.imageFile, { 'attr': {'class': 'input_file_' ~ loop.index0} }) }}
+                                <div id="image_preview_input_file_{{ loop.index0 }}" class="col-sm-12">
                                     <div class="thumbnail hidden">
                                         <img src="http://placehold.it/5" alt="">
                                         <div class="caption">
                                             <p>
-                                                <button type="button" id="file_input_{{ x }}"
+                                                <button type="button" id="input_file_{{ loop.index0 }}"
                                                         class="btn btn-default btn-danger">Annuler
                                                 </button>
                                             </p>
@@ -86,53 +120,14 @@
                                     </div>
                                 </div>
                             </div>
-                            {% set x = x + 1 %}
                         {% endfor %}
                     </div>
                 </div>
             </div>
-            </div>
         </div>
-        {{ form_javascript(form) }}
-        {{ form_end(form) }}
-    {% endblock %}
-{% endblock %}
-{% block monscript %}
-        <script>
-            $(function () {
-                // Ici on attend que le fichier soit sélectionné
-                $('.file_input_0, .file_input_1, .file_input_2').on('change', function (e) {
-                    var inputClass = "";
-                    if ($(this).hasClass('file_input_0')) {
-                        inputClass = 'file_input_0';
-                    } else if ($(this).hasClass('file_input_1')) {
-                        inputClass = 'file_input_1';
-                    } else {
-                        inputClass = 'file_input_2';
-                    }
+    </div>
+</div>
+{{ form_end(form) }}
+</body>
 
-                    var files = $(this)[0].files;
-
-                    if (files.length > 0) {
-                        // On part du principe qu'il n'y qu'un seul fichier
-                        // étant donné que l'on a pas renseigné l'attribut "multiple"
-                        var file = files[0],
-                            $image_preview = $('#image_preview_' + inputClass);
-
-                        // Ici on injecte les informations recoltées sur le fichier pour l'utilisateur
-                        // On affiche l'image
-                        $image_preview.find('.thumbnail').removeClass('hidden');
-                        $image_preview.find('img').attr('src', window.URL.createObjectURL(file));
-                    }
-                });
-
-                // Ici Bouton Annuler
-                $('#image_preview_file_input_0, #image_preview_file_input_1, #image_preview_file_input_2').find('button[type="button"]').on('click', function (e) {
-                    e.preventDefault();
-                    $('.' + $(this).attr('id')).val('');
-                    $('#image_preview_' + $(this).attr('id')).find('.thumbnail').addClass('hidden');
-                });
-            });
-        </script>
-
-    {% endblock %}
+</html>

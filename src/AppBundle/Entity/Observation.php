@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Observation
@@ -31,6 +32,7 @@ class Observation
      * @var \DateTime
      *
      * @ORM\Column(name="datetime", type="datetime")
+     * @Assert\DateTime()
      */
     private $datetime;
 
@@ -38,6 +40,7 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="sex", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     private $sex;
 
@@ -45,6 +48,8 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="observation", type="text", nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(max=500)
      */
     private $observation;
 
@@ -53,13 +58,16 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="comment", type="text", nullable=true)
+     * @Assert\Length(max=500)
      */
     private $comment;
-    
+
     /**
      * @var float
      *
      * @ORM\Column(name="latitude", type="float")
+     * @Assert\Type("numeric")
+     * @Assert\NotBlank()
      */
     private $latitude;
 
@@ -67,6 +75,8 @@ class Observation
      * @var float
      *
      * @ORM\Column(name="longitude", type="float")
+     * @Assert\Type("numeric")
+     * @Assert\NotBlank()
      */
     private $longitude;
 
@@ -74,6 +84,7 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="department", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $department;
 
@@ -82,7 +93,7 @@ class Observation
      *
      * @ORM\Column(name="status", type="integer", nullable=true)
      */
-    private $status;
+    private $status = NULL;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Taxref")
