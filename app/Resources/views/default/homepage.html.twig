@@ -10,8 +10,15 @@
 
 {% block body %}
 	<body>
+	<!-- Bouton qui permet de remonter en haut de page -->
+	<div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+		<a href="#top-section" class="btn-floating btn-large red waves-effect waves-light">
+			<i class="fa fa-arrow-up"></i>
+		</a>
+	</div>
+
 	<!-- HEADER-->
-	<header class="container-fluid">
+	<header class="container-fluid" id="top-section">
 		<div class="container">
 			<!-- Bouton hamburger -->
 			<button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#collapseEx2" aria-controls="collapseEx2" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +34,7 @@
 									<a href="{{ path('home') }}" class="btn btn-default teal lighten-3 menuB textCourt">Accueil</a>
 									<a href="{{ path('association') }}" class="btn btn-default teal lighten-2 menuB textCourt" >L'Association</a>
 									<a href="{{ path('modeemploi') }}" class="btn btn-default teal menuB textlong">Comment ça <br>marche?</a>
-									<a href="{{ path('home') }}" type="button" class="btn btn-default teal darken-1 menuB textcourt">Rechercher</a>
+									<a href="{{ path('app_search') }}" type="button" class="btn btn-default teal darken-1 menuB textcourt">Rechercher</a>
 									<a href="{{ path('apprendreObserver') }}" class="btn btn-default teal darken-3 menuB textlong">Apprendre <br>à Observer</a>
 									<a href="{{ path('contact') }}" class="btn btn-default teal darken-4 menuB textcourt">Contact</a>
 								</div>
@@ -41,9 +48,18 @@
 						<div class="col-2 offset-6 sisi">
 							<ul class="list-inline" style="text-align: right">
                                 {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-								<li class="list-inline-item">
-									<a href="{{ path('dashboard') }}"> Bonjour {{ app.user.username }}</a>
-								</li>
+									<div class="dropdown">
+										<a class="dropdown-toggle" id="dropdownMenu4" style="text-transform: capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i> Coucou {{ app.user.username }}
+										</a>
+										<div class="dropdown-menu dropdown-menu-right" style="background-color: #00695C" aria-labelledby="dropdownMenu4">
+											<a class="dropdown-item" href="{{ path('fos_user_profile_edit') }}" style="text-transform: capitalize"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Editer son profil</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="{{ path('dashboard') }}" style="text-transform: capitalize"><i class="fa fa-dashboard" aria-hidden="true"></i> Tableau de bord</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="{{ path('fos_user_security_logout') }}" style="text-transform: capitalize"><i class="fa fa-fw fa-power-off" aria-hidden="true"></i> Se deconnecter</a>
+										</div>
+									</div>
                                 {% else %}
 								<li class="list-inline-item"><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
 								<li class="list-inline-item">|</li>
@@ -58,7 +74,7 @@
 		</div>
 </header>
 	<!-- FIN HEADER -->
-    {# modal login #}
+
 	<!--Modal: Login Form-->
 	<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog cascading-modal" role="document">
@@ -103,7 +119,6 @@
 		</div>
 	</div>
 	<!--Modal: Login Form-->
-
 
 	<!--Carousel-->
 	<div class="container-fluid monCarousel">
@@ -184,7 +199,7 @@
 						<!-- BOUTON -->
 						<div class="row">
 							<div class="col-3  offset-8" style="margin-top: 29px;margin-bottom: 29px;">
-								<button type="button" class="btn btn-default teal darken-1">Je participe!</button>
+								<a href="{{ path('fos_user_registration_register') }}" type="button" class="btn btn-default teal darken-1">Je participe!</a>
 							</div>
 						</div>
 					</div>
@@ -223,18 +238,28 @@
 			<!--BOUTONS-->
 			<div class="row vdivide" style="margin-bottom: 70px">
 				<div class="col-4" style="text-align: center;">
-					<button type="button" class="btn btn-default teal darken-1">Apprendre à Observer</button>
+					<a href="{{ path('apprendreObserver') }}" type="button" class="btn btn-default teal darken-1" >Apprendre à Observer</a>
 				</div>
 				<div class="col-4" style="text-align: center;">
-					<button type="button" class="btn btn-default teal darken-1">Ne pas les déranger</button>
+					<button type="button" class="btn btn-default teal darken-1" data-toggle="modal" data-target="#centralModalLg">Ne pas les déranger</button>
 				</div>
 				<div class="col-4" style="text-align: center;">
-					<button type="button" class="btn btn-default teal darken-1">Rechercher un oiseau</button>
+					<a href="{{ path('app_search') }}" type="button" class="btn btn-default teal darken-1">Rechercher un oiseau</a>
 				</div>
 
 			</div>
 		</div>
+
 	</div>
+
+	<!-- POPUP CHARTE -->
+	<div class="modal fade" id="centralModalLg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document" >
+            {% include(':MainController:popupcharte.html.twig') %}
+		</div>
+	</div>
+	<!-- END POPUP CHARTE -->
+
 	<!-- END OBSERVER ET RESPECTER-->
 	<!-- SLIDER -->
 	<div class="container-fluid slider" >
@@ -374,6 +399,7 @@
 		</div>
 	</div>
 	<!-- END SLIDER -->
+
 	<!-- DERNIERS AJOUTS -->
 	<div class="container-fluid da" >
 		<div class="container">
@@ -384,7 +410,7 @@
 			</div>
 			<div class="row" style="margin-top: 70px;">
 				<div class="col-3 offset-1">
-					{% for observation in lastObservations %}
+                    {% for observation in lastObservations %}
 						<!-- Cercles photos avec texte -->
 						<div class="row espcercle">
 							<div class="col-6" style="padding: 0;">
@@ -398,24 +424,25 @@
 							</div>
 							<div class="col-6 myB">
 								<button type="button" class="btn btn-default">
-									{{ observation.datetime|date('d/m/Y') }}
+                                    {{ observation.datetime|date('d/m/Y') }}
 									<p>
-										{% if observation.taxref.vernacularName is defined %}
-											{{ observation.taxref.vernacularName }}
-										{% else %}
-											{{ observation.taxref.lbName }}
-										{% endif %}
+                                        {% if observation.taxref.vernacularName is defined %}
+                                            {{ observation.taxref.vernacularName }}
+                                        {% else %}
+                                            {{ observation.taxref.lbName }}
+                                        {% endif %}
 									</p>
 								</button>
 							</div>
 						</div>
-					{% endfor %}
+                    {% endfor %}
+
 				</div>
 
 				<!-- Map Google-->
 				<div class="col-6 offset-1 map">
-					{{ ivory_google_map(map) }}
-					{{ ivory_google_api([map]) }}
+                    {{ ivory_google_map(map) }}
+                    {{ ivory_google_api([map]) }}
 				</div>
 			</div>
 		</div>
@@ -472,16 +499,16 @@
 			</div>
 			<div class="row">
 				<div class="col-2">
-					<img src="{{ asset('img/homepage/partenaires/1.png') }}">
+					<a href="https://www.lpo.fr/"><img src="{{ asset('img/homepage/partenaires/1.png') }}"></a>
 				</div>
 				<div class="col-2 offset-2">
-					<img src="{{ asset('img/homepage/partenaires/2.png') }}">
+					<a href="https://www.mnhn.fr/"><img src="{{ asset('img/homepage/partenaires/2.png') }}"></a>
 				</div>
 				<div class="col-1 offset-1">
-					<img src="{{ asset('img/homepage/partenaires/3.png') }}">
+					<a href="http://www.conservatoire-du-littoral.fr/"><img src="{{ asset('img/homepage/partenaires/3.png') }}"></a>
 				</div>
 				<div class="col-2 offset-2">
-					<img src="{{ asset('img/homepage/partenaires/4.png') }}">
+					<a href="http://www.cnrs.fr/"><img src="{{ asset('img/homepage/partenaires/4.png') }}"></a>
 				</div>
 			</div>
 		</div>
@@ -504,16 +531,7 @@
 					<a href="https://www.instagram.com/?hl=fr"><img src="{{ asset('img/homepage/instagram.png') }}" style="text-align: center"></a>
 				</div>
 			</div>
-			<!-- pour remonter dans la page-->
-			<div class="row">
-				<div class="col-1 offset-11">
-					<div class="pull-right" style="height: 45px;width: 45px;">
-						<a class="btn-large red waves-effect waves-light">
-							<i class="fa fa-pencil-square" aria-hidden="true"></i>
-						</a>
-					</div>
-				</div>
-			</div>
+
 		</div>
 	</div>
 	<!-- END RESEAUX SOCIAUX -->

@@ -108,10 +108,9 @@ header {
 .aogeneral .aobutton {
     background-color: #ffffff;
     background: rgba(255, 255, 255, .65);
-    font-size: 15px;
-    text-transform: inherit;
+    font-size: 14px;
     height: 60px;
-    width: 112%;
+    width: 100%;
     margin: 0;
     color: #2b2b2b;
     padding-right: 4px;
@@ -155,11 +154,11 @@ header {
     margin-bottom: 0;
     width: 40%;
 }
-.aogeneral .h4treslong{
-    width: 88%;
+.aogeneral #h4treslong{
+    width: 73%;
 }
 .aogeneral #h4long {
-    width: 45%;
+    width: 38%;
 }
 .aogeneral #h4court {
     width: 34%;
@@ -167,6 +166,9 @@ header {
 .aogeneral h5 {
     padding-left: 31px;
     padding-top: 28px;
+    font-size: 15px;
+    font-family: Roboto;
+    font-weight: 800;
 }
 .aogeneral p {
     text-align: justify;
@@ -372,7 +374,6 @@ header {
 }
 .ccmgeneral p {
     text-align: justify;
-    padding-right: 10%;
 }
 .ccmgeneral .pbouton {
     margin:0;
@@ -380,7 +381,7 @@ header {
     text-align: center;
 }
 .ccmgeneral .ulbloctext {
-    padding-left: 15%;
+    padding-left: 5%;
     text-align: justify;
     padding-right: 10%;
     line-height: 130%;
@@ -389,7 +390,7 @@ header {
     padding-bottom: 0;
 }
 .ccmgeneral .ulssliste {
-    padding-left: 80px;
+    padding-left: 50px;
     text-align: justify;
     padding-right: 30px;
     line-height: 130%;
@@ -404,35 +405,201 @@ header {
     padding-left: 25px; /* pour éviter la superposition du contenu */
 }
 
-/**************
- *   Step     *
- **************/
+/*********************************
+ *   ETAPE COMMENT CA MARCHE     *
+ *********************************/
 .stepwizard {
     display: table;
-    width: 30px;
+    width: 100%;
     height: 400px;
     position: relative; }
-
 .stepwizard-row { display: table-row; }
-
 .stepwizard-step button[disabled] {
     opacity: 1 !important;
     filter: alpha(opacity=100) !important; }
-
+/************************
+    Barre verticale     *
+ ************************/
 .stepwizard-row:before {
-    position: absolute;
-    top: 0px;
+    position: absolute;left: 37px;
+    top: 11px;
     content: " ";
-    width: 1px;
-    height: 70%;
-    background-color: #ccc; }
-
+    width: 3px;
+    height: 78%;
+    background-color: #2b2b2b; }
 .stepwizard-step {
     display: table-cell;
     text-align: center;
-    position: relative; left: -15px;
-    z-index: 1; }
+    position: relative; left: 10px; top: 0px;
+    z-index: 1;
+}
 
-.btn-square {
-    width: 30px; height: 30px;
-    text-align: center; padding: 6px 0; font-size: 12px; line-height: 1.428571429; }
+/*****************************************
+    Barre verticale pour naturaliste     *
+ *****************************************/
+.stepwizard-row2 { display: table-row; }
+.stepwizard-row2:before {
+    position: absolute;left: 37px;
+    top: 11px;
+    content: " ";
+    width: 3px;
+    height: 68%;
+    background-color: #2b2b2b; }
+
+/********************************
+ ********************************
+ *      MENTIONS LEGALES        *
+ ********************************
+ ********************************/
+#mlfond {
+    background-image: url("../img/mentionslegales/mlfond.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mlgeneral {
+    margin: 0;
+    height:100%;
+    width: 100%;
+    font-family: Roboto;
+    font-size: 15px;
+}
+.mlgeneral .aobutton {
+    background-color: #ffffff;
+    background: rgba(255, 255, 255, .65);
+    font-size: 15px;
+    text-transform: inherit;
+    height: 60px;
+    width: 112%;
+    margin: 0;
+    color: #2b2b2b;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+.mlgeneral a {
+    text-decoration: none;
+    color:#FFFFFF;
+}
+.mlgeneral .blocText {
+    margin-top: 47px;
+    padding: 0;
+    background: #ffffff;
+    background: rgba(255, 255, 255, .65);
+}
+.mlgeneral .titreCadre {
+    padding-top:20px;
+    background-color: #00695c;
+    color:#ffffff;
+    margin-top: -5%;
+    margin-bottom: 0;
+    height:60px;
+    text-align: center;
+    font-family: Amiko;
+    font-size: 15px;
+    padding-right: 0;
+    padding-left: 0;
+}
+.mlgeneral h4 {
+    text-align: right;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #2b2b2b;
+    font-family: Amiko;
+    font-size: 20px;
+    font-weight: 600;
+    color: #00695c;
+    padding-left: 0;
+    padding-top: 0%;
+    padding-bottom: 0;
+    margin-bottom: 28px;
+    width: 21%;
+}
+.mlgeneral h5 {
+    padding-left: 31px;
+    padding-top: 28px;
+}
+.mlgeneral p {
+    text-align: justify;
+}
+.mlgeneral .pbouton {
+    margin:0;
+    padding: 0;
+    text-align: center;
+}
+.mlgeneral .ulbloctext {
+    padding-left: 5%;
+    text-align: justify;
+    padding-right: 10%;
+    line-height: 130%;
+    margin-bottom: 0;
+    margin-top: 10px;
+    padding-bottom: 0;
+}
+.mlgeneral .ulssliste {
+    padding-left: 50px;
+    text-align: justify;
+    padding-right: 30px;
+    line-height: 130%;
+    margin-bottom: 0;
+}
+.mlgeneral .libloctext {
+    padding-bottom: 13px;
+    list-style-type: none; /* on annule la puce par défaut */
+    background-image: url(../img/puce.png); /* on affiche l'image souhaitée */
+    background-repeat: no-repeat; /* on annule la répétition par défaut */
+    background-position: left 40%; /* on positionne où l'on veut */
+    padding-left: 25px; /* pour éviter la superposition du contenu */
+}
+/****************
+ ****************
+ *      POPUP   *
+ ****************
+ ****************/
+.ppgen {
+    background-color: #00695c;
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+}
+.ppgen #myModalLabel {
+    margin:0;
+    padding-top: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    font-family: Amiko;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-bottom-width: 100%;
+    border-bottom: #ffffff;
+    border-bottom-style: solid;
+
+}
+.ppgen .ulbloctext {
+    text-align: justify;
+    color: #FFFFFF;
+    line-height: 130%;
+    margin-bottom: 0;
+    margin-top: 10px;
+    padding-bottom: 0;
+}
+.ppgen .ulssliste {
+    padding-left: 50px;
+    text-align: justify;
+    padding-right: 30px;
+    line-height: 130%;
+    margin-bottom: 0;
+}
+.ppgen .libloctext {
+    padding-bottom: 13px;
+    list-style-type: none; /* on annule la puce par défaut */
+    background-image: url(../img/puce_blanche.png); /* on affiche l'image souhaitée */
+    background-size: 2%;
+    background-repeat: no-repeat; /* on annule la répétition par défaut */
+    background-position: left 40%; /* on positionne où l'on veut */
+    padding-left: 25px; /* pour éviter la superposition du contenu */
+}
+.ppgen .modal-footer{
+    padding-right: 40%;
+}

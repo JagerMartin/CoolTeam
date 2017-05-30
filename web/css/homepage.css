@@ -383,6 +383,60 @@ header {
     color: #2b2b2b;
     margin-bottom: 28px;
 }
+/****************
+ ****************
+ *      POPUP   *
+ ****************
+ ****************/
+.ppgen {
+    background-color: #00695c;
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+}
+.ppgen #myModalLabel {
+    margin:0;
+    padding-top: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    font-family: Amiko;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-bottom-width: 100%;
+    border-bottom: #ffffff;
+    border-bottom-style: solid;
+
+}
+.ppgen .ulbloctext {
+    text-align: justify;
+    color: #FFFFFF;
+    line-height: 130%;
+    margin-bottom: 0;
+    margin-top: 10px;
+    padding-bottom: 0;
+}
+.ppgen .ulssliste {
+    padding-left: 50px;
+    text-align: justify;
+    padding-right: 30px;
+    line-height: 130%;
+    margin-bottom: 0;
+}
+.ppgen .libloctext {
+    padding-bottom: 13px;
+    list-style-type: none; /* on annule la puce par défaut */
+    background-image: url(../img/puce_blanche.png); /* on affiche l'image souhaitée */
+    background-size: 2%;
+    background-repeat: no-repeat; /* on annule la répétition par défaut */
+    background-position: left 40%; /* on positionne où l'on veut */
+    padding-left: 25px; /* pour éviter la superposition du contenu */
+}
+.ppgen .modal-footer{
+    padding-right: 40%;
+}
 
 
 /********************************

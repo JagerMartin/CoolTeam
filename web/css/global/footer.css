@@ -43,7 +43,7 @@
     height: 30px;
     font-family: Titillium Web;
     background-color: #00695c;
-    font-size: 15px;
+    font-size: 13px;
 }
 .divers input{
     height: 30px;
@@ -55,6 +55,7 @@
     color: #ffffff;
     font-size: 15px;
     text-align: center;
+    padding-top: 5px;
 }
 /******************
  ******************

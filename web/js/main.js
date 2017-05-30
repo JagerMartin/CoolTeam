@@ -39,6 +39,15 @@ $(document).ready(function(){
         $("#aonoter").hide();
         $("#aocharte").show();
     });
+
+    $("#ccmobservclick").click(function(){
+        $("#ccmnaturaliste").hide();
+        $("#ccmobserv").show();
+    });
+    $("#ccmnaturalisteclick").click(function(){
+        $("#ccmnaturaliste").show();
+        $("#ccmobserv").hide();
+    });
 });
 
 /********************************************
@@ -48,3 +57,11 @@ $(document).ready(function(){
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
+
+/***************************************************
+ * Bouton qui permet de remonter en haut de page   *
+ ***************************************************/
+Waves.attach('.btn, .btn-floating', ['waves-light']);
+Waves.attach('.img-waves a', ['waves-light']);
+Waves.attach('.navbar a', ['waves-light']);
+Waves.init();
