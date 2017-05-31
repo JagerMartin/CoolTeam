@@ -89,16 +89,6 @@ class MainController extends Controller
     }
 
     /**
-     * @Route("/vieprivee", name="vieprivee")
-     *
-     */
-    public function viePriveeAction()
-    {
-        return $this->render('MainController/vieprivee.html.twig');
-    }
-
-
-    /**
      * @Route("/newsletter", name="newsletter")
      */
     public function newsletterAction()

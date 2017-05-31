@@ -8,6 +8,12 @@
 
 {% block body %}
 <body id="assocfond">
+    <!-- Bouton qui permet de remonter en haut de page -->
+    <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+        <a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
+            <i class="fa fa-arrow-up"></i>
+        </a>
+    </div>
     <div class="container container-fluid assocgeneral" style="position: relative;margin-bottom: 0%">
         {{ include("header.html.twig") }}
         <div class="container contGen" style="margin-bottom: 170px;">
@@ -78,7 +84,7 @@
                                     <!--Titre l'association-->
                                     <h4 class="card-title">L'association</h4>
                                     <!--Paragraphe 1-->
-                                    <p class="card-text" style="padding-left: 10%">
+                                    <p class="card-text" id="top-section" style="padding-left: 10%">
                                         L’association Nos Amis Les Oiseaux a été créée en 2010 et regroupe aujourd’hui plus de 1200 passionnés d’ornithologie
                                         qui œuvrent chaque jour pour la protection et la préservation des espèces.
                                     </p>

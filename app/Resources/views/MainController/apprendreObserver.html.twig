@@ -8,6 +8,13 @@
 
 {% block body %}
 <body id="aofond">
+<!-- Bouton qui permet de remonter en haut de page -->
+<div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+    <a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+</div>
+
     <div class="container container-fluid aogeneral" style="position: relative;margin-bottom: 0">
         {{ include("header.html.twig") }}
         <div class="container contGen" style="margin-bottom: 170px;">
@@ -86,7 +93,7 @@
                                     <!--Titre-->
                                     <h4 class="card-title" id="h4court">Quand les Observer?</h4>
                                              <!--Titre secondaire-->
-                                        <h5>A quelle heure ?</h5>
+                                        <h5 id="top-section">A quelle heure ?</h5>
                                             <ul class="ulbloctext">
                                                 <li class="libloctext">
                                                     Les oiseaux sont en général plus actifs le matin (une 1/2h avant le lever du soleil, puis pendant 4 ou 5 heures) pour se nourrir et défendre leur territoire après la nuit, puis l’activité reprend en fin de journée.
