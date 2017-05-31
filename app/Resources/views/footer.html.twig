@@ -1,6 +1,6 @@
 {% block footer %}
     <!-- NEWSLETTER -->
-    <div class="container-fluid divers">
+    <div class="container-fluid divers" style="margin: 0;">
         <div class="container">
             <div class="row">
                 <div class="col-4 blocnewsletter">
@@ -9,11 +9,11 @@
                 </div>
                 <div class="col-4 blocsadherer" style="text-align: center">
                     <h6>Devenez membre de l'association</h6>
-                    <p><a href="#" class="btn btn-default btn-sm mybutton">J'ADHERE!</a><p>
+                    <p><a href="{{ path('fos_user_registration_register') }}" class="btn btn-default btn-sm mybutton">J'ADHERE!</a><p>
                 </div>
                 <div class="col-4 blocdon">
-                    <h6>Devenez membre de l'association></h6>
-                    <p><button type="button" class="btn btn-default btn-sm mybutton">JE DONNE!</button></p>
+                    <h6>Faîtes un don à l'association</h6>
+                    <p><a href="http://www.helloasso.com" class="btn btn-default btn-sm mybutton">JE DONNE!</a></p>
                 </div>
             </div>
         </div>
@@ -23,13 +23,13 @@
     <!--Footer-->
     <footer class="page-footer">
         <!--Footer Links-->
-        <div class="container">
+        <div class="container container-fluid">
             <div class="row">
                 <!-- icone devant adresse -->
                 <div class="col-1" style="margin:0;padding:0;">
-                    <div class="row" style="margin-top: 17%;margin-bottom: 7%;margin-left: 90%"><h4><i class="fa fa-map-marker fa-2" aria-hidden="true"></i></h4></div>
-                    <div class="row" style="margin-left: 88%"><h4><i class="fa fa-phone fa-2" aria-hidden="true"></i></h4></div>
-                    <div class="row" style="margin-left: 85%"><h4><i class="fa fa-envelope fa-2" aria-hidden="true"></i></h4></div>
+                    <div class="row" style="margin-top: 17%;margin-bottom: 7%;margin-left: 90%"><h4 class="h4footer"><i class="fa fa-map-marker fa-2" aria-hidden="true"></i></h4></div>
+                    <div class="row" style="margin-left: 88%"><h4 class="h4footer"><i class="fa fa-phone fa-2" aria-hidden="true"></i></h4></div>
+                    <div class="row" style="margin-left: 85%"><h4 class="h4footer"><i class="fa fa-envelope fa-2" aria-hidden="true"></i></h4></div>
                 </div>
                 <!--Adresse-->
                 <div class="col-2" style="margin-top:0;padding-top: 6px;">
@@ -46,12 +46,12 @@
                 <div class="col-2 offset-2" style="margin-top:0;padding-top: 7px;">
                     <h6><u>PLAN DU SITE</u></h6>
                     <ul style="text-align: center;margin-top: 0; padding-top: 6px;">
-                        <li>Accueil</li>
-                        <li>L'association</li>
-                        <li>Comment ça marche?</li>
-                        <li>Rechercher</li>
-                        <li>Apprendre à observer</li>
-                        <li>Contact</li>
+                        <li><a href="{{ path('home') }}">Accueil</a></li>
+                        <li><a href="{{ path('association') }}">L'association</a></li>
+                        <li><a href="{{ path('modeemploi') }}">Comment ça marche?</a></li>
+                        <li><a href="{{ path('app_search') }}">Rechercher</a></li>
+                        <li><a href="{{ path('apprendreObserver') }}">Apprendre à observer</a></li>
+                        <li><a href="{{ path('contact') }}">Contact</a></li>
                     </ul>
                 </div>
 
@@ -59,7 +59,7 @@
                 <div class="col-2 offset-2" style="margin-top:0;padding-top: 7px;">
                     <h6><u>MENTIONS LEGALES</u></h6>
                     <ul style="text-align: center;margin-top: 0; padding-top: 6px;padding-bottom: 0px">
-                        <li><a href="#">MENTIONS LEGALES</a></li>
+                        <li><a href="{{ path('mentionslegales') }}">MENTIONS LEGALES</a></li>
                         <li style="padding-top: 6px;"><a href="#">POLITIQUE DE CONFIDENTIALITE</a></li>
                     </ul>
                     <p style="padding-bottom: 0;margin-bottom: 0;text-align: center">Copyright 2017 © <a href="https://Chrysalyd"> Agence Chrysalyd </a></p>

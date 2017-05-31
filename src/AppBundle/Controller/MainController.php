@@ -20,7 +20,6 @@ class MainController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        // Récupération des 5 dernières observations
         $lastObservations = $em->getRepository('AppBundle:Observation')->findBy(array(), array('datetime' => 'DESC'), 5, 0);
 
         // Génération de la carte pour ces observations
@@ -32,54 +31,7 @@ class MainController extends Controller
             'map' => $map,
             'lastObservations' => $lastObservations
         ));
-    }
 
-    /**
-     * @Route("/newsletter", name="newsletter")
-     */
-     public function newsletterAction()
-     {
-         // Création du formulaire de la newsletter
-         $newsletter = new Newsletter();
-         $form = $this->createForm(NewsletterType::class, $newsletter, array(
-             'action' => $this->generateUrl('ajax_newsletter')
-         ));
-
-         return $this->render('_newsletter_form.html.twig', array(
-             'form' => $form->createView()
-         ));
-     }
-
-    /**
-     * @Route("/ajax/newsletter", name="ajax_newsletter")
-     * @Method("POST")
-     */
-    public function ajaxNewsletterAction(Request $request)
-    {
-        if (!$request->isXmlHttpRequest()){
-            return new JsonResponse(array('message' => 'You can access this only using AJAX !'), 400);
-        }
-        $newsletter = new Newsletter();
-        $form = $this->createForm(NewsletterType::class, $newsletter);
-        $em = $this->getDoctrine()->getManager();
-
-        $form->handleRequest($request);
-        if ($form->isValid()){
-
-            $newsletterRepository = $em->getRepository('AppBundle:Newsletter');
-            $isNewsletter = $newsletterRepository->findOneBy(array('email' => $newsletter->getEmail()));
-            if(!$isNewsletter){ // Enregistrement de l'email indiqué si il n'est pas déjà enregistré
-                $em->persist($newsletter);
-                $em->flush();
-            }
-            $title = "Inscription à la newsletter réussie";
-            $body = "Vous êtes maintenant inscrit à la newsletter !";
-        } else { // Si le formulaire n'est pas valide
-            $title = "Echec de l'inscription à la newsletter";
-            $body = "L'adresse email indiquée n'est pas valide.";
-        }
-
-        return new JsonResponse(array('title' => $title, 'body' =>$body), 200);
     }
 
     /**
@@ -116,5 +68,66 @@ class MainController extends Controller
     public function associationAction()
     {
         return $this->render('MainController/association.html.twig');
+    }
+
+    /**
+     * @Route("/popupcharte", name="popupcharte")
+     *
+     */
+    public function popupCharteAction()
+    {
+        return $this->render('MainController/popupcharte.html.twig');
+    }
+
+    /**
+     * @Route("/mentionslegales", name="mentionslegales")
+     *
+     */
+    public function mentionsLegalesAction()
+    {
+        return $this->render('MainController/mentionslegales.html.twig');
+    }
+
+    /**
+     * @Route("/newsletter", name="newsletter")
+     */
+    public function newsletterAction()
+    {
+        // Création du formulaire de la newsletter
+        $newsletter = new Newsletter();
+        $form = $this->createForm(NewsletterType::class, $newsletter, array(
+            'action' => $this->generateUrl('ajax_newsletter')
+        ));
+        return $this->render('_newsletter_form.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+    /**
+     * @Route("/ajax/newsletter", name="ajax_newsletter")
+     * @Method("POST")
+     */
+    public function ajaxNewsletterAction(Request $request)
+    {
+        if (!$request->isXmlHttpRequest()){
+            return new JsonResponse(array('message' => 'You can access this only using AJAX !'), 400);
+        }
+        $newsletter = new Newsletter();
+        $form = $this->createForm(NewsletterType::class, $newsletter);
+        $em = $this->getDoctrine()->getManager();
+        $form->handleRequest($request);
+        if ($form->isValid()){
+            $newsletterRepository = $em->getRepository('AppBundle:Newsletter');
+            $isNewsletter = $newsletterRepository->findOneBy(array('email' => $newsletter->getEmail()));
+            if(!$isNewsletter){ // Enregistrement de l'email indiqué si il n'est pas déjà enregistré
+                $em->persist($newsletter);
+                $em->flush();
+            }
+            $title = "Inscription à la newsletter réussie";
+            $body = "Vous êtes maintenant inscrit à la newsletter !";
+        } else { // Si le formulaire n'est pas valide
+            $title = "Echec de l'inscription à la newsletter";
+            $body = "L'adresse email indiquée n'est pas valide.";
+        }
+        return new JsonResponse(array('title' => $title, 'body' =>$body), 200);
     }
 }

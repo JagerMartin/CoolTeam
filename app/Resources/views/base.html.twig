@@ -14,7 +14,7 @@
         <!-- Font Titillium web -->
         <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('css/global/font-awesome/css/font-awesome.min.css') }}">
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('css/global/bootstrap.min.css') }}" rel="stylesheet">
         <!-- Material Design Bootstrap -->
@@ -28,31 +28,7 @@
 
   </head>
 
-    <body>
-    <div id="preloader" style="display: none;">
-        <div class="verticalcenter">
-            <div class="text-center">
-                <div id="status"> <div class="preloader-wrapper big active">
-                        <div class="preloader-wrapper big active">
-                            <div class="preloader-wrapper big active">
-                                <div class="preloader-wrapper big active">
-                                    <div class="spinner-layer spinner-blue-only">
-                                        <div class="circle-clipper left">
-                                            <div class="circle"></div>
-                                        </div><div class="gap-patch">
-                                            <div class="circle"></div>
-                                        </div><div class="circle-clipper right">
-                                            <div class="circle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div></div>
-            </div>
-        </div>
-    </div>
-    {% block body %}{% block container %}{% endblock %}{% endblock %}
+    {% block body %}{% block container %}{% endblock %}{% block footer %}{% endblock %}{% endblock %}
     {% block sidebar %}{% endblock %}
 
     <!-- NewsletterModal -->
@@ -85,9 +61,7 @@
 
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
-        <!-- js local -->
-        <script src="{{ asset('js/main.js') }}"></script>
-
+        
         <!-- TTT Newsletter -->
         <script>
         $(function(){
@@ -121,6 +95,12 @@
         });
 
         </script>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
+    {% block monscript %}{% endblock %}
+
     {% endblock %}
 </body>
 

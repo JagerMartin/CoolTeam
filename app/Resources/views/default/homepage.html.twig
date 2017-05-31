@@ -9,8 +9,16 @@
 	{% endblock %}
 
 {% block body %}
+	<body>
+	<!-- Bouton qui permet de remonter en haut de page -->
+	<div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+		<a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
+			<i class="fa fa-arrow-up"></i>
+		</a>
+	</div>
+
 	<!-- HEADER-->
-	<header class="container-fluid">
+	<header class="container-fluid" id="top-section">
 		<div class="container">
 			<!-- Bouton hamburger -->
 			<button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#collapseEx2" aria-controls="collapseEx2" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,12 +31,12 @@
 						<div class="col-2" style="margin-top:180px;" >
 							<nav class="menu" id="collapseEx2">
 								<div class="d-flex flex-column">
-									<a href="{{ path('home') }}" class="btn btn-default teal lighten-3 menuB">Accueil</a>
-									<a href="{{ path('association') }}" class="btn btn-default teal lighten-2 menuB" >L'Association</a>
-									<a href="{{ path('modeemploi') }}" class="btn btn-default teal menuB">Comment ça <br>marche?</a>
-									<a href="{{ path('home') }}" type="button" class="btn btn-default teal darken-1 menuB">Rechercher</a>
-									<a href="{{ path('apprendreObserver') }}" class="btn btn-default teal darken-3 menuB">Apprendre <br>à Observer</a>
-									<a href="{{ path('contact') }}" class="btn btn-default teal darken-4 menuB">Contact</a>
+									<a href="{{ path('home') }}" class="btn btn-default teal lighten-3 menuB textCourt">Accueil</a>
+									<a href="{{ path('association') }}" class="btn btn-default teal lighten-2 menuB textCourt" >L'Association</a>
+									<a href="{{ path('modeemploi') }}" class="btn btn-default teal menuB textlong">Comment ça <br>marche?</a>
+									<a href="{{ path('app_search') }}" class="btn btn-default teal darken-1 menuB textcourt">Rechercher</a>
+									<a href="{{ path('apprendreObserver') }}" class="btn btn-default teal darken-3 menuB textlong">Apprendre <br>à Observer</a>
+									<a href="{{ path('contact') }}" class="btn btn-default teal darken-4 menuB textcourt">Contact</a>
 								</div>
 							</nav>
 						</div>
@@ -40,9 +48,18 @@
 						<div class="col-2 offset-6 sisi">
 							<ul class="list-inline" style="text-align: right">
                                 {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-								<li class="list-inline-item">
-									<a href="{{ path('dashboard') }}"> Bonjour {{ app.user.username }}</a>
-								</li>
+									<div class="dropdown">
+										<a class="dropdown-toggle" id="dropdownMenu4" style="text-transform: capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i> Coucou {{ app.user.username }}
+										</a>
+										<div class="dropdown-menu dropdown-menu-right" style="background-color: #00695C" aria-labelledby="dropdownMenu4">
+											<a class="dropdown-item" href="{{ path('fos_user_profile_edit') }}" style="text-transform: capitalize"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Editer son profil</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="{{ path('dashboard') }}" style="text-transform: capitalize"><i class="fa fa-dashboard" aria-hidden="true"></i> Tableau de bord</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="{{ path('fos_user_security_logout') }}" style="text-transform: capitalize"><i class="fa fa-fw fa-power-off" aria-hidden="true"></i> Se deconnecter</a>
+										</div>
+									</div>
                                 {% else %}
 								<li class="list-inline-item"><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
 								<li class="list-inline-item">|</li>
@@ -55,58 +72,57 @@
 				</div>
 			</div>
 		</div>
-        {# modal login #}
-		<!--Modal: Login Form-->
-		<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog cascading-modal" role="document">
-				<!--Content-->
-				<div class="modal-content">
-
-					<!--Header-->
-					<div class="modal-header light-blue darken-3 white-text">
-						<button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="title"><i class="fa fa-user"></i> Log in</h4>
-					</div>
-					<!--Body-->
-					<div class="modal-body">
-						<div class="md-form form-sm">
-							<i class="fa fa-envelope prefix"></i>
-							<input type="text" id="form30" class="form-control">
-							<label for="form30">Your email</label>
-						</div>
-
-						<div class="md-form form-sm">
-							<i class="fa fa-lock prefix"></i>
-							<input type="password" id="form31" class="form-control">
-							<label for="form31">Your password</label>
-						</div>
-
-						<div class="text-center mt-2">
-							<button class="btn btn-info">Log in <i class="fa fa-sign-in ml-1"></i></button>
-						</div>
-
-					</div>
-					<!--Footer-->
-					<div class="modal-footer">
-						<div class="options text-center text-md-right mt-1">
-							<p>Not a member? <a href="#">Sign Up</a></p>
-							<p>Forgot <a href="#">Password?</a></p>
-						</div>
-						<button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close <i class="fa fa-times-circle ml-1"></i></button>
-					</div>
-				</div>
-				<!--/.Content-->
-			</div>
-		</div>
-		<!--Modal: Login Form-->
-	</header>
+</header>
 	<!-- FIN HEADER -->
+
+	<!--Modal: Login Form-->
+	<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog cascading-modal" role="document">
+			<!--Content-->
+			<div class="modal-content">
+				<!--Header-->
+				<div class="modal-header light-blue darken-3 white-text">
+					<button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="title"><i class="fa fa-user"></i> Se connecter</h4>
+				</div>
+				<!--Body-->
+				<div class="modal-body">
+					<div class="md-form form-sm">
+						<i class="fa fa-envelope prefix"></i>
+						<input type="text" id="form30" class="form-control">
+						<label for="form30">Votre E-mail</label>
+					</div>
+
+					<div class="md-form form-sm">
+						<i class="fa fa-lock prefix"></i>
+						<input type="password" id="form31" class="form-control">
+						<label for="form31">Votre mot de passe</label>
+					</div>
+
+					<div class="text-center mt-2">
+						<button class="btn btn-info">Se connecter <i class="fa fa-sign-in ml-1"></i></button>
+					</div>
+
+				</div>
+				<!--Footer-->
+				<div class="modal-footer">
+					<div class="options text-center text-md-right mt-1">
+						<p>Pas membre? <a href="#">S'enregistrer</a></p>
+						<p>Vous avez oubliez votre <a href="#">Mot de passe?</a></p>
+					</div>
+					<button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Fermer <i class="fa fa-times-circle ml-1"></i></button>
+				</div>
+			</div>
+			<!--/.Content-->
+		</div>
+	</div>
+	<!--Modal: Login Form-->
 
 	<!--Carousel-->
 	<div class="container-fluid monCarousel">
-		<div id="myCarousel1" class="carousel slide carousel-fade" data-ride="carousel">
+		<div id="myCarousel1" class="carousel slide carousel-fadeOut" data-ride="carousel">
 			<!--Indicators-->
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
@@ -137,7 +153,6 @@
 		<!--/.Carousel Wrapper-->
 	</div>
 	<!--/.Carousel -->
-
 	<!-- QUI SOMMES NOUS -->
 	<div class="container-fluid">
 		<div class="container" style="margin-top: 70px;text-align: center;">
@@ -157,7 +172,6 @@
 		</div>
 	</div>
 	<!-- END QUI SOMMES NOUS -->
-
 	<!-- DECOUVREZ NOTRE APPLICATION PARALLAX -->
 	<div class="container-fluid dna parallax1 parallax">
 		<section class="parallax" id="section1">
@@ -174,7 +188,7 @@
 						<!-- Texte -->
 						<div class="row">
 							<div class="col-2 offset-2">
-								<img src="{{ asset('img/homepage/logo.png') }}">
+								<img src="{{ asset('img/homepage/parallax/logo_birdygo.png') }}">
 							</div>
 							<div class="col-6  offset-2" style="text-align: center; padding-top: 19px;margin-bottom: 19px;background: #37474F;  background: rgba(0, 0, 0, .4);">
 								<p class="white-text">Vous êtes amateur d’oiseaux et vous aimez les observer dans votre vie quotidienne ou au cours de vos promenades?</p>
@@ -185,7 +199,7 @@
 						<!-- BOUTON -->
 						<div class="row">
 							<div class="col-3  offset-8" style="margin-top: 29px;margin-bottom: 29px;">
-								<button type="button" class="btn btn-default teal darken-1">Je participe!</button>
+								<a href="{{ path('fos_user_registration_register') }}" class="btn btn-default teal darken-1">Je participe!</a>
 							</div>
 						</div>
 					</div>
@@ -194,7 +208,6 @@
 		</section>
 	</div>
 	<!-- END DECOUVREZ NOTRE APPLICATION -->
-
 	<!-- OBSERVER ET RESPECTER-->
 	<div class="container-fluid">
 		<div class="container">
@@ -225,20 +238,29 @@
 			<!--BOUTONS-->
 			<div class="row vdivide" style="margin-bottom: 70px">
 				<div class="col-4" style="text-align: center;">
-					<button type="button" class="btn btn-default teal darken-1">Apprendre à Observer</button>
+					<a href="{{ path('apprendreObserver') }}" class="btn btn-default teal darken-1" >Apprendre à Observer</a>
 				</div>
 				<div class="col-4" style="text-align: center;">
-					<button type="button" class="btn btn-default teal darken-1">Ne pas les déranger</button>
+					<button type="button" class="btn btn-default teal darken-1" data-toggle="modal" data-target="#centralModalLg">Ne pas les déranger</button>
 				</div>
 				<div class="col-4" style="text-align: center;">
-					<button type="button" class="btn btn-default teal darken-1">Rechercher un oiseau</button>
+					<a href="{{ path('app_search') }}" class="btn btn-default teal darken-1">Rechercher un oiseau</a>
 				</div>
 
 			</div>
 		</div>
-	</div>
-	<!-- END OBSERVER ET RESPECTER-->
 
+	</div>
+
+	<!-- POPUP CHARTE -->
+	<div class="modal fade" id="centralModalLg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document" >
+            {% include(':MainController:popupcharte.html.twig') %}
+		</div>
+	</div>
+	<!-- END POPUP CHARTE -->
+
+	<!-- END OBSERVER ET RESPECTER-->
 	<!-- SLIDER -->
 	<div class="container-fluid slider" >
 		<div id="myCarousel2" class="carousel slide carousel-fade" data-ride="carousel">
@@ -377,6 +399,7 @@
 		</div>
 	</div>
 	<!-- END SLIDER -->
+
 	<!-- DERNIERS AJOUTS -->
 	<div class="container-fluid da" >
 		<div class="container">
@@ -387,7 +410,7 @@
 			</div>
 			<div class="row" style="margin-top: 70px;">
 				<div class="col-3 offset-1">
-					{% for observation in lastObservations %}
+                    {% for observation in lastObservations %}
 						<!-- Cercles photos avec texte -->
 						<div class="row espcercle">
 							<div class="col-6" style="padding: 0;">
@@ -401,24 +424,25 @@
 							</div>
 							<div class="col-6 myB">
 								<button type="button" class="btn btn-default">
-									{{ observation.datetime|date('d/m/Y') }}
+                                    {{ observation.datetime|date('d/m/Y') }}
 									<p>
-										{% if observation.taxref.vernacularName is defined %}
-											{{ observation.taxref.vernacularName }}
-										{% else %}
-											{{ observation.taxref.lbName }}
-										{% endif %}
+                                        {% if observation.taxref.vernacularName is defined %}
+                                            {{ observation.taxref.vernacularName }}
+                                        {% else %}
+                                            {{ observation.taxref.lbName }}
+                                        {% endif %}
 									</p>
 								</button>
 							</div>
 						</div>
-					{% endfor %}
+                    {% endfor %}
+
 				</div>
 
 				<!-- Map Google-->
 				<div class="col-6 offset-1 map">
-					{{ ivory_google_map(map) }}
-					{{ ivory_google_api([map]) }}
+                    {{ ivory_google_map(map) }}
+                    {{ ivory_google_api([map]) }}
 				</div>
 			</div>
 		</div>
@@ -475,16 +499,16 @@
 			</div>
 			<div class="row">
 				<div class="col-2">
-					<img src="{{ asset('img/homepage/partenaires/1.png') }}">
+					<a href="https://www.lpo.fr/"><img src="{{ asset('img/homepage/partenaires/1.png') }}"></a>
 				</div>
 				<div class="col-2 offset-2">
-					<img src="{{ asset('img/homepage/partenaires/2.png') }}">
+					<a href="https://www.mnhn.fr/"><img src="{{ asset('img/homepage/partenaires/2.png') }}"></a>
 				</div>
 				<div class="col-1 offset-1">
-					<img src="{{ asset('img/homepage/partenaires/3.png') }}">
+					<a href="http://www.conservatoire-du-littoral.fr/"><img src="{{ asset('img/homepage/partenaires/3.png') }}"></a>
 				</div>
 				<div class="col-2 offset-2">
-					<img src="{{ asset('img/homepage/partenaires/4.png') }}">
+					<a href="http://www.cnrs.fr/"><img src="{{ asset('img/homepage/partenaires/4.png') }}"></a>
 				</div>
 			</div>
 		</div>
@@ -507,16 +531,7 @@
 					<a href="https://www.instagram.com/?hl=fr"><img src="{{ asset('img/homepage/instagram.png') }}" style="text-align: center"></a>
 				</div>
 			</div>
-			<!-- pour remonter dans la page-->
-			<div class="row">
-				<div class="col-1 offset-11">
-					<div class="pull-right" style="height: 45px;width: 45px;">
-						<a class="btn-large red waves-effect waves-light">
-							<i class="fa fa-pencil-square" aria-hidden="true"></i>
-						</a>
-					</div>
-				</div>
-			</div>
+
 		</div>
 	</div>
 	<!-- END RESEAUX SOCIAUX -->

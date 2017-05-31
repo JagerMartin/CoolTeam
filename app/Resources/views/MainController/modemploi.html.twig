@@ -1,18 +1,221 @@
 {% extends 'base.html.twig' %}
-{% block title %}{{ parent() }} - Mode d'emploi{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+{% endblock %}
 
+{% block title %}{{ parent() }} - Comment ça marche?{% endblock %}
 
 {% block body %}
- {% block container %}
-<hr class="uk-grid-divider">
-<div class="uk-grid" data-uk-grid-margin>
+    <body id="ccmfond">
+    <!-- Bouton qui permet de remonter en haut de page -->
+    <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+        <a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
+            <i class="fa fa-arrow-up"></i>
+        </a>
+    </div>
+    <div class="container container-fluid ccmgeneral" style="position: relative;margin-bottom: 0%">
+        {{ include("header.html.twig") }}
+        <div class="container contGen" style="margin-bottom: 170px;">
+            <!-- image du piou -->
+            <img src="{{ asset('img/modemploi/mebird.png') }}" style="position: absolute;z-index: 202; margin-left: 25%; margin-top: -35px" >
 
-    <div class="uk-width-medium-2-3">
-        <div class="uk-panel uk-panel-header">
+            <!--Modal: Login Form-->
+            <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-            <h3 class="uk-panel-title">Mode d'emploi</h3>
+                <!--Form with header-->
+                <div class="card">
+                    <div class="card-block">
+
+                        <!--Header-->
+                        <div class="form-header  purple darken-4">
+                            <h3><i class="fa fa-lock"></i> Login:</h3>
+                        </div>
+
+                        <!--Body-->
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input type="text" id="form2" class="form-control">
+                            <label for="form2">Your email</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-lock prefix"></i>
+                            <input type="password" id="form4" class="form-control">
+                            <label for="form4">Your password</label>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-deep-purple">Login</button>
+                        </div>
+
+                    </div>
+
+                    <!--Footer-->
+                    <div class="modal-footer">
+                        <div class="options">
+                            <p>Not a member? <a href="#">Sign Up</a></p>
+                            <p>Forgot <a href="#">Password?</a></p>
+                        </div>
+                    </div>
+
+                </div>
+                <!--/Form with header-->
+            </div>
+            <!--Modal: Login Form-->
+
+            <div class="row">
+                <!-- MENU Général gauche-->
+                <div class="col-2" style="margin: 0;padding: 0;">
+                    {{ include('menu.html.twig') }}
+                </div>
+                <!-- Bloc texte à côté du menu principal-->
+                <div class="col-10" style="margin: 0;">
+                    <div class="row">
+                        <!-- Bloc Texte -->
+                        <div class="col-12 blocText">
+                            <!-- Titre du cadre -->
+                            <div class="col-4 offset-4 titreCadre" >COMMENT CA MARCHE?</div>
+                            <!-- les différents textes-->
+                            <p class="card-block" style="margin: inherit; padding: inherit">
+                                <!-- Vous êtes -->
+                                <p class="card-text" id="top-section" style="text-align: center;margin-top: 5px;margin-left: 300px;margin-right: 370px;padding: inherit;" >Vous êtes...</p>
+                                <!-- Boutons -->
+                                <div class="row" style="padding-bottom: 25px;margin-right: 0px;margin-left: 0px;margin-bottom: 35px;border-bottom-color: #636c72;border-bottom-style: solid;">
+                                        <div class="col-4 offset-1"> <button id="ccmobservclick" class="btn btn-primary btn-rounded teal darken-3" style="padding: 5px; width: 70%">Observateur amateur</button></div>
+                                        <div class="col-4 offset-2"><button id="ccmnaturalisteclick" class="btn btn-primary btn-rounded teal darken-3" style="padding: 5px">Professionnel, naturaliste ou ornithologue</button></div>
+                                    </div>
+                            <div class="row" id="ccmobserv" style="margin: 0">
+                                    <!--Vous êtes un observateur amateur-->
+                                <h4 class="card-title" style="width: 40%">Vous êtes un observateur amateur</h4>
+                                <p class="card-text" style="text-align: center;margin-left: 40px; margin-right: 40px">
+                                    Notre application participative peut tout aussi bien être utilisée à partir de votre smartphone
+                                    ou depuis votre ordinateur personnel. Son principe est simple :
+                                </p>
+                                <div class="stepwizard">
+                                    <!-- ETAPE 1-->
+                                    <div class="stepwizard-row">
+
+                                        <div class="stepwizard-step">
+                                            <button type="button" class="btn-floating btn-sm teal darken-3">1</button>
+                                        </div>
+                                        <p class="card-text" style="margin-left: 20px">
+                                            Grâce à nos fiches d’identification, nous vous aidons à identifier les oiseaux que vous observez :
+                                        </p>
+                                                <ul class="ulbloctext">
+                                                    <li class="libloctext">Vous effectuez une recherche par nom ou par critère (famille ou zone géographique).</li>
+                                                    <li class="libloctext">Vous accédez alors à la fiche de renseignements sur l’espèce, comprenant :</li>
+                                                        <ul class="ulssliste list-circle">
+                                                            <li><i class="fa fa-dot-circle-o" aria-hidden="true" style="font-size: 10px;font-weight: bold"></i> Des données sur l’espèce, fournies par le Musée National d’Histoire Naturelle.</li>
+                                                            <li><i class="fa fa-dot-circle-o" aria-hidden="true" style="font-size: 10px;font-weight: bold"></i> Une carte de la répartition géographique de l’espèce par département / zone de 20km2.</li>
+                                                            <li><i class="fa fa-dot-circle-o" aria-hidden="true" style="font-size: 10px;font-weight: bold"></i> Des photos téléchargeables.</li>
+                                                        </ul>
+                                                </ul>
+
+                                    </div>
+                                    <!-- ETAPE 2-->
+                                    <div class="stepwizard-row">
+                                        <div class="stepwizard-step">
+                                            <button type="button" class="btn-floating btn-sm teal darken-3">2</button>
+                                        </div>
+                                        <p class="card-text" style="margin-left: 20px;margin-right: 40px">
+                                            Si vous pensez avoir identifié l’espèce que vous observez, envoyez-nous vos observations (pour envoyer une observation, vous devrez préalablement avoir créé un compte utilisateur) :
+                                        </p>
+                                        <ul class="ulbloctext">
+                                            <li class="libloctext">Vous indiquerez à minima : la date de l’observation, l’heure et la position GPS (renseignés automatiquement sur votre smartphone grâce à la géolocalisation).</li>
+                                            <li class="libloctext">Vous pouvez aussi laisser des commentaires et télécharger vos photos.</li>
+                                        </ul>
+                                        <blockquote class="blockquote bq-danger" style="margin-left: 10%;margin-top: 18px"><p class="card-text" style="margin-right: 40px;font-size: 15px;font-family: Roboto;">Vous ne savez pas bien ce que vous devez observer ? Pas de panique !</p></blockquote>
+                                         <blockquote class="blockquote bq-success" style="margin-left: 10%;"><p class="card-text" style="margin-right: 40px;font-size: 15px;font-family: Roboto;">Consulter notre rubrique « apprendre à observer » pour savoir ce qu’il faut noter, les techniques d’approche et surtout les règles  fondamentales de respect des oiseaux!</p></blockquote>
+
+                                    </div>
+                                    <!-- ETAPE 3-->
+                                    <div class="stepwizard-row" style="margin: inherit">
+                                        <div class="stepwizard-step">
+                                            <button type="button" class="btn-floating btn-sm teal darken-3" disabled="disabled">3</button>
+                                        </div>
+                                        <p class="card-text" style="margin-left: 20px;margin-right: 40px">
+                                           Votre observation sera alors validée par l’un de nos naturalistes professionnels :
+                                        </p>
+                                        <ul class="ulbloctext" style="margin-left: 20px;margin-right: 40px">
+                                            <li class="libloctext">La date et l’heure de l’observation seront publiés, ainsi que vos commentaires et photos s’ils sont acceptés. Pour des raisons évidentes de protection des espèces rares,
+                                                les coordonnées GPS que vous nous transmettez ne sont pas publiées.</li>
+                                            <li class="libloctext">Vous pourrez à tout moment accéder à votre compte et à votre historique d’observations pour les consulter.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="ccmnaturaliste" style="margin: 0;;display: none">
+                                <!--Vous êtes Naturaliste-->
+                                <h4 class="card-title" style="width: 65%"> Vous êtes un professionnel, naturaliste ou ornithologue</h4>
+                                <p class="card-text" style="text-align: center;margin-left: 40px; margin-right: 40px">
+                                    Vous êtes engagés dans la protection des oiseaux et vous souhaitez participer bénévolement à la collecte
+                                    et à la validation de centaines d’observations d’oiseaux pour un programme de recherche piloté par le CNRS ?
+                                    Alors vous êtes au bon endroit ! Pour cela, il vous suffit simplement de :
+                                </p>
+                                <div class="stepwizard">
+                                    <!-- ETAPE 1-->
+                                    <div class="stepwizard-row2">
+                                        <div class="stepwizard-step">
+                                            <button type="button" class="btn-floating btn-sm teal darken-3">1</button>
+                                        </div>
+                                        <p class="card-text" style="margin-left: 20px">
+                                            Vous inscrire et nous envoyer vos certifications pour valider votre compte « naturaliste ».
+                                        </p>
+                                    </div>
+                                    <!-- ETAPE 2-->
+                                    <div class="stepwizard-row2">
+                                        <div class="stepwizard-step">
+                                            <button type="button" class="btn-floating btn-sm teal darken-3">2</button>
+                                        </div>
+                                        <p class="card-text" style="margin-left: 20px;margin-right: 40px">
+                                            Accéder ensuite au tableau de bord des informations envoyées par nos observateurs,
+                                            afin de les consulter en détail et de les valider.
+                                        </p>
+                                        <ul class="ulbloctext">
+                                            <li class="libloctext">Une fois validées, la date et l’heure de l’observation seront publiés sur le site, ainsi que les commentaires et les photos des observateurs s’ils sont acceptés. Pour des raisons évidentes de protection des espèces rares, les coordonnées GPS que les observateurs transmettent ne sont pas publiées,
+                                                                    mais nous indiquerons la présence de l’espèce sur une zone plus large
+                                            </li>
+                                            <li class="libloctext">Les informations que vous validez seront transmises et traitées dans le cadre du programme de recherche en partenariat avec le CNRS.</li>
+                                            <li class="libloctext">	Ces informations pourront également vous être utiles dans le cadre de vos travaux professionnels.</li>
+
+                                        </ul>
+                                    </div>
+                                    <!-- ETAPE 3-->
+                                    <div class="stepwizard-row2" style="margin: inherit">
+                                        <div class="stepwizard-step">
+                                            <button type="button" class="btn-floating btn-sm teal darken-3" disabled="disabled">3</button>
+                                        </div>
+                                        <p class="card-text" style="margin-left: 20px;margin-right: 40px">
+                                            En tant que naturaliste, vous pouvez aussi jouer le rôle d’un observateur et partager vos observations de terrain, depuis votre smartphone ou votre ordinateur personnel.
+                                        </p>
+                                        <blockquote class="blockquote bq-success" style="margin-right: 40px;margin-left: 60px;">
+                                            <p class="bq-title" style="font-family: Roboto;font-size: 18px;font-weight: bold">Vous êtes spécialisé dans une ou plusieurs espèces en particulier ?</p>
+                                            <p class="card-text" style="font-family: Roboto;font-size: 15px;font-weight: bold">Recevez ces observations en priorité grâce à notre judicieux système d’abonnement!</p>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: 0; padding-bottom: 20px;">
+                                <div class="col-11 purple-text" style="margin-left: 40px;margin-right: 40px;text-align: center">
+                                    La protection des oiseaux est notre priorité absolue. Les coordonnées GPS transmises par les observateurs
+                                    et auxquelles vous aurez accès en tant que « naturaliste » ne seront pas publiées sur le site,
+                                    ni aucune information sensible qui pourrait porter atteinte à la sécurité des espèces.
+                                </div>
+                            </div>
+                            <!-- Boutons -->
+                            <div class="row" style="margin-bottom: 33px;">
+                                    <div class="col-2 offset-2"><a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary btn-rounded teal darken-3">JE CREE MON COMPTE</a></div>
+                                    <div class="col-2 offset-3"><a href="{{ path('home') }}" class="btn btn-primary btn-rounded teal darken-3">J'OBSERVE UN OISEAU</a></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-</div>
+    {% block footer %}
+        {{ include('footer.html.twig') }}
+    {% endblock %}
 {% endblock %}
