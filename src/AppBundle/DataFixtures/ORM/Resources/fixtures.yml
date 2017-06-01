@@ -34,5 +34,5 @@ AppBundle\Entity\Observation:
         latitude: <latitudeFrance()>
         longitude: <longitudeFrance()>
         department: <departments()>
-        status: 1
+        status: 30
         taxref: <cdNames()>

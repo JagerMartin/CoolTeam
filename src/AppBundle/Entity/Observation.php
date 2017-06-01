@@ -14,6 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Observation
 {
     const SEARCH_NUM_ITEMS = 9;
+    const PENDING = 10;
+    const TOCORRECT = 20;
+    const VALIDATE = 30;
 
     /**
      * @var int

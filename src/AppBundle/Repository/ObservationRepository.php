@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\Observation;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
@@ -39,6 +40,8 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             ->leftjoin('o.taxref', 't', 'WITH')
             ->where('t.lbName = :lbName')
             ->setParameter('lbName', $lbName)
+            ->andWhere('o.status = :status')
+            ->setParameter('status', Observation::VALIDATE)
             ->orderBy('o.datetime', 'DESC')
             ->getQuery()
         ;
