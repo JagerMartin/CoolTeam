@@ -48,8 +48,16 @@ class ObservationInitType extends AbstractType
                 ), 'expanded' => true, 'multiple' => false
             ))
             ->add('observation', TextareaType::class)
-            ->add('latitude', NumberType::class)
-            ->add('longitude', NumberType::class)
+            ->add('latitude', NumberType::class, array(
+                'attr' => array(
+                    'onchange' => 'codeLatLng();'
+                )
+            ))
+            ->add('longitude', NumberType::class, array(
+                'attr' => array(
+                    'onchange' => 'codeLatLng();'
+                )
+            ))
             ->add('department', TextType::class)
             ->add('submit', SubmitType::class, array(
                 'label' => 'Valider',

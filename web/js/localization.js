@@ -20,16 +20,31 @@ var myOptions = {
 };
 var mapLoaded = 0;
 
-function initialize() {
+function defaultMap() {
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     geocoder = new google.maps.Geocoder;
-    //setTimeout(checkMap, trans.CheckMapDelay);
+
+    map.setCenter(defaultLatLng);
+    map.setZoom(5);
+    mapLoaded = 1;
+    bookUp(trans.DefaultDepartment, trans.DefaultLat, trans.DefaultLng);
+    if (marker != null) marker.setMap(null);
+    marker = new google.maps.Marker({map: map, position: defaultLatLng});
+    document.getElementById("observation_init_latitude").value = defaultLatLng.lat();
+    document.getElementById("observation_init_longitude").value = defaultLatLng.lng();
+    document.getElementById("observation_init_department").value = trans.DefaultDepartment;
+
+    google.maps.event.addListener(map, "click", codeLatLngfromclick);
+}
+
+function initialize() {
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            marker = new google.maps.Marker({map: map, position: pos});
-            map.setCenter(pos);
-            mapLoaded = 1;
+            //marker = new google.maps.Marker({map: map, position: pos});
+            //map.setCenter(pos);
+            //mapLoaded = 1;
             geocoder.geocode({latLng: pos}, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[0]) {
@@ -59,7 +74,7 @@ function initialize() {
     } else {
         defaultMap()
     }
-    google.maps.event.addListener(map, "click", codeLatLngfromclick);
+
 }
 
 function codeLatLng() {
@@ -90,11 +105,13 @@ function codeLatLng() {
     map.setCenter(latlng);
     fromPlace = 0
 }
+
 function codeLatLngfromclick(event) {
     var lat = event.latLng.lat();
     var lng = event.latLng.lng();
     var latlng = event.latLng;
     geocoder.geocode({latLng: latlng}, function (results, status) {
+        console.log(results);
         if (status == google.maps.GeocoderStatus.OK) {
             if (results[0]) {
                 var elt = results[0].address_components;
@@ -103,7 +120,6 @@ function codeLatLngfromclick(event) {
                         document.getElementById('observation_init_department').value = elt[i].long_name;
                     }
                 }
-
                 if (marker != null) marker.setMap(null);
                 marker = new google.maps.Marker({position: latlng, map: map});
                 map.panTo(latlng);
@@ -127,17 +143,7 @@ function codeLatLngfromclick(event) {
 }
 
 
-function defaultMap() {
-    map.setCenter(defaultLatLng);
-    map.setZoom(5);
-    mapLoaded = 1;
-    bookUp(trans.DefaultDepartment, trans.DefaultLat, trans.DefaultLng);
-    if (marker != null) marker.setMap(null);
-    marker = new google.maps.Marker({map: map, position: defaultLatLng});
-    document.getElementById("observation_init_latitude").value = defaultLatLng.lat();
-    document.getElementById("observation_init_longitude").value = defaultLatLng.lng();
-    document.getElementById("observation_init_department").value = trans.DefaultDepartment;
-}
+
 
 function bookUp(department, latitude, longitude) {
     return false;
