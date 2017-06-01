@@ -1,10 +1,29 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
-
+{% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
     {# S'il y a une erreur, on l'affiche dans un joli cadre #}
-    {% if error %}
-        <div class="alert alert-danger">{{ error.message }}</div>
+    {% if error is defined %}
+        {% if error %}
+            <div class="alert alert-danger">{{ error.message }}</div>
+        {% endif %}
     {% endif %}
-    {{ include('@FOSUser/Security/login_content.html.twig') }}
+    <form class="md-form form-sm" action="{{ path("fos_user_security_check") }}" method="post">
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+
+        <div class="md-form form-sm">
+            <i class="fa fa-user prefix white-text"></i>
+            <input class="form-control" type="text" placeholder="{{ 'security.login.username'|trans }}" id="username" name="_username" value="{{ last_username }}" required="required">
+        </div>
+
+        <div class="md-form form-sm">
+            <i class="fa fa-lock prefix white-text "></i>
+            <input class="form-control" type="password" id="password" name="_password" placeholder="{{ 'security.login.password'|trans }}" required="required">
+        </div>
+
+        <div class="text-center mt-2" style="padding: 0;margin: 0;">
+            <input class="btn btn-info teal lighten-2" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        </div>
+    </form>
 {% endblock fos_user_content %}

@@ -75,50 +75,39 @@
 </header>
 	<!-- FIN HEADER -->
 
-	<!--Modal: Login Form-->
-	<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog cascading-modal" role="document">
-			<!--Content-->
-			<div class="modal-content">
-				<!--Header-->
-				<div class="modal-header light-blue darken-3 white-text">
-					<button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="title"><i class="fa fa-user"></i> Se connecter</h4>
-				</div>
-				<!--Body-->
-				<div class="modal-body">
-					<div class="md-form form-sm">
-						<i class="fa fa-envelope prefix"></i>
-						<input type="text" id="form30" class="form-control">
-						<label for="form30">Votre E-mail</label>
+    {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+		<!--Modal: Login Form-->
+		<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog cascading-modal" role="document">
+				<!--Content-->
+				<div class="modal-content teal darken-3" >
+					<!--Header-->
+					<div class="modal-header white-text">
+						<h4 class="title"><button type="button" class="close waves-effect waves-light white-text" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true" class="white-text">&times;</span>
+							</button>
+							Se connecter</h4>
 					</div>
 
-					<div class="md-form form-sm">
-						<i class="fa fa-lock prefix"></i>
-						<input type="password" id="form31" class="form-control">
-						<label for="form31">Votre mot de passe</label>
+					<!--Body-->
+					<div class="modal-body">
+                        {{ render(controller('FOSUserBundle:Security:login')) }}
 					</div>
 
-					<div class="text-center mt-2">
-						<button class="btn btn-info">Se connecter <i class="fa fa-sign-in ml-1"></i></button>
-					</div>
+					<!--Footer-->
+					<div class="modal-footer">
+						<div class="options text-md-center mt-1  white-text" style="width: 100%">
+							<p><a href="{{ path('fos_user_registration_register') }}">Pas encore membre? S'enregistrer</a></p>
+							<p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}">Mot de passe?</a></p>
+						</div>
 
-				</div>
-				<!--Footer-->
-				<div class="modal-footer">
-					<div class="options text-center text-md-right mt-1">
-						<p>Pas membre? <a href="#">S'enregistrer</a></p>
-						<p>Vous avez oubliez votre <a href="#">Mot de passe?</a></p>
 					</div>
-					<button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Fermer <i class="fa fa-times-circle ml-1"></i></button>
 				</div>
+				<!-- End Content -->
 			</div>
-			<!--/.Content-->
 		</div>
-	</div>
-	<!--Modal: Login Form-->
+		<!--Modal: Login Form-->
+    {% endif %}
 
 	<!--Carousel-->
 	<div class="container-fluid monCarousel">
@@ -424,14 +413,16 @@
 							</div>
 							<div class="col-6 myB">
 								<button type="button" class="btn btn-default">
+									<a href="{{ path('app_search', {'cdName': observation.taxref.cdName} ) }}" style="color: #FFFFFF;text-decoration: none">
                                     {{ observation.datetime|date('d/m/Y') }}
-									<p>
-                                        {% if observation.taxref.vernacularName is defined %}
-                                            {{ observation.taxref.vernacularName }}
-                                        {% else %}
-                                            {{ observation.taxref.lbName }}
-                                        {% endif %}
-									</p>
+										<p>
+											{% if observation.taxref.vernacularName is defined %}
+												{{ observation.taxref.vernacularName }}
+											{% else %}
+												{{ observation.taxref.lbName }}
+											{% endif %}
+										</p>
+									</a>
 								</button>
 							</div>
 						</div>
@@ -440,7 +431,7 @@
 				</div>
 
 				<!-- Map Google-->
-				<div class="col-6 offset-1 map">
+				<div class="col-6 offset-1 map" style="padding-left: 100px;">
                     {{ ivory_google_map(map) }}
                     {{ ivory_google_api([map]) }}
 				</div>
@@ -540,79 +531,5 @@
 	{{ include('footer.html.twig') }}
 {% endblock %}
 
-	{% block javascripts %}
-		{{ parent() }}
-		<script>
-			//Carousel Header
-			$('#myCarousel1, #myCarousel2').carousel({
-				interval: 10000
-			});
-			//Animation cercle
-			new WOW().init();
 
-			/**********/
-			/*compteur*/
-			/*********/
-			$(document).ready(function(){
-				$(".bhide").click(function(){
-					$(".hideObj").slideDown();
-					$(this).hide(); //.attr()
-					return false;
-				});
-				$(".bhide2").click(function(){
-					$(".container.hideObj2").slideDown();
-					$(this).hide(); // .attr()
-					return false;
-				});
-
-				$('.heart').mouseover(function(){
-					$(this).find('i').removeClass('fa-heart-o').addClass('fa-heart');
-				}).mouseout(function(){
-					$(this).find('i').removeClass('fa-heart').addClass('fa-heart-o');
-				});
-
-				function sdf_FTS(_number,_decimal,_separator)
-				{
-					var decimal=(typeof(_decimal)!='undefined')?_decimal:2;
-					var separator=(typeof(_separator)!='undefined')?_separator:'';
-					var r=parseFloat(_number)
-					var exp10=Math.pow(10,decimal);
-					r=Math.round(r*exp10)/exp10;
-					rr=Number(r).toFixed(decimal).toString().split('.');
-					b=rr[0].replace(/(\d{1,3}(?=(\d{3})+(?:\.\d|\b)))/g,"\$1"+separator);
-					r=(rr[1]?b+'.'+rr[1]:b);
-
-					return r;
-				}
-
-				setTimeout(function(){
-					$('#counter').text('0');
-					$('#counter1').text('0');
-					$('#counter2').text('0');
-					$('#counter3').text('0');
-
-					setInterval(function(){
-
-						var curval=parseInt($('#counter').text());
-						var curval1=parseInt($('#counter1').text().replace(' ',''));
-						var curval2=parseInt($('#counter2').text());
-						var curval3=parseInt($('#counter3').text());
-						if(curval<=200-1){
-							$('#counter').text(curval+1);
-						}
-						if(curval1<=150-1){
-							$('#counter1').text(curval1+1);
-						}
-						if(curval2<=3000-10){
-							$('#counter2').text(curval2+10);
-						}
-						if(curval3<=245-1){
-							$('#counter3').text(curval3+1);
-						}
-					}, 2);
-
-				}, 500);
-			});
-		</script>
-	{% endblock %}
 {% endblock %}
