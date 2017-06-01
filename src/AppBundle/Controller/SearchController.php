@@ -22,14 +22,19 @@ use Symfony\Component\HttpFoundation\Request;
 class SearchController extends Controller
 {
     /**
-     * @Route("/rechercher", name="app_search")
+     * @Route("/rechercher/{cdName}", name="app_search", defaults={"cdName" = null}, requirements={"cdName": "\d+"})
      */
-    public function searchAction()
+    public function searchAction($cdName = null)
     {
         $form = $this->createForm(SearchType::class);
 
+        // Si cdName passé en paramètre, récupération du lbName correspondant
+        $taxref = $cdName ? $taxref = $this->getDoctrine()->getManager()->getRepository('AppBundle:Taxref')->find($cdName) : null;
+        $searchSpecie = $taxref ? $taxref->getLbName() : null;
+
         return $this->render('search/search.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'searchSpecie' => $searchSpecie
         ));
     }
 

@@ -171,6 +171,21 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
                 });
             }
 
+
+            // ================================================
+            // Affichage de la fiche espèce si passée en paramètre
+            // ================================================
+            {% if searchSpecie is not null %}
+            var searchSpecie = "{{ searchSpecie }}";
+            {% else %}
+            var searchSpecie = 'undefined';
+            {% endif %}
+
+            if(searchSpecie != 'undefined'){
+                name = searchSpecie;
+                triggerSearch();
+            }
+
         });
     </script>
 
