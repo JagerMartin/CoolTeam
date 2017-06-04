@@ -1,43 +1,43 @@
 <!-- HEADER-->
 <header class="container-fluid">
-        <!-- Bouton hamburger -->
-        <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#collapseEx2" aria-controls="collapseEx2" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-                <div class="row" style="height: 180px;">
-                    <!-- Logo -->
-                    <div class="col-2 offset-3 logo">
-                        <img src="{{ asset('img/logoCommun.png') }}">
-                    </div>
-                    <!-- S'inscrire | S'identifier -->
-                    <div class="col-3 offset-5 sisi"  style="text-align: right">
-                        <ul class="list-inline">
-                            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                                <!--<li class="list-inline-item">
+    <!-- Bouton hamburger -->
+    <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#collapseEx2" aria-controls="collapseEx2" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="row" style="height: 180px;">
+        <!-- Logo -->
+        <div class="col-2 offset-3 logo">
+            <img src="{{ asset('img/logoCommun.png') }}">
+        </div>
+        <!-- S'inscrire | S'identifier -->
+        <div class="col-3 offset-5 sisi"  style="text-align: right">
+            <ul class="list-inline">
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <!--<li class="list-inline-item">
                                     <a href="{{ path('dashboard') }}"> Bonjour {{ app.user.username }}</a>
                                 </li>-->
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle" id="dropdownMenu4" style="text-transform: capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i> Coucou {{ app.user.username }}
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" style="background-color: #00695C" aria-labelledby="dropdownMenu4">
-                                        <a class="dropdown-item" href="{{ path('fos_user_profile_edit') }}" style="text-transform: capitalize"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Editer son profil</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{ path('dashboard') }}" style="text-transform: capitalize"><i class="fa fa-dashboard" aria-hidden="true"></i> Tableau de bord</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}" style="text-transform: capitalize"><i class="fa fa-fw fa-power-off" aria-hidden="true"></i> Se deconnecter</a>
-                                    </div>
-                                </div>
-
-
-                            {% else %}
-                                <li class="list-inline-item"><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
-                                <li class="list-inline-item">|</li>
-                                <li class="list-inline-item vertical-divider"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin">S'identifier</a></li>
-                            {% endif %}
-                        </ul>
-
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenu4" style="text-transform: capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i> Coucou {{ app.user.username }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" style="background-color: #00695C" aria-labelledby="dropdownMenu4">
+                            <a class="dropdown-item" href="{{ path('fos_user_profile_edit') }}" style="text-transform: capitalize"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Editer son profil</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ path('dashboard') }}" style="text-transform: capitalize"><i class="fa fa-dashboard" aria-hidden="true"></i> Tableau de bord</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}" style="text-transform: capitalize"><i class="fa fa-fw fa-power-off" aria-hidden="true"></i> Se deconnecter</a>
+                        </div>
                     </div>
-                </div>
+
+
+                {% else %}
+                    <li class="list-inline-item"><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
+                    <li class="list-inline-item">|</li>
+                    <li class="list-inline-item vertical-divider"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin">S'identifier</a></li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
 </header>
 <!-- FIN HEADER -->

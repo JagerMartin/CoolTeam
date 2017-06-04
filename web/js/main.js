@@ -48,6 +48,7 @@ $(document).ready(function(){
         $("#ccmnaturaliste").show();
         $("#ccmobserv").hide();
     });
+
 });
 
 /********************************************

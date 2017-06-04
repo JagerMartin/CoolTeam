@@ -1,91 +1,131 @@
-<!--
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+            <!-- JQUERY UI POUR AUTOCOMPLETION -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+{% endblock %}
 
+{% block title %}{{ parent() }} - Rechercher{% endblock %}
 
-
-
-PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
-
-
-
-
--->
-
+{% block body %}
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
-
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Rechercher</title>
-
-    {% block stylesheets %}
-
-        <!-- Font-Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-        <!-- JQUERY UI POUR AUTOCOMPLETION -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-
-
-    {% endblock %}
-
-</head>
-
-<body>
-
-<div class="container text-center">
-    <h2>Rechercher par nom, par famille ou par département </h2>
-    <hr>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            {% for message in app.session.flashbag.get('info') %}
-                <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
-            {% endfor %}
-            {% for message in app.session.flashbag.get('error') %}
-                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="row">
-        {{ form_start(form) }}
-        <div class="col-sm-3 col-sm-offset-1">
-            {{ form_row(form.name) }}
-        </div>
-        <div class="col-sm-3 col-sm-offset-1">
-            {{ form_row(form.family) }}
-        </div>
-        <div class="col-sm-3 col-sm-offset-1">
-            {{ form_row(form.department) }}
-        </div>
-        <div class="col-sm-6 col-sm-offset-3">
-            <button id="searchBtn" type="submit" class="btn btn-primary form-control" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Recherche en cours..." formnovalidate>Rechercher</button>
-            {{ form_end(form) }}
-        </div>
-    </div>
-    <hr>
-    <div id="searchView">
-
-    </div>
+<body id="rechfond">
+<!-- Bouton qui permet de remonter en haut de page -->
+    <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+    <a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
+        <i class="fa fa-arrow-up"></i>
+    </a>
 </div>
 
+<!-- PAGE RECHERCHER -->
+    <div id="top-section" class="container container-fluid rechgeneral" style="position: relative;margin-bottom: 0%">
+        {{ include("header.html.twig") }}
+        <div class="container contGen" style="margin-bottom: 170px;">
+            <!-- image du piou -->
+            <img src="{{ asset('img/search/rechbird.png') }}" style="position: absolute;z-index: 202; margin-left: 25%; margin-top: -25px" >
+            <!--Modal: Login Form-->
+               {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+                <!--Modal: Login Form-->
+                <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog cascading-modal" role="document">
+                        <!--Content-->
+                        <div class="modal-content teal darken-3" >
+                            <!--Header-->
+                            <div class="modal-header white-text">
+                                <h4 class="title"><button type="button" class="close waves-effect waves-light white-text" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="white-text">&times;</span>
+                                    </button>
+                                    Se connecter</h4>
+                            </div>
+
+                            <!--Body-->
+                            <div class="modal-body">
+                                {{ render(controller('FOSUserBundle:Security:login')) }}
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <div class="options text-md-center mt-1  white-text" style="width: 100%">
+                                    <p><a href="{{ path('fos_user_registration_register') }}">Pas encore membre? S'enregistrer</a></p>
+                                    <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}">Mot de passe?</a></p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- End Content -->
+                    </div>
+                </div>
+                <!--Modal: Login Form-->
+            {% endif %}
+            <!--Modal: Login Form-->
+            <div class="row">
+                <!-- MENU Général gauche-->
+                <div class="col-2" style="margin: 0;padding: 0;">
+                    {{ include('menu.html.twig') }}
+                </div>
+                <!-- Bloc texte à côté du menu principal-->
+                <div class="col-10" style="margin: 0;">
+                    <div class="row">
+                        <!-- Bloc Texte -->
+                        <div class="col-12 blocText">
+                            <!-- Titre du cadre -->
+                            <div class="col-4 offset-4 titreCadre" >RECHERCHER</div>
+                            <!-- MESSAGE INFO OU ERREUR -->
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    {% for message in app.session.flashbag.get('info') %}
+                                        <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+                                    {% endfor %}
+                                    {% for message in app.session.flashbag.get('error') %}
+                                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <!-- ./END MESSAGE INFO OU ERREUR -->
+                            <!-- les différents textes-->
+                            <!--Paragraphe 1-->
+                                <p class="card-text" style="padding-left: 10%; padding-right: 10%;margin-top: 18px;text-align: center">
+                                    Afin de vous aider à identifier ou rechercher un oiseau, veuillez au moins remplir un des champs ci-dessous.
+                                </p>
+                            <!-- FORMULAIRE RECHERCHER -->
+                            <div class="container">
+                                <div class="row" style="margin: 0;text-align: center">
+                                    <div class="input-field col-3 offset-1">
+                                        {{ form_row(form.name) }}
+                                    </div>
+                                    <div class="md-form-3 form-sm-3 offset-1">
+                                        {{ form_row(form.family) }}
+                                    </div>
+                                    <div class="md-form-3 form-sm3 offset-1">
+                                        {{ form_row(form.department) }}
+                                    </div>
+                                </div>
+                                <div class="row" style="text-align: center">
+                                    <div class="col-12">
+                                        <button id="searchBtn" type="submit" class="btn btn-primary btn-rounded teal darken-3" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Recherche en cours..." formnovalidate>Rechercher</button>
+                                        {{ form_end(form)}}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div id="searchView">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- END PAGE RECHERCHER -->
+    {% block footer %}
+        {{ include('footer.html.twig') }}
+    {% endblock %}
 
 
-
-{% block javascripts %}
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-    <!-- JQUERY UI POUR AUTOCOMPLETION -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
+    {% block scriptSearch %}
     <script src="{{ asset('js/search.js') }}"></script>
-
     <script>
         $(document).ready(function() {
 
@@ -156,7 +196,6 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
             // =======================================================
             // INITIALISATION LISTENERS APRES REQUETE AJAX
             // =======================================================
-
             function initializeListeners(){
                 $('.pagination a').click(function(e) {
                     e.preventDefault();
@@ -171,7 +210,6 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
                 });
             }
 
-
             // ================================================
             // Affichage de la fiche espèce si passée en paramètre
             // ================================================
@@ -185,11 +223,12 @@ PAGE TEMPORAIRE EN ATTENDANT L'INTEGRATION
                 name = searchSpecie;
                 triggerSearch();
             }
-
         });
     </script>
-
+    {% endblock %}
 {% endblock %}
-</body>
 
-</html>
+
+
+
+
