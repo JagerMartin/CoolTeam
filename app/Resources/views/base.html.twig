@@ -52,6 +52,11 @@
     {% block javascripts %}
         <!-- JQuery -->
         <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+        <!-- JQUERY UI POUR AUTOCOMPLETION -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
         <!-- Bootstrap tooltips -->
         <script type="text/javascript" src="{{ asset('js/tether.min.js') }}"></script>
@@ -65,8 +70,7 @@
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
-    {% block monscript %}{% endblock %}
-
+        {% block scriptSearch %} {% endblock %}
     {% endblock %}
 </body>
 

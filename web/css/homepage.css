@@ -19,6 +19,9 @@ body {
 a, a:hover {
     text-decoration: none;
 }
+.btn{
+    border-radius: 5px;
+}
 
 /***************************************/
 /*  BARRE VERTICAL SEPARATION COLONNES*/
