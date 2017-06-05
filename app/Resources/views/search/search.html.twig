@@ -17,6 +17,41 @@
         <i class="fa fa-arrow-up"></i>
     </a>
 </div>
+<!-- Modal Login -->
+    {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+    <!--Modal: Login Form-->
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content teal darken-3" >
+                <!--Header-->
+                <div class="modal-header white-text">
+                    <h4 class="title"><button type="button" class="close waves-effect waves-light white-text" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">&times;</span>
+                        </button>
+                        Se connecter</h4>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    {{ render(controller('FOSUserBundle:Security:login')) }}
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer">
+                    <div class="options text-md-center mt-1  white-text" style="width: 100%">
+                        <p><a href="{{ path('fos_user_registration_register') }}">Pas encore membre? S'enregistrer</a></p>
+                        <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}">Mot de passe?</a></p>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Content -->
+        </div>
+    </div>
+    <!--Modal: Login Form-->
+{% endif %}
+<!-- ./END Modal Login -->
 
 <!-- PAGE RECHERCHER -->
     <div id="top-section" class="container container-fluid rechgeneral" style="position: relative;margin-bottom: 0%">
@@ -24,41 +59,7 @@
         <div class="container contGen" style="margin-bottom: 170px;">
             <!-- image du piou -->
             <img src="{{ asset('img/search/rechbird.png') }}" style="position: absolute;z-index: 202; margin-left: 25%; margin-top: -25px" >
-            <!--Modal: Login Form-->
-               {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
-                <!--Modal: Login Form-->
-                <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog cascading-modal" role="document">
-                        <!--Content-->
-                        <div class="modal-content teal darken-3" >
-                            <!--Header-->
-                            <div class="modal-header white-text">
-                                <h4 class="title"><button type="button" class="close waves-effect waves-light white-text" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true" class="white-text">&times;</span>
-                                    </button>
-                                    Se connecter</h4>
-                            </div>
 
-                            <!--Body-->
-                            <div class="modal-body">
-                                {{ render(controller('FOSUserBundle:Security:login')) }}
-                            </div>
-
-                            <!--Footer-->
-                            <div class="modal-footer">
-                                <div class="options text-md-center mt-1  white-text" style="width: 100%">
-                                    <p><a href="{{ path('fos_user_registration_register') }}">Pas encore membre? S'enregistrer</a></p>
-                                    <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}">Mot de passe?</a></p>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- End Content -->
-                    </div>
-                </div>
-                <!--Modal: Login Form-->
-            {% endif %}
-            <!--Modal: Login Form-->
             <div class="row">
                 <!-- MENU Général gauche-->
                 <div class="col-2" style="margin: 0;padding: 0;">
@@ -119,6 +120,7 @@
         </div>
     </div>
 <!-- END PAGE RECHERCHER -->
+
     {% block footer %}
         {{ include('footer.html.twig') }}
     {% endblock %}

@@ -66,7 +66,7 @@
 <!-- Listing des observations-->
 {% for observation in observationsList %}
 
-<div class="row" style="margin: 0; padding-top: 20px;">
+<div class="row" style="margin: 0; padding-top: 20px;padding-bottom: 20px;">
     <div class="col-12">
         <div class="row" >
             <div class="col-1" style="position: absolute;z-index: 99;">
@@ -92,8 +92,8 @@
                             <div class="col-2"  style="text-align: center;"><a href="#map" ><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
                             <div class="col-2"  style="text-align: center;"><a href="{{ path('app_observation',{'id': observation.id} ) }}"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
                         {% else %}
-                            <div class="col-2"  style="text-align: center;"><a href="{{ path('fos_user_registration_register') }}" ><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
-                            <div class="col-2"  style="text-align: center;"><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
+                            <div class="col-2"  style="text-align: center;"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
+                            <div class="col-2"  style="text-align: center;"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
                         {% endif %}
                     </div>
                 </div>
@@ -105,8 +105,8 @@
     <div class="col-12" style="padding-top: 44px">
         <p class="text-center">Pas encore d'observation pour cette espèce. Ci-dessous observations fictives, pour apprécier le visuel.</p>
     </div>
-        <!-- Exemple de visu si pas d'observ -->
-        <div class="row" style="margin: 0; padding-top: 20px">
+        <!-- Exemple de visu si pas d'observ
+        <div class="row" style="margin: 0; padding-top: 20px;">
             <div class="col-12">
                 <div class="row" >
                     <div class="col-1" style="position: absolute;z-index: 99;">
@@ -166,7 +166,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin: 0; padding-top: 20px">
+        <div class="row" style="margin: 0; padding-top: 20px;padding-bottom: 20px">
             <div class="col-12">
                 <div class="row" >
                     <div class="col-1" style="position: absolute;z-index: 99;">
@@ -185,7 +185,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- ./END Exemple de visu si pas d'observ -->
 </div>
 {% endfor %}
