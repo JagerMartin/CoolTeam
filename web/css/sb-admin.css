@@ -16,7 +16,9 @@ body {
     font-family: Roboto;
     font-size: 15px;
 }
-
+.icon-bar{
+    background-color: #ffffff;
+}
 @media(min-width:768px) {
     body {
         margin-top: 50px;
