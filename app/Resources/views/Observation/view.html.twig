@@ -1,39 +1,37 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Page affichage observation</title>
-
-    {% block stylesheets %}
-
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-
-    {% endblock %}
-
-</head>
-
-<body>
-<h1 class="text-center">Affichage d'une observation</h1>
-<hr/>
-
-<div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-        {% for message in app.session.flashbag.get('info') %}
-            <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
-        {% endfor %}
-        {% for message in app.session.flashbag.get('error') %}
-            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
-        {% endfor %}
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-        <h4>Nom : {{ observation.taxref.vernacularName }}</h4>
-        <h4>Nom complet : {{ observation.taxref.fullName }}</h4>
-        <h4>Famille : {{ observation.taxref.family }}</h4>
-    </div>
-</div>
-<div class="row">
+{% extends ':adminController/dashboard:dashboardbase.html.twig'%}
+{% block title %}Observation - {{ parent() }}{% endblock %}
+{% block body %}
+    {% block container %}
+    <div class="container-fluid" id="viewobserv">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header" style="font-size: 25px;font-weight: 600;color: #ffffff;text-transform: uppercase">
+                    <i class="fa fa-eye"></i> Observations
+                </h1>
+            </div>
+        </div>
+        <!-- Message d'info/erreur -->
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                {% for message in app.session.flashbag.get('info') %}
+                    <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+                {% endfor %}
+                {% for message in app.session.flashbag.get('error') %}
+                    <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- Détails de l'observation -->
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h4>Nom : {{ observation.taxref.vernacularName }}</h4>
+                <h4>Nom complet : {{ observation.taxref.fullName }}</h4>
+                <h4>Famille : {{ observation.taxref.family }}</h4>
+            </div>
+        </div>
+        <!-- Date de l'observation -->
+        <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
         <div>
             <p>Date et heure : {{ observation.datetime|date('d/m/y - h:i') }}</p>
@@ -76,7 +74,6 @@
 
     </div>
 </div>
-
-</body>
-
-</html>
+    </div>
+    {% endblock %}
+{% endblock %}

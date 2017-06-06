@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}{% endblock %} - Tableau de bord</title>
+    {% block stylesheets %}
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Custom CSS -->
+        <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% endblock %}
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-fixed-top" style="background-color: #00796b" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="padding-top: 0">
+            <button type="button" class="navbar-toggle"  data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a href="{{ path('dashboard') }}"><img src="{{ asset('img/homepage/parallax/logo_birdygo.png') }}" style="max-height: 51px;" class="img-fluid" /></a>
+
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav" >
+            <li class="dropdown" >
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #FFFFFF;font-size: 12px;font-weight: 600"><i class="fa fa-user-circle fa-2x" style="color: #FFFFFF"></i> {{ app.user.username }} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{{ path('fos_user_profile_edit') }}" style="color: #FFFFFF;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-user" style="color: #FFFFFF;font-size: 12px"></i> Mon profil</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout') }}" style="color: #FFFFFF;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-power-off" style="color: #FFFFFF"></i> Log Out</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li class="active">
+                    <a href="{{ path('home') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-home" style="font-size: 17px"></i> Site Nao</a>
+                </li>
+                <li class="">
+                    <a href="{{ path('dashboard') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-dashboard" style="font-size: 17px"></i> Tableau de bord</a>
+                </li>
+                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_NATURALIST') or is_granted('ROLE_OBSERVER')%}
+                <li class="">
+                    <a href="{{ path('dashboard') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-plus" style="font-size: 17px"></i> Nouvelles observation</a>
+                </li>
+                <li class="">
+                    <a href="{{ path('dashboard') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-binoculars" style="font-size: 17px"></i> Déposer une observations</a>
+                </li>
+                <li>
+                    <a href="#" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-eye" style="font-size: 17px"></i> Mes observations</a>
+                </li>
+                {% endif %}
+                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_NATURALIST')%}
+                    <li>
+                        <a href="#" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-globe" style="font-size: 17px"></i> Gestion des observations</a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMINISTRATIF')%}
+                <li>
+                    <a href="{{ path('admin_user_list') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-group" style="font-size: 17px"></i> Gestion Utilisateurs</a>
+                </li>
+              <li>
+                  <a href="{{ path('upload_taxref') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-refresh" style="font-size: 17px"></i> MAJ TAXREF</a>
+              </li>
+          {% endif %}
+           </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper">
+        {% block container %}{% endblock %}
+
+    <!-- /#page-wrapper -->
+    </div>
+</div>
+    {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    {% block monscript %}{% endblock %}
+{% endblock %}
+</body>
+</html>

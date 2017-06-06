@@ -441,7 +441,7 @@ header {
     padding-left: 25px; /* pour éviter la superposition du contenu */
 }
 .ppgen .modal-footer{
-    padding-right: 40%;
+    width: 100%;
 }
 
 /*********************

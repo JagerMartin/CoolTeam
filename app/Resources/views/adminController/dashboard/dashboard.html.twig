@@ -1,230 +1,180 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>NAO - DASHBOARD</title>
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Custom CSS -->
-    <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-<div id="wrapper">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ path('dashboard') }}">Dashboard - NAO</a>
-        </div>
-        <!-- Top Menu Items -->
-        <ul class="nav navbar-right top-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i> {{ app.user.username }} <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-fw fa-user"></i> Profile</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav side-nav">
-                <li class="active">
-                    <a href="{{ path('home') }}"><i class="fa fa-fw fa-home"></i> Accueil</a>
-                </li>
-                <li class="">
-                    <a href="{{ path('dashboard') }}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                </li>
-          {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMINISTRATIF')%}
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-users"></i> Gestion Utilisateurs</a>
-                </li>
-              <li>
-                  <a href="#"><i class="fa fa-fw fa-globe"></i> MAJ TAXREF</a>
-              </li>
-          {% endif %}
-          {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_NATURALIST')%}
-              <li>
-                  <a href="#"><i class="fa fa-fw fa-globe"></i> Gestion des observations</a>
-              </li>
-          {% endif %}
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-globe"></i> Mes observations</a>
-                </li>
-
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </nav>
-
-    <div id="page-wrapper">
-
-        <div class="container-fluid">
-
+{% extends ':adminController/dashboard:dashboardbase.html.twig'%}
+{% block title %}Panels - {{ parent() }}{% endblock %}
+{% block body %}
+        {% block container %}
+        <!-- Vue Panel Dashboard -->
+        <div class="container-fluid" id="panelDashboard" >
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Dashboard <small>Tableau de bord</small>
+                    <h1 class="page-header" style="font-size: 25px;font-weight: 600;color: #ffffff;text-transform: uppercase">
+                        <i class="fa fa-dashboard"></i> Tableau de bord
                     </h1>
-                    <ol class="breadcrumb">
-                        <li class="active">
-                            <i class="fa fa-dashboard"></i> Dashboard
-                        </li>
-                    </ol>
                 </div>
             </div>
-            <!-- /.row -->
+            <!-- /.row les 3 premiers Panels-->
+            {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_NATURALIST') or is_granted('ROLE_OBSERVER')%}
+                <div class="row">
+                    <!-- Déposer une observation-->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-plus fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">Déposer une observation</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{{ path('app_search') }}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Voir</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Nouvelles observations-->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-green-clair">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-binoculars fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" style="color: #004d40">6</div>
+                                        <div style="font-size: 20px;font-weight: 600">Nouvelles observations</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left" style="color: #2b2b2b">Voir</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Mes observations-->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-eye fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">Mes observations</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Plus de détails</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <!-- /.row  les 3 derniers Panels-->
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>Nouvelles observations</div>
+                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_NATURALIST')%}
+                    <!-- Mes validations -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-green-clair">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-check-circle fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" style="font-size: 20px;font-weight: 600">Mes validations</div>
+                                    </div>
                                 </div>
                             </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Voir</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
                         </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">plus de détails</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>Naturalistes</div>
+                {% endif %}
+                {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMINISTRATIF')%}
+                    <!-- Gestions des utilisateurs -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-group fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">Gestions des utilisateurs</div>
+                                    </div>
                                 </div>
                             </div>
+                            <a href="{{ path('admin_user_list') }}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Voir</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
                         </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Plus Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>Observateurs</div>
+                    <!-- Mise à jour de la base Taxref -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-green-clair">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-refresh fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge" style="font-size: 20px;font-weight: 600">Mise à jour de la base Taxref</div>
+                                    </div>
                                 </div>
                             </div>
+                            <a href="{{ path('upload_taxref') }}">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Mettre à Jour</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
                         </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Plus de détails</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">3</div>
-                                    <div>demandes role naturaliste</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                {% endif %}
             </div>
-            <!-- /.row -->
 
+            <!-- /.row Nouvel vue
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Liste Observations</h3>
+                            <h3 class="panel-title"><i class="fa fa-re fa-fw"></i> Liste Observations</h3>
                         </div>
                         <div class="panel-body">
                             <div id="morris-area-chart"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </div>-->
         <!-- /.container-fluid -->
+        </div>
+        <!-- ./End Vue Panel Dashboard -->
 
-    </div>
-    <!-- /#page-wrapper -->
+        {% endblock %}
+{% endblock %}
 
-</div>
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</body>
-
-</html>
