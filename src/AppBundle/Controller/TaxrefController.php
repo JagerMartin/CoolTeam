@@ -27,7 +27,7 @@ class TaxrefController extends Controller
             'action' => $this->generateUrl('upload_taxref_taxreflink')
         ));
 
-        return $this->render('admin/taxref/upload.html.twig', array(
+        return $this->render('adminController/taxref/upload.html.twig', array(
             'taxrefForm' => $taxrefForm->createView(),
             'taxrefLinkForm' => $taxrefLinkForm->createView()
         ));

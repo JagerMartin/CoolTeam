@@ -1,57 +1,20 @@
-<!--
+{% extends ':adminController/dashboard:dashboardbase.html.twig'%}
+{% block title %}Gestion des Utilisateurs - {{ parent() }}{% endblock %}
 
-
-
-
-
-
-
-PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
-
-
-
-
-
-
-
--->
-
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Gestion utilisateurs</title>
-
-    {% block stylesheets %}
-
-        <!-- Font-Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-        <style>
-            .activeFilter{
-                color: red;
-            }
-
-            .disabled{
-                color: #d9d9d9;
-            }
-        </style>
-
-    {% endblock %}
-
-</head>
-
-<body>
-
-<div class="container">
-
-    <h1 class="text-center">Gestion des utilisateurs</h1>
-    <hr>
+{% block body %}
+    {% block container %}
+<div class="container-fluid" id="listUsers">
+    <!-- Heading -->
     <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
+        <div class="col-lg-12">
+            <h1 class="page-header" style="font-size: 25px;font-weight: 600;color: #ffffff;text-transform: uppercase">
+                <i class="fa fa-group"></i> Gestion des utilisateurs
+            </h1>
+        </div>
+    </div>
+    <!-- Page messages d'erreur -->
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2" >
             {% for message in app.session.flashbag.get('info') %}
                 <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
             {% endfor %}
@@ -60,14 +23,15 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
             {% endfor %}
         </div>
     </div>
-
-    <div class="row">
+    <!-- Filtre utilisateurs -->
+    <div class="row" >
         {{ render(controller(
         'AppBundle:User:indexUserMenu',
         { 'filter': filter }
         )) }}
     </div>
     <hr>
+    <!-- Liste utilisateurs -->
     <div class="row">
         <label class="checkbox-inline"><input type="checkbox" value="" id="selectAll">Tout sélectionner</label>
         <label class="checkbox-inline"><a href="{{ path('admin_user_list') }}" id="disableLink">Tout désactiver</a></label>
@@ -109,10 +73,10 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
                         {% endif %}
                     </td>
                     <td>
-                        <a href="mailto:{{ user.email }}"><span class="glyphicon glyphicon-envelope"></span></a>
+                        <a href="mailto:{{ user.email }}" style="font-size: 25px"><i class="fa fa-envelope"></i></a>
                     </td>
                     <td>
-                        <a href="{{ path('admin_user_profile', {'id': user.id}) }}">Voir</a>
+                        <a href="{{ path('admin_user_profile', {'id': user.id}) }}" style="font-size: 25px"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
             {% else %}
@@ -123,7 +87,7 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
                 </tr>
             {% endfor %}
         </table>
-
+        <!-- Pagination -->
         {% if nbPageTotal > 1 %}
             <div class="text-center">
                 <ul class="pagination">
@@ -137,20 +101,12 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
         {% endif %}
     </div>
 </div>
+    {% endblock %}
+{% endblock %}
 
-
-
-
-{% block javascripts %}
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+{% block monscript %}
     <script>
         $(function(){
-
             // ===========================================
             //       COCHER TOUTES LES CHECKBOXS
             // ===========================================
@@ -161,8 +117,6 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
                     $(':checkbox').prop('checked',true);
                 }
             });
-
-
             // ===========================================
             //       DESACTIVER USERS SELECTIONNES
             // ===========================================
@@ -171,7 +125,6 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
                 var checkedIDs = getCheckedIDs();
                 AjaxChangeUserStatus(checkedIDs, 0);
             });
-
             // ===========================================
             //       ACTIVER USERS SELECTIONNES
             // ===========================================
@@ -180,7 +133,6 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
                 var checkedIDs = getCheckedIDs();
                 AjaxChangeUserStatus(checkedIDs, 1);
             });
-
             // ============================================================
             //   RECUPERER LES ID DES USERS DONT LA CHECKBOX EST COCHEE
             // ============================================================
@@ -193,7 +145,6 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
                 });
                 return checkedIDs;
             }
-
             // ================================================================================
             //   REQUETE AJAX => CHANGER ACTIVATION POUR TOUS les IDs utilisateurs du tableau
             // ================================================================================
@@ -212,7 +163,6 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
                         alert('Les utilisateurs demandés n\'ont pas pu être désactivés.');
                     });
             }
-
             // ================================================================================
             //   MISE A JOUR DE L'APPARENCE DES LIGNES (activé/désactivé) APRES EXECUTION AJAX
             // ================================================================================
@@ -227,8 +177,4 @@ PAGE TEMPORAIRE EN ATTENDANT L'ESPACE ADMIN !!!
             }
         });
     </script>
-
 {% endblock %}
-</body>
-
-</html>

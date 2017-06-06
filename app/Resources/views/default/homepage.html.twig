@@ -412,18 +412,26 @@
                                 {% endfor %}
 							</div>
 							<div class="col-6 myB">
-								<button type="button" class="btn btn-default">
-									<a href="{{ path('app_search', {'cdName': observation.taxref.cdName} ) }}" style="color: #FFFFFF;text-decoration: none">
-                                    {{ observation.datetime|date('d/m/Y') }}
-										<p>
-											{% if observation.taxref.vernacularName is defined %}
-												{{ observation.taxref.vernacularName }}
-											{% else %}
-												{{ observation.taxref.lbName }}
-											{% endif %}
-										</p>
-									</a>
-								</button>
+								<a href="{{ path('app_search', {'cdName': observation.taxref.cdName} ) }}" style="color: #FFFFFF;text-decoration:  none">
+									<button type="button" class="btn btn-default">
+
+										{{ observation.datetime|date('d/m/Y') }}
+											<p>
+												{% if observation.taxref.vernacularName is defined %}
+													<!-- Si nom vernicular trop long, met le nom latin-->
+                                                    {% if observation.taxref.vernacularName|length < 20 %}
+                                                        {{ observation.taxref.vernacularName }}
+													{% else %}
+                                                        {{ observation.taxref.lbName }}
+                                                    {% endif %}
+
+												{% else %}
+													{{ observation.taxref.lbName }}
+												{% endif %}
+											</p>
+
+									</button>
+								</a>
 							</div>
 						</div>
                     {% endfor %}

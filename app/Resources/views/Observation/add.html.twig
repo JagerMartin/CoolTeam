@@ -1,28 +1,105 @@
+{% extends ':adminController/dashboard:dashboardbase.html.twig'%}
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block title %}Ajout d'une Observation - {{ parent() }}{% endblock %}
+{% block body %}
+    {% block container %}
+        <div class="container-fluid" id="viewobserv">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header" style="font-size: 25px;font-weight: 600;color: #ffffff;text-transform: uppercase">
+                        <i class="fa fa-eye"></i> Ajout d'une Observation
+                    </h1>
+                </div>
+            </div>
+            <!-- Messages d'info/d'erreur -->
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    {% for message in app.session.flashbag.get('info') %}
+                        <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+                    {% endfor %}
+                    {% for message in app.session.flashbag.get('error') %}
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+                    {% endfor %}
+                </div>
+            </div>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Page ajout observation</title>
-
-    {% block stylesheets %}
-
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-
+            {{ form_stylesheet(form) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Nom : {{ observation.taxref.vernacularName }}</h4>
+                    <h4>Nom complet : {{ observation.taxref.fullName }}</h4>
+                    <h4>Famille : {{ observation.taxref.family }}</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                {{ form_start(form) }}
+                <div>
+                    {{ form_label(form.datetime, 'Date et heure' ) }}
+                    {{ form_widget(form.datetime) }}
+                    {{ form_errors(form.datetime) }}
+                </div>
+                <div>
+                    {{ form_label(form.sex, 'Sexe' ) }}
+                    {{ form_widget(form.sex) }}
+                    {{ form_errors(form.sex) }}
+                </div>
+                <div>
+                    {{ form_label(form.observation, 'Observation' ) }}
+                    {{ form_widget(form.observation) }}
+                    {{ form_errors(form.observation) }}
+                </div>
+                <div>
+                    {{ form_label(form.latitude, 'Latitude' ) }}
+                    {{ form_widget(form.latitude) }}
+                    {{ form_errors(form.latitude) }}
+                </div>
+                <div>
+                    {{ form_label(form.longitude, 'Longitude' ) }}
+                    {{ form_widget(form.longitude) }}
+                    {{ form_errors(form.longitude) }}
+                </div>
+                <div>
+                    {{ form_label(form.department, 'Département' ) }}
+                    {{ form_widget(form.department) }}
+                    {{ form_errors(form.department) }}
+                </div>
+                <div>
+                    <div class="row">
+                        {% set x = 0 %}
+                        {% for picture in form.pictures %}
+                            <div class="col-lg-5 col-sm-5">
+                                {{ form_label(picture.imageFile, 'Photo... :' ) }}
+                                {{ form_widget(picture.imageFile, { 'attr': {'class': 'file_input_' ~ x} }) }}
+                                {{ form_errors(picture.imageFile) }}
+                                <div id="image_preview_file_input_{{ loop.index0 }}" class="col-sm-12">
+                                    <div class="thumbnail hidden">
+                                        <img src="http://placehold.it/5" alt="">
+                                        <div class="caption">
+                                            <p>
+                                                <button type="button" id="file_input_{{ x }}"
+                                                        class="btn btn-default btn-danger">Annuler
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% set x = x + 1 %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        {{ form_javascript(form) }}
+        {{ form_end(form) }}
     {% endblock %}
-
-    {% block javascripts %}
-
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+{% endblock %}
+{% block monscript %}
         <script>
             $(function () {
-
                 // Ici on attend que le fichier soit sélectionné
                 $('.file_input_0, .file_input_1, .file_input_2').on('change', function (e) {
                     var inputClass = "";
@@ -59,98 +136,3 @@
         </script>
 
     {% endblock %}
-</head>
-
-<body>
-
-
-<h1 class="text-center">Ajout d'une observation</h1>
-<hr/>
-
-<div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-        {% for message in app.session.flashbag.get('info') %}
-            <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
-        {% endfor %}
-        {% for message in app.session.flashbag.get('error') %}
-            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
-        {% endfor %}
-    </div>
-</div>
-
-{{ form_stylesheet(form) }}
-
-{{ form_javascript(form) }}
-<div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-        <h4>Nom : {{ observation.taxref.vernacularName }}</h4>
-        <h4>Nom complet : {{ observation.taxref.fullName }}</h4>
-        <h4>Famille : {{ observation.taxref.family }}</h4>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-        {{ form_start(form) }}
-        <div>
-            {{ form_label(form.datetime, 'Date et heure' ) }}
-            {{ form_widget(form.datetime) }}
-            {{ form_errors(form.datetime) }}
-        </div>
-        <div>
-            {{ form_label(form.sex, 'Sexe' ) }}
-            {{ form_widget(form.sex) }}
-            {{ form_errors(form.sex) }}
-        </div>
-        <div>
-            {{ form_label(form.observation, 'Observation' ) }}
-            {{ form_widget(form.observation) }}
-            {{ form_errors(form.observation) }}
-        </div>
-        <div>
-            {{ form_label(form.latitude, 'Latitude' ) }}
-            {{ form_widget(form.latitude) }}
-            {{ form_errors(form.latitude) }}
-        </div>
-        <div>
-            {{ form_label(form.longitude, 'Longitude' ) }}
-            {{ form_widget(form.longitude) }}
-            {{ form_errors(form.longitude) }}
-        </div>
-        <div>
-            {{ form_label(form.department, 'Département' ) }}
-            {{ form_widget(form.department) }}
-            {{ form_errors(form.department) }}
-        </div>
-        <div>
-            <div class="row">
-                {% set x = 0 %}
-                {% for picture in form.pictures %}
-                    <div class="col-sm-4">
-                        {{ form_label(picture.imageFile, 'Photo... :' ) }}
-                        {{ form_widget(picture.imageFile, { 'attr': {'class': 'file_input_' ~ x} }) }}
-                        {{ form_errors(picture.imageFile) }}
-                        <div id="image_preview_file_input_{{ loop.index0 }}" class="col-sm-12">
-                            <div class="thumbnail hidden">
-                                <img src="http://placehold.it/5" alt="">
-                                <div class="caption">
-                                    <p>
-                                        <button type="button" id="file_input_{{ x }}"
-                                                class="btn btn-default btn-danger">Annuler
-                                        </button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% set x = x + 1 %}
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
-{{ form_end(form) }}
-</body>
-
-</html>
