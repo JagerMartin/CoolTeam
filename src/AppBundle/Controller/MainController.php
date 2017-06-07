@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Contact;
 use AppBundle\Entity\Newsletter;
+use AppBundle\Form\ContactType;
 use AppBundle\Form\NewsletterType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -38,9 +40,21 @@ class MainController extends Controller
      * @Route("/contact", name="contact")
      *
      */
-    public function contactAction()
+    public function contactAction(Request $request)
     {
-        return $this->render('MainController/contact.html.twig');
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $this->get('app.send_contact_mail')->sendContactMail($contact);
+            $this->addFlash('info', 'Votre message a bien été envoyé, nous répondrons dès que possible à votre demande.');
+            return $this->redirectToRoute('contact');
+        }
+
+        return $this->render('MainController/contact.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 
     /**

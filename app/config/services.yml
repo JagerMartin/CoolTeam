@@ -18,3 +18,10 @@ services:
 
     app.create_map_with_observations:
         class: AppBundle\Utils\CreateMapWithObservations
+
+    app.send_contact_mail:
+            class: AppBundle\Utils\SendContactMail
+            arguments:
+                - "@mailer"
+                - "@templating"
+                - "%mailer_user%"

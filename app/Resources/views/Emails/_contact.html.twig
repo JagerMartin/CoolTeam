@@ -1,0 +1,12 @@
+<div style="text-align: center">
+    <img src="{{ absolute_url(asset('img/logoCommun.png')) }}">
+</div>
+<hr>
+
+<div style="text-align: center">
+    <h1  style="margin-top: 30px">Nouveau message de contact</h1>
+    <p><strong>Nom :</strong> {{ contact.name }}</p>
+    <p><strong>Email :</strong> {{ contact.email }}</p>
+    <p><strong>Objet du message :</strong> {{ contact.object }}</p>
+    <p><strong>Message :</strong><br/> {{ contact.message|nl2br }}</p>
+</div>
