@@ -18,7 +18,7 @@ class Pictures
 
     public function generate($observation)
     {
-        for ($i = 1; $i <= self::nbPictures; $i++) {
+        for ($i = count($observation->getPictures()); $i < self::nbPictures; $i++) {
             $observation->addPicture(new Picture());
         }
     }
@@ -26,7 +26,7 @@ class Pictures
     public function deleteEmptyPicture($observation)
     {
         foreach ($observation->getPictures() as $picture) {
-            if(!$picture->getImageFile()) {
+            if($picture->getImageFile() === NULL) {
                 $observation->removePicture($picture);
             }
         }

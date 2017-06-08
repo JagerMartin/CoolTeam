@@ -57,6 +57,11 @@
         <div>
             <p>Statut : {{ observation.status }}</p>
         </div>
+        <div>
+            <p>Nom de l'observateur : {{ observation.user.lastName }}</p>
+            <p>Prénom de l'observateur : {{ observation.user.firstName }}</p>
+            <p>Email de l'observateur : {{ observation.user.email }}</p>
+        </div>
 
         <div>
             <div class="row">

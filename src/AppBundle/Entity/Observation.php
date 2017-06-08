@@ -15,6 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Observation
 {
     const SEARCH_NUM_ITEMS = 9;
+    const INIT = 0;
     const PENDING = 10;
     const TOCORRECT = 20;
     const VALIDATE = 30;
@@ -93,13 +94,23 @@ class Observation
      *
      * @ORM\Column(name="status", type="integer", nullable=true)
      */
-    private $status = NULL;
+    private $status = self::INIT;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Taxref")
      * @ORM\JoinColumn(referencedColumnName="CD_NAME", name="taxref_CD_NAME")
      */
     private $taxref;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $validator;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Picture", mappedBy="observation", cascade={"persist"})
@@ -109,6 +120,7 @@ class Observation
     public function __construct()
     {
         $this->taxref = new Taxref();
+        $this->user = new User();
         $this->pictures = new ArrayCollection();
     }
 
@@ -324,6 +336,54 @@ class Observation
     public function setTaxref(\AppBundle\Entity\Taxref $taxref = null)
     {
         $this->taxref = $taxref;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Observation
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get validator
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getValidator()
+    {
+        return $this->validator;
+    }
+
+    /**
+     * Set validator
+     *
+     * @param \AppBundle\Entity\User $validator
+     *
+     * @return Observation
+     */
+    public function setValidator(\AppBundle\Entity\User $validator = null)
+    {
+        $this->user = $validator;
 
         return $this;
     }

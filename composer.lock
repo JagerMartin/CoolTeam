@@ -1132,12 +1132,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
+<<<<<<< HEAD
                 "reference": "4f92bfbb8742ac8cc195d0b34bf8ecd83b62404a"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/4f92bfbb8742ac8cc195d0b34bf8ecd83b62404a",
                 "reference": "4f92bfbb8742ac8cc195d0b34bf8ecd83b62404a",
+=======
+                "reference": "5c7202de2fd7499d5633c866aac982c8ab7e8a5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/5c7202de2fd7499d5633c866aac982c8ab7e8a5e",
+                "reference": "5c7202de2fd7499d5633c866aac982c8ab7e8a5e",
+>>>>>>> Ajout de la modification de l'observation avec les photos.
                 "shasum": ""
             },
             "require": {
@@ -1201,7 +1210,11 @@
             "keywords": [
                 "User management"
             ],
+<<<<<<< HEAD
             "time": "2017-05-31 11:50:14"
+=======
+            "time": "2017-05-24 14:07:50"
+>>>>>>> Ajout de la modification de l'observation avec les photos.
         },
         {
             "name": "incenteev/composer-parameter-handler",

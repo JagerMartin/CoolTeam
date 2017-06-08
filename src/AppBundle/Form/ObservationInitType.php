@@ -49,11 +49,13 @@ class ObservationInitType extends AbstractType
             ))
             ->add('observation', TextareaType::class)
             ->add('latitude', NumberType::class, array(
+                'scale' => 10,
                 'attr' => array(
                     'onchange' => 'codeLatLng();'
                 )
             ))
             ->add('longitude', NumberType::class, array(
+                'scale' => 10,
                 'attr' => array(
                     'onchange' => 'codeLatLng();'
                 )

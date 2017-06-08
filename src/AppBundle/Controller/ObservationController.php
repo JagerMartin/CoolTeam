@@ -20,18 +20,15 @@ class ObservationController extends Controller
         $observation = new Observation();
         $em->persist($observation);
         $observation->setDatetime(new \DateTime());
-        // Récupération des informations dans la taxref
         $observation->setTaxref($this->getDoctrine()->getManager()->getRepository('AppBundle:Taxref')->findOneBy(array('cdName' => $cdName)));
-        // Vérification des informations récupérées
         if ($observation->getTaxref() === null) {
             $this->addFlash('danger', "Veuillez revoir votre recherche");
             return $this->redirectToRoute('app_search');
         }
+        $observation->setUser($this->getUser());
         $this->get('app.pictures')->generate($observation);
-
         $form = $this->createForm(ObservationInitType::class, $observation);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $observation->setStatus(Observation::PENDING);
             $this->get('app.pictures')->deleteEmptyPicture($observation);
@@ -41,7 +38,6 @@ class ObservationController extends Controller
                 'id' => $observation->getId()
             ));
         }
-
         return $this->render(':Observation:add.html.twig', array(
             'form' => $form->createView(),
             'observation' => $observation
@@ -49,12 +45,31 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observation/update", name="app_observation_update")
+     * @Route("/observation/update/{id}", name="app_observation_update")
      *
      */
-    public function observationUpdateAction()
+    public function observationUpdateAction(Request $request, Observation $observation)
     {
-        return $this->render(':Observation:update.html.twig');
+        $this->get('app.pictures')->generate($observation);
+        $form = $this->createForm(ObservationInitType::class, $observation);
+        $form->handleRequest($request);
+        //
+        dump($observation);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $observation->setStatus(Observation::PENDING);
+            $this->get('app.pictures')->deleteEmptyPicture($observation);
+            dump($observation);
+            $em->flush();
+            $this->addFlash('info', "Observation modifiée");
+            return $this->redirectToRoute('app_observation', array(
+                'id' => $observation->getId()
+            ));
+        }
+        return $this->render(':Observation:update.html.twig', array(
+            'form' => $form->createView(),
+            'observation' => $observation
+        ));
     }
 
     /**
@@ -72,9 +87,13 @@ class ObservationController extends Controller
      */
     public function observationAction(Observation $observation)
     {
-        $observation->setTaxref($this->getDoctrine()->getManager()->getRepository('AppBundle:Taxref')->findOneBy(array('cdName' => $observation->getTaxref()->getCdName())));
+        //$observation->setTaxref($this->getDoctrine()->getManager()->getRepository('AppBundle:Taxref')->findOneBy(array('cdName' => $observation->getTaxref()->getCdName())));
 
-        $observation->setPictures($this->getDoctrine()->getManager()->getRepository('AppBundle:Picture')->findBy(array('observation' => $observation)));
+        //$observation->setUser($this->getDoctrine()->getManager()->getRepository('AppBundle:User')->find($observation->getUser()->getId()));
+
+        //$observation->setPictures($this->getDoctrine()->getManager()->getRepository('AppBundle:Picture')->findBy(array('observation' => $observation)));
+
+        dump($observation);
 
         return $this->render(':Observation:view.html.twig', array(
             'observation' => $observation
