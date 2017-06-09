@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Observation;
 use AppBundle\Form\ObservationInitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class ObservationController extends Controller
@@ -98,5 +100,28 @@ class ObservationController extends Controller
         return $this->render(':Observation:view.html.twig', array(
             'observation' => $observation
         ));
+    }
+
+    /**
+     * @Route("/ajax/picture/delete", name="app_ajax_picture_delete")
+     * @Method("POST")
+     */
+    public function ajaxDeletePictureAction(Request $request)
+    {
+        if (!$request->isXmlHttpRequest()) {
+            return new JsonResponse(array('message' => 'You can access this only using AJAX !'), 400);
+        }
+
+        $pictureID = $request->request->get('id');
+        $em = $this->getDoctrine()->getManager();
+
+        $picture = $em->getRepository('AppBundle:Picture')->find($pictureID);
+        if(!$picture){
+            return new JsonResponse(array('message' => 'Cette image n\'existe pas.'), 400);
+        }
+        $em->remove($picture);
+        $em->flush();
+
+        return new JsonResponse(array('message' => 'OK'), 200);
     }
 }

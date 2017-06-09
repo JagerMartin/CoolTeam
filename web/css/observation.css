@@ -3,3 +3,7 @@
     height: 300px;
     box-shadow: #AAA 0 0 15px;
 }
+
+.confirmDeletionBlock{
+    display: none;
+}

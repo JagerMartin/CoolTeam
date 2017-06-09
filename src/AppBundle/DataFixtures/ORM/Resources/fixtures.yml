@@ -36,3 +36,5 @@ AppBundle\Entity\Observation:
         department: <departments()>
         status: 30
         taxref: <cdNames()>
+        user: '@observer*'
+        validator: '@naturalist*'
