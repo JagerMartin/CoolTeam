@@ -37,6 +37,8 @@ $(function () {
 
     // EVT => click sur bouton supprimer
     $('.deleteImageBtn').on('click', function () {
+        $('.confirmDeletionBlock').css('display', 'none');
+        $('.deleteImageBtn').css('display', 'block');
         // Récupération et stockage de l'id de l'image à supprimer
         var imageToDeleteId = $(this).parent().attr('id');
         splitImageToDeleteId = imageToDeleteId.split('_');
