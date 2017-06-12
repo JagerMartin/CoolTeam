@@ -49,10 +49,11 @@
 {{ form_javascript(form) }}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-            <h4>Nom : {{ observation.taxref.vernacularName }}</h4>
-            <h4>Nom complet : {{ observation.taxref.fullName }}</h4>
+        <div class="col-sm-12">
+            <p>Tous les éléments sont obligatoires sauf les photos.</p>
             <h4>Famille : {{ observation.taxref.family }}</h4>
+            <h4>Lb_name : {{ observation.taxref.lbName }}</h4>
+            <h4>Nom_vernaculaire : {{ observation.taxref.vernacularName }}</h4>
         </div>
     </div>
     <div class="row">
@@ -75,6 +76,13 @@
                         {{ form_widget(form.observation, {'attr': {'class': 'form-control'}}) }}
                         {{ form_errors(form.observation) }}
                     </div>
+                    {% if observation.comment != null %}
+                    <div class="form-group">
+                        <p>Commentaire</p>
+                        {{ observation.comment }}
+                    </div>
+                    {% endif %}
+                    <p>Localisation :</p>
                     <div>
                         <button type="button" class="btn btn-primary" onclick="initialize()">Me Géolocaliser</button>
                     </div>
@@ -137,6 +145,9 @@
                                             Êtes-vous sûr de vouloir supprimer la photo ?<br/>
                                             <button type="button" id="file_{{ loop.index0 }}"
                                                     class="btn btn-warning confirmDeletionBtn">Confirmer
+                                            </button>
+                                            <button type="button"
+                                                    class="btn btn-danger cancelDeletionBtn">Annuler
                                             </button>
                                         </p>
                                     </div>

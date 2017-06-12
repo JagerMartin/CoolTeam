@@ -20,6 +20,8 @@ class ObservationInitType extends AbstractType
         $builder
             ->add('datetime', DatetimeType::class, array(
                 'label' => 'Date et heure',
+                'invalid_message' => 'Date et/ou heure non valide.',
+                'placeholder' => 'jj/mm/aaaa hh:mm',
                 'pickerOptions' => array(
                     'format' => 'dd/mm/yyyy - hh:ii',
                     'weekStart' => 0,
@@ -41,34 +43,36 @@ class ObservationInitType extends AbstractType
             ))
             ->add('sex', ChoiceType::class, array(
                 'label' => 'Sexe',
+                'invalid_message' => 'Champ obligatoire.',
                 'choices' => array(
                     'Mâle' => 'male',
                     'Femelle' => 'femelle',
                     'Inconnu' => 'inconnu'
                 ), 'expanded' => true, 'multiple' => false
             ))
-            ->add('observation', TextareaType::class)
+            ->add('observation', TextareaType::class, array(
+                'invalid_message' => 'Champ obligatoire, 500 caractères max.'
+            ))
             ->add('latitude', NumberType::class, array(
+                'invalid_message' => 'Caractères numériques uniquement',
                 'scale' => 10,
                 'attr' => array(
                     'onchange' => 'codeLatLng();'
                 )
             ))
             ->add('longitude', NumberType::class, array(
+                'invalid_message' => 'Caractères numériques uniquement',
                 'scale' => 10,
                 'attr' => array(
                     'onchange' => 'codeLatLng();'
                 )
             ))
-            ->add('department', TextType::class)
-            ->add('submit', SubmitType::class, array(
-                'label' => 'Valider',
-                'attr' => array(
-                    'class' => 'btn-default btn btn-primary pull-right'
-                )))
+            ->add('department', TextType::class, array(
+                'invalid_message' => 'Champ obligatoire'
+            ))
             ->add('pictures', CollectionType::class, array(
-                    'entry_type' => PictureType::class)
-            );
+                    'entry_type' => PictureType::class
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

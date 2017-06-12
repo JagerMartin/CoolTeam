@@ -69,5 +69,10 @@ $(function () {
         });
     });
 
+    // EVT => click sur bouton annuler
+    $('.cancelDeletionBtn').on('click', function(){
+        $('.deleteImageBtn').css('display', 'block');
+        $('.confirmDeletionBlock').css('display', 'none');
+    });
 
 });

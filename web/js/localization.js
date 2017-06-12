@@ -4,6 +4,7 @@ var trans = {
     DefaultDepartment: "Paris",
     CheckMapDelay: 7e3,
     NoResolvedDepartment: "Erreur de localisation",
+    ErrorDepartment: "Coordonnées non valides",
     GeocodingError: "Echec du geocoding pour la raison suivante : "
 };
 var geocoder;
@@ -84,20 +85,12 @@ function codeUpdateLatLng() {
     var lng = parseFloat(document.getElementById("observation_init_longitude").value);
     var latlng = new google.maps.LatLng(lat, lng);
     geocoder = new google.maps.Geocoder;
-
     map.setCenter(latlng);
     map.setZoom(15);
     mapLoaded = 1;
-
     bookUp(trans.DefaultDepartment, trans.DefaultLat, trans.DefaultLng);
-
     if (marker != null) marker.setMap(null);
-
     marker = new google.maps.Marker({map: map, position: latlng});
-    //document.getElementById("observation_init_latitude").value = defaultLatLng.lat();
-    //document.getElementById("observation_init_longitude").value = defaultLatLng.lng();
-    //document.getElementById("observation_init_department").value = trans.DefaultDepartment;
-
     google.maps.event.addListener(map, "click", codeLatLngfromclick);
 }
 
@@ -123,11 +116,10 @@ function codeLatLng() {
         } else {
             if (marker != null) marker.setMap(null);
             marker = new google.maps.Marker({position: latlng, map: map});
-            document.getElementById("observation_init_department").value = trans.NoResolvedDepartment;
+            document.getElementById("observation_init_department").value = trans.ErrorDepartment;
             document.getElementById("observation_init_latitude").value = "";
             document.getElementById("observation_init_longitude").value = "";
             bookUp(document.getElementById("observation_init_department").value, lat, lng);
-            //alert(trans.GeocodingError + status)
         }
     });
     map.setCenter(latlng);
@@ -164,13 +156,9 @@ function codeLatLngfromclick(event) {
             document.getElementById("observation_init_latitude").value = "";
             document.getElementById("observation_init_longitude").value = "";
             bookUp(document.getElementById("observation_init_department").value, lat, lng);
-            //alert(trans.GeocodingError + status)
         }
     })
 }
-
-
-
 
 function bookUp(department, latitude, longitude) {
     return false;

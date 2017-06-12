@@ -114,6 +114,7 @@ class Observation
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Picture", mappedBy="observation", cascade={"persist"})
+     * @Assert\Valid()
      */
     private $pictures;
 

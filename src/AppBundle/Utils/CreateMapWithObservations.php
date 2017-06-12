@@ -19,6 +19,8 @@ class CreateMapWithObservations
     public function createMapWithObservations($observations, $random = true){
         $map = new Map();
         $map->setMapOption('zoom', 5);
+        $map->setMapOption('MapTypeId', 'terrain');
+        $map->setMapOption('streetViewControl', false);
         $map->setCenter(new Coordinate(47.208744, 2.651214));
 
         foreach ($observations as $observation){

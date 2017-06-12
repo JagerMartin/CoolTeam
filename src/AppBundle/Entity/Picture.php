@@ -34,6 +34,11 @@ class Picture
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * @Vich\UploadableField(mapping="observation_picture", fileNameProperty="imageName")
+     * @Assert\File(
+     *     maxSize="5120k",
+     *     maxSizeMessage="5 Mo maximum par fichier",
+     *     mimeTypes={"image/*"},
+     *     mimeTypesMessage="Seulement les images")
      *
      * @var File
      */
