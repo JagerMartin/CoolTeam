@@ -32,13 +32,7 @@ class ObservationController extends Controller
         }
         $observation->setUser($user);
         $this->get('app.pictures')->generate($observation);
-        $form = $this->createForm(ObservationInitType::class, $observation)
-            ->add('submit', SubmitType::class, array(
-                'label' => 'Déposer',
-                'attr' => array(
-                    'class' => 'btn btn-default btn-primary'
-                )
-            ));
+        $form = $this->createForm(ObservationInitType::class, $observation);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
@@ -77,13 +71,8 @@ class ObservationController extends Controller
         }
 
         $this->get('app.pictures')->generate($observation);
-        $form = $this->createForm(ObservationInitType::class, $observation)
-            ->add('submit', SubmitType::class, array(
-                'label' => 'Déposer',
-                'attr' => array(
-                    'class' => 'btn btn-default btn-primary'
-                )
-            ));
+        $form = $this->createForm(ObservationInitType::class, $observation);
+
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
@@ -123,7 +112,7 @@ class ObservationController extends Controller
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
-        
+
         $map = $this->get('app.create_map_with_observations')->createMapWithObservations(array($observation));
         return $this->render(':Observation:view.html.twig', array(
             'observation' => $observation,
