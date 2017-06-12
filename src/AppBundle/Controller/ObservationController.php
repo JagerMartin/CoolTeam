@@ -7,6 +7,7 @@ use AppBundle\Form\ObservationInitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +21,7 @@ class ObservationController extends Controller
     public function observationAddAction(Request $request, $cdName)
     {
         $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
         $observation = new Observation();
         $em->persist($observation);
         $observation->setDatetime(new \DateTime());
@@ -28,7 +30,7 @@ class ObservationController extends Controller
             $this->addFlash('danger', "Veuillez revoir votre recherche.");
             return $this->redirectToRoute('app_search');
         }
-        $observation->setUser($this->getUser());
+        $observation->setUser($user);
         $this->get('app.pictures')->generate($observation);
         $form = $this->createForm(ObservationInitType::class, $observation)
             ->add('submit', SubmitType::class, array(
@@ -40,8 +42,11 @@ class ObservationController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                // Ajouter une condition quand la sécurité sera faite pour naturaliste et super-admin -> Observation::VALIDATE
-                $observation->setStatus(Observation::PENDING);
+                if($user->hasRole('ROLE_NATURALIST') || $user->hasRole('ROLE_SUPER_ADMIN')){ // Validation immédiate si super_admin ou naturalisete
+                    $observation->setStatus(Observation::VALIDATE);
+                } else {
+                    $observation->setStatus(Observation::PENDING);
+                }
                 $this->get('app.pictures')->deleteEmptyPicture($observation);
                 $em->flush();
                 $this->addFlash('info', "Merci d'avoir déposé votre observation.");
@@ -64,13 +69,12 @@ class ObservationController extends Controller
      */
     public function observationUpdateAction(Request $request, Observation $observation)
     {
-        // Ajouter une condition si $observation->getStatus == observation::valide
-        // redirect to route homepage avec message d'info :
-        // Vous ne pouvez pas modifier une observation validée.
-
-        // Ajouter une condition si le user n'est pas le user dépositaire
-        // redirect to route homepage avec message d'info :
-        // Vous ne pouvez pas modifier l'annonce d'un autre utilisateur.
+        if($observation->getStatus() == Observation::VALIDATE){
+            throw new AccessDeniedException('Vous ne pouvez pas modifier une observation validée.');
+        }
+        if($this->getUser()->getId() != $observation->getUser()->getId()){
+            throw new AccessDeniedException('Vous ne pouvez pas modifier l\'annonce d\'un autre utilisateur.');
+        }
 
         $this->get('app.pictures')->generate($observation);
         $form = $this->createForm(ObservationInitType::class, $observation)
@@ -116,8 +120,10 @@ class ObservationController extends Controller
      */
     public function observationAction(Observation $observation)
     {
-        // Ajouter la sécurité (une sécurité plus pointue est à mettre sur les coordonnées)
-        // Si Naturaliste, Superadmin, Administratif, Observateur, on peut voir l'observation
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+        
         $map = $this->get('app.create_map_with_observations')->createMapWithObservations(array($observation));
         return $this->render(':Observation:view.html.twig', array(
             'observation' => $observation,

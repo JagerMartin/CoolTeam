@@ -99,8 +99,8 @@
     </div>
     <!-- Seul le user de l'observation peut modifier celle ci -->
     {% if (app.user.id == observation.user.id) and (observation.status != constant('VALIDATE', observation)) %}
-        <a href="{{ path('app_observation_update', {'id': observation.id }) }}">
-            <button type="button" class="btn btn-default btn-primary">Modifier</button>
+        <a href="{{ path('app_observation_update', {'id': observation.id }) }}" class="btn btn-default btn-primary">
+           Modifier
         </a>
     {% endif %}
 </div>
