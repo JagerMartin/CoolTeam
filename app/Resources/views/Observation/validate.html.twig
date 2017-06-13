@@ -2,18 +2,17 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Page affichage observation</title>
+    <title>Page validation d'observation</title>
 
     {% block stylesheets %}
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
     {% endblock %}
-
 </head>
 
 <body>
-<h1 class="text-center">Détails d'une observation</h1>
+<h1 class="text-center">Fiche d'observation</h1>
 <hr/>
 
 <div class="row">
@@ -27,6 +26,7 @@
     </div>
 </div>
 <div class="container-fluid">
+    {{ form_start(form) }}
     <div class="row">
         <div class="col-sm-12">
             <h4>Famille : {{ observation.taxref.family }}</h4>
@@ -45,21 +45,24 @@
             <div>
                 <p>Observation : {{ observation.observation }}</p>
             </div>
-            {% if observation.comment is not empty %}
-                <div>
-                    <p>Commentaire : {{ observation.comment }}</p>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_label(form.comment, 'Commentaire' ) }}
+                        {{ form_widget(form.comment, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.comment) }}
+                    </div>
                 </div>
-            {% endif %}
+            </div>
+
             <p>Localisation :</p>
-            <!-- ici OBSERVATEUR(DEPOSITAIRE) / SUPER ADMIN / NATURALISTE peuvent voir les coordonnées -->
-            {% if (app.user.id == observation.user.id) or (is_granted('ROLE_NATURALIST') or (is_granted('ROLE_SUPER_ADMIN'))) %}
-                <div>
-                    <p>Latitude : {{ observation.latitude }}</p>
-                </div>
-                <div>
-                    <p>Longitude : {{ observation.longitude }}</p>
-                </div>
-            {% endif %}
+            <div>
+                <p>Latitude : {{ observation.latitude }}</p>
+            </div>
+            <div>
+                <p>Longitude : {{ observation.longitude }}</p>
+            </div>
             <div>
                 <p>Département : {{ observation.department }}</p>
             </div>
@@ -80,29 +83,24 @@
                             <div class="col-sm-4">
                                 <div class="col-sm-12">
                                     <div class="thumbnail">
-                                        <img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}" alt=""/>
+                                        <img src="../../../../{{ vich_uploader_asset(picture, 'imageFile') }}" alt=""/>
                                     </div>
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
                 {% endif %}
-                {% if app.user.id != observation.user.id %}
-                    <div class="col-sm-6">
-                        <p>Nom de l'observateur : {{ observation.user.lastName }}</p>
-                        <p>Prénom de l'observateur : {{ observation.user.firstName }}</p>
-                        <a href="mailto:{{ observation.user.email }}">Contacter l'observateur</a>
-                    </div>
-                {% endif %}
+                <div class="col-sm-6">
+                    <p>Nom de l'observateur : {{ observation.user.lastName }}</p>
+                    <p>Prénom de l'observateur : {{ observation.user.firstName }}</p>
+                    <a href="mailto:{{ observation.user.email }}">Contacter l'observateur</a>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Seul le user de l'observation peut modifier celle ci -->
-    {% if (app.user.id == observation.user.id) and (observation.status != constant('VALIDATE', observation)) %}
-        <a href="{{ path('app_observation_update', {'id': observation.id }) }}" class="btn btn-default btn-primary">
-           Modifier
-        </a>
-    {% endif %}
+    <a href="{{ path('app_observations_new') }}" class="btn btn-default btn-cancel">Annuler</a>
+    <a href="{{ path('app_observation_delete', {'id': observation.id }) }}" class="btn btn-default btn-danger">Supprimer</a>
+    {{ form_end(form) }}
 </div>
 </body>
 

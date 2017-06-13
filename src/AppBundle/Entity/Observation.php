@@ -384,7 +384,7 @@ class Observation
      */
     public function setValidator(\AppBundle\Entity\User $validator = null)
     {
-        $this->user = $validator;
+        $this->validator = $validator;
 
         return $this;
     }

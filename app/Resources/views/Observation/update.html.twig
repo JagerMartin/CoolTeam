@@ -77,10 +77,10 @@
                         {{ form_errors(form.observation) }}
                     </div>
                     {% if observation.comment != null %}
-                    <div class="form-group">
-                        <p>Commentaire</p>
-                        {{ observation.comment }}
-                    </div>
+                        <div class="form-group">
+                            <p>Commentaire</p>
+                            {{ observation.comment }}
+                        </div>
                     {% endif %}
                     <p>Localisation :</p>
                     <div>
@@ -114,67 +114,67 @@
                 <div class="col-sm-12">
                     <p>Photos (3 maximum) : </p>
                     <div class="row">
-                    {% for picture in form.pictures %}
-                        <div class="col-sm-2">
-                            <div class="field_input_{{ loop.index0 }}">
-                                {{ form_errors(picture.imageFile) }}
-                                {% if picture.vars.value.imageFile == null %}
-                                    {{ form_widget(picture.imageFile, { 'attr': {'class': 'input_file_' ~ loop.index0 ~ ' file_' ~ loop.index0 } } ) }}
-                                {% else %}
-                                    {{ form_widget(picture.imageFile, { 'attr': {'class': 'input_file_' ~ loop.index0 ~ ' file_' ~ loop.index0 ~ ' hidden'} } ) }}
-                                {% endif %}
+                        {% for picture in form.pictures %}
+                            <div class="col-sm-2">
+                                <div class="field_input_{{ loop.index0 }}">
+                                    {{ form_errors(picture.imageFile) }}
+                                    {% if picture.vars.value.imageFile == null %}
+                                        {{ form_widget(picture.imageFile, { 'attr': {'class': 'input_file_' ~ loop.index0 ~ ' file_' ~ loop.index0 } } ) }}
+                                    {% else %}
+                                        {{ form_widget(picture.imageFile, { 'attr': {'class': 'input_file_' ~ loop.index0 ~ ' file_' ~ loop.index0 ~ ' hidden'} } ) }}
+                                    {% endif %}
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
                     </div>
                     <div class="row">
-                    {% for picture in observation.pictures %}
+                        {% for picture in observation.pictures %}
                         <div class="col-sm-2">
                             <div id="image_preview_file_{{ loop.index0 }}">
                                 {% if picture.imageFile == null %}
                                 <div class="thumbnail hidden">
-                                {% else %}
-                                <div class="thumbnail">
-                                {% endif %}
-                                    <img src="{{ '../../../' ~ vich_uploader_asset(picture, 'imageFile') }}"/>
-                                    <div class="caption" id="picture_{{ picture.id }}">
-                                        <button type="button" id="file_{{ loop.index0 }}"
-                                                class="btn btn-danger deleteImageBtn">Supprimer
-                                        </button>
-                                        <p class="confirmDeletionBlock">
-                                            Êtes-vous sûr de vouloir supprimer la photo ?<br/>
+                                    {% else %}
+                                    <div class="thumbnail">
+                                        {% endif %}
+                                        <img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}"/>
+                                        <div class="caption" id="picture_{{ picture.id }}">
                                             <button type="button" id="file_{{ loop.index0 }}"
-                                                    class="btn btn-warning confirmDeletionBtn">Confirmer
+                                                    class="btn btn-danger deleteImageBtn">Supprimer
                                             </button>
-                                            <button type="button"
-                                                    class="btn btn-danger cancelDeletionBtn">Annuler
-                                            </button>
-                                        </p>
+                                            <p class="confirmDeletionBlock">
+                                                Êtes-vous sûr de vouloir supprimer la photo ?<br/>
+                                                <button type="button" id="file_{{ loop.index0 }}"
+                                                        class="btn btn-warning confirmDeletionBtn">Confirmer
+                                                </button>
+                                                <button type="button"
+                                                        class="btn btn-danger cancelDeletionBtn">Annuler
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="image_preview_input_file_{{ loop.index0 }}" class="col-sm-12">
+                                    <div class="thumbnail hidden">
+                                        <img src="http://placehold.it/5" alt="">
+                                        <div class="caption">
+                                            <p>
+                                                <button type="button" id="input_file_{{ loop.index0 }}"
+                                                        class="btn btn-default btn-danger">Annuler
+                                                </button>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="image_preview_input_file_{{ loop.index0 }}" class="col-sm-12">
-                                <div class="thumbnail hidden">
-                                    <img src="http://placehold.it/5" alt="">
-                                    <div class="caption">
-                                        <p>
-                                            <button type="button" id="input_file_{{ loop.index0 }}"
-                                                    class="btn btn-default btn-danger">Annuler
-                                            </button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
-                    {% endfor %}
                     </div>
                 </div>
+                <button type="submit" class="btn btn-default btn-primary">Valider</button>
+                {{ form_end(form) }}
             </div>
-                <button type="submit" class="btn btn-default" formnovalidate>Déposer</button>
-            {{ form_end(form) }}
         </div>
     </div>
-</div>
 </div>
 </body>
 

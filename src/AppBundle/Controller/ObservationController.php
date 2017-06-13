@@ -4,11 +4,11 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Observation;
 use AppBundle\Form\ObservationInitType;
+use AppBundle\Form\ObservationValidType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -20,6 +20,9 @@ class ObservationController extends Controller
      */
     public function observationAddAction(Request $request, $cdName)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $observation = new Observation();
@@ -36,7 +39,7 @@ class ObservationController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                if($user->hasRole('ROLE_NATURALIST') || $user->hasRole('ROLE_SUPER_ADMIN')){ // Validation immédiate si super_admin ou naturalisete
+                if ($user->hasRole('ROLE_NATURALIST') || $user->hasRole('ROLE_SUPER_ADMIN')) { // Validation immédiate si super_admin ou naturalisete
                     $observation->setStatus(Observation::VALIDATE);
                 } else {
                     $observation->setStatus(Observation::PENDING);
@@ -63,10 +66,10 @@ class ObservationController extends Controller
      */
     public function observationUpdateAction(Request $request, Observation $observation)
     {
-        if($observation->getStatus() == Observation::VALIDATE){
+        if ($observation->getStatus() == Observation::VALIDATE) {
             throw new AccessDeniedException('Vous ne pouvez pas modifier une observation validée.');
         }
-        if($this->getUser()->getId() != $observation->getUser()->getId()){
+        if ($this->getUser()->getId() != $observation->getUser()->getId()) {
             throw new AccessDeniedException('Vous ne pouvez pas modifier l\'annonce d\'un autre utilisateur.');
         }
 
@@ -92,15 +95,6 @@ class ObservationController extends Controller
             'form' => $form->createView(),
             'observation' => $observation
         ));
-    }
-
-    /**
-     * @Route("/observation/delete", name="app_observation_delete")
-     *
-     */
-    public function observationDeleteAction()
-    {
-        return $this->render('::base.html.twig');
     }
 
     /**
@@ -141,5 +135,89 @@ class ObservationController extends Controller
         $em->flush();
 
         return new JsonResponse(array('message' => 'OK'), 200);
+    }
+
+    /**
+     * @Route("/observation/validate/{id}", name="app_observation_validate")
+     *
+     */
+    public function observationValidateAction(Request $request, Observation $observation)
+    {
+        // si on est super admin ou naturaliste on peut accéder à cette page
+        // mais si on est naturaliste et que l'observation est validé alors on ne peut pas
+        // donc un super admin peut modifier la validation d'une observation
+
+        $map = $this->get('app.create_map_with_observations')->createMapWithObservations(array($observation));
+
+        $form = $this->createForm(ObservationValidType::class, $observation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $observation->setValidator($this->getUser());
+                if ($form->get('tocorrect')->isClicked()) {
+                    $observation->setStatus(Observation::TOCORRECT);
+                    $this->addFlash('info', "L'observation a été mise en correction.");
+                } else {
+                    $observation->setStatus(Observation::VALIDATE);
+                    $this->addFlash('info', "L'observation a été validée.");
+                }
+                $em->flush();
+                return $this->redirectToRoute('app_observations_new');
+            } else {
+                $this->addFlash('error', "Les informations sont incorrectes.");
+            }
+        }
+        return $this->render(':Observation:validate.html.twig', array(
+            'form' => $form->createView(),
+            'observation' => $observation,
+            'map' => $map
+        ));
+    }
+
+    /**
+     * @Route("/observation/delete/{id}", name="app_observation_delete")
+     *
+     */
+    public function observationDeleteAction(Observation $observation)
+    {
+
+    }
+
+    /**
+     * @Route("/observations/new", name="app_observations_new")
+     *
+     */
+    public function observationsNewAction()
+    {
+
+    }
+
+    /**
+     * @Route("/observations", name="app_observations")
+     *
+     */
+    public function observationsAction()
+    {
+
+    }
+
+    /**
+     * @Route("/observations/pending", name="app_observations_pending")
+     *
+     */
+    public function observationsPendingAction()
+    {
+
+    }
+
+    /**
+     * @Route("/observations/validate", name="app_observations_validate")
+     *
+     */
+    public function observationsValidateAction()
+    {
+
     }
 }
