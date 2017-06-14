@@ -72,6 +72,24 @@ class LoadFixtures implements FixtureInterface, OrderedFixtureInterface
         return $this->frand(-1, 6, 6); // Longitude de la france environ entre -1 et 6
     }
 
+    public function status()
+    {
+        $genera = array(
+            "20", "30");
+
+        $key = array_rand($genera);
+        return $genera[$key];
+    }
+
+    public function sex()
+    {
+        $genera = array(
+            "male", "femelle", "inconnu");
+
+        $key = array_rand($genera);
+        return $genera[$key];
+    }
+
     // Méthode de randomisation de chiffres à virgule
     private function frand($min, $max, $decimals = 0) {
         $scale = pow(10, $decimals);

@@ -196,7 +196,11 @@ class ObservationController extends Controller
      */
     public function observationsNewAction()
     {
-
+        // Seul le naturaliste et le super-admin peuvent voir cette page
+        $observations = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('status' => Observation::PENDING));
+        return $this->render(':Observations:new.html.twig', array(
+            'observations' => $observations
+        ));
     }
 
     /**
@@ -205,7 +209,11 @@ class ObservationController extends Controller
      */
     public function observationsAction()
     {
-
+        // Seul le l'observateur, le naturaliste et le super-admin peuvent voir cette page
+        $observations = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('user' => $this->getUser(), 'status' => Observation::VALIDATE));
+        return $this->render(':Observations:view.html.twig', array(
+            'observations' => $observations
+        ));
     }
 
     /**
@@ -214,7 +222,13 @@ class ObservationController extends Controller
      */
     public function observationsPendingAction()
     {
-
+        // Seul le l'observateur, le naturaliste et le super-admin peuvent voir cette page
+        $observations = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('user' => $this->getUser(), 'status' => Observation::PENDING));
+        $observationsToCorrect = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('user' => $this->getUser(), 'status' => Observation::TOCORRECT));
+        return $this->render(':Observations:pending.html.twig', array(
+            'observations' => $observations,
+            'observationsToCorrect' => $observationsToCorrect
+        ));
     }
 
     /**
@@ -223,6 +237,10 @@ class ObservationController extends Controller
      */
     public function observationsValidateAction()
     {
-
+        // Seul le naturaliste et le super-admin peuvent voir cette page
+        $observations = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('validator' => $this->getUser(), 'status' => Observation::VALIDATE));
+        return $this->render(':Observations:validate.html.twig', array(
+            'observations' => $observations
+        ));
     }
 }

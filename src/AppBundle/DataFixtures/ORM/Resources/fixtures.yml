@@ -28,13 +28,25 @@ AppBundle\Entity\User:
 
 
 AppBundle\Entity\Observation:
-    observation_{1..1000}:
+    observation_{1..800}:
         datetime: <dateTimeBetween('-300 days', 'now')>
         observation: <text(300)>
         latitude: <latitudeFrance()>
         longitude: <longitudeFrance()>
         department: <departments()>
-        status: 30
+        status: <status()>
+        sex: <sex()>
         taxref: <cdNames()>
         user: '@observer*'
         validator: '@naturalist*'
+
+    observation_{801..1000}:
+        datetime: <dateTimeBetween('-300 days', 'now')>
+        observation: <text(300)>
+        latitude: <latitudeFrance()>
+        longitude: <longitudeFrance()>
+        department: <departments()>
+        status: 10
+        sex: <sex()>
+        taxref: <cdNames()>
+        user: '@observer*'
