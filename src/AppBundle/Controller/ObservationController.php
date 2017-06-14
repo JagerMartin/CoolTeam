@@ -182,7 +182,12 @@ class ObservationController extends Controller
      */
     public function observationDeleteAction(Observation $observation)
     {
-
+        // seul un naturaliste ou un super-admin peut supprimer une observation
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($observation);
+        $em->flush();
+        $this->addFlash('info', "L'observation a été supprimée.");
+        return $this->redirectToRoute('app_observations_new');
     }
 
     /**
