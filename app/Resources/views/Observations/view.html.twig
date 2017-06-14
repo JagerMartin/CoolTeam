@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Mes observations en attente</title>
+    <title>Mes observations validées</title>
 
     {% block stylesheets %}
 
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<h1 class="text-center">Mes observations en attente</h1>
+<h1 class="text-center">Mes observations validées</h1>
 <hr/>
 
 <div class="row">
@@ -53,6 +53,9 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <div class="navigation text-center">
+                {{ knp_pagination_render(observations) }}
+            </div>
         </div>
     </div>
 </div>

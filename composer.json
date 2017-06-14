@@ -1,4 +1,4 @@
-   {
+{
     "name": "symfony/framework-standard-edition",
     "license": "MIT",
     "type": "project",
@@ -17,8 +17,10 @@
         "doctrine/doctrine-cache-bundle": "^1.2",
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "doctrine/orm": "^2.5",
+        "egeloen/google-map-bundle": "3.0.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "incenteev/composer-parameter-handler": "^2.0",
+        "knplabs/knp-paginator-bundle": "^2.6",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "stephanecollot/datetimepicker-bundle": "dev-master",
@@ -28,8 +30,7 @@
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.2.*",
         "twig/twig": "^1.0||^2.0",
-        "vich/uploader-bundle": "1.4.0",
-        "egeloen/google-map-bundle": "3.0.0"
+        "vich/uploader-bundle": "1.4.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

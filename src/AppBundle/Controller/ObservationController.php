@@ -191,40 +191,53 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observations/new", name="app_observations_new")
+     * @Route("/observations/new/{page}", name="app_observations_new", defaults={"page" = 1})
      *
      */
-    public function observationsNewAction()
+    public function observationsNewAction(Request $request, $page)
     {
         // Seul le naturaliste et le super-admin peuvent voir cette page
-        $observations = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('status' => Observation::PENDING));
+        $observations = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Observation')->findBy(
+                array('status' => Observation::PENDING),
+                array('datetime' => 'asc')
+            );
+
+        $paginator = $this->get('knp_paginator');
+        $observations = $paginator->paginate(
+            $observations,
+            $request->query->getInt('page', $page),
+            $request->query->getInt('limit', 5)
+        );
+
         return $this->render(':Observations:new.html.twig', array(
             'observations' => $observations
         ));
     }
 
     /**
-     * @Route("/observations", name="app_observations")
+     * @Route("/observations/pending/{page}", name="app_observations_pending", defaults={"page" = 1})
      *
      */
-    public function observationsAction()
+    public function observationsPendingAction(Request $request, $page)
     {
         // Seul le l'observateur, le naturaliste et le super-admin peuvent voir cette page
-        $observations = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('user' => $this->getUser(), 'status' => Observation::VALIDATE));
-        return $this->render(':Observations:view.html.twig', array(
-            'observations' => $observations
-        ));
-    }
+        $observations = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Observation')
+            ->findBy(
+                array('user' => $this->getUser(), 'status' => Observation::PENDING),
+                array('datetime' => 'asc')
+            );
 
-    /**
-     * @Route("/observations/pending", name="app_observations_pending")
-     *
-     */
-    public function observationsPendingAction()
-    {
-        // Seul le l'observateur, le naturaliste et le super-admin peuvent voir cette page
-        $observations = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('user' => $this->getUser(), 'status' => Observation::PENDING));
+        $paginator = $this->get('knp_paginator');
+        $observations = $paginator->paginate(
+            $observations,
+            $request->query->getInt('page', $page),
+            $request->query->getInt('limit', 5)
+        );
+
         $observationsToCorrect = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('user' => $this->getUser(), 'status' => Observation::TOCORRECT));
+
         return $this->render(':Observations:pending.html.twig', array(
             'observations' => $observations,
             'observationsToCorrect' => $observationsToCorrect
@@ -232,14 +245,54 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/observations/validate", name="app_observations_validate")
+     * @Route("/observations/validate/{page}", name="app_observations_validate", defaults={"page" = 1})
      *
      */
-    public function observationsValidateAction()
+    public function observationsValidateAction(Request $request, $page)
     {
         // Seul le naturaliste et le super-admin peuvent voir cette page
-        $observations = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('validator' => $this->getUser(), 'status' => Observation::VALIDATE));
+        $observations = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Observation')
+            ->findBy(
+                array('validator' => $this->getUser(), 'status' => Observation::VALIDATE),
+                array('datetime' => 'asc')
+            );
+
+        $paginator = $this->get('knp_paginator');
+        $observations = $paginator->paginate(
+            $observations,
+            $request->query->getInt('page', $page),
+            $request->query->getInt('limit', 5)
+        );
+
         return $this->render(':Observations:validate.html.twig', array(
+            'observations' => $observations
+        ));
+    }
+
+    // A LAISSER EN DERNIER
+    /**
+     * @Route("/observations/{page}", name="app_observations", defaults={"page" = 1})
+     *
+     */
+    public function observationsAction(Request $request, $page)
+    {
+        // Seul l'observateur, le naturaliste et le super-admin peuvent voir cette page
+        $observations = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Observation')
+            ->findBy(
+                array('user' => $this->getUser(), 'status' => Observation::VALIDATE),
+                array('datetime' => 'desc')
+            );
+
+        $paginator = $this->get('knp_paginator');
+        $observations = $paginator->paginate(
+            $observations,
+            $request->query->getInt('page', $page),
+            $request->query->getInt('limit', 5)
+        );
+
+        return $this->render(':Observations:view.html.twig', array(
             'observations' => $observations
         ));
     }

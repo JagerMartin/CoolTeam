@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new SC\DatetimepickerBundle\SCDatetimepickerBundle(),
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
