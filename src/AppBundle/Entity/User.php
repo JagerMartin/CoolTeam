@@ -103,6 +103,11 @@ class User extends BaseUser
      */ // Attribut non persisté en base de donnée
     private $isNewsletterSubscriber;
 
+    /**
+     * @var boolean
+     */ // Attribut non persisté en base de donnée
+    private $isCharterAccepted;
+
 
     public function __construct()
     {
@@ -358,12 +363,22 @@ class User extends BaseUser
     }
 
     public function getIsNewsletterSubscriber()
-    {
-        return $this->isNewsletterSubscriber;
-    }
+{
+    return $this->isNewsletterSubscriber;
+}
 
     public function setIsNewsletterSubscriber($isNewsletterSubscriber)
     {
         $this->isNewsletterSubscriber = $isNewsletterSubscriber;
+    }
+
+    public function getIsCharterAccepted()
+    {
+        return $this->isCharterAccepted;
+    }
+
+    public function setIsCharterAccepted($isCharterAccepted)
+    {
+        $this->isCharterAccepted = $isCharterAccepted;
     }
 }

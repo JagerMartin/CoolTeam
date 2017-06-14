@@ -77,6 +77,8 @@ fos_user:
         confirmation:
             enabled:    true
             template:   FOSUserBundle:Registration:email.txt.twig
+        form:
+            type: AppBundle\Form\RegistrationType
 
 # assetic Configuration
 assetic:

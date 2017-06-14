@@ -28,8 +28,30 @@
     </div>
     {{ form_errors(form.plainPassword.second) }}
 </div>
+<div class="row no-padding">
+    <div class="col s12">
+        <fieldset class="form-group">
+            {{ form_widget(form.isCharterAccepted) }}
+            {{ form_label(form.isCharterAccepted) }}
+        </fieldset>
+    </div>
+    <div class="col-s12">
+        {{ form_errors(form.isCharterAccepted) }}
+    </div>
+</div>
+<div class="row no-padding">
+    <div class="col s12">
+        <fieldset class="form-group">
+            {{ form_widget(form.isNewsletterSubscriber) }}
+            {{ form_label(form.isNewsletterSubscriber) }}
+        </fieldset>
+    </div>
+    <div class="col s12">
+        {{ form_errors(form.isNewsletterSubscriber) }}
+    </div>
+</div>
 <div align="center" class="button-wrap">
-    <button class="btn-large waves-effect waves-light" type="submit" name="action">
+    <button class="btn-large waves-effect waves-light" type="submit" name="action" formnovalidate>
         {{ 'registration.submit'|trans }}
         <i class="material-icons">send</i>
     </button>
