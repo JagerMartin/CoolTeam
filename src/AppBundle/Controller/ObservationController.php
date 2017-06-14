@@ -21,7 +21,7 @@ class ObservationController extends Controller
     public function observationAddAction(Request $request, $cdName)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            throw $this->createAccessDeniedException();
+            throw $this->createAccessDeniedException('Vous devez être inscrit pour déposer une observation.');
         }
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
@@ -67,10 +67,10 @@ class ObservationController extends Controller
     public function observationUpdateAction(Request $request, Observation $observation)
     {
         if ($observation->getStatus() == Observation::VALIDATE) {
-            throw new AccessDeniedException('Vous ne pouvez pas modifier une observation validée.');
+            throw $this->createAccessDeniedException('Vous ne pouvez pas modifier une observation validée.');
         }
         if ($this->getUser()->getId() != $observation->getUser()->getId()) {
-            throw new AccessDeniedException('Vous ne pouvez pas modifier l\'annonce d\'un autre utilisateur.');
+            throw $this->createAccessDeniedException('Vous ne pouvez pas modifier l\'annonce d\'un autre utilisateur.');
         }
 
         $this->get('app.pictures')->generate($observation);
@@ -104,7 +104,7 @@ class ObservationController extends Controller
     public function observationAction(Observation $observation)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            throw $this->createAccessDeniedException();
+            throw $this->createAccessDeniedException('Vous devez être inscrit pour voir une observation.');
         }
 
         $map = $this->get('app.create_map_with_observations')->createMapWithObservations(array($observation));
@@ -207,7 +207,7 @@ class ObservationController extends Controller
         $observations = $paginator->paginate(
             $observations,
             $request->query->getInt('page', $page),
-            $request->query->getInt('limit', 5)
+            $request->query->getInt('limit', $this->getParameter('admin_entry_per_page'))
         );
 
         return $this->render(':Observations:new.html.twig', array(
@@ -233,7 +233,7 @@ class ObservationController extends Controller
         $observations = $paginator->paginate(
             $observations,
             $request->query->getInt('page', $page),
-            $request->query->getInt('limit', 5)
+            $request->query->getInt('limit', $this->getParameter('admin_entry_per_page'))
         );
 
         $observationsToCorrect = $this->getDoctrine()->getManager()->getRepository('AppBundle:Observation')->findBy(array('user' => $this->getUser(), 'status' => Observation::TOCORRECT));
@@ -262,7 +262,7 @@ class ObservationController extends Controller
         $observations = $paginator->paginate(
             $observations,
             $request->query->getInt('page', $page),
-            $request->query->getInt('limit', 5)
+            $request->query->getInt('limit', $this->getParameter('admin_entry_per_page'))
         );
 
         return $this->render(':Observations:validate.html.twig', array(
@@ -289,7 +289,7 @@ class ObservationController extends Controller
         $observations = $paginator->paginate(
             $observations,
             $request->query->getInt('page', $page),
-            $request->query->getInt('limit', 5)
+            $request->query->getInt('limit', $this->getParameter('admin_entry_per_page'))
         );
 
         return $this->render(':Observations:view.html.twig', array(
