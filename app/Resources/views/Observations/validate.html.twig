@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Mes validations</title>
+
+    {% block stylesheets %}
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+    {% endblock %}
+
+</head>
+
+<body>
+<h1 class="text-center">Mes validations</h1>
+<hr/>
+
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        {% for message in app.session.flashbag.get('info') %}
+            <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+        {% endfor %}
+        {% for message in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+        {% endfor %}
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Date / Heure</th>
+                    <th>Nom de l'observateur</th>
+                    <th>Prénom de l'observateur</th>
+                    <th>Nom de l'oiseau</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Département</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for observation in observations %}
+                <tr>
+                    <td>{{ observation.datetime|date('d/m/y - h:i') }}</td>
+                    <td>{{ observation.user.lastname }}</td>
+                    <td>{{ observation.user.firstName }}</td>
+                    <td>{{ observation.taxref.lbName }}</td>
+                    <td>{{ observation.latitude }}</td>
+                    <td>{{ observation.longitude }}</td>
+                    <td>{{ observation.department }}</td>
+                    <td><a href="{{ path('app_observation', {'id': observation.id}) }}">détail</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="navigation text-center">
+                {{ knp_pagination_render(observations) }}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

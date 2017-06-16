@@ -12,6 +12,8 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Nelmio\Alice\Fixtures;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
 
 class LoadFixtures implements FixtureInterface, OrderedFixtureInterface
 {
@@ -72,6 +74,24 @@ class LoadFixtures implements FixtureInterface, OrderedFixtureInterface
         return $this->frand(-1, 6, 6); // Longitude de la france environ entre -1 et 6
     }
 
+    public function status()
+    {
+        $genera = array(
+            "20", "30");
+
+        $key = array_rand($genera);
+        return $genera[$key];
+    }
+
+    public function sex()
+    {
+        $genera = array(
+            "male", "femelle", "inconnu");
+
+        $key = array_rand($genera);
+        return $genera[$key];
+    }
+
     // Méthode de randomisation de chiffres à virgule
     private function frand($min, $max, $decimals = 0) {
         $scale = pow(10, $decimals);
@@ -86,4 +106,23 @@ class LoadFixtures implements FixtureInterface, OrderedFixtureInterface
    {
      return 3;
    }
+
+   /**
+    * Upload File Fixture
+    */
+    public function upload($filename)
+    {
+        if (is_array($filename)) {
+            $filename = \Faker\Provider\Base::randomElement($filename);
+        }
+        $path = sprintf('/tmp/%s', uniqid());
+        $copy = copy($filename, $path);
+        if (!$copy) {
+            throw new \Exception('Copy failed');
+        }
+        $mimetype = MimeTypeGuesser::getInstance()->guess($path);
+        $size     = filesize($path);
+        $imageFile = new UploadedFile($path, $filename, $mimetype, $size, null, true);
+        return $imageFile;
+    }
 }

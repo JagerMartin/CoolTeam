@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Observation
@@ -14,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Observation
 {
     const SEARCH_NUM_ITEMS = 9;
+    const INIT = 0;
     const PENDING = 10;
     const TOCORRECT = 20;
     const VALIDATE = 30;
@@ -31,6 +33,7 @@ class Observation
      * @var \DateTime
      *
      * @ORM\Column(name="datetime", type="datetime")
+     * @Assert\DateTime()
      */
     private $datetime;
 
@@ -38,6 +41,7 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="sex", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     private $sex;
 
@@ -45,6 +49,8 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="observation", type="text", nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(max=500)
      */
     private $observation;
 
@@ -53,13 +59,16 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="comment", type="text", nullable=true)
+     * @Assert\Length(max=500)
      */
     private $comment;
-    
+
     /**
      * @var float
      *
      * @ORM\Column(name="latitude", type="float")
+     * @Assert\Type("numeric")
+     * @Assert\NotBlank()
      */
     private $latitude;
 
@@ -67,6 +76,8 @@ class Observation
      * @var float
      *
      * @ORM\Column(name="longitude", type="float")
+     * @Assert\Type("numeric")
+     * @Assert\NotBlank()
      */
     private $longitude;
 
@@ -74,6 +85,7 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="department", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $department;
 
@@ -82,7 +94,7 @@ class Observation
      *
      * @ORM\Column(name="status", type="integer", nullable=true)
      */
-    private $status;
+    private $status = self::INIT;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Taxref")
@@ -91,13 +103,25 @@ class Observation
     private $taxref;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $validator;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Picture", mappedBy="observation", cascade={"persist"})
+     * @Assert\Valid()
      */
     private $pictures;
 
     public function __construct()
     {
         $this->taxref = new Taxref();
+        $this->user = new User();
         $this->pictures = new ArrayCollection();
     }
 
@@ -313,6 +337,54 @@ class Observation
     public function setTaxref(\AppBundle\Entity\Taxref $taxref = null)
     {
         $this->taxref = $taxref;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Observation
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get validator
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getValidator()
+    {
+        return $this->validator;
+    }
+
+    /**
+     * Set validator
+     *
+     * @param \AppBundle\Entity\User $validator
+     *
+     * @return Observation
+     */
+    public function setValidator(\AppBundle\Entity\User $validator = null)
+    {
+        $this->validator = $validator;
 
         return $this;
     }

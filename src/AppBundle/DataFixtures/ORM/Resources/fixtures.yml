@@ -28,11 +28,44 @@ AppBundle\Entity\User:
 
 
 AppBundle\Entity\Observation:
-    observation_{1..1000}:
+    observation_{1..800}:
         datetime: <dateTimeBetween('-300 days', 'now')>
         observation: <text(300)>
         latitude: <latitudeFrance()>
         longitude: <longitudeFrance()>
         department: <departments()>
-        status: 30
+        status: <status()>
+        sex: <sex()>
         taxref: <cdNames()>
+        user: '@observer*'
+        validator: '@naturalist*'
+
+    observation_{801..1000}:
+        datetime: <dateTimeBetween('-300 days', 'now')>
+        observation: <text(300)>
+        latitude: <latitudeFrance()>
+        longitude: <longitudeFrance()>
+        department: <departments()>
+        status: 10
+        sex: <sex()>
+        taxref: <cdNames()>
+        user: '@observer*'
+
+AppBundle\Entity\Picture:
+    picture_{1..2000}:
+        observation: '@observation*'
+        imageFile: <upload(array(
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img1.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img2.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img3.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img4.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img5.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img6.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img7.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img8.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img9.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img10.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img11.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img12.jpg',
+            './src/AppBundle/DataFixtures/ORM/Resources/img/img13.jpg',
+            ))>

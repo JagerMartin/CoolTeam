@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Page ajout observation</title>
+    <title>Page de modification observation</title>
 
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
@@ -13,6 +13,11 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script> // Récupération de la route pour requête AJAX de suppression d'image
+        var pictureDeletionPath = "{{ path('app_ajax_picture_delete') }}";
+    </script>
+
     <script src="{{ asset('js/pictures.js') }}"></script>
     <!-- Besoin localisation -->
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyA6jv-xrqUOdmXVq6BnYVYXVWnm0T1wSg4&sensor=false"></script>
@@ -22,10 +27,10 @@
 
 </head>
 
-<body onload="defaultMap();">
+<body onload="codeUpdateLatLng();">
 
 
-<h1 class="text-center">Déposer une observation</h1>
+<h1 class="text-center">Modification d'une observation</h1>
 <hr/>
 
 <div class="row">
@@ -71,6 +76,12 @@
                         {{ form_widget(form.observation, {'attr': {'class': 'form-control'}}) }}
                         {{ form_errors(form.observation) }}
                     </div>
+                    {% if observation.comment != null %}
+                        <div class="form-group">
+                            <p>Commentaire</p>
+                            {{ observation.comment }}
+                        </div>
+                    {% endif %}
                     <p>Localisation :</p>
                     <div>
                         <button type="button" class="btn btn-primary" onclick="initialize()">Me Géolocaliser</button>
@@ -105,8 +116,43 @@
                     <div class="row">
                         {% for picture in form.pictures %}
                             <div class="col-sm-2">
-                                {{ form_errors(picture.imageFile) }}
-                                {{ form_widget(picture.imageFile, { 'attr': {'class': 'input_file_' ~ loop.index0} }) }}
+                                <div class="field_input_{{ loop.index0 }}">
+                                    {{ form_errors(picture.imageFile) }}
+                                    {% if picture.vars.value.imageFile == null %}
+                                        {{ form_widget(picture.imageFile, { 'attr': {'class': 'input_file_' ~ loop.index0 ~ ' file_' ~ loop.index0 } } ) }}
+                                    {% else %}
+                                        {{ form_widget(picture.imageFile, { 'attr': {'class': 'input_file_' ~ loop.index0 ~ ' file_' ~ loop.index0 ~ ' hidden'} } ) }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        {% for picture in observation.pictures %}
+                        <div class="col-sm-2">
+                            <div id="image_preview_file_{{ loop.index0 }}">
+                                {% if picture.imageFile == null %}
+                                <div class="thumbnail hidden">
+                                    {% else %}
+                                    <div class="thumbnail">
+                                        {% endif %}
+                                        <img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}"/>
+                                        <div class="caption" id="picture_{{ picture.id }}">
+                                            <button type="button" id="file_{{ loop.index0 }}"
+                                                    class="btn btn-danger deleteImageBtn">Supprimer
+                                            </button>
+                                            <p class="confirmDeletionBlock">
+                                                Êtes-vous sûr de vouloir supprimer la photo ?<br/>
+                                                <button type="button" id="file_{{ loop.index0 }}"
+                                                        class="btn btn-warning confirmDeletionBtn">Confirmer
+                                                </button>
+                                                <button type="button"
+                                                        class="btn btn-danger cancelDeletionBtn">Annuler
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="image_preview_input_file_{{ loop.index0 }}" class="col-sm-12">
                                     <div class="thumbnail hidden">
                                         <img src="http://placehold.it/5" alt="">
@@ -120,14 +166,16 @@
                                     </div>
                                 </div>
                             </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
+                <button type="submit" class="btn btn-default btn-primary">Valider</button>
+                {{ form_end(form) }}
             </div>
-            <button type="submit" class="btn btn-default btn-primary">Déposer</button>
-            {{ form_end(form) }}
         </div>
     </div>
 </div>
 </body>
+
 </html>
