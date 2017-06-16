@@ -270,6 +270,47 @@ class ObservationController extends Controller
         ));
     }
 
+    /**
+     * @Route("/observations/gestion/{page}", name="app_observations_gestion", defaults={"page" = 1})
+     *
+     */
+    public function observationsGestionAction(Request $request, $page)
+    {
+        // Seul le super-admin peuvent voir cette page
+        $observations = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Observation')
+            ->findBy(
+                array('status' => Observation::VALIDATE),
+                array('datetime' => 'asc')
+            );
+
+        $paginator = $this->get('knp_paginator');
+        $observations = $paginator->paginate(
+            $observations,
+            $request->query->getInt('page', $page),
+            $request->query->getInt('limit', $this->getParameter('admin_entry_per_page'))
+        );
+
+        return $this->render(':Observations:gestion.html.twig', array(
+            'observations' => $observations
+        ));
+    }
+
+    /**
+     * @Route("/observation/invalidate/{id}", name="app_observation_invalidate")
+     *
+     */
+    public function observationInvalidateAction(Observation $observation)
+    {
+        // seul super-admin peut invalider une observation
+        $em = $this->getDoctrine()->getManager();
+        $observation->setStatus(Observation::TOCORRECT);
+        $observation->setValidator($this->getUser());
+        $em->flush();
+        $this->addFlash('info', "L'observation a été mise à corriger.");
+        return $this->redirectToRoute('app_observations_gestion');
+    }
+
     // A LAISSER EN DERNIER
     /**
      * @Route("/observations/{page}", name="app_observations", defaults={"page" = 1})

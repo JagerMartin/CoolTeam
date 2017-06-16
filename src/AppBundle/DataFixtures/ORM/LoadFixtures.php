@@ -115,7 +115,7 @@ class LoadFixtures implements FixtureInterface, OrderedFixtureInterface
         if (is_array($filename)) {
             $filename = \Faker\Provider\Base::randomElement($filename);
         }
-        $path = sprintf('/tmp/%s', uniqid());
+        $path = sprintf('./web/tmp/%s', uniqid());
         $copy = copy($filename, $path);
         if (!$copy) {
             throw new \Exception('Copy failed');
