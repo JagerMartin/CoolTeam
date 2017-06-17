@@ -6,7 +6,47 @@ AppBundle\Entity\User:
         email: <email()>
         enabled: true
 
-    observer{1..50}:
+    observer{1}:
+        username (unique): 'observ1'
+        plainPassword: 'observ1'
+        role: ['ROLE_OBSERVER']
+        email (unique): 'test+<numberBetween(1, 1000)>@gmail.com'
+        enabled: true
+        firstName: 'observateur'
+        lastName: 'numero1'
+        registrationDate: <dateTimeBetween('-300 days', 'now')>
+
+    observer{2}:
+        username (unique): 'observ2'
+        plainPassword: 'observ2'
+        role: ['ROLE_OBSERVER']
+        email (unique): 'test+<numberBetween(1, 1000)>@gmail.com'
+        enabled: true
+        firstName: 'observateur'
+        lastName: 'numero2'
+        registrationDate: <dateTimeBetween('-300 days', 'now')>
+
+    naturalist{1}:
+        username (unique): 'naturaliste1'
+        plainPassword: 'naturaliste1'
+        role: ['ROLE_NATURALIST']
+        email (unique): 'test+<numberBetween(1, 1000)>@gmail.com'
+        enabled: true
+        firstName: 'naturaliste'
+        lastName: 'numero1'
+        registrationDate: <dateTimeBetween('-300 days', 'now')>
+
+    naturalist{2}:
+        username (unique): 'naturaliste2'
+        plainPassword: 'naturaliste2'
+        role: ['ROLE_NATURALIST']
+        email (unique): 'test+<numberBetween(1, 1000)>@gmail.com'
+        enabled: true
+        firstName: 'naturaliste'
+        lastName: 'numero2'
+        registrationDate: <dateTimeBetween('-300 days', 'now')>
+
+    observer{3..50}:
         username (unique): <firstName()><lastName()>
         plainPassword: 'observer'
         role: ['ROLE_OBSERVER']
@@ -16,7 +56,7 @@ AppBundle\Entity\User:
         lastName: <lastName()>
         registrationDate: <dateTimeBetween('-300 days', 'now')>
 
-    naturalist{1..25}:
+    naturalist{3..25}:
         username (unique): <firstName()><lastName()>
         plainPassword: 'naturalist'
         role: ['ROLE_NATURALIST']
@@ -26,9 +66,18 @@ AppBundle\Entity\User:
         lastName: <lastName()>
         registrationDate: <dateTimeBetween('-300 days', 'now')>
 
+    administratif{1}:
+        username (unique): 'administratif1'
+        plainPassword: 'administratif1'
+        role: ['ROLE_ADMINISTRATIF']
+        email (unique): 'test+<numberBetween(1, 1000)>@gmail.com'
+        enabled: true
+        firstName: 'administratif'
+        lastName: 'numero1'
+        registrationDate: <dateTimeBetween('-300 days', 'now')>
 
 AppBundle\Entity\Observation:
-    observation_{1..800}:
+    observation_{1..100}:
         datetime: <dateTimeBetween('-300 days', 'now')>
         observation: <text(300)>
         latitude: <latitudeFrance()>
@@ -40,7 +89,19 @@ AppBundle\Entity\Observation:
         user: '@observer*'
         validator: '@naturalist*'
 
-    observation_{801..1000}:
+    observation_{101..200}:
+        datetime: <dateTimeBetween('-300 days', 'now')>
+        observation: <text(300)>
+        latitude: <latitudeFrance()>
+        longitude: <longitudeFrance()>
+        department: <departments()>
+        status: <status()>
+        sex: <sex()>
+        taxref: <cdNames()>
+        user: '@naturalist*'
+        validator: '@naturalist*'
+
+    observation_{201..600}:
         datetime: <dateTimeBetween('-300 days', 'now')>
         observation: <text(300)>
         latitude: <latitudeFrance()>
@@ -51,8 +112,42 @@ AppBundle\Entity\Observation:
         taxref: <cdNames()>
         user: '@observer*'
 
+    observation_{601..1000}:
+        datetime: <dateTimeBetween('-300 days', 'now')>
+        observation: <text(300)>
+        latitude: <latitudeFrance()>
+        longitude: <longitudeFrance()>
+        department: <departments()>
+        status: 10
+        sex: <sex()>
+        taxref: <cdNames()>
+        user: '@naturalist*'
+
+    observation_{1001..1100}:
+        datetime: <dateTimeBetween('-300 days', 'now')>
+        observation: <text(300)>
+        latitude: <latitudeFrance()>
+        longitude: <longitudeFrance()>
+        department: <departments()>
+        status: <status()>
+        sex: <sex()>
+        taxref: <cdNames()>
+        user: '@admin'
+        validator: '@admin'
+
+    observation_{1101..1200}:
+        datetime: <dateTimeBetween('-300 days', 'now')>
+        observation: <text(300)>
+        latitude: <latitudeFrance()>
+        longitude: <longitudeFrance()>
+        department: <departments()>
+        status: 10
+        sex: <sex()>
+        taxref: <cdNames()>
+        user: '@admin'
+
 AppBundle\Entity\Picture:
-    picture_{1..2000}:
+    picture_{1..2500}:
         observation: '@observation*'
         imageFile: <upload(array(
             './src/AppBundle/DataFixtures/ORM/Resources/img/img1.jpg',

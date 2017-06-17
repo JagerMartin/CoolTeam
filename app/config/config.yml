@@ -143,4 +143,4 @@ knp_paginator:
         sortable: 'KnpPaginatorBundle:Pagination:sortable_link.html.twig' # sort link template
 
 parameters:
-    admin_entry_per_page: 5
+    admin_entry_per_page: 10
