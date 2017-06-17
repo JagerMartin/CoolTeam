@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Observation;
 
 class SecurityController extends Controller
 {
@@ -37,7 +38,18 @@ class SecurityController extends Controller
      */
     public function dashboardAction()
     {
-        return $this->render('adminController/dashboard/dashboard.html.twig');
+        $nbObsUserPending = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Observation')
+            ->getNbObservationsUserPending($this->getUser());
+
+        $nbObsUsersPending = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Observation')
+            ->getNbObservationsUsersPending();
+
+        return $this->render('adminController/dashboard/dashboard.html.twig', array(
+            'nbObsUserPending' => $nbObsUserPending,
+            'nbObsUsersPending' => $nbObsUsersPending
+        ));
     }
 }
 
