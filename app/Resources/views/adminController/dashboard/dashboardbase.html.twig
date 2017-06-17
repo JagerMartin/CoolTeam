@@ -67,20 +67,25 @@
                 <li class="">
                     <a href="{{ path('dashboard') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-dashboard" style="font-size: 17px"></i> Tableau de bord</a>
                 </li>
+
+
                 {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_NATURALIST') or is_granted('ROLE_OBSERVER')%}
+
                 <li class="">
-                    <a href="{{ path('dashboard') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-plus" style="font-size: 17px"></i> Nouvelles observation</a>
-                </li>
-                <li class="">
-                    <a href="{{ path('dashboard') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-binoculars" style="font-size: 17px"></i> Déposer une observations</a>
+                    <a href="{{ path('app_search') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-binoculars" style="font-size: 17px"></i> Déposer une observations</a>
                 </li>
                 <li>
-                    <a href="#" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-eye" style="font-size: 17px"></i> Mes observations</a>
+                    <a href="{{ path('app_observations') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-eye" style="font-size: 17px"></i> Mes observations</a>
                 </li>
                 {% endif %}
                 {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_NATURALIST')%}
+                    <li class="">
+                        <a href="{{ path('app_observations_new') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-plus" style="font-size: 17px"></i> Nouvelles observation</a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <li>
-                        <a href="#" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-globe" style="font-size: 17px"></i> Gestion des observations</a>
+                        <a href="{{ path('app_observations_gestion') }}" style="text-transform: uppercase;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-globe" style="font-size: 17px"></i> Gestion des observations</a>
                     </li>
                 {% endif %}
                 {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMINISTRATIF')%}
