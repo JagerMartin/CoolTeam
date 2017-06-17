@@ -1,11 +1,8 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * Observation
  *
@@ -19,7 +16,6 @@ class Observation
     const PENDING = 10;
     const TOCORRECT = 20;
     const VALIDATE = 30;
-
     /**
      * @var int
      *
@@ -28,7 +24,6 @@ class Observation
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var \DateTime
      *
@@ -36,7 +31,6 @@ class Observation
      * @Assert\DateTime()
      */
     private $datetime;
-
     /**
      * @var string
      *
@@ -44,7 +38,6 @@ class Observation
      * @Assert\NotBlank()
      */
     private $sex;
-
     /**
      * @var string
      *
@@ -53,8 +46,6 @@ class Observation
      * @Assert\Length(max=500)
      */
     private $observation;
-
-
     /**
      * @var string
      *
@@ -62,7 +53,6 @@ class Observation
      * @Assert\Length(max=500)
      */
     private $comment;
-
     /**
      * @var float
      *
@@ -71,7 +61,6 @@ class Observation
      * @Assert\NotBlank()
      */
     private $latitude;
-
     /**
      * @var float
      *
@@ -80,7 +69,6 @@ class Observation
      * @Assert\NotBlank()
      */
     private $longitude;
-
     /**
      * @var string
      *
@@ -88,43 +76,36 @@ class Observation
      * @Assert\NotBlank()
      */
     private $department;
-
     /**
      * @var int
      *
      * @ORM\Column(name="status", type="integer", nullable=true)
      */
     private $status = self::INIT;
-
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Taxref")
      * @ORM\JoinColumn(referencedColumnName="CD_NAME", name="taxref_CD_NAME")
      */
     private $taxref;
-
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      */
     private $user;
-
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      */
     private $validator;
-
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Picture", mappedBy="observation")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Picture", mappedBy="observation", cascade={"persist"})
      * @Assert\Valid()
      */
     private $pictures;
-
     public function __construct()
     {
         $this->taxref = new Taxref();
         $this->user = new User();
         $this->pictures = new ArrayCollection();
     }
-
     /**
      * Get id
      *
@@ -134,7 +115,6 @@ class Observation
     {
         return $this->id;
     }
-
     /**
      * Set datetime
      *
@@ -145,10 +125,8 @@ class Observation
     public function setDatetime($datetime)
     {
         $this->datetime = $datetime;
-
         return $this;
     }
-
     /**
      * Get datetime
      *
@@ -158,7 +136,6 @@ class Observation
     {
         return $this->datetime;
     }
-
     /**
      * Set sex
      *
@@ -169,10 +146,8 @@ class Observation
     public function setSex($sex)
     {
         $this->sex = $sex;
-
         return $this;
     }
-
     /**
      * Get sex
      *
@@ -182,7 +157,6 @@ class Observation
     {
         return $this->sex;
     }
-
     /**
      * Set observation
      *
@@ -193,10 +167,8 @@ class Observation
     public function setObservation($observation)
     {
         $this->observation = $observation;
-
         return $this;
     }
-
     /**
      * Get observation
      *
@@ -206,7 +178,6 @@ class Observation
     {
         return $this->observation;
     }
-
     /**
      * Set comment
      *
@@ -217,10 +188,8 @@ class Observation
     public function setComment($comment)
     {
         $this->comment = $comment;
-
         return $this;
     }
-
     /**
      * Get comment
      *
@@ -230,7 +199,6 @@ class Observation
     {
         return $this->comment;
     }
-
     /**
      * Set latitude
      *
@@ -241,10 +209,8 @@ class Observation
     public function setLatitude($latitude)
     {
         $this->latitude = $latitude;
-
         return $this;
     }
-
     /**
      * Get latitude
      *
@@ -254,7 +220,6 @@ class Observation
     {
         return $this->latitude;
     }
-
     /**
      * Set longitude
      *
@@ -265,10 +230,8 @@ class Observation
     public function setLongitude($longitude)
     {
         $this->longitude = $longitude;
-
         return $this;
     }
-
     /**
      * Get longitude
      *
@@ -278,7 +241,6 @@ class Observation
     {
         return $this->longitude;
     }
-
     /**
      * Set department
      *
@@ -289,10 +251,8 @@ class Observation
     public function setDepartment($department)
     {
         $this->department = $department;
-
         return $this;
     }
-
     /**
      * Get department
      *
@@ -302,7 +262,6 @@ class Observation
     {
         return $this->department;
     }
-
     /**
      * Set status
      *
@@ -313,10 +272,8 @@ class Observation
     public function setStatus($status)
     {
         $this->status = $status;
-
         return $this;
     }
-
     /**
      * Get status
      *
@@ -326,7 +283,6 @@ class Observation
     {
         return $this->status;
     }
-
     /**
      * Set taxref
      *
@@ -337,10 +293,8 @@ class Observation
     public function setTaxref(\AppBundle\Entity\Taxref $taxref = null)
     {
         $this->taxref = $taxref;
-
         return $this;
     }
-
     /**
      * Get user
      *
@@ -350,7 +304,6 @@ class Observation
     {
         return $this->user;
     }
-
     /**
      * Set user
      *
@@ -361,10 +314,8 @@ class Observation
     public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
-
         return $this;
     }
-
     /**
      * Get validator
      *
@@ -374,7 +325,6 @@ class Observation
     {
         return $this->validator;
     }
-
     /**
      * Set validator
      *
@@ -385,10 +335,8 @@ class Observation
     public function setValidator(\AppBundle\Entity\User $validator = null)
     {
         $this->validator = $validator;
-
         return $this;
     }
-
     /**
      * Get taxref
      *
@@ -398,7 +346,6 @@ class Observation
     {
         return $this->taxref;
     }
-
     /**
      * Add picture
      *
@@ -409,14 +356,11 @@ class Observation
     public function addPicture(\AppBundle\Entity\Picture $picture)
     {
         $this->pictures[] = $picture;
-
         if ($picture) {
             $picture->setObservation($this);
         }
-
         return $this;
     }
-
     /**
      * Remove picture
      *
@@ -426,7 +370,6 @@ class Observation
     {
         $this->pictures->removeElement($picture);
     }
-
     /**
      * Get pictures
      *
@@ -436,7 +379,6 @@ class Observation
     {
         return $this->pictures;
     }
-
     /**
      * Set pictures
      *
@@ -447,7 +389,6 @@ class Observation
     public function setPictures($pictures = null)
     {
         $this->pictures = $pictures;
-
         return $this;
     }
 }

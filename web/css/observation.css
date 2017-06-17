@@ -1,3 +1,9 @@
+
+.btn {
+    font-family: Roboto;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
 #map_canvas {
     border: 1px solid #DDD;
     height: 300px;
@@ -6,4 +12,32 @@
 
 .confirmDeletionBlock{
     display: none;
+}
+label, p, input {
+    font-size: 15px;
+    font-family: Roboto;
+}
+.ptitre {
+    font-weight: bold;
+    margin-left: 0;
+    padding-left: 0;
+}
+input[type="text"], input[type="date"] {
+    font-weight: lighter;
+}
+input[type="text"]:focus, input[type="date"]:focus {
+    font-weight: normal;
+}
+.form-group{
+    margin-left: 0;
+}
+#observation_init_datetime{
+    width: 250px;
+}
+#observation_init_observation {
+    width: 90%;
+    height: 150px;
+}
+input[type="checkbox"], input[type="radio"] {
+    margin: 10px;
 }

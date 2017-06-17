@@ -45,7 +45,7 @@
                                 <td>{{ observation.latitude }}</td>
                                 <td>{{ observation.longitude }}</td>
                                 <td>{{ observation.department }}</td>
-                                <td><a href="{{ path('app_observation', {'id': observation.id}) }}">détail</a></td>
+                                <td><a href="{{ path('app_observation', {'id': observation.id}) }}"><i class="fa fa-eye"></i></a></td>
                             </tr>
                             {% endfor %}
                             </tbody>

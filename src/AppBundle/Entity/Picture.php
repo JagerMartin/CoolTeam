@@ -1,12 +1,9 @@
 <?php
-
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * Picture
  *
@@ -17,11 +14,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Picture
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Observation", inversedBy="pictures")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Observation", inversedBy="pictures", cascade={"persist"})
      * @ORM\JoinColumn(name="observation_id", referencedColumnName="id")
      */
     private $observation;
-
     /**
      * @var int
      *
@@ -30,7 +26,6 @@ class Picture
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * @Vich\UploadableField(mapping="observation_picture", fileNameProperty="imageName")
@@ -43,23 +38,18 @@ class Picture
      * @var File
      */
     private $imageFile;
-
     /**
      * @ORM\Column(type="string", length=255)
      *
      * @var string
      */
     private $imageName;
-
-
     /**
      * @ORM\Column(type="datetime")
      *
      * @var \DateTime
      */
     private $updatedAt;
-
-
     /**
      * Get id
      *
@@ -69,7 +59,6 @@ class Picture
     {
         return $this->id;
     }
-
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the  update. If this
@@ -84,16 +73,13 @@ class Picture
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
-
         if ($image) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
         }
-
         return $this;
     }
-
     /**
      * @return File|null
      */
@@ -101,7 +87,6 @@ class Picture
     {
         return $this->imageFile;
     }
-
     /**
      * @param string $imageName
      *
@@ -110,10 +95,8 @@ class Picture
     public function setImageName($imageName)
     {
         $this->imageName = $imageName;
-
         return $this;
     }
-
     /**
      * @return string|null
      */
@@ -121,8 +104,6 @@ class Picture
     {
         return $this->imageName;
     }
-
-
     /**
      * Set observation
      *
@@ -133,10 +114,8 @@ class Picture
     public function setObservation(\AppBundle\Entity\Observation $observation = null)
     {
         $this->observation = $observation;
-
         return $this;
     }
-
     /**
      * Get observation
      *
