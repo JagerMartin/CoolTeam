@@ -8,7 +8,6 @@ use AppBundle\Form\ObservationValidType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -257,7 +256,6 @@ class ObservationController extends Controller
                 array('validator' => $this->getUser(), 'status' => Observation::VALIDATE),
                 array('datetime' => 'asc')
             );
-
         $paginator = $this->get('knp_paginator');
         $observations = $paginator->paginate(
             $observations,

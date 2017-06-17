@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Picture
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Observation", inversedBy="pictures", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Observation", inversedBy="pictures")
      * @ORM\JoinColumn(name="observation_id", referencedColumnName="id")
      */
     private $observation;

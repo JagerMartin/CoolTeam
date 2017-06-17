@@ -64,4 +64,28 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             ->groupBy('o.department')
             ;
     }
+
+    public function getNbObservationsUserPending($user)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->select('COUNT(o.id)')
+            ->where('o.user = :user')
+            ->setParameter('user', $user)
+            ->andWhere('o.status = :status')
+            ->setParameter('status', Observation::PENDING)
+            ->getQuery()
+            ->getSingleScalarResult();
+        return $query;
+    }
+
+    public function getNbObservationsUsersPending()
+    {
+        $query = $this->createQueryBuilder('o')
+            ->select('COUNT(o.id)')
+            ->where('o.status = :status')
+            ->setParameter('status', Observation::PENDING)
+            ->getQuery()
+            ->getSingleScalarResult();
+        return $query;
+    }
 }

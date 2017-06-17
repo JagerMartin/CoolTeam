@@ -52,7 +52,8 @@
                     <td>{{ observation.latitude }}</td>
                     <td>{{ observation.longitude }}</td>
                     <td>{{ observation.department }}</td>
-                    <td><a href="{{ path('app_observation', {'id': observation.id}) }}">invalider</a></td>
+                    <td><a href="{{ path('app_observation', {'id': observation.id}) }}">détail</a></td>
+                    <td><a href="{{ path('app_observation_invalidate', {'id': observation.id}) }}">invalider</a></td>
                 </tr>
                 {% endfor %}
                 </tbody>
