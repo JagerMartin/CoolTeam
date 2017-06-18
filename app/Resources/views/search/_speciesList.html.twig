@@ -1,15 +1,13 @@
 <div class="row" style="text-align: center">
     {% for specie in speciesList %}
         <div class="col-sm-2">
+            <a href="{{ path('app_search') }}" id="{{ specie.lbName }}" class="seeSpecie" style="color: #636c72;font-size: 12px">
                 {{ render(controller(
                 'AppBundle:Search:specieImage',
                 { 'cdName': specie.cdName }
                 )) }}
-                {% if specie.vernacularName|length > 0 %}
-                  <p class="card-text" style="text-align: center;padding-left: 10px;padding-right: 10px"><strong><a href="{{ path('app_search') }}" id="{{ specie.lbName }}" class="seeSpecie" style="color: #636c72;font-size: 12px">{{ specie.vernacularName }}</a></strong></p>
-                {% else %}
-                  <p style="text-align: center"><strong><a href="{{ path('app_search') }}" id="{{ specie.lbName }}" class="seeSpecie" style="color: #636c72;font-size: 12px">{{ specie.lbName }}</a></strong></p>
-                {% endif %}
+                  <p class="card-text" style="text-align: center;padding-left: 10px;padding-right: 10px"><strong>{{ specie.vernacularName | default(specie.lbname) }}</strong></p></a>
+
         </div>
     {% else %}
     <div class="col-12" style="padding-top: 25px">
