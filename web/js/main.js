@@ -117,7 +117,7 @@ $(document).ready(function(){
             var curval1=parseInt($('#counter1').text().replace(' ',''));
             var curval2=parseInt($('#counter2').text());
             var curval3=parseInt($('#counter3').text());
-            if(curval<=200-1){
+            if(curval<=observerCount-1){
                 $('#counter').text(curval+1);
             }
             if(curval1<=150-1){
