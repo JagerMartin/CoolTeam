@@ -3,78 +3,130 @@
 {% block title %}{{ parent() }} Accueil{% endblock %}
 
 	{% block stylesheets %}
-		{{ parent() }}
+        {{ parent() }}
 		<!-- Template styles -->
 		<link href="{{ asset('css/homepage.css') }}" rel="stylesheet">
-	{% endblock %}
+    {% endblock %}
 
 {% block body %}
 	<body>
 	<!-- Bouton qui permet de remonter en haut de page -->
 	<div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
-		<a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
+		<a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light" style="box-shadow : 1px 2px 2px 1px rgba(0,0,0,.4)">
 			<i class="fa fa-arrow-up"></i>
 		</a>
 	</div>
-
+	<!-- FIN BOUTON DE REMONTER-->
 	<!-- HEADER-->
 	<header class="container-fluid" id="top-section">
 		<div class="container">
 			<!-- Bouton hamburger -->
-			<button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#collapseEx2" aria-controls="collapseEx2" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+			<div class="" style="top: 10px;right: 0;position: absolute;">
+				<button class="hamburger" style="background-color: #00695C">&#9776;</button>
+				<button class="cross" style="background-color: #00695C">&#735;</button>
+			</div>
+
+			<div class="menu2">
+				<ul>
+					<a href="{{ path('home') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal lighten-3 menuB textCourt"><li>ACCUEIL</li></a>
+					<a href="{{ path('association') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal lighten-2 menuB textCourt" ><li>L' ASSOCIATION</li></a>
+					<a href="{{ path('modeemploi') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal menuB textlong"><li>COMMENT CA <br>MARCHE ?</li></a>
+					<a href="{{ path('app_search') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-1 menuB textcourt"><li>RECHERCHER</li></a>
+					<a href="{{ path('apprendreObserver') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-3 menuB textlong"><li>APPRENDRE <br>A OBSERVER</li></a>
+					<a href="{{ path('contact') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-4 menuB textcourt"><li>CONTACT</li></a>
+				</ul>
+			</div>
+
 			<div class="row">
 				<div class="col-12" >
 					<div class="row">
 						<!-- MENU -->
-						<div class="col-2" style="margin-top:180px;" >
+						<div class="col-2 menu" style="margin-top:180px;" >
 							<nav class="menu" id="collapseEx2">
 								<div class="d-flex flex-column">
-									<a href="{{ path('home') }}" class="btn btn-default teal lighten-3 menuB textCourt">Accueil</a>
-									<a href="{{ path('association') }}" class="btn btn-default teal lighten-2 menuB textCourt" >L'Association</a>
-									<a href="{{ path('modeemploi') }}" class="btn btn-default teal menuB textlong">Comment ça <br>marche?</a>
-									<a href="{{ path('app_search') }}" class="btn btn-default teal darken-1 menuB textcourt">Rechercher</a>
-									<a href="{{ path('apprendreObserver') }}" class="btn btn-default teal darken-3 menuB textlong">Apprendre <br>à Observer</a>
-									<a href="{{ path('contact') }}" class="btn btn-default teal darken-4 menuB textcourt">Contact</a>
+									<a href="{{ path('home') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal lighten-3 menuB textCourt">ACCUEIL</a>
+									<a href="{{ path('association') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal lighten-2 menuB textCourt" >L'ASSOCIATION</a>
+									<a href="{{ path('modeemploi') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal menuB textlong">COMMENT CA <br>MARCHE ?</a>
+									<a href="{{ path('app_search') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-1 menuB textcourt">RECHERCHER</a>
+									<a href="{{ path('apprendreObserver') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-3 menuB textlong">APPRENDRE <br>A OBSERVER</a>
+									<a href="{{ path('contact') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-4 menuB textcourt">CONTACT</a>
 								</div>
 							</nav>
 						</div>
 						<!-- Logo -->
-						<div class="col-1 logo" style="margin-top:60px;">
-							<img src="{{ asset('img/homepage/logo.png') }}">
-						</div>
-						<!-- S'inscrire | S'identifier -->
-						<div class="col-2 offset-6 sisi">
-							<ul class="list-inline" style="text-align: right">
-                                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-									<div class="dropdown">
-										<a class="dropdown-toggle" id="dropdownMenu4" style="text-transform: capitalize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i> Coucou {{ app.user.username }}
-										</a>
-										<div class="dropdown-menu dropdown-menu-right" style="background-color: #00695C" aria-labelledby="dropdownMenu4">
-											<a class="dropdown-item" href="{{ path('fos_user_profile_edit') }}" style="text-transform: capitalize"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Editer son profil</a>
-											<div class="dropdown-divider"></div>
-											<a class="dropdown-item" href="{{ path('dashboard') }}" style="text-transform: capitalize"><i class="fa fa-dashboard" aria-hidden="true"></i> Tableau de bord</a>
-											<div class="dropdown-divider"></div>
-											<a class="dropdown-item" href="{{ path('fos_user_security_logout') }}" style="text-transform: capitalize"><i class="fa fa-fw fa-power-off" aria-hidden="true"></i> Se deconnecter</a>
-										</div>
-									</div>
-                                {% else %}
-								<li class="list-inline-item"><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
-								<li class="list-inline-item">|</li>
-								<li class="list-inline-item vertical-divider"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin">S'identifier</a></li>
-								{% endif %}
-							</ul>
+						<div class="col-4 logo">
 
 						</div>
+						<!-- S'inscrire | S'identifier -->
+                        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+							<!--BirdyGo Desktop dépliant -->
+							<div class="menuBirdygo2">
+								<div class="row">
+									<!-- Image BirdyGo -->
+									<div class="margeImageB2">
+										<img src="{{ asset('img/birdygo.png') }}"  id="MenuImgBirdyGo2"/>
+									</div>
+									<!-- Icones du menu -->
+									<div id="itembirdygo2">
+										<a href="{{ path('dashboard') }}" title="Tableau de bord" style="color: white;"><img src="{{ asset('img/B.png') }}" id="iconeB2" /></a>
+										|
+                                        {% if is_granted("ROLE_NATURALIST") %}
+											<a href="{{ path('app_observation',{'id': app.user.id }) }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenu" aria-hidden="true"></i></a>
+                                        {% else %}
+											<a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" title="Mon profil" style="color: white;"><i class="fa fa-user faUserMenu" aria-hidden="true"></i></a>
+                                        {% endif %}
+										|
+										<a href="{{ path('fos_user_security_logout') }}" title="Se deconnecter" style="color: white;"><i class="fa fa-power-off faPoweroffMenu" style="" aria-hidden="true"></i></a>
+									</div>
+									<!-- Bouton -->
+									<div id="divbutton2">
+										<a href="#" style="font-size: 18px"><i id="arrowbirdygo2" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+									</div>
+								</div>
+							</div>
+							<!-- End BirdyGo Desktop -->
+							<!--BirdyGo Mobile  -->
+							<div class="menuMobileBirdygo">
+								<div class="row">
+									<!-- Image BirdyGo -->
+									<div class="margeImageMobileB">
+										<img src="{{ asset('img/B-mobile-1.png') }}"  id="MenuImgBirdyGoMobile"/>
+									</div>
+									<!-- Icones du menu -->
+									<div id="itembirdygoMobile">
+										<a href="{{ path('dashboard') }}" title="Tableau de bord" style="color: white;"><img src="{{ asset('img/B.png') }}" id="iconeMobileB" /></a>
+										|
+                                        {% if is_granted("ROLE_NATURALIST") %}
+											<a href="{{ path('app_observation',{'id': app.user.id }) }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenuMobile" aria-hidden="true"></i></a>
+                                        {% else %}
+											<a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" title="Mon profil" style="color: white;"><i class="fa fa-user faUserMenuMobile" aria-hidden="true"></i></a>
+                                        {% endif %}
+										|
+										<a href="{{ path('fos_user_security_logout') }}" title="Se deconnecter" style="color: white;"><i class="fa fa-power-off faPoweroffMenu" style="" aria-hidden="true"></i></a>
+									</div>
+									<!-- Bouton -->
+									<div id="divbuttonMobile">
+										<a href="#" style="font-size: 18px"><i id="arrowbirdygoMobile" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+									</div>
+								</div>
+							</div>
+							<!-- End BirdyGo Mobile -->
+                        {% else %}
+							<div class="col-md-5 col-sm-12 sisi">
+								<ul class="list-inline">
+									<li class="list-inline-item"><a href="{{ path('fos_user_registration_register') }}" id="lieninscrire" >S'INSCRIRE</a></li>
+									<li class="list-inline-item">|</li>
+									<li class="list-inline-item "><a href="{{ path('fos_user_security_login') }}" id="lienidentifier" data-toggle="modal" data-target="#modalLogin">S'IDENTIFIER</a></li>
+								</ul>
+							</div>
+                        {% endif %}
 					</div>
 				</div>
 			</div>
 		</div>
-</header>
+	</header>
 	<!-- FIN HEADER -->
-
+	<!-- POPUP LOGIN-->
     {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
 		<!--Modal: Login Form-->
 		<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -97,8 +149,8 @@
 					<!--Footer-->
 					<div class="modal-footer">
 						<div class="options text-md-center mt-1  white-text" style="width: 100%">
-							<p><a href="{{ path('fos_user_registration_register') }}">Pas encore membre? S'enregistrer</a></p>
-							<p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}">Mot de passe?</a></p>
+							<p><a href="{{ path('fos_user_registration_register') }}">Pas encore membre ? S'enregistrer</a></p>
+							<p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}">Mot de passe ?</a></p>
 						</div>
 
 					</div>
@@ -108,10 +160,14 @@
 		</div>
 		<!--Modal: Login Form-->
     {% endif %}
-
-	<!--Carousel-->
+	<!-- FIN POPUP LOGIN -->
+	<!-- Image remplace le carousel que pour la partie mobile -->
+	<div class="container-fluid imgHeaderMobile">
+	</div>
+	<!-- END Image remplace le carousel que pour la partie mobile -->
+	<!-- Carousel disparait en mobile-->
 	<div class="container-fluid monCarousel">
-		<div id="myCarousel1" class="carousel slide carousel-fadeOut" data-ride="carousel">
+		<div id="myCarousel1" class="carousel slide carousel-fade" data-ride="carousel">
 			<!--Indicators-->
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
@@ -143,43 +199,45 @@
 	</div>
 	<!--/.Carousel -->
 	<!-- QUI SOMMES NOUS -->
-	<div class="container-fluid">
+	<div class="container-fluid qsn">
 		<div class="container" style="margin-top: 70px;text-align: center;">
 			<div class="row">
-				<div class="col-2 align-self-center" >
-					<img src="{{ asset('img/homepage/cercleqsn/cercle1.png') }}" class="wow fadeInDown" style="height:200px; width:200px;">
+				<div class="col"><h2>QUI SOMMES NOUS?</h2></div>
+			</div>
+			<div class="row">
+				<div class="col qsnDivCercles" >
+					<img src="{{ asset('img/homepage/cercleqsn/cercle1.png') }}" alt="Dame avec jumelle" class="wow fadeInDown img-fluid qsnImgCercles">
 				</div>
-				<div class="col-6 offset-1" >
-					<h2>QUI SOMMES NOUS?</h2>
+				<div class="col" >
 					<p style="margin-top: 70px;"> « Nos Amis Les Oiseaux » est une association à but non lucratif regroupant plus de 1 000 passionnés d’ornithologie qui s’emploient chaque jour à protéger et préserver les espèces.</p>
 					<p style="margin-bottom: 70px;">Aujourd’hui, l’association NAO relève un nouveau défi : collecter des observations à grande échelle afin d’alimenter activement un programme de recherche du CNRS visant à étudier les effets du climat, de l’urbanisation et de l’agriculture sur la biodiversité.</p>
 				</div>
-				<div class="col-2 offset-1 align-self-center" >
-					<img src="{{ asset('img/homepage/cercleqsn/cercle2.png') }}" class="wow fadeInDown" style="height:200px; width:200px;">
+				<div class="col qsnDivCercles" >
+					<img src="{{ asset('img/homepage/cercleqsn/cercle2.png') }}" alt="Monsieur avec des longues vues" class="wow fadeInDown img-fluid qsnImgCercles">
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- END QUI SOMMES NOUS -->
 	<!-- DECOUVREZ NOTRE APPLICATION PARALLAX -->
-	<div class="container-fluid dna parallax1 parallax">
+	<div class="container-fluid parallax1 parallax dna">
 		<section class="parallax" id="section1">
 			<div class="view">
-				<img src="{{ asset('img/homepage/parallax/overlal.png') }}" class="img-fluid">
-				<div class="mask pattern-1">
+				<img src="{{ asset('img/homepage/parallax/overlal.png') }}"  class="img-fluid dnaOverlay" style="height: 100%">
+				<div class="mask">
 					<!-- Titre -->
 					<div class="container">
 						<div class="row">
-							<div class="col-10 offset-2" style="color: #ffffff;margin-top: 50px;margin-bottom: 50px;">
-								<h2>Découvrez notre application participative</h2>
+							<div class="col text-center">
+								<h1 id="h1dna">DECOUVREZ NOTRE APPLICATION PARTICIPATIVE</h1>
 							</div>
 						</div>
 						<!-- Texte -->
 						<div class="row">
-							<div class="col-2 offset-2">
-								<img src="{{ asset('img/homepage/parallax/logo_birdygo.png') }}">
+							<div class="col-xl-2 offset-xl-2 col-lg-2 offset-lg-2 col-md text-md-center col-sm text-sm-center">
+								<img src="{{ asset('img/homepage/parallax/logo_birdygo.png') }}" class="img-fluid dnaBirdyGo">
 							</div>
-							<div class="col-6  offset-2" style="text-align: center; padding-top: 19px;margin-bottom: 19px;background: #37474F;  background: rgba(0, 0, 0, .4);">
+							<div class="col-xl-6 offset-xl-2 col-lg-6 offset-lg-2 col-md text-md-center col-sm text-sm-center dnaText">
 								<p class="white-text">Vous êtes amateur d’oiseaux et vous aimez les observer dans votre vie quotidienne ou au cours de vos promenades?</p>
 								<p class="white-text">Vous êtes un professionnel de la nature, ornithologue ou naturaliste, et vous souhaitez participer bénévolement à la validation de centaines d’observations d’oiseaux ?</p>
 								<p class="white-text">Grâce à notre application participative, partagez votre passion et prenez part à un grand programme de recherche et de protection des oiseaux !</p>
@@ -187,8 +245,8 @@
 						</div>
 						<!-- BOUTON -->
 						<div class="row">
-							<div class="col-3  offset-8" style="margin-top: 29px;margin-bottom: 29px;">
-								<a href="{{ path('fos_user_registration_register') }}" class="btn btn-default teal darken-1">Je participe!</a>
+							<div class="col-xl-4  offset-xl-7 col-lg-4  offset-lg-7 col-md col-sm text-center divbtnparticipe">
+								<a href="{{ path('fos_user_registration_register') }}" class="btn btn-default teal darken-1 btnparticipe">JE PARTICIPE !</a>
 							</div>
 						</div>
 					</div>
@@ -198,49 +256,44 @@
 	</div>
 	<!-- END DECOUVREZ NOTRE APPLICATION -->
 	<!-- OBSERVER ET RESPECTER-->
-	<div class="container-fluid">
+	<div class="container-fluid obsResp">
 		<div class="container">
 			<!--TITRE-->
 			<div class="row">
-				<div class="col-10 offset-1" style="margin-top:70px;text-align: center;">
-					<h2> OBSERVER ET RESPECTER </h2>
+				<div class="col text-center" >
+					<h2 class="obsRespDivTitreH2"> OBSERVER ET RESPECTER </h2>
 				</div>
 			</div>
 			<!--TEXTE-->
-			<div class="row vdivide" style="margin-top:70px;">
-				<div class="col-4" style="text-align: center;">
-					<p>Apprendre à observer</p>
-					<p  style="margin-bottom:80px;">Que vous soyez débutant ou plus expert, voici quelques conseils utiles pour augmenter vos chances d'observer les oiseaux dans les meilleures conditions : quand les observer, ce qu’il faut emporter, les techniques d’observation et ce qu’il faut noter.</p>
+			<div class="row vdivide">
+				<div class="col text-center">
+					<H3 class="obsRespDivTitreH3">Apprendre à observer</H3>
+					<p  class="obsRespDivTitreH3P3">Que vous soyez débutant ou plus expert, voici quelques conseils utiles pour augmenter vos chances d'observer les oiseaux dans les meilleures conditions : quand les observer, ce qu’il faut emporter, les techniques d’observation et ce qu’il faut noter.</p>
+					<div class="col  text-center obsRespDivButton">
+						<a href="{{ path('apprendreObserver') }}" class="btn btn-default teal darken-1 obsRespButton">APPRENDRE A OBSERVER</a>
+					</div>
 				</div>
-				<div class="col-4" style="text-align: center;">
-					<p>Charte du respect</p>
-					<p>Les observer c’est utile, mais les respecter c’est essentiel !</p>
-					<p>Les conséquences du dérangement peuvent être désastreuses.</p>
-					<p  style="margin-bottom:80px;">Suivez nos conseils pour limiter les risques de déranger les oiseaux pendant vos observations.</p>
-
+				<div class="col text-center">
+					<h3 class="obsRespDivTitreH3">Charte du respect</h3>
+					<p class="obsRespDivTitreH3P2">Les observer c’est utile, mais les respecter c’est essentiel !</p>
+					<p class="obsRespDivTitreH3P2">Les conséquences du dérangement peuvent être désastreuses.</p>
+					<p  class="obsRespDivTitreH3P3">Suivez nos conseils pour limiter les risques de déranger les oiseaux pendant vos observations.</p>
+					<div class="col text-center obsRespDivButton">
+						<button type="button" class="btn btn-default teal darken-1 obsRespButton"  data-toggle="modal" data-target="#centralModalLg">Ne pas les déranger</button>
+					</div>
 				</div>
-				<div class="col-4" style="text-align: center;">
-					<p>Rechercher un oiseau</p>
-					<p style="margin-bottom:80px;">Grâce à nos fiches d’identification, nous vous aidons à identifier les oiseaux que vous observez : effectuez une recherche par nom, famille ou lieu, puis accédez aux données sur l’espèce, sa répartition géographique, des photos et les commentaires des observateurs.</p>
+				<div class="col text-center">
+					<h3 class="obsRespDivTitreH3">Rechercher un oiseau</h3>
+					<p class="obsRespDivTitreH3P">Grâce à nos fiches d’identification, nous vous aidons à identifier les oiseaux que vous observez : effectuez une recherche par nom, famille ou lieu, puis accédez aux données sur l’espèce, sa répartition géographique, des photos et les commentaires des observateurs.</p>
+					<div class="col text-center ">
+						<a href="{{ path('app_search') }}" class="btn btn-default teal darken-1 obsRespButton">Rechercher un oiseau</a>
+					</div>
 				</div>
-			</div>
-			<!--BOUTONS-->
-			<div class="row vdivide" style="margin-bottom: 70px">
-				<div class="col-4" style="text-align: center;">
-					<a href="{{ path('apprendreObserver') }}" class="btn btn-default teal darken-1" >Apprendre à Observer</a>
-				</div>
-				<div class="col-4" style="text-align: center;">
-					<button type="button" class="btn btn-default teal darken-1" data-toggle="modal" data-target="#centralModalLg">Ne pas les déranger</button>
-				</div>
-				<div class="col-4" style="text-align: center;">
-					<a href="{{ path('app_search') }}" class="btn btn-default teal darken-1">Rechercher un oiseau</a>
-				</div>
-
 			</div>
 		</div>
 
 	</div>
-
+	<!-- END OBSERVER ET RESPECTER-->
 	<!-- POPUP CHARTE -->
 	<div class="modal fade" id="centralModalLg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document" >
@@ -248,8 +301,6 @@
 		</div>
 	</div>
 	<!-- END POPUP CHARTE -->
-
-	<!-- END OBSERVER ET RESPECTER-->
 	<!-- SLIDER -->
 	<div class="container-fluid slider" >
 		<div id="myCarousel2" class="carousel slide carousel-fade" data-ride="carousel">
@@ -283,7 +334,7 @@
 									<li>Ordre: </li>
 									<li>Famille: </li>
 									<li>Nom Anglais: </li>
-									<li>Découvert en : </li>
+									<li>Découvert en: </li>
 								</ul>
 							</div>
 							<div class="col-3 offset-1 sliderListe2">
@@ -297,7 +348,7 @@
 						</div>
 						<div class="row">
 							<div class="col-5 offset-1" style="text-align: center;">
-								<button type="button" class="btn btn-default teal darken-1">Voir la fiche</button>
+								<button type="button" style="text-transform: capitalize" class="btn btn-default teal darken-1">Voir la fiche</button>
 							</div>
 						</div>
 					</div>
@@ -388,58 +439,49 @@
 		</div>
 	</div>
 	<!-- END SLIDER -->
-
 	<!-- DERNIERS AJOUTS -->
 	<div class="container-fluid da" >
 		<div class="container">
 			<div class="row">
-				<div class="col-12" style="text-align:center;">
+				<div class="col text-center">
 					<h2>DERNIERS AJOUTS</h2>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 70px;">
-				<div class="col-3 offset-1">
+				<div class="col ">
                     {% for observation in lastObservations %}
 						<!-- Cercles photos avec texte -->
 						<div class="row espcercle">
-							<div class="col-6" style="padding: 0;">
+							<div class="col-6" style="padding-left:12%">
                                 {% for picture in observation.pictures %}
                                     {% if loop.first %}
-										<img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}" alt="{{ picture.imageName }}" class="rounded-circle"/>
+										<img src="../{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ picture.imageName }}" class="rounded-circle daImg"/>
                                     {% endif %}
                                 {% else %}
-									<img src="{{ absolute_url(asset('img/no-photos.png')) }}" alt="Avatar vide" class="rounded-circle">
+									<img src="{{ absolute_url(asset('img/no-photos.png')) }}" alt="Avatar vide" class="rounded-circle daImg">
                                 {% endfor %}
 							</div>
 							<div class="col-6 myB">
 								<a href="{{ path('app_search', {'cdName': observation.taxref.cdName} ) }}" style="color: #FFFFFF;text-decoration:  none">
-									<button type="button" class="btn btn-default">
+									<button type="button" class="btn btn-default" style="box-shadow :2px 1px 2px 1px rgba(0,0,0,.4)">
 
-										{{ observation.datetime|date('d/m/Y') }}
-											<p>
-												{% if observation.taxref.vernacularName is defined %}
-													<!-- Si nom vernicular trop long, met le nom latin-->
-                                                    {% if observation.taxref.vernacularName|length < 20 %}
-                                                        {{ observation.taxref.vernacularName }}
-													{% else %}
-                                                        {{ observation.taxref.lbName }}
-                                                    {% endif %}
-
-												{% else %}
-													{{ observation.taxref.lbName }}
-												{% endif %}
-											</p>
+                                        {{ observation.datetime|date('d/m/Y') }}
+										<p>
+                                            {% if observation.taxref.vernacularName is defined %}
+                                                {{  (observation.taxref.vernacularName|length < 20)? observation.taxref.vernacularName : observation.taxref.lbName }}
+                                            {% else %}
+                                                {{ observation.taxref.lbName }}
+                                            {% endif %}
+										</p>
 
 									</button>
 								</a>
 							</div>
 						</div>
                     {% endfor %}
-
 				</div>
-
 				<!-- Map Google-->
-				<div class="col-6 offset-1 map" style="padding-left: 100px;">
+				<div class="col map">
                     {{ ivory_google_map(map) }}
                     {{ ivory_google_api([map]) }}
 				</div>
@@ -447,7 +489,6 @@
 		</div>
 	</div>
 	<!-- END DERNIERS AJOUTS -->
-
 	<!-- PARALLAX -->
 	<div class="container-fluid parallax2 parallax">
 		<!--Main parallax wrapper-->
@@ -455,31 +496,29 @@
 		</section>
 	</div>
 	<!-- END PARALLAX -->
-
 	<!-- COMPTEURS -->
 	<div class="container-fluid cpteurs">
 		<div class="container">
 			<div class="row">
-				<div class="col-10 offset-1 align-content-center">
+				<div class="col">
 					<h3>Grâce à ce site participatif, chaque observation que vous nous transmettez est vitale pour nous aider à alimenter notre programme de recherche. Nous vous remercions pour votre participation !</h3>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-3 project">
+				<div class="col">
 					<h2 id="counter">0</h2>
 					<h3 class="h3bis">Observateurs</h3>
 
 				</div>
-				<div class="col-md-3 project">
+				<div class="col">
 					<h2 id="counter1">0</h2>
 					<h3 class="h3bis">Naturalistes</h3>
 				</div>
-				<div class="col-md-3 project">
+				<div class="col">
 					<h2 id="counter2">0</h2>
 					<h3 class="h3bis">Espèces recencées</h3>
 				</div>
-
-				<div class="col-md-3 project">
+				<div class="col">
 					<h2 id="counter3">0</h2>
 					<h3 class="h3bis">Observations</h3>
 				</div>
@@ -487,47 +526,45 @@
 		</div>
 	</div>
 	<!-- END COMPTEURS -->
-
 	<!-- PARTENAIRES -->
 	<div class="container-fluid partenaires">
 		<div class="container">
 			<div class="row">
-				<div class="col-12">
+				<div class="col">
 					<h2>Nos partenaires</h2>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-2">
-					<a href="https://www.lpo.fr/"><img src="{{ asset('img/homepage/partenaires/1.png') }}"></a>
+				<div class="col">
+					<a href="https://www.lpo.fr/" target="_blank"><img src="{{ asset('img/homepage/partenaires/1.png') }}" alt="LPO"class="img-fluid" /></a>
 				</div>
-				<div class="col-2 offset-2">
-					<a href="https://www.mnhn.fr/"><img src="{{ asset('img/homepage/partenaires/2.png') }}"></a>
+				<div class="col">
+					<a href="https://www.mnhn.fr/" target="_blank"><img src="{{ asset('img/homepage/partenaires/2.png') }}" alt="MNHN" class="img-fluid" /></a>
 				</div>
-				<div class="col-1 offset-1">
-					<a href="http://www.conservatoire-du-littoral.fr/"><img src="{{ asset('img/homepage/partenaires/3.png') }}"></a>
+				<div class="col">
+					<a href="http://www.conservatoire-du-littoral.fr/" target="_blank"><img src="{{ asset('img/homepage/partenaires/3.png') }}" alt="Conservatoir du littoral" class="img-fluid" /></a>
 				</div>
-				<div class="col-2 offset-2">
-					<a href="http://www.cnrs.fr/"><img src="{{ asset('img/homepage/partenaires/4.png') }}"></a>
+				<div class="col">
+					<a href="http://www.cnrs.fr/" target="_blank"><img src="{{ asset('img/homepage/partenaires/4.png') }}" class="img-fluid" alt="CNRS" /></a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- END PARTENAIRES -->
-
 	<!-- RESEAUX SOCIAUX -->
 	<div class="container-fluid rs">
 		<div class="container">
 			<div class="row">
-				<div class="col-6 offset-3">
-					<h2 style="text-align: center">Suivez-nous sur les réseaux sociaux</h2>
+				<div class="col-xl-6 offset-xl-3 col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-12 text-center">
+					<h2 class="rsH2">Suivez-nous sur les réseaux sociaux</h2>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-2 offset-4">
-					<a href="https://fr-fr.facebook.com/"><img src="{{ asset('img/homepage/facebook.png') }}" style="text-align: center"></a>
+				<div class="col-xl-2 offset-xl-4 col-lg-2 offset-lg-4 col rsFacebook text-center">
+					<a href="https://fr-fr.facebook.com/" target="_blank"><img src="{{ asset('img/homepage/facebook.png') }}" class="img-fluid rsFacebookImg"></a>
 				</div>
-				<div class="col-2">
-					<a href="https://www.instagram.com/?hl=fr"><img src="{{ asset('img/homepage/instagram.png') }}" style="text-align: center"></a>
+				<div class="col-xl-2 col-lg-2  col rsInstagram text-center">
+					<a href="https://www.instagram.com/?hl=fr" target="_blank"><img src="{{ asset('img/homepage/instagram.png') }}" class="img-fluid rsInstagramImg"></a>
 				</div>
 			</div>
 
@@ -535,9 +572,9 @@
 	</div>
 	<!-- END RESEAUX SOCIAUX -->
 
-{% block footer %}
-	{{ include('footer.html.twig') }}
-{% endblock %}
+    {% block footer %}
+        {{ include('footer.html.twig') }}
+    {% endblock %}
 
 
 {% endblock %}

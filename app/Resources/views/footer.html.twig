@@ -3,17 +3,17 @@
     <div class="container-fluid divers" style="margin: 0;">
         <div class="container">
             <div class="row">
-                <div class="col-4 blocnewsletter">
+                <div class="col-sm-4 col-md-12 col-lg-4 col-xl-4 blocnewsletter">
                     <h6>Inscrivez-vous à notre newsletter</h6>
                     {{ render(controller('AppBundle:Main:newsletter')) }}
                 </div>
-                <div class="col-4 blocsadherer" style="text-align: center">
+                <div class="col-sm-4 col-md-12 col-lg-4 col-xl-4 blocsadherer" style="text-align: center">
                     <h6>Devenez membre de l'association</h6>
-                    <p><a href="{{ path('fos_user_registration_register') }}" class="btn btn-default btn-sm mybutton">J'ADHERE!</a><p>
+                    <p><a href="http://www.helloasso.com" target="_blank" style="width: 200px" class="btn btn-default btn-sm mybutton">J'ADHERE!</a><p>
                 </div>
-                <div class="col-4 blocdon">
+                <div class="col-sm-4 col-md-12 col-lg-4 col-xl-4 blocdon">
                     <h6>Faîtes un don à l'association</h6>
-                    <p><a href="http://www.helloasso.com" class="btn btn-default btn-sm mybutton">JE DONNE!</a></p>
+                    <p><a href="http://www.helloasso.com" target="_blank" style="width: 200px" class="btn btn-default btn-sm mybutton">JE DONNE!</a></p>
                 </div>
             </div>
         </div>
@@ -25,46 +25,52 @@
         <!--Footer Links-->
         <div class="container container-fluid">
             <div class="row">
-                <!-- icone devant adresse -->
-                <div class="col-1" style="margin:0;padding:0;">
-                    <div class="row" style="margin-top: 17%;margin-bottom: 7%;margin-left: 90%"><h4 class="h4footer"><i class="fa fa-map-marker fa-2" aria-hidden="true"></i></h4></div>
-                    <div class="row" style="margin-left: 88%"><h4 class="h4footer"><i class="fa fa-phone fa-2" aria-hidden="true"></i></h4></div>
-                    <div class="row" style="margin-left: 85%"><h4 class="h4footer"><i class="fa fa-envelope fa-2" aria-hidden="true"></i></h4></div>
+                <div class="col rsfooter text-center">
+                    <p><a href="https://facebook.com" target="_blank" id="rsLienFacebookFooter" ><img src="{{ asset('img/homepage/facebook.png') }}" style="height: 50px;width: 50px" /></a></p>
+                    <p><a href="https://instagram.com" target="_blank" id="rsLienInstagramFooter"><img src="{{ asset('img/homepage/instagram.png') }}" style="height: 50px;width: 50px"/></a></p>
                 </div>
+
                 <!--Adresse-->
-                <div class="col-2" style="margin-top:0;padding-top: 6px;">
-                    <ul style="text-align: left;margin-top: 0; padding-top: 0px;">
-                        <li>Association Nos amis les oiseaux</li>
-                        <li>2 rue de la plume</li>
-                        <li>84 110 FAUCON</li>
-                    </ul>
-                    <p> 04.00.00.00.00</p>
-                    <p>contact@nao.com</p>
+                <div class="col" style="margin-top:0;padding-top: 6px;">
+                    <div class="row">
+                        <h4 class="h4footerMapPointer"><i class="fa fa-map-marker fa-2 footerAdresseIcone" aria-hidden="true"></i></h4>
+                        <ul >
+                            <li class ="liAdresseFooter">Nos amis les oiseaux</li>
+                            <li class ="liAdresseFooter">2 rue de la plume</li>
+                            <li class ="liAdresseFooter">84 110 FAUCON</li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <h4 class="h4footerPhone"><i class="fa fa-phone fa-2 footerAdresseIcone" aria-hidden="true"></i></h4>
+                        <p class="pfooterPhone"> 04.00.00.00.00</p>
+                    </div>
+                    <div class="row">
+                        <h4 class="h4footerMail"><i class="fa fa-envelope fa-2 footerAdresseIcone" aria-hidden="true"></i></h4>
+                        <p class="pfooterMail" style="">contact@nao.com</p>
+                    </div>
                 </div>
 
                 <!--PLAN DU SITE-->
-                <div class="col-2 offset-2" style="margin-top:0;padding-top: 7px;">
-                    <h6><u>PLAN DU SITE</u></h6>
-                    <ul style="text-align: center;margin-top: 0; padding-top: 6px;">
-                        <li><a href="{{ path('home') }}">Accueil</a></li>
-                        <li><a href="{{ path('association') }}">L'association</a></li>
-                        <li><a href="{{ path('modeemploi') }}">Comment ça marche?</a></li>
-                        <li><a href="{{ path('app_search') }}">Rechercher</a></li>
-                        <li><a href="{{ path('apprendreObserver') }}">Apprendre à observer</a></li>
-                        <li><a href="{{ path('contact') }}">Contact</a></li>
+                <div class="col footerPlanDuSite">
+                    <h6 class="footerPlanDuSiteH6"><u>PLAN DU SITE</u></h6>
+                    <ul class="footerPlanDuSiteUl">
+                        <li><a href="{{ path('home') }}" id="footerPlanDuSiteAccueil">Accueil</a></li>
+                        <li><a href="{{ path('association') }}" id="footerPlanDuSiteAssociation">L'association</a></li>
+                        <li><a href="{{ path('modeemploi') }}" id="footerPlanDuSiteMo">Comment ça marche ?</a></li>
+                        <li><a href="{{ path('app_search') }}" id="footerPlanDuSiteRech">Rechercher</a></li>
+                        <li><a href="{{ path('apprendreObserver') }}" id="footerPlanDuSiteAo">Apprendre à observer</a></li>
+                        <li><a href="{{ path('contact') }}" id="footerPlanDuSiteContact">Contact</a></li>
                     </ul>
                 </div>
 
-                <!--Adresse-->
-                <div class="col-2 offset-2" style="margin-top:0;padding-top: 7px;">
-                    <h6><u>MENTIONS LEGALES</u></h6>
+                <!--MENTIONS LEGALES-->
+                <div class="col footerMentionLegales">
+                    <h6 class="footerMentionLegalesH6"><u>MENTIONS LEGALES</u></h6>
                     <ul style="text-align: center;margin-top: 0; padding-top: 6px;padding-bottom: 0px">
-                        <li><a href="{{ path('mentionslegales') }}">MENTIONS LEGALES</a></li>
-                        <li style="padding-top: 6px;"><a href="#">POLITIQUE DE CONFIDENTIALITE</a></li>
+                        <li><a href="{{ path('mentionslegales') }}" id="footerMentionLegalesA" >MENTIONS LEGALES</a></li>
+                        <li style="padding-top: 6px;"><a href="{{ path('mentionslegales') }}#vieprivee" id="footerMentionLegalesPC">POLITIQUE DE CONFIDENTIALITE</a></li>
                     </ul>
-                    <p style="padding-bottom: 0;margin-bottom: 0;text-align: center">Copyright 2017 © <a href="https://Chrysalyd"> Agence Chrysalyd </a></p>
-                    <h3><a href="https://facebook.com" style="padding-top: 0;padding-bottom: 0;padding-left: 40px;padding-right: 20px;"><i class="fa fa-facebook-official fa-2" aria-hidden="true" ></i></a>
-                        <a href="https://instagram.com"><i class="fa fa-instagram fa-2" aria-hidden="true"></i></a></h3>
+                    <p style="padding-bottom: 0;margin-bottom: 0;text-align: center">Copyright 2017 © <a href="https://Chrysalyd" target="_blank" style="font-size: 10px"> Agence Chrysalyd </a></p>
                 </div>
             </div>
         </div>
