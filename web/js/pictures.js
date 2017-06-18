@@ -75,4 +75,9 @@ $(function () {
         $('.confirmDeletionBlock').css('display', 'none');
     });
 
+    //active les tooltips de bootstrap
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
 });

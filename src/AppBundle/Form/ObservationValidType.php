@@ -18,15 +18,15 @@ class ObservationValidType extends AbstractType
                 'required' => false
             ))
             ->add('tocorrect', SubmitType::class, array(
-                'label' => 'A corriger',
+                'label' => ' A corriger',
                 'attr' => array(
-                    'class' => 'btn btn-default btn-warning'
+                    'class' => 'btn btn-default btn-warning acorriger'
                 )
             ))
             ->add('validate', SubmitType::class, array(
-                'label' => 'Valider',
+                'label' => ' Valider',
                 'attr' => array(
-                    'class' => 'btn btn-default btn-success'
+                    'class' => 'btn btn-default btn-success valider'
                 )
             ));
     }
