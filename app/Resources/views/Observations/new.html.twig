@@ -12,7 +12,6 @@
                     </h1>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
                     {% for message in app.session.flashbag.get('info') %}
@@ -49,7 +48,7 @@
                                 <td>{{ observation.latitude }}</td>
                                 <td>{{ observation.longitude }}</td>
                                 <td>{{ observation.department }}</td>
-                                <td><a href="{{ path('app_observation_validate', {'id': observation.id}) }}">valider</a></td>
+                                <td><a href="{{ path('app_observation_validate', {'id': observation.id}) }}"><i class=" fa fa-check-square-o"></i> Valider</a></td>
                             </tr>
                             {% endfor %}
                             </tbody>

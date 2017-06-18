@@ -12,7 +12,6 @@
                     </h1>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
                     {% for message in app.session.flashbag.get('info') %}
@@ -25,7 +24,6 @@
             </div>
 
             {{ form_stylesheet(form) }}
-
             {{ form_javascript(form) }}
             <div class="container-fluid">
                 {{ form_start(form) }}
@@ -124,7 +122,7 @@
                                     {% if picture.imageFile == null %}
                                     <div class="thumbnail hidden">
                                     {% else %}
-                                    <div class="thumbnail">
+                                    <div class="thumbnail zoom">
                                     {% endif %}
                                        <img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}"/>
                                             <div class="caption" id="picture_{{ picture.id }}">

@@ -12,7 +12,6 @@
                     </h1>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
                     {% for message in app.session.flashbag.get('info') %}
@@ -23,9 +22,7 @@
                     {% endfor %}
                 </div>
             </div>
-
             {{ form_stylesheet(form) }}
-
             {{ form_javascript(form) }}
             <div class="container-fluid">
                 {{ form_start(form) }}
@@ -101,7 +98,7 @@
                                          {{ form_errors(picture.imageFile) }}
                                          {{ form_widget(picture.imageFile, { 'attr': {'class': 'input_file_' ~ loop.index0} }) }}
                                             <div id="image_preview_input_file_{{ loop.index0 }}" class="col-sm-12">
-                                                <div class="thumbnail hidden">
+                                                <div class="thumbnail zoom hidden">
                                                     <img src="http://placehold.it/5" alt="">
                                                     <div class="caption">
                                                         <p>

@@ -218,3 +218,24 @@ th, td {
   font-family: Roboto;
   font-weight: 700;
 }
+
+/*****************
+    Pagination   *
+ *****************/
+.pagination > ul {
+    background-color: #80cbc4;
+    font-family: Roboto;
+}
+.pagination > li > a, .pagination > li > span {
+    font-family: Roboto;
+    background-color: #80cbc4;
+}
+.pagination .active > span {
+    background-color: #00695C;
+}
+.pagination .active > span:hover {
+    background-color: #80cbc4;
+}
+.pagination a:hover {
+    background-color: #80cbc4;
+}

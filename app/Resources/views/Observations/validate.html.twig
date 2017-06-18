@@ -12,9 +12,8 @@
                 </h1>
             </div>
         </div>
-        <hr/>
         <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-8 col-sm-offset-2">
             {% for message in app.session.flashbag.get('info') %}
                 <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
             {% endfor %}
@@ -22,7 +21,7 @@
                 <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
             {% endfor %}
         </div>
-    </div>
+        </div>
         <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
