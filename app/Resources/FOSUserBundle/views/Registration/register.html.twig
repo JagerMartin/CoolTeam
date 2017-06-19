@@ -7,24 +7,27 @@
 {% block title %}{{ parent() }} - S'inscrire{% endblock %}
 
 {% block body %}
-<body id="contactfond">
+<body id="registerfond">
 <!-- Bouton qui permet de remonter en haut de page -->
 <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
     <a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
         <i class="fa fa-arrow-up"></i>
     </a>
 </div>
-
+<!-- MENU2 MOBILE -->
 <div class="menu2">
+
     <ul>
-        <a href="{{ path('home') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal lighten-3 menuB textCourt"><li>ACCUEIL</li></a>
-        <a href="{{ path('association') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal lighten-2 menuB textCourt" ><li>L' ASSOCIATION</li></a>
-        <a href="{{ path('modeemploi') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal menuB textlong"><li>COMMENT CA <br>MARCHE ?</li></a>
-        <a href="{{ path('app_search') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-1 menuB textcourt"><li>RECHERCHER</li></a>
-        <a href="{{ path('apprendreObserver') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-3 menuB textlong"><li>APPRENDRE <br>A OBSERVER</li></a>
-        <a href="{{ path('contact') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-4 menuB textcourt"><li>CONTACT</li></a>
+        <a class="cross"><li class="licross"><i class="fa fa-close"></i> FERMER</li></a>
+        <a href="{{ path('home') }}" ><li class="teal lighten-3 ">ACCUEIL</li></a>
+        <a href="{{ path('association') }}" ><li class="teal lighten-2">L' ASSOCIATION</li></a>
+        <a href="{{ path('modeemploi') }}" ><li class="teal">COMMENT CA MARCHE ?</li></a>
+        <a href="{{ path('app_search') }}" ><li class="teal darken-1">RECHERCHER</li></a>
+        <a href="{{ path('apprendreObserver') }}" ><li class="teal darken-3">APPRENDRE A OBSERVER</li></a>
+        <a href="{{ path('contact') }}"  ><li class="teal darken-4">CONTACT</li></a>
     </ul>
 </div>
+<!-- /.END MENU2 MOBILE -->
 <!-- Modal Login -->
 {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
     <!--Modal: Login Form-->
@@ -60,11 +63,11 @@
     <!--Modal: Login Form-->
 {% endif %}
 <!-- ./END Modal Login -->
-<div class="container container-fluid contactgeneral" id="top-section" style="position: relative;margin-bottom: 0%">
+<div class="container container-fluid registergeneral" id="top-section" style="position: relative;margin-bottom: 0%">
     {{ include("header.html.twig") }}
     <div class="container contGen">
         <!-- image du piou -->
-        <img src="{{ asset('img/contact/contbird.png') }}" class="contactBirdImg">
+        <img src="{{ asset('img/register/registerbird.png') }}" class="registerbird">
         <div class="row">
             <!-- MENU Général gauche-->
             <div class="col-lg-2 col-xl-2 hidden-sm-down hidden-md-down" style="margin: 0;padding: 0;">
@@ -73,18 +76,17 @@
             <!-- Bloc texte à côté du menu principal-->
             <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12" style="margin: 0;">
                 <div class="row">
-                    <div class="row">
-                        <div class="col-xl-4 offset-xl-1 col-lg-4 offset-lg-1 col-md-12 col-sm-12 text-center z-depth-2 cadreInfoInscription1">
-                            Vous souhaitez contribuer au programme de recherche ?
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-4 offset-xl-1 col-lg-4 offset-lg-1 col-md-12 col-sm-12 text-center z-depth-2 cadreInfoInscription2">
-                            Vous voulez partager votre passion avec d'autres personnes ?
-                        </div>
+                    <div class="col-xl-5 offset-xl-2 col-lg-5 offset-lg-2 col-md-5 col-sm-12 text-center z-depth-2 cadreInfoInscription1">
+                        <ul class="ulbloctext">
+                            <li class="libloctext">
+                                Vous souhaitez contribuer au programme de recherche ?</li>
+                            <li class="libloctext">
+                                Vous voulez partager votre passion avec d'autres personnes ?</li>
+                        </ul>
                     </div>
                     <!-- Bloc Texte -->
-                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 blocText">
+                    <div class="col-xl-5 col-lg-5 col-md-7 col-sm-12 blocText">
+
                         <!-- Titre du cadre -->
                         <div class="col-xl-4 offset-xl-4 col-lg-3 offset-lg-5 col-md-4 col-sm-3 text-center z-depth-2 titreCadre" >S'INSCRIRE !</div>
 
@@ -93,7 +95,7 @@
                         {% endfor %}
 
                         <div class="row">
-                            <div class="col s12 m8 offset-m2">
+                            <div class="col-md-12 col-sm-12 ">
                                 {% block fos_user_content %}
                                     {% include "@FOSUser/Registration/register_content.html.twig" %}
                                 {% endblock fos_user_content %}

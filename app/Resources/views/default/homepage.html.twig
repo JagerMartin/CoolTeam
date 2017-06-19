@@ -16,25 +16,26 @@
 			<i class="fa fa-arrow-up"></i>
 		</a>
 	</div>
-	<!-- FIN BOUTON DE REMONTER-->
+		<!-- FIN BOUTON DE REMONTER-->
+	<!-- MENU2 MOBILE -->
+	<div class="menu2">
+		<ul>
+			<a class="cross"><li class="licross"><i class="fa fa-close"></i> FERMER</li></a>
+			<a href="{{ path('home') }}" ><li class="teal lighten-3 ">ACCUEIL</li></a>
+			<a href="{{ path('association') }}" ><li class="teal lighten-2">L' ASSOCIATION</li></a>
+			<a href="{{ path('modeemploi') }}" ><li class="teal">COMMENT CA MARCHE ?</li></a>
+			<a href="{{ path('app_search') }}" ><li class="teal darken-1">RECHERCHER</li></a>
+			<a href="{{ path('apprendreObserver') }}" ><li class="teal darken-3">APPRENDRE A OBSERVER</li></a>
+			<a href="{{ path('contact') }}"  ><li class="teal darken-4">CONTACT</li></a>
+		</ul>
+	</div>
+	<!-- /.END MENU2 MOBILE -->
 	<!-- HEADER-->
 	<header class="container-fluid" id="top-section">
 		<div class="container">
 			<!-- Bouton hamburger -->
-			<div class="" style="top: 10px;right: 0;position: absolute;">
+			<div class="divMenu2">
 				<button class="hamburger" style="background-color: #00695C">&#9776;</button>
-				<button class="cross" style="background-color: #00695C">&#735;</button>
-			</div>
-
-			<div class="menu2">
-				<ul>
-					<a href="{{ path('home') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal lighten-3 menuB textCourt"><li>ACCUEIL</li></a>
-					<a href="{{ path('association') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal lighten-2 menuB textCourt" ><li>L' ASSOCIATION</li></a>
-					<a href="{{ path('modeemploi') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal menuB textlong"><li>COMMENT CA <br>MARCHE ?</li></a>
-					<a href="{{ path('app_search') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-1 menuB textcourt"><li>RECHERCHER</li></a>
-					<a href="{{ path('apprendreObserver') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-3 menuB textlong"><li>APPRENDRE <br>A OBSERVER</li></a>
-					<a href="{{ path('contact') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-4 menuB textcourt"><li>CONTACT</li></a>
-				</ul>
 			</div>
 
 			<div class="row">
@@ -348,7 +349,7 @@
 						</div>
 						<div class="row">
 							<div class="col-5 offset-1" style="text-align: center;">
-								<button type="button" style="text-transform: capitalize" class="btn btn-default teal darken-1">Voir la fiche</button>
+								<a href="{{ path('app_search', {'cdName': 3582} ) }}" type="button" style="text-transform: capitalize" class="btn btn-default teal darken-1">Voir la fiche</a>
 							</div>
 						</div>
 					</div>
@@ -497,6 +498,11 @@
 	</div>
 	<!-- END PARALLAX -->
 	<!-- COMPTEURS -->
+	<div id="cpteObserv" data-res="{{ observerCount }}" style="display: none;"></div>
+	<div id="cpteNaturaliste" data-res="{{ naturalistCount }}" style="display: none;"></div>
+	<div id="cpteEspeces" data-res="{{ specieCount }}" style="display: none;"></div>
+	<div id="cpteObservations" data-res="{{ observationCount }}" style="display: none;"></div>
+
 	<div class="container-fluid cpteurs">
 		<div class="container">
 			<div class="row">

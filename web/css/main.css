@@ -1203,6 +1203,11 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.registerbird {
+    position: absolute;z-index: 202;
+    margin-left: 89%;
+    margin-top: -4%;
+}
 .registergeneral {
     margin: 0;
     height:100%;
@@ -1228,22 +1233,36 @@ header {
 }
 .registergeneral .blocText {
     margin-top: 47px;
-    padding: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     background: #ffffff;
     background: rgba(255, 255, 255, .65);
+}
+.registergeneral .cadreInfoInscription1 {
+    margin-top: 47px;
+    background: #ffffff;
+    background: rgba(255, 255, 255, .65);
+    height: 200px;
+    padding-top: 45px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
 }
 .registergeneral .titreCadre {
     padding-top:20px;
     background-color: #00695c;
     color:#ffffff;
-    margin-top: -5%;
+    margin-top: -7%;
     margin-bottom: 0;
     height:60px;
     text-align: center;
     font-family: Amiko;
     font-size: 15px;
-    padding-right: 0;
-    padding-left: 0;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 .registergeneral h4 {
     text-align: right;
@@ -1259,6 +1278,64 @@ header {
     padding-bottom: 0;
     margin-bottom: 28px;
     width: 21%;
+}
+.registergeneral .ulbloctext {
+    padding-left: 5%;
+    text-align: justify;
+    padding-right: 10%;
+    line-height: 130%;
+    margin-bottom: 0;
+    margin-top: 10px;
+    padding-bottom: 0;
+}
+.registergeneral .libloctext {
+    padding-bottom: 13px;
+    list-style-type: none; /* on annule la puce par défaut */
+    background-image: url(../img/puce.png); /* on affiche l'image souhaitée */
+    background-repeat: no-repeat; /* on annule la répétition par défaut */
+    background-position: left 40%; /* on positionne où l'on veut */
+    padding-left: 25px; /* pour éviter la superposition du contenu */
+}
+.registergeneral label {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 5%;
+    margin-bottom: 0;
+    font-size: 15px;
+    color: #2b2b2b;
+}
+.registergeneral input, input[type="email"], input[type="password"] {
+    height:30%;
+    padding-top: 0;
+    padding-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+[type="checkbox"] + label::before {
+
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    z-index: 0;
+    border: 2px solid #5a5a5a;
+    border-radius: 1px;
+    margin-top: 2px;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -o-transition: .2s;
+    -ms-transition: .2s;
+    transition: .2s;
+
+}
+.registergeneral [type="radio"]:checked + label, [type="radio"]:not(:checked) + label, [type="checkbox"] + label {
+    font-size: 10px;
+}
+#fos_user_registration_form_isNewsletterSubscriber {
+    margin: 0;
+    padding: 0;
 }
 /****************
  ****************
@@ -1396,18 +1473,15 @@ header {
     color: #FFFFFF;
 }
 .cross{
-    color: #FFFFFF;
-    position:absolute;
-    top:0px;
-    right:0;
-    padding:7px 15px 0px 15px;
-    border:0;
-    font-size:3em;
-    line-height:65px;
-    font-weight:bold;
-    cursor:pointer;
-    outline:none;
-    z-index:10000000000000;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    text-align: right;
+}
+.licross {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .divMenu2 {
     top: 10px;
@@ -1415,20 +1489,33 @@ header {
     position: absolute;
     display: none;
     visibility: hidden;
+    z-index: 1000002;
 }
 .menu2 {
-    z-index:1000000;
-    font-weight:bold;
-    font-size:0.8em;
+    z-index: 1000001;
+    font-weight: bold;
+    font-size: 0.8em;
     width: 0px;
-    height:100%;
-    background:#00695c;
-    position: relative;
-    text-align:center;
-    font-size:12px;
-    top:10%;
+    height: 100%;
+    background: #00695c;
+    position: absolute;
+    text-align: center;
+    font-size: 12px;
+    top: 0;
     display: none;
     visibility: hidden;
+}
+.menu2 a, a:hover {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Titillium Web";
+    text-decoration: none;
+}
+.menu2 li {
+    color: #FFFFFF;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 /********************************
  ********************************
@@ -1803,10 +1890,6 @@ header {
         font-size: 13px;
         padding-top: 20px;
     }
-    .rechgeneral h2 {
-
-    }
-
     .aogeneral .blocText {
         margin-top: 47px;
         padding: 0;
@@ -1946,6 +2029,61 @@ header {
         margin-bottom: 0;
     }
 
+    #registerfond {
+        background-image: url("../img/register/mobile_registerfond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .registerbird {
+        width: 15%;
+        margin-left: 75%;
+        margin-top: 1%;
+    }
+    .registergeneral a {
+        text-decoration: none;
+        color:#FFFFFF;
+    }
+    .registergeneral .blocText {
+        margin-top: 47px;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+        position: relative;
+        z-index: 200;
+    }
+    .registergeneral .cadreInfoInscription1 {
+        position: absolute;
+        background-color: transparent;
+        margin-top: 26%;
+        height: 150px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        z-index: 201;
+        box-shadow: none;
+    }
+    .registergeneral .titreCadre {
+        margin-top: -8%;
+        margin-bottom: 15px;
+        margin-left: 15%;
+        height:50px;
+        width: 180px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 15px;
+    }
+    .registergeneral .divforminscire {
+        margin-top:55%
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label, [type="checkbox"] + label {
+        font-size: 10px;
+    }
+    #fos_user_registration_form_isNewsletterSubscriber {
+        font-size: 10px;
+    }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767px) {
@@ -2242,10 +2380,53 @@ header {
         margin-top: 0;
         margin-bottom: 0;
     }
-
+    .registerbird {
+        width: 10%;
+        margin-left: 75%;
+        margin-top: 1%;
+    }
+    .registergeneral a {
+        text-decoration: none;
+        color:#FFFFFF;
+    }
+    .registergeneral .blocText {
+        margin-top: 47px;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+        position: relative;
+        z-index: 200;
+    }
+    .registergeneral .cadreInfoInscription1 {
+        position: absolute;
+        background-color: transparent;
+        margin-top: 26%;
+        height: 150px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        z-index: 201;
+        box-shadow: none;
+    }
+    .registergeneral .titreCadre {
+        margin-top: -8%;
+        margin-bottom: 15px;
+        margin-left: 15%;
+        height:50px;
+        width: 180px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 15px;
+    }
+    .registergeneral .divforminscire {
+        margin-top:55%
+    }
 }
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 991px){
     .logo{
         margin-left: 5%;
     }
@@ -2604,6 +2785,14 @@ header {
         margin-bottom: 0;
     }
 
+    .registerbird {
+        width: 10%;
+        margin-left: 85%;
+        margin-top: -3%;
+    }
+    .registergeneral .titreCadre {
+        margin-left: 33%;
+    }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1280px) {

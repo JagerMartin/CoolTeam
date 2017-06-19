@@ -208,6 +208,11 @@ new WOW().init();
 /*compteur*/
 /*********/
 $(document).ready(function(){
+    var observerCount = $('#cpteObserv').data('res');
+    var naturalistCount = $('#cpteNaturaliste').data('res');
+    var specieCount = $('#cpteEspeces').data('res');
+    var observationCount = $('#cpteObservations').data('res');
+
     $(".bhide").click(function(){
         $(".hideObj").slideDown();
         $(this).hide(); //.attr()
@@ -245,16 +250,16 @@ $(document).ready(function(){
             var curval1=parseInt($('#counter1').text().replace(' ',''));
             var curval2=parseInt($('#counter2').text());
             var curval3=parseInt($('#counter3').text());
-            if(curval<=200-1){
+            if(curval<=observerCount-1){
                 $('#counter').text(curval+1);
             }
-            if(curval1<=150-1){
+            if(curval1<=naturalistCount-1){
                 $('#counter1').text(curval1+1);
             }
-            if(curval2<=3000-10){
+            if(curval2<=specieCount-10){
                 $('#counter2').text(curval2+10);
             }
-            if(curval3<=245-1){
+            if(curval3<=observationCount-1){
                 $('#counter3').text(curval3+1);
             }
         }, 2);
