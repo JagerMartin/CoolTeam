@@ -1,16 +1,16 @@
 <div class="row" style="margin: 0">
     <div class="col-sm-6">
         <div class="row" style="margin:0;vertical-align: middle">
-            <div class="col-8 offset-2" style="vertical-align: middle">
+            <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 col-sm-8 offset-sm-1" style="vertical-align: middle">
                 {% if specie.vernacularName|length > 0 %}
-                    <h2 style="margin:0;padding-top: 13px;padding-bottom:3px;border-bottom: 2px solid #636c72;color: #009688;font-size: 23px;font-weight: bold">{{ specie.vernacularName }}</h2>
+                    <h2>{{ specie.vernacularName }}</h2>
                 {% else %}
-                    <h2 style="margin:0;padding-top: 13px;padding-bottom:3px;border-bottom: 2px solid #636c72;color: #009688;font-size: 23px;font-weight: bold">{{ specie.lbName }}</h2>
+                    <h2>{{ specie.lbName }}</h2>
                 {% endif %}
 
-                <h5 style="font-family: Roboto;font-size: 15px; padding-top: 6px">{{ specie.lbName  }}</h5>
+                <h5>{{ specie.lbName  }}</h5>
             </div>
-            <div class="col-2" style="margin-left: -15px;padding: 0;margin-bottom: 28px">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm divImgEsp">
                 {{ render(controller(
                 'AppBundle:Search:specieImage',
                 { 'cdName': specie.cdName }
@@ -60,7 +60,7 @@
             <a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin" class="btn btn-primary btn-rounded" style="background-color: #4db6ac"><i class="fa fa-plus"></i> Déposer une observation</a>
         {% endif %}
     </div>
-    <div class="col-2" style="text-align: center; padding-top: 15px">
+    <div class="col-xl-2 col-lg-2 col-md-2 col-sm" style="text-align: center; padding-top: 15px">
         Observations
     </div>
 </div>
@@ -77,28 +77,28 @@
             <div class="col-1" style="position: absolute;z-index: 99;">
                 {% for picture in observation.pictures %}
                     {% if loop.first %}
-                        <img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}" alt="{{ picture.imageName }}" class="rounded-circle" style="width: 70px; height: 70px;"/>
+                        <img src="../{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ picture.imageName }}" class="rounded-circle imgEspece"/>
                     {% endif %}
                     {% else %}
-                       <img src="{{ absolute_url(asset('img/no-photos.png')) }}" alt="Avatar vide" class="rounded-circle" style="width: 70px; height: 70px;"/>
+                       <img src="{{ absolute_url(asset('img/no-photos.png')) }}" alt="Avatar vide" class="rounded-circle imgEspece"/>
                     {% endfor %}
             </div>
-            <div class="col-11" style="z-index: 98;position: relative;left: 5%">
-                <div class="card card-block" style="padding-top: 20px;padding-bottom: 5px;margin-top: 7px;">
+            <div class="col-xl-11 col-sm-12" style="z-index: 98;position: relative;left: 5%">
+                <div class="card card-block" >
                     <div class="row" style="padding: 0">
-                        <div class="col-1" style="font-family:Roboto;font-size:13px;font-weight:200;padding-left: 23px;padding-right: 0px">
+                        <div class="col-xl-1 col-lg-1 col-md-6 col-sm-6 imgCardBlock">
                             {{ observation.pictures.count }} photos
                         </div>
-                        <div class="col-3" style="text-align: left;font-family:Roboto;font-size:15px">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 divDateObserv">
                             {{ observation.datetime|date('d/m/Y') }} à {{ observation.datetime|date('h') }}:{{ observation.datetime|date('i') }}
                         </div>
-                        <div class="col-4" style="text-align: center;"> Département: {{ observation.department }}</div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 divDepartObserv"> Département: {{ observation.department }}</div>
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                            <div class="col-2"  style="text-align: center;"><a href="#map" ><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
-                            <div class="col-2"  style="text-align: center;"><a href="{{ path('app_observation',{'id': observation.id} ) }}"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="#map" ><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('app_observation',{'id': observation.id} ) }}"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
                         {% else %}
-                            <div class="col-2"  style="text-align: center;"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
-                            <div class="col-2"  style="text-align: center;"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
                         {% endif %}
                     </div>
                 </div>

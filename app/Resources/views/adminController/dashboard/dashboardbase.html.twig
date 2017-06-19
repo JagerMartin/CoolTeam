@@ -64,7 +64,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #FFFFFF;font-size: 12px;font-weight: 600"><i class="fa fa-user-circle fa-2x" style="color: #FFFFFF"></i> {{ app.user.username }} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="{{ path('fos_user_profile_edit') }}" style="color: #FFFFFF;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-user" style="color: #FFFFFF;font-size: 12px"></i> Mon profil</a>
+                        <a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" style="color: #FFFFFF;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-user" style="color: #FFFFFF;font-size: 12px"></i> Mon profil</a>
                     </li>
                     <li class="divider"></li>
                     <li>

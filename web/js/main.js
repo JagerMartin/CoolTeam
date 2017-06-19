@@ -4,42 +4,67 @@
  * du menu                                                  *
  ************************************************************/
 $(document).ready(function(){
-    $("#aoemporterclick").click(function(){
-        $("#aoemporter").show();
-        $("#aoquand").hide();
-        $("#aocomment").hide();
-        $("#aonoter").hide();
-        $("#aocharte").hide();
-    });
     $("#aoquandclick").click(function(){
-        $("#aoquand").show();
-        $("#aoemporter").hide();
-        $("#aocomment").hide();
-        $("#aonoter").hide();
-        $("#aocharte").hide();
+        $("#collapseAoquand").show();
+        $("#collapseAoemporter").hide();
+        $("#collapseAocomment").hide();
+        $("#ccollapseAonoter").hide();
+        $("#collapseAocharte").hide();
+        $("#aoTitreH4").show();
+        $("#aoTitre2H4").hide();
+        $("#aoTitre3H4").hide();
+        $("#aoTitre4H4").hide();
+        $("#aoTitre5H4").hide();
+    });
+    $("#aoemporterclick").click(function(){
+        $("#collapseAoemporter").show();
+        $("#collapseAoquand").hide();
+        $("#collapseAocomment").hide();
+        $("#collapseAonoter").hide();
+        $("#collapseAocharte").hide();
+        $("#aoTitreH4").hide();
+        $("#aoTitre2H4").show();
+        $("#aoTitre3H4").hide();
+        $("#aoTitre4H4").hide();
+        $("#aoTitre5H4").hide();
     });
     $("#aocommentclick").click(function(){
-        $("#aoquand").hide();
-        $("#aoemporter").hide();
-        $("#aocomment").show();
-        $("#aonoter").hide();
-        $("#aocharte").hide();
+        $("#collapseAoquand").hide();
+        $("#collapseAoemporter").hide();
+        $("#collapseAocomment").show();
+        $("#collapseAonoter").hide();
+        $("#collapseAocharte").hide();
+        $("#aoTitreH4").hide();
+        $("#aoTitre2H4").hide();
+        $("#aoTitre3H4").show();
+        $("#aoTitre4H4").hide();
+        $("#aoTitre5H4").hide();
     });
     $("#aonoterclick").click(function(){
-        $("#aoquand").hide();
-        $("#aoemporter").hide();
-        $("#aocomment").hide();
-        $("#aonoter").show();
-        $("#aocharte").hide();
+        $("#collapseAoquand").hide();
+        $("#collapseAoemporter").hide();
+        $("#collapseAocomment").hide();
+        $("#collapseAonoter").show();
+        $("#collapseAocharte").hide();
+        $("#aoTitreH4").hide();
+        $("#aoTitre2H4").hide();
+        $("#aoTitre3H4").hide();
+        $("#aoTitre4H4").show();
+        $("#aoTitre5H4").hide();
+
     });
     $("#aocharteclick").click(function(){
-        $("#aoquand").hide();
-        $("#aoemporter").hide();
-        $("#aocomment").hide();
-        $("#aonoter").hide();
-        $("#aocharte").show();
+        $("#collapseAoquand").hide();
+        $("#collapseAoemporter").hide();
+        $("#collapseAocomment").hide();
+        $("#collapseAonoter").hide();
+        $("#collapseAocharte").show();
+        $("#aoTitreH4").hide();
+        $("#aoTitre2H4").hide();
+        $("#aoTitre3H4").hide();
+        $("#aoTitre4H4").hide();
+        $("#aoTitre5H4").show();
     });
-
     $("#ccmobservclick").click(function(){
         $("#ccmnaturaliste").hide();
         $("#ccmobserv").show();
@@ -49,7 +74,34 @@ $(document).ready(function(){
         $("#ccmobserv").hide();
     });
 
+    /*
+        Particularité du la asso et apprendre à observer avec resolution
+        d'écran >992px
+     */
+    if(window.innerWidth>992) {
+        $('#collapseAssoButton').detach();
+        $('#collapseAsso').removeClass('collapse');
+        $('#collapseProgRechButton').detach();
+        $('#collapseProgRech').removeClass('collapse');
+        $('#collapsePartenaires').detach();
+        $('#collapsePart').removeClass('collapse');
+
+        $("#collapseAoquandButton").detach();
+        $("#collapseAoemporterButton").detach();
+        $("#collapseAocommentButton").detach();
+        $("#collapseAonoterButton").detach();
+        $("#collapseAocharteButton").detach();
+
+        $("#collapseAoquand").show();
+        $("#aoTitre2H4").hide();
+        $("#aoTitre3H4").hide();
+        $("#aoTitre4H4").hide();
+        $("#aoTitre5H4").hide();
+    }
+
+
 });
+
 
 /********************************************
  * initialize les tooltips pour l'aide dans *
@@ -58,6 +110,32 @@ $(document).ready(function(){
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
+
+/****************************************************
+ *      Initialisation pour le bouton hamburger     *
+ ****************************************************/
+$( ".cross" ).hide();
+$( ".menu2" ).hide();
+$( ".hamburger" ).click(function() {
+    $( ".menu2" ).animate({left: "0px", width:"100%"}, function() {
+        $( ".hamburger" ).hide();
+        $( ".cross" ).show();
+        $( ".menu2" ).show()
+    });
+});
+
+$( ".cross" ).click(function() {
+    $( ".menu2" ).animate({left: "355px"}, function() {
+    /**$( ".menu2" ).slideToggle( "slow", function() { **/
+        $( ".menu2" ).hide();
+        $( ".cross" ).hide();
+        $( ".hamburger" ).show();
+        $( ".menu2").attr('left:','0px')
+    });
+});
+
+
+
 
 /***************************************************
  * Bouton qui permet de remonter en haut de page   *
@@ -70,9 +148,59 @@ Waves.init();
 /**************************
  * Pour la homepage     **
  *************************/
+//Menu BIRDYGO
+$(document).ready(function() {
+    if(window.innerWidth<769) {
+        $("#divbuttonMobile").hover(function() {
+            $(".margeImageMobileB").animate({ marginLeft: "0"  }, 400 );
+            $("#itembirdygoMobile").show(400);
+            $("#divbuttonMobile").animate({ marginLeft: "-1px"  }, 400 );
+            $('#arrowbirdygoMobile').removeClass('fa fa-arrow-circle-right').addClass('fa fa-arrow-circle-left')
+        }, function() {
+            $("#divbuttonMobile").click(function() {
+                $(".margeImageMobileB").animate({ marginLeft: "55%"  }, 400 );
+                $("#itembirdygoMobile").hide(400);
+                $("#divbuttonMobile").animate({ marginLeft: "-1px"  }, 400 );
+                $('#arrowbirdygoMobile').removeClass('fa fa-arrow-circle-left arrowbirdygoMobile').addClass('fa fa-arrow-circle-right arrowbirdygoMobile')
+            });
+        });
+    }
+    if(window.innerWidth<992) {
+        $("#divbutton2").hover(function() {
+            $(".margeImageB2").animate({ marginLeft: "0px"  }, 400 );
+            $("#itembirdygo2").animate({ marginLeft: "0"  }, 400 );
+            $("#divbutton2").animate({ marginLeft: "-1px"  }, 400 );
+            $('#arrowbirdygo2').removeClass('fa fa-arrow-circle-right').addClass('fa fa-arrow-circle-left')
+        }, function() {
+            $("#divbutton2").click(function() {
+                $(".margeImageB2").animate({ marginLeft: "40%"  }, 400 );
+                $("#itembirdygo2").animate({ marginLeft: "-40%"  }, 400 );
+                $("#divbutton2").animate({ marginLeft: "-1px"  }, 400 );
+                $('#arrowbirdygo2').removeClass('fa fa-arrow-circle-left arrowbirdygo2').addClass('fa fa-arrow-circle-right arrowbirdygo2')
+            });
+        });
+    }
+    if(window.innerWidth>992) {
+            $("#divbutton2").hover(function() {
+                $(".margeImageB2").animate({ marginLeft: "0"  }, 400 );
+                $("#itembirdygo2").animate({ marginLeft: "0"  }, 400 );
+                $("#divbutton2").animate({ marginLeft: "1px"  }, 400 );
+                $('#arrowbirdygo2').removeClass('fa fa-arrow-circle-right').addClass('fa fa-arrow-circle-left')
+            }, function() {
+                $("#divbutton2").click(function() {
+                    $(".margeImageB2").animate({ marginLeft: "40%" }, 400 );
+                    $("#itembirdygo2").animate({ marginLeft: "-40%" }, 400 );
+                    $("#divbutton2").animate({ marginLeft: "-1px"  }, 400 );
+                    $('#arrowbirdygo2').removeClass('fa fa-arrow-circle-left arrowbirdygo2').addClass('fa fa-arrow-circle-right arrowbirdygo2')
+                });
+            });
+        }
+});
+
+
 //Carousel Header
 $('#myCarousel1, #myCarousel2').carousel({
-    interval: 10000
+    interval: 25000
 });
 //Animation cercle
 new WOW().init();
@@ -80,6 +208,11 @@ new WOW().init();
 /*compteur*/
 /*********/
 $(document).ready(function(){
+    var observerCount = $('#cpteObserv').data('res');
+    var naturalistCount = $('#cpteNaturaliste').data('res');
+    var specieCount = $('#cpteEspeces').data('res');
+    var observationCount = $('#cpteObservations').data('res');
+
     $(".bhide").click(function(){
         $(".hideObj").slideDown();
         $(this).hide(); //.attr()
@@ -117,16 +250,16 @@ $(document).ready(function(){
             var curval1=parseInt($('#counter1').text().replace(' ',''));
             var curval2=parseInt($('#counter2').text());
             var curval3=parseInt($('#counter3').text());
-            if(curval<=observerCount-1){
+            if(curval<=200-1){
                 $('#counter').text(curval+1);
             }
-            if(curval1<=150-1){
+            if(curval1<=naturalistCount-1){
                 $('#counter1').text(curval1+1);
             }
-            if(curval2<=3000-10){
+            if(curval2<=specieCount-10){
                 $('#counter2').text(curval2+10);
             }
-            if(curval3<=245-1){
+            if(curval3<=observationCount-1){
                 $('#counter3').text(curval3+1);
             }
         }, 2);

@@ -27,9 +27,180 @@ body {
 a, a:hover {
     text-decoration: none;
 }
-.btn{
+
+.btn {
+    box-shadow :1px 3px 3px 1px rgba(0,0,0,.3), 1px 2px 1px 1px rgba(0,0,0,.2);
+    font-family: Titillium Web;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height : 1rem;
+    padding: .7rem;
     border-radius: 5px;
+    font-size: 13px;
 }
+.inputnewsletter {
+    font-family: Roboto;
+    font-size: 15px;
+    /*font-weight: lighter;*/
+    color: #405b54;
+}
+#newsletterForm {
+    margin: 0;
+    padding: 0;
+}
+#lienidentifier, #lieninscrire, a, a:hover, a:focus {
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Titillium Web";
+}
+#bonjour {
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 18px;
+}
+
+/********************************
+ *        Menu BIRDYGO          *
+ ********************************/
+.menuBirdygo2 {
+    padding: 0;
+    margin-right: 0;
+    margin-top: 32px;
+    color: #ffffff;
+    width: 290px;
+    height:55px;
+    position: absolute;
+    top: 20px;
+    right:5%;
+}
+.margeImageB2 {
+    z-index: 2;
+    margin-left: 40%;
+}
+#divbutton2 {
+    right:30%;
+    height: 50px;
+    width: 8%;
+    margin-top: 2px;
+    left: 2px;
+    background-color: #80cbc4;
+    border-radius: 0px 50px 50px 0;
+    z-index: 1;
+    padding-top: 10px;
+    margin-left: 1px;
+    padding-left: 7px;
+    font-size: 20px;
+}
+#itembirdygo2 {
+    padding-top: 10px;
+    background-color: #80cbc4;
+    height:50px;
+    margin-top:2px;
+    color: #ffffff;
+    font-size: 18px;
+    margin-left: -40%;
+    padding-right: 5px;
+    padding-left: 20px;
+    width: 40%;
+}
+#iconeB2 {
+    margin:0;
+    padding: 0;
+    height: 15px;
+    width: auto;
+    padding-right: 7px;
+    text-align: center;
+}
+.faUserMenu {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+.faPoweroffMenu {
+    padding-left: 7px;
+    padding-right: 0;
+}
+#itembirdygo2 a, a:hover {
+    font-size: 18px;
+}
+#arrowbirdygo2 {
+    color: #00695c;
+}
+
+/***************************************
+ *        Menu BIRDYGO Mobile          *
+ ***************************************/
+.menuMobileBirdygo {
+    padding: 0;
+    margin-right: 0;
+    margin-top: 25%;
+    color: #ffffff;
+    width: 155px;
+    height:35px;
+    position: absolute;
+    right:0;
+    display: none;
+    visibility: hidden;
+}
+.margeImageMobileB {
+    z-index: 2;
+    margin-left: 55%;
+}
+#MenuImgBirdyGoMobile {
+    height: 35px;
+    width: 35px;
+}
+#divbuttonMobile {
+    right:30%;
+    height: 30px;
+    width: 13%;
+    margin-top: 2px;
+    left: 2px;
+    background-color: #80cbc4;
+    border-radius: 0px 50px 50px 0;
+    z-index: 1;
+    margin-left: 1px;
+    padding-left: 7px;
+    font-size: 20px;
+}
+#itembirdygoMobile {
+    display: none;
+    padding-top: 1px;
+    background-color: #80cbc4;
+    height:30px;
+    margin-top:2px;
+    color: #ffffff;
+    font-size: 10px;
+    margin-left: -3%;
+    padding-right: 5px;
+    padding-left: 20px;
+    width: 60%;
+}
+#iconeMobileB {
+    margin:0;
+    padding: 0;
+    height: 15px;
+    width: auto;
+    padding-right: 7px;
+    text-align: center;
+}
+.faUserMenuMobile {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+.faPoweroffMenuMobile {
+    padding-left: 7px;
+    padding-right: 0;
+}
+#itembirdygoMobile a, a:hover {
+    font-size: 18px;
+}
+#arrowbirdygoMobile {
+    color: #00695c;
+    margin-top: 0;
+    padding-top: 0;
+}
+
 
 /*****************
     Pagination   *
@@ -66,21 +237,24 @@ header {
     position: relative;
     background-color: transparent;
     z-index: 1;
+    height: 180px;
 }
-
 /********************
  *  BOUTONS MENU    *
  ********************/
 .menuB {
     width: 150px;
     height: 40px;
-    font-family: Titillium Web;
+    font-family: "Titillium Web";
     font-weight: 700;
     font-size: 13px;
-    padding-left: 0px;
-    padding-right: 0px;
-     /* espace entre les boutons*/
-    margin:0 0 3px 0;
+    /* espace entre les boutons*/
+    margin:0 0 6px 0;
+}
+.menuB a, a:hover, a:focus {
+    font-family: "Titillium Web";
+    font-weight: 700;
+    font-size: 13px;
 }
 .menuB .textcourt {
     vertical-align: middle;
@@ -88,14 +262,18 @@ header {
 .textlong {
     padding-top:4px;
 }
-
+.menu {
+    margin-top: 10px;
+}
 /**************
  *    logo    *
  **************/
 .logo {
+    background: url(../img/logoCommun.png) no-repeat;
+    background-size: 180px 98px;
+    height: 180px;
     margin-top:32px;
-    max-height: 180px;
-    max-width: 98px;
+    margin-left: 20%;
 }
 
 /********************************
@@ -104,18 +282,21 @@ header {
 .sisi {
     padding:0;
     margin-top:32px;
+    text-align: center;
     font-weight: 700;
     font-size: 18px;
     font-family: Titillium Web;
     color: #ffffff;
     text-transform: uppercase;
-
 }
 .sisi a {
     text-decoration: none;
     color: #ffffff;
 }
 
+.contGen {
+    margin-bottom: 54px;
+}
 /**************************
  **************************
  ** Apprendre à observer **
@@ -137,17 +318,33 @@ header {
 .aogeneral .aobutton {
     background-color: #ffffff;
     background: rgba(255, 255, 255, .65);
-    font-size: 14px;
+    font-size: 13px;
     height: 60px;
-    width: 100%;
+    width: 170px;
     margin: 0;
     color: #2b2b2b;
     padding-right: 4px;
     padding-left: 4px;
+    margin-left: -17px;
+}
+.aogeneral .card-block{
+    padding:0;
 }
 .aogeneral a {
     text-decoration: none;
     color:#FFFFFF;
+}
+#aolien1, #aolien2 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #00695c;
+    text-decoration: none;
+}
+.aoBirdImg {
+    position: absolute;
+    z-index: 202;
+    margin-left: 40%;
+    margin-top: -15px
 }
 .aogeneral .blocText {
     margin-top: 47px;
@@ -160,13 +357,47 @@ header {
     background-color: #00695c;
     color:#ffffff;
     margin-top: -5%;
-    margin-bottom: 0;
+    margin-bottom: 30px;
     height:60px;
     text-align: center;
     font-family: Amiko;
     font-size: 15px;
     padding-right: 0;
     padding-left: 0;
+}
+#aoTitreH4 {
+    text-align: left;
+    font-size: 20px;
+    padding-left: 28px;
+    width: 32%;
+}
+#aoTitre2H4 {
+    text-align: left;
+    font-size: 20px;
+    padding-left: 28px;
+    width: 33%;
+}
+#aoTitre3H4 {
+    text-align: left;
+    font-size: 20px;
+    padding-left: 28px;
+    width: 36%;
+}
+#aoTitre4H4 {
+    text-align: left;
+    font-size: 20px;
+    padding-left: 28px;
+    width: 28%;
+}
+#aoTitre5H4 {
+    text-align: left;
+    font-size: 20px;
+    padding-left: 28px;
+    width: 70%;
+}
+.aogeneral .aoRowButtons2{
+    margin-top: 25px;
+    margin-bottom: 30px;
 }
 .aogeneral h4 {
     text-align: right;
@@ -193,11 +424,12 @@ header {
     width: 34%;
 }
 .aogeneral h5 {
-    padding-left: 31px;
+    padding-left: 15px;
     padding-top: 28px;
     font-size: 15px;
     font-family: Roboto;
     font-weight: 800;
+
 }
 .aogeneral p {
     text-align: justify;
@@ -242,6 +474,12 @@ header {
     font-family: Roboto;
     font-size: 15px;
 }
+.assBirdImg {
+    position: absolute;
+    z-index: 202;
+    margin-left: 79%;
+    margin-top: -40px
+}
 .assocgeneral .aobutton {
     background-color: #ffffff;
     background: rgba(255, 255, 255, .65);
@@ -268,10 +506,10 @@ header {
     padding-top:20px;
     background-color: #00695c;
     color:#ffffff;
-    margin-top: -5%;
-    margin-bottom: 0;
+    margin-top: -3%;
+    margin-left: 35%;
+    margin-bottom: 35px;
     height:60px;
-    text-align: center;
     font-family: Amiko;
     font-size: 15px;
     padding-right: 0;
@@ -292,6 +530,15 @@ header {
     margin-bottom: 28px;
     width: 21%;
 }
+#assTitreH4 {
+    width: 17%;
+}
+#assTitre2H4 {
+    width: 34%;
+}
+#assTitre3H4 {
+    width: 21%;
+}
 .assocgeneral h5 {
     padding-left: 31px;
     padding-top: 28px;
@@ -299,11 +546,13 @@ header {
 .assocgeneral p {
     text-align: justify;
     padding-right: 10%;
+    padding-left: 10%;
 }
 .assocgeneral .pbouton {
-    margin:0;
+    margin-top:0;
     padding: 0;
     text-align: center;
+    margin-bottom: 40px
 }
 .assocgeneral .ulbloctext {
     padding-left: 15%;
@@ -329,6 +578,27 @@ header {
     background-position: left 40%; /* on positionne où l'on veut */
     padding-left: 25px; /* pour éviter la superposition du contenu */
 }
+.assImgPartenaires {
+    width: 80%;
+}
+
+/*****************************************
+*    Bouton plus/moins pour le collapse  *
+ *****************************************/
+.collapse-title > a[aria-expanded="false"] > #collapseAssoMinus {
+    display: none;
+    visibility: hidden;
+}
+.collapse-title > a[aria-expanded="true"] > #collapseAssoMinus  {
+    display: block;
+}
+.collapse-title > a[aria-expanded="false"] > #collapseAssoPlus {
+    display: block;
+}
+.collapse-title > a[aria-expanded="true"] > #collapseAssoPlus  {
+    display: none;
+    visibility: hidden;
+}
 
 /*****************************
  *****************************
@@ -346,6 +616,12 @@ header {
     width: 100%;
     font-family: Roboto;
     font-size: 15px;
+}
+.ccmBirdImg {
+    position: absolute;
+    z-index: 202;
+    margin-left: 25%;
+    margin-top: -35px
 }
 .ccmgeneral .aobutton {
     background-color: #ffffff;
@@ -373,14 +649,53 @@ header {
     padding-top:20px;
     background-color: #00695c;
     color:#ffffff;
-    margin-top: -5%;
-    margin-bottom: 0;
+    margin-top: -4%;
+    margin-bottom: 25px;
     height:60px;
     text-align: center;
     font-family: Amiko;
     font-size: 15px;
+    margin-left: 37%;
     padding-right: 0;
     padding-left: 0;
+}
+.ccmEntete {
+    text-align: center;
+    margin-top: 5px;
+    font-weight: bold;
+    margin-left:28%;
+    margin-right: 0;
+}
+.ccmRowButtons {
+    padding-bottom: 25px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 35px;
+    border-bottom-color: #636c72;
+    border-bottom: solid 2px;
+}
+#ccmobservclick {
+    margin-left: 36%;
+    width: 70%;
+    height: 50px;
+}
+#ccmnaturalisteclick {
+    width: 70%;
+    height: 50px;
+    margin-left: 15%;
+}
+.ccmgeneral .card-title {
+    font-size: 20px;
+    text-align:left;
+    padding-left: 30px;
+    width: 42%;
+
+}
+.ccmgeneral .card-text {
+    font-family: Roboto;
+    font-size: 15px;
+    margin-left: 20px;
+    margin-right: 20px
 }
 .ccmgeneral h4 {
     text-align: right;
@@ -395,7 +710,6 @@ header {
     padding-top: 0%;
     padding-bottom: 0;
     margin-bottom: 28px;
-    width: 21%;
 }
 .ccmgeneral h5 {
     padding-left: 31px;
@@ -432,6 +746,19 @@ header {
     background-repeat: no-repeat; /* on annule la répétition par défaut */
     background-position: left 40%; /* on positionne où l'on veut */
     padding-left: 25px; /* pour éviter la superposition du contenu */
+}
+.ccmgeneral .bq-success {
+    margin-right: 40px;
+    margin-left: 60px;
+}
+.ccmgeneral .bq-title {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: bold
+}
+.ccmRowButtons2 {
+    margin-bottom: 33px;
+    margin-left: 4%;
 }
 
 /*********************************
@@ -485,6 +812,12 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.mlBirdImg {
+    position: absolute;
+    z-index: 202;
+    margin-left: 20%;
+    margin-top: -15px;
+}
 .mlgeneral {
     margin: 0;
     height:100%;
@@ -518,14 +851,28 @@ header {
     padding-top:20px;
     background-color: #00695c;
     color:#ffffff;
-    margin-top: -5%;
-    margin-bottom: 0;
+    margin-top: -4%;
+    margin-bottom: 5%;
     height:60px;
     text-align: center;
     font-family: Amiko;
-    font-size: 15px;
+    font-size: 20px;
     padding-right: 0;
     padding-left: 0;
+    margin-left: 36%;
+}
+.mlgeneral .card-title {
+    font-size: 20px;
+    text-align:left;
+    padding-left: 30px;
+    width: 95%;
+}
+.mlgeneral .card-text {
+    font-family: Roboto;
+    font-size: 15px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom:30px;
 }
 .mlgeneral h4 {
     text-align: right;
@@ -579,7 +926,6 @@ header {
     padding-left: 25px; /* pour éviter la superposition du contenu */
 }
 
-
 /********************************
  ********************************
  *      PAGE RECHERCHER         *
@@ -589,6 +935,12 @@ header {
     background-image: url("../img/search/rechfond.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+.rechBirdImg {
+    position: absolute;
+    z-index: 202;
+    margin-left: 25%;
+    margin-top: -25px
 }
 .rechgeneral {
     margin: 0;
@@ -632,6 +984,15 @@ header {
     padding-right: 0;
     padding-left: 0;
 }
+.rechgeneral h2 {
+    margin:0;
+    padding-top: 13px;
+    padding-bottom:3px;
+    border-bottom: 2px solid #636c72;
+    color: #009688;
+    font-size: 23px;
+    font-weight: bold
+}
 .rechgeneral h4 {
     text-align: right;
     border-bottom-style: solid;
@@ -649,7 +1010,9 @@ header {
 }
 .rechgeneral h5 {
     padding-left: 31px;
-    padding-top: 28px;
+    padding-top: 6px;
+    font-family: Roboto;
+    font-size: 15px;
 }
 .rechgeneral p {
     text-align: justify;
@@ -696,6 +1059,284 @@ header {
     color: #3B465E;
     border-bottom: 2px solid #00695c;
 }
+.rechgeneral .imgEspece {
+    width: 70px;
+    height: 70px;
+}
+/**** Element du cadre des observations ****/
+.rechgeneral .divImgEsp {
+    margin-left: -15px;
+    padding: 0;
+    margin-bottom: 28px
+}
+.rechgeneral .card-block {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    margin-top: 7px;
+}
+.rechgeneral .imgCardBlock {
+    font-family:Roboto;
+    font-size:13px;
+    font-weight:200;
+    padding-left: 23px;
+    padding-right: 0px
+}
+.rechgeneral .divDateObserv {
+    text-align: left;
+    font-family:Roboto;
+    font-size:15px
+}
+.rechgeneral .divDepartObserv {
+    text-align: center;
+}
+
+/*************************
+ *************************
+ *      Page Contact     *
+ *************************
+ *************************/
+#contactfond {
+    background-image: url("../img/contact/contfond.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.contactBirdImg {
+    position: absolute;z-index: 202;
+    margin-left: 23%;
+    margin-top: 55%
+}
+.contactgeneral {
+    margin: 0;
+    height:100%;
+    width: 100%;
+    font-family: Roboto;
+    font-size: 15px;
+}
+.contactgeneral .aobutton {
+    background-color: #ffffff;
+    background: rgba(255, 255, 255, .65);
+    font-size: 15px;
+    text-transform: inherit;
+    height: 60px;
+    width: 112%;
+    margin: 0;
+    color: #2b2b2b;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+.contactgeneral a {
+    text-decoration: none;
+    color:#FFFFFF;
+}
+.contactgeneral .blocText {
+    margin-top: 47px;
+    padding: 0;
+    background: #ffffff;
+    background: rgba(255, 255, 255, .65);
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.contactgeneral .titreCadre {
+    padding-top:20px;
+    background-color: #00695c;
+    color:#ffffff;
+    margin-top: -5%;
+    margin-bottom: 15px;
+    margin-left: 34%;
+    height:60px;
+    text-align: center;
+    font-family: Amiko;
+    font-size: 15px;
+    padding-right: 0;
+    padding-left: 0;
+}
+.contactgeneral h4 {
+    text-align: right;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #2b2b2b;
+    font-family: Amiko;
+    font-size: 20px;
+    font-weight: 600;
+    color: #00695c;
+    padding-left: 0;
+    padding-top: 0%;
+    padding-bottom: 0;
+    margin-bottom: 28px;
+    width: 21%;
+}
+.contactgeneral .cadreInfo {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding: 12px;
+}
+.contactgeneral textarea {
+    height: 150px;
+    font-family: Roboto;
+    font-size: 15px;
+    margin-bottom: 14px;
+}
+.contactgeneral label {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 5%;
+    margin-bottom: 0;
+    font-size: 15px;
+    color: #2b2b2b;
+}
+.contactgeneral input, input[type="email"] {
+    height:10%;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/****************************
+ ****************************
+ *      Page S'inscrire     *
+ ****************************
+ ****************************/
+#registerfond {
+    background-image: url("../img/register/registerfond.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.registerbird {
+    position: absolute;z-index: 202;
+    margin-left: 89%;
+    margin-top: -4%;
+}
+.registergeneral {
+    margin: 0;
+    height:100%;
+    width: 100%;
+    font-family: Roboto;
+    font-size: 15px;
+}
+.registergeneral .aobutton {
+    background-color: #ffffff;
+    background: rgba(255, 255, 255, .65);
+    font-size: 15px;
+    text-transform: inherit;
+    height: 60px;
+    width: 112%;
+    margin: 0;
+    color: #2b2b2b;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+.registergeneral a {
+    text-decoration: none;
+    color:#FFFFFF;
+}
+.registergeneral .blocText {
+    margin-top: 47px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background: #ffffff;
+    background: rgba(255, 255, 255, .65);
+}
+.registergeneral .cadreInfoInscription1 {
+    margin-top: 47px;
+    background: #ffffff;
+    background: rgba(255, 255, 255, .65);
+    height: 200px;
+    padding-top: 45px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
+.registergeneral .titreCadre {
+    padding-top:20px;
+    background-color: #00695c;
+    color:#ffffff;
+    margin-top: -7%;
+    margin-bottom: 0;
+    height:60px;
+    text-align: center;
+    font-family: Amiko;
+    font-size: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.registergeneral h4 {
+    text-align: right;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #2b2b2b;
+    font-family: Amiko;
+    font-size: 20px;
+    font-weight: 600;
+    color: #00695c;
+    padding-left: 0;
+    padding-top: 0%;
+    padding-bottom: 0;
+    margin-bottom: 28px;
+    width: 21%;
+}
+.registergeneral .ulbloctext {
+    padding-left: 5%;
+    text-align: justify;
+    padding-right: 10%;
+    line-height: 130%;
+    margin-bottom: 0;
+    margin-top: 10px;
+    padding-bottom: 0;
+}
+.registergeneral .libloctext {
+    padding-bottom: 13px;
+    list-style-type: none; /* on annule la puce par défaut */
+    background-image: url(../img/puce.png); /* on affiche l'image souhaitée */
+    background-repeat: no-repeat; /* on annule la répétition par défaut */
+    background-position: left 40%; /* on positionne où l'on veut */
+    padding-left: 25px; /* pour éviter la superposition du contenu */
+}
+.registergeneral label {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 5%;
+    margin-bottom: 0;
+    font-size: 15px;
+    color: #2b2b2b;
+}
+.registergeneral input, input[type="email"], input[type="password"] {
+    height:30%;
+    padding-top: 0;
+    padding-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+[type="checkbox"] + label::before {
+
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    z-index: 0;
+    border: 2px solid #5a5a5a;
+    border-radius: 1px;
+    margin-top: 2px;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -o-transition: .2s;
+    -ms-transition: .2s;
+    transition: .2s;
+
+}
+.registergeneral [type="radio"]:checked + label, [type="radio"]:not(:checked) + label, [type="checkbox"] + label {
+    font-size: 10px;
+}
+#fos_user_registration_form_isNewsletterSubscriber {
+    margin: 0;
+    padding: 0;
+}
 /****************
  ****************
  *      POPUP   *
@@ -718,7 +1359,7 @@ header {
     font-size: 15px;
     color: #FFFFFF;
     font-weight: bold;
-    border-bottom-width: 100%;
+    border-bottom-width: 100px;
     border-bottom: #ffffff;
     border-bottom-style: solid;
 
@@ -781,23 +1422,28 @@ header {
     margin-left: 15%;
     margin-right: 15%;
 }
+#modalLogin .btn {
+    height: 40px;
+    padding-top: 3px;
+}
 #modalLogin .modal-footer {
     margin: 0;
-    height: 100px;
+    padding: 5px;
+    height: 60px;
     border: none;
+    font-size: 12px;
 }
 #modalLogin .form-control {
     padding-top: 5px;
     padding-bottom: 5px;
 }
-#modalLogin input[type=text], input[type=password] {
+#modalLogin input[type=text], input[type=password], input[type="email"] {
     color: #cbcaca;
     font-size: 15px;
     font-family: Roboto;
     border-bottom: 2px solid #cbcaca;
 }
-#modalLogin input[type=password]:focus, input[type=text]:focus
-{
+#modalLogin input[type=password]:focus, input[type=text]:focus, input[type="email"]:focus {
     background-color: #00695c;
     color:white;
     border-bottom: 2px solid white;
@@ -805,5 +1451,1590 @@ header {
 #modalLogin a, a:hover{
     text-decoration: none;
     color: white;
+    font-size: 12px;
+    margin:0;
 }
 
+/*
+    Icone Hamburger
+ */
+.hamburger {
+    position:absolute;
+    height: 35px;
+    width: 35px;
+    top:0;
+    right:0;
+    border:0;
+    font-size:1.4em;
+    font-weight:bold;
+    cursor:pointer;
+    outline:none;
+    z-index:10000000000000;
+    color: #FFFFFF;
+}
+.cross{
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    text-align: right;
+}
+.licross {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.divMenu2 {
+    top: 10px;
+    right: 0;
+    position: absolute;
+    display: none;
+    visibility: hidden;
+    z-index: 1000002;
+}
+.menu2 {
+    z-index: 1000001;
+    font-weight: bold;
+    font-size: 0.8em;
+    width: 0px;
+    height: 100%;
+    background: #00695c;
+    position: absolute;
+    text-align: center;
+    font-size: 12px;
+    top: 0;
+    display: none;
+    visibility: hidden;
+}
+.menu2 a, a:hover {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Titillium Web";
+    text-decoration: none;
+}
+.menu2 li {
+    color: #FFFFFF;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+/********************************
+ ********************************
+ **   LES DIFFERENTS MEDIAS    **
+ ********************************
+ ********************************/
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575px) {
+    .contGen {
+        margin-bottom: 25px;
+    }
+    .logo{
+        background: url(../img/homepage/responsive/logo-final-mobile.png) no-repeat;
+        background-size: 98px auto;
+        margin-top: 20px;
+        min-height: 120px;
+        min-width: 90px;
+        margin-left: 10%;
+    }
+    .menu {
+        display: none;
+        visibility: hidden;
+    }
+
+    .divMenu2 {
+        display: block;
+        visibility: visible;
+    }
+    .menu2 {
+        display: block;
+        visibility: visible;
+    }
+    .menuMobileBirdygo {
+        display: block;
+        visibility: visible;
+    }
+
+    .menuBirdygo2 {
+        display: none;
+        visibility: hidden;
+    }
+
+    .sisi {
+        position: absolute;
+        height: 20%;
+        margin-top: 30%;
+        padding:0;
+    }
+    #lieninscrire, #lienidentifier  {
+        font-size: 15px;
+    }
+    #lienidentifier {
+        padding-left: 30px;
+    }
+    #lieninscrire{
+        padding-right: 30px;
+    }
+    .smooth-scroll {
+        display: none;
+        visibility: hidden;
+    }
+
+    #assocfond {
+        background-image: url("../img/association/responsive/mobile_fond.jpg");
+        background-repeat: repeat-y;
+        background-size: auto;
+        min-width: 30%;
+        max-width: 100%;
+    }
+    .assBirdImg {
+        width: 20%;
+        margin-left: 73%;
+        margin-top: -10px
+    }
+    .assocgeneral .blocText {
+        margin-top: 47px;
+    }
+    .assocgeneral .titreCadre {
+        margin-top: -8%;
+        margin-bottom: 32px;
+        margin-left: 25%;
+        height:50px;
+        width: 160px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 15px;
+    }
+    #assTitreH4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+    }
+    #assTitreH4 > .btn-floating.btn-small {
+        margin-left: 54%;
+    }
+    #assTitre2H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #assTitre2H4 > .btn-floating.btn-small {
+        margin-left: 15%;
+    }
+    #assTitre3H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #assTitre3H4 > .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+        margin-left: 46%;
+    }
+    .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+    }
+    .btn-floating.btn-small .fa {
+        font-size: 13px;
+        line-height: 1.30em;
+    }
+    .ligue {
+        border-bottom: solid 1px;
+        border-bottom-color: #2b2b2b;
+        width: 300px;
+        margin-left: 5%;
+        margin-bottom: 20px;
+    }
+    .assImgPartenaires {
+        width: 50%;
+        margin-left: 25%;
+    }
+    #MNHM {
+        margin-left: 0;
+    }
+    #conservLitt {
+        margin-bottom: 5px;
+    }
+    #CNRS {
+        width: 30%;
+        margin-bottom: 0;
+        margin-left: 35%;
+    }
+
+    #ccmfond {
+        background-image: url("../img/modemploi/mobile_mefond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .ccmBirdImg {
+        width: 20%;
+        margin-left: -10px;
+        margin-top: -9px
+    }
+    .ccmgeneral .blocText {
+        margin-top: 47px;
+        padding: 0;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+    }
+    .ccmgeneral .titreCadre {
+        margin-top: -9%;
+        margin-bottom: 20px;
+        margin-left: 20%;
+        height:60px;
+        width: 200px;
+        font-family: Amiko;
+        font-size: 13px;
+        padding-top: 20px;
+    }
+    .ccmEntete {
+        margin-top: 5px;
+        margin-left: 0;
+    }
+    .ccmRowButtons {
+        padding-bottom: 25px;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 35px;
+        border-bottom: solid 1px;
+    }
+    #ccmobservclick {
+        margin-left: 15%;
+        width: 70%;
+    }
+    #ccmnaturalisteclick {
+        width: 70%;
+        height: 50px;
+        margin-left: 15%;
+    }
+    .stepwizard-row:before {
+        top: 11px;
+        height: 98%;
+    }
+    .stepwizard-row2:before {
+        top: 11px;
+        height: 98%;
+    }
+    .bq-success {
+        margin-right: 40px;
+        margin-left: 60px;
+    }
+    .bq-title {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: bold
+    }
+    .ccmgeneral .card-title {
+        font-size: 13px;
+        text-align:left;
+        padding-left: 20px;
+        width: 95%;
+    }
+    .ccmgeneral .card-text {
+        font-family: Roboto;
+        font-size: 12px;
+        padding-right: 10px;
+        margin-left: 15px;
+        margin-right: 15px
+    }
+    .ccmgeneral li {
+        font-size: 12px;
+    }
+
+    #aofond {
+        background-image: url("../img/apprendreaobserver/mobile_aofond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .aoBirdImg {
+        width: 20%;
+        margin-left: -10px;
+        margin-top: 2px
+    }
+    .aogeneral .blocText {
+        margin-top: 47px;
+        padding: 0;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+    }
+    .aogeneral .titreCadre {
+        margin-top: -9%;
+        margin-bottom: 20px;
+        margin-left: 20%;
+        height:60px;
+        width: 200px;
+        font-family: Amiko;
+        font-size: 13px;
+        padding-top: 20px;
+    }
+    #aoTitreH4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+    }
+    #aoTitreH4 > .btn-floating.btn-small {
+        margin-left: 33%;
+    }
+    #aoTitre2H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #aoTitre2H4 > .btn-floating.btn-small {
+        margin-left: 31%;
+    }
+    #aoTitre3H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #aoTitre3H4 > .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+        margin-left: 27%;
+    }
+    #aoTitre4H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #aoTitre4H4 > .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+        margin-left: 41%;
+    }
+    #aoTitre5H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #aoTitre5H4 > .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+        margin-left: 57%;
+    }
+    .aoRowButtons2 {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    .aogeneral .card-title {
+        font-size: 13px;
+        text-align:left;
+        padding-left: 20px;
+        width: 95%;
+    }
+    .aogeneral .card-text {
+        font-family: Roboto;
+        font-size: 12px;
+        padding-right: 10px;
+        margin-left: 15px;
+        margin-right: 15px
+    }
+    .aogeneral h5 {
+        padding-left: 10px;
+        padding-top: 15px;
+    }
+    .aogeneral .ulbloctext {
+        padding-left: 20px;
+    }
+    .aogeneral li {
+        font-size: 12px;
+    }
+    #aolien1, #aolien2 {
+        font-size: 13px;
+        font-weight: bold;
+        color: #00695c;
+        text-decoration: none;
+    }
+    .aogeneral .ulssliste {
+        padding-left: 35px;
+        line-height: 1.25em;
+    }
+
+    #rechfond {
+        background-image: url("../img/search/mobile_rechfond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .rechBirdImg {
+        width: 17%;
+        margin-left: -2%;
+        margin-top: 8px;
+    }
+    .rechgeneral .blocText {
+        margin-top: 47px;
+        padding: 0;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+    }
+    .rechgeneral .titreCadre {
+        margin-top: -9%;
+        margin-bottom: 20px;
+        margin-left: 20%;
+        height:60px;
+        width: 200px;
+        font-family: Amiko;
+        font-size: 13px;
+        padding-top: 20px;
+    }
+    .aogeneral .blocText {
+        margin-top: 47px;
+        padding: 0;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+    }
+    .aogeneral .titreCadre {
+        margin-top: -9%;
+        margin-bottom: 20px;
+        margin-left: 20%;
+        height:60px;
+        width: 200px;
+        font-family: Amiko;
+        font-size: 13px;
+        padding-top: 20px;
+    }
+    .rechgeneral .formFamily {
+        margin-left: 25%;
+    }
+    .rechgeneral .formDep {
+        margin-left: 18%;
+    }
+    .rechgeneral .imgEspece {
+        width: 60px;
+        height: 60px;
+    }
+    /**** Element du cadre des observations ****/
+    .rechgeneral .divImgEsp {
+        margin-left: -15px;
+        padding: 0;
+        margin-bottom: 28px
+    }
+    .rechgeneral .card-block {
+        padding-top: 20px;
+        padding-bottom: 5px;
+        margin-top: 7px;
+    }
+    .rechgeneral .imgCardBlock {
+        font-size: 11px;
+        padding-left: 55px;
+    }
+    .rechgeneral .divDateObserv {
+        font-size: 11px;
+    }
+    .rechgeneral .divDepartObserv {
+        font-size: 11px;
+    }
+
+    #mlfond {
+        background-image: url("../img/mentionslegales/mobile_mlfond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .mlgeneral .blocText {
+        margin-top: 25px;
+    }
+    .mlgeneral .titreCadre {
+        margin-top: -9%;
+        margin-bottom: 20px;
+        margin-left: 25%;
+        height:60px;
+        width: 160px;
+        font-family: Amiko;
+        font-size: 13px;
+        padding-top: 20px;
+    }
+    .mlBirdImg {
+        width: 20%;
+        margin-left: -10px;
+        margin-top: -15px
+    }
+    .mlgeneral .card-title {
+        font-size: 12px;
+        text-align:left;
+        padding-left: 20px;
+        width: 95%;
+    }
+    .mlgeneral .card-text {
+        font-family: Roboto;
+        font-size: 10px;
+        margin-left: 20px;
+        margin-right: 20px
+    }
+
+    #contactfond {
+        background-image: url("../img/contact/mobile_contfond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .contactBirdImg {
+        width: 13%;
+        margin-left: 0;
+        margin-top: 160%;
+    }
+    .contactgeneral .blocText {
+        margin-top: 25px;
+        padding-bottom: 14px;
+        padding-left: 25px;
+        padding-right: 25px;
+
+    }
+    .contactgeneral .titreCadre {
+        margin-top: -8%;
+        margin-bottom: 15px;
+        margin-left: 19%;
+        height:50px;
+        width: 180px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 15px;
+    }
+    .contactgeneral .cadreInfo {
+        margin-bottom: 15px;
+        padding: 12px;
+    }
+    .contactgeneral textarea {
+        height: 100px;
+        font-family: Roboto;
+        font-size: 15px;
+    }
+    .contactgeneral .btn {
+        margin-bottom: 20px;
+    }
+    .contactgeneral label {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 5%;
+        margin-bottom: 0;
+        font-size: 15px;
+        color: #2b2b2b;
+    }
+    .contactgeneral input, input[type="email"] {
+        height:10%;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    #registerfond {
+        background-image: url("../img/register/mobile_registerfond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .registerbird {
+        width: 15%;
+        margin-left: 75%;
+        margin-top: 1%;
+    }
+    .registergeneral a {
+        text-decoration: none;
+        color:#FFFFFF;
+    }
+    .registergeneral .blocText {
+        margin-top: 47px;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+        position: relative;
+        z-index: 200;
+    }
+    .registergeneral .cadreInfoInscription1 {
+        position: absolute;
+        background-color: transparent;
+        margin-top: 26%;
+        height: 150px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        z-index: 201;
+        box-shadow: none;
+    }
+    .registergeneral .titreCadre {
+        margin-top: -8%;
+        margin-bottom: 15px;
+        margin-left: 15%;
+        height:50px;
+        width: 180px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 15px;
+    }
+    .registergeneral .divforminscire {
+        margin-top:55%
+    }
+    [type="radio"]:checked + label, [type="radio"]:not(:checked) + label, [type="checkbox"] + label {
+        font-size: 10px;
+    }
+    #fos_user_registration_form_isNewsletterSubscriber {
+        font-size: 10px;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .logo{
+        background: url(../img/homepage/responsive/logo-final-mobile.png) no-repeat;
+        background-size: 98px auto;
+        margin-top: 20px;
+        min-height: 120px;
+        min-width: 90px;
+        margin-left: 10%;
+    }
+    .menu {
+        display: none;
+        visibility: hidden;
+    }
+    .menuBirdygo2 {
+        display: none;
+        visibility: hidden;
+    }
+    .menu2, .divMenu2 {
+        display: block;
+        visibility: visible;
+    }
+    .sisi {
+        position: absolute;
+        height: 20%;
+        margin-top: 20%;
+        padding:0;
+    }
+    #lieninscrire, #lienidentifier  {
+        font-size: 15px;
+    }
+    #lienidentifier {
+        padding-left: 30px;
+    }
+    #lieninscrire{
+        padding-right: 30px;
+    }
+    .smooth-scroll {
+        display: none;
+        visibility: hidden;
+    }
+
+    #assocfond {
+        background-image: url("../img/association/responsive/mobile_fond.jpg");
+        background-repeat: repeat-y;
+        background-size: auto;
+        min-width: 30%;
+        max-width: 100%;
+    }
+    .assBirdImg {
+        width: 15%;
+        margin-left: 73%;
+        margin-top: -25px
+    }
+    .assocgeneral .blocText {
+        margin-top: 47px;
+    }
+    .assocgeneral .titreCadre {
+        margin-top: -5%;
+        margin-bottom: 32px;
+        margin-left: 35%;
+        height:50px;
+        width: 400px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 15px;
+    }
+    #assTitreH4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+    }
+    #assTitreH4 > .btn-floating.btn-small {
+        margin-left: 54%;
+    }
+    #assTitre2H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #assTitre2H4 > .btn-floating.btn-small {
+        margin-left: 15%;
+    }
+    #assTitre3H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #assTitre3H4 > .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+        margin-left: 46%;
+    }
+    .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+    }
+    .ligue {
+        border-bottom: solid 1px;
+        border-bottom-color: #2b2b2b;
+        width: 300px;
+        margin-left: 5%;
+        margin-bottom: 20px;
+    }
+    .assImgPartenaires {
+        width: 50%;
+        margin-left: 25%;
+    }
+    #MNHM {
+        margin-left: 0;
+    }
+    #conservLitt {
+        margin-bottom: 5px;
+    }
+    #CNRS {
+        width: 30%;
+        margin-bottom: 0;
+        margin-left: 35%;
+    }
+
+    #ccmfond {
+        background-image: url("../img/modemploi/mobile_mefond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .ccmBirdImg {
+        width: 15%;
+        margin-left: -10px;
+        margin-top: -20px
+    }
+    .ccmgeneral .blocText {
+        margin-top: 47px;
+        padding: 0;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+    }
+    .ccmgeneral .titreCadre {
+        margin-top: -6%;
+        margin-bottom: 20px;
+        margin-left: 40%;
+        height:60px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 10px;
+    }
+    .ccmEntete {
+        margin-top: 5px;
+        margin-left: 0;
+    }
+    .ccmRowButtons {
+        padding-bottom: 25px;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 35px;
+        border-bottom: solid 1px;
+    }
+    #ccmobservclick {
+        width: 100%;
+        width: 180px;
+        margin-left:40%;
+    }
+    #ccmnaturalisteclick {
+        width: 210px;
+        height: 50px;
+        margin-left: 100px;
+        margin-right: 0;
+
+    }
+    .stepwizard-row:before {
+        top: 11px;
+        height: 98%;
+    }
+    .stepwizard-row2:before {
+        top: 11px;
+        height: 98%;
+    }
+    .bq-success {
+        margin-right: 40px;
+        margin-left: 60px;
+    }
+    .bq-title {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: bold
+    }
+    .ccmgeneral .card-title {
+        font-size: 13px;
+        text-align:left;
+        padding-left: 20px;
+        width: 95%;
+    }
+    .ccmgeneral .card-text {
+        font-family: Roboto;
+        font-size: 12px;
+        padding-right: 10px;
+        margin-left: 15px;
+        margin-right: 15px
+    }
+    .ccmgeneral li {
+        font-size: 12px;
+    }
+
+    #mlfond {
+        background-image: url("../img/mentionslegales/mobile_mlfond.jpg");
+        background-repeat: repeat-y;
+        background-size: auto;
+        min-width: 30%;
+        max-width: 100%;
+    }
+    .mlgeneral .blocText {
+        margin-top: 25px;
+    }
+    .mlgeneral .titreCadre {
+        margin-top: -9%;
+        margin-bottom: 20px;
+        margin-left: 25%;
+        height:60px;
+        width: 160px;
+        font-family: Amiko;
+        font-size: 13px;
+        padding-top: 20px;
+    }
+    .mlBirdImg {
+        width: 20%;
+        margin-left: -10px;
+        margin-top: -15px
+    }
+    .mlgeneral .card-title {
+        font-size: 12px;
+        text-align:left;
+        padding-left: 20px;
+        width: 95%;
+    }
+    .mlgeneral .card-text {
+        font-family: Roboto;
+        font-size: 10px;
+        margin-left: 20px;
+        margin-right: 20px
+    }
+
+    #contactfond {
+        background-image: url("../img/contact/mobile_contfond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .contactBirdImg {
+        width: 13%;
+        margin-left: 0;
+        margin-top: 149%;
+    }
+    .contactgeneral .blocText {
+        margin-top: 25px;
+    }
+    .contactgeneral .titreCadre {
+        margin-top: -8%;
+        margin-bottom: 15px;
+        margin-left: 23%;
+        height:50px;
+        width: 180px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 15px;
+    }
+    .contactgeneral .cadreInfo {
+        margin-bottom: 15px;
+        padding: 12px;
+    }
+    .contactgeneral textarea {
+        height: 100px;
+        font-family: Roboto;
+        font-size: 15px;
+    }
+    .contactgeneral .btn {
+        margin-bottom: 20px;
+    }
+    .contactgeneral label {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 5%;
+        margin-bottom: 0;
+        font-size: 15px;
+        color: #2b2b2b;
+    }
+    .contactgeneral input, input[type="email"] {
+        height:10%;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .registerbird {
+        width: 10%;
+        margin-left: 75%;
+        margin-top: 1%;
+    }
+    .registergeneral a {
+        text-decoration: none;
+        color:#FFFFFF;
+    }
+    .registergeneral .blocText {
+        margin-top: 47px;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+        position: relative;
+        z-index: 200;
+    }
+    .registergeneral .cadreInfoInscription1 {
+        position: absolute;
+        background-color: transparent;
+        margin-top: 26%;
+        height: 150px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        z-index: 201;
+        box-shadow: none;
+    }
+    .registergeneral .titreCadre {
+        margin-top: -8%;
+        margin-bottom: 15px;
+        margin-left: 15%;
+        height:50px;
+        width: 180px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 15px;
+    }
+    .registergeneral .divforminscire {
+        margin-top:55%
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px){
+    .logo{
+        margin-left: 5%;
+    }
+    .sisi {
+        text-align: right;
+        margin-top: 50px;
+    }
+
+    .menu2, .divMenu2 {
+        display: block;
+        visibility: visible;
+    }
+
+    .menuMobileBirdygo {
+        display: none;
+        visibility: hidden;
+    }
+    .menuBirdygo2 {
+        right:0;
+        top:20%;
+    }
+    .smooth-scroll {
+        display: none;
+        visibility: hidden;
+    }
+    #assTitreH4 {
+        text-align: left;
+        font-size: 20px;
+        padding-left: 20px;
+        width: 95%;
+    }
+    #assTitreH4 > .btn-floating.btn-small {
+        margin-left: 74%;
+    }
+    #assTitre2H4 {
+        text-align: left;
+        font-size: 20px;
+        padding-left: 20px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #assTitre2H4 > .btn-floating.btn-small {
+        margin-left: 50%;
+    }
+    #assTitre3H4 {
+        text-align: left;
+        font-size: 20px;
+        padding-left: 20px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #assTitre3H4 > .btn-floating.btn-small {
+        margin-left: 69%;
+    }
+    .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+    }
+    .btn-floating.btn-small .fa {
+        font-size: 13px;
+        line-height: 1.30em;
+    }
+    .ligue {
+        border-bottom: solid 1px;
+        border-bottom-color: #2b2b2b;
+        margin-bottom: 20px;
+    }
+    .assImgPartenaires {
+        width: 30%;
+        margin-left: 32%;
+    }
+    #MNHM {
+        margin-left: 0;
+    }
+    #conservLitt {
+        margin-bottom: 5px;
+    }
+    #CNRS {
+        width: 20%;
+        margin-bottom: 0;
+        margin-left: 42%;
+    }
+
+    #ccmfond {
+        background-image: url("../img/modemploi/mobile_mefond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .ccmBirdImg {
+        width: 12%;
+        margin-left: -10px;
+        margin-top: -27px
+    }
+    .ccmgeneral .blocText {
+        margin-top: 47px;
+        padding: 0;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+    }
+    .ccmgeneral .titreCadre {
+        margin-top: -4%;
+        margin-bottom: 20px;
+        margin-left: 32%;
+        height:60px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 20px;
+    }
+    .ccmEntete {
+        margin-top: 5px;
+        margin-left: 0;
+    }
+    .ccmRowButtons {
+        padding-bottom: 25px;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 35px;
+        border-bottom: solid 1px;
+    }
+    #ccmobservclick {
+        margin-left: 15%;
+        width: 70%;
+    }
+    #ccmnaturalisteclick {
+        width: 70%;
+        height: 50px;
+        margin-left: 15%;
+    }
+    .stepwizard-row:before {
+        top: 11px;
+        height: 98%;
+    }
+    .stepwizard-row2:before {
+        top: 11px;
+        height: 98%;
+    }
+    .bq-success {
+        margin-right: 40px;
+        margin-left: 60px;
+    }
+    .bq-title {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: bold
+    }
+    .ccmgeneral .card-title {
+        font-size: 16px;
+        text-align:left;
+        padding-left: 20px;
+        width: 95%;
+    }
+    .ccmgeneral .card-text {
+        font-family: Roboto;
+        font-size: 15px;
+        margin-left: 20px;
+        margin-right: 20px
+    }
+    .ccmgeneral li {
+        font-size: 15px;
+    }
+
+    #aofond {
+        background-image: url("../img/apprendreaobserver/mobile_aofond.jpg");
+        background-repeat: repeat-y;
+        background-size: 100%;
+    }
+    .aoBirdImg {
+        width: 15%;
+        margin-left: 70px;
+        margin-top: -18px
+    }
+    .aogeneral .blocText {
+        margin-top: 47px;
+        padding: 0;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+    }
+    .aogeneral .titreCadre {
+        margin-top: -4%;
+        margin-bottom: 20px;
+        margin-left: 35%;
+        height:60px;
+        width: 200px;
+        font-family: Amiko;
+        font-size: 13px;
+        padding-top: 20px;
+    }
+    #aoTitreH4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+    }
+    #aoTitreH4 > .btn-floating.btn-small {
+        margin-left: 68%;
+    }
+    #aoTitre2H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #aoTitre2H4 > .btn-floating.btn-small {
+        margin-left: 67%;
+    }
+    #aoTitre3H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #aoTitre3H4 > .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+        margin-left: 65%;
+    }
+    #aoTitre4H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #aoTitre4H4 > .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+        margin-left: 72%;
+    }
+    #aoTitre5H4 {
+        text-align: left;
+        font-size: 15px;
+        padding-left: 10px;
+        width: 95%;
+        margin-top: 27px;
+    }
+    #aoTitre5H4 > .btn-floating.btn-small {
+        height:25px;
+        width: 25px;
+        margin-left: 35%;
+    }
+    .aoRowButtons2 {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    .aogeneral .card-title {
+        font-size: 15px;
+        text-align:left;
+        padding-left: 20px;
+        width: 95%;
+    }
+    .aogeneral .card-text {
+        font-family: Roboto;
+        font-size: 14px;
+        padding-right: 10px;
+        margin-left: 15px;
+        margin-right: 15px
+    }
+    .aogeneral h5 {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 15px;
+    }
+    .aogeneral .ulbloctext {
+        padding-left: 20px;
+    }
+    .aogeneral li {
+        font-size: 14px;
+    }
+    #aolien1, #aolien2 {
+        font-size: 14px;
+        font-weight: bold;
+        color: #00695c;
+        text-decoration: none;
+    }
+    .aogeneral .ulssliste {
+        padding-left: 35px;
+        line-height: 1.25em;
+    }
+
+    .mlgeneral .titreCadre {
+        margin-top: -5%;
+        margin-bottom: 30px;
+        margin-left: 33%;
+        height:60px;
+        width: 250px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 20px;
+    }
+    .mlBirdImg {
+        width: 15%;
+        margin-left: -10px;
+        margin-top: -18px
+    }
+    .mlgeneral .card-title {
+        font-size: 15px;
+        text-align:left;
+        padding-left: 20px;
+        width: 95%;
+    }
+    .mlgeneral .card-text {
+        font-family: Roboto;
+        font-size: 13px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom:30px;
+    }
+
+    .contactBirdImg {
+        width: 10%;
+        margin-left: 0;
+        margin-top: 85%;
+    }
+    .contactgeneral .blocText {
+        margin-top: 25px;
+
+    }
+    .contactgeneral .titreCadre {
+        margin-top: -4%;
+        margin-bottom: 15px;
+        margin-left: 36%;
+        height: 50px;
+        width: 180px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 15px;
+    }
+    .contactgeneral .cadreInfo {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding: 12px;
+    }
+    .contactgeneral textarea {
+        height: 150px;
+        font-family: Roboto;
+        font-size: 15px;
+    }
+    .contactgeneral .btn {
+        margin-bottom: 20px;
+    }
+    .contactgeneral label {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 5%;
+        margin-bottom: 0;
+        font-size: 15px;
+        color: #2b2b2b;
+    }
+    .contactgeneral input, input[type="email"] {
+        height:10%;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .registerbird {
+        width: 10%;
+        margin-left: 85%;
+        margin-top: -3%;
+    }
+    .registergeneral .titreCadre {
+        margin-left: 33%;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1280px) {
+    .logo{
+        margin-left: 5%;
+    }
+    .sisi {
+        text-align: right;
+    }
+
+    .menuMobileBirdygo {
+        display: none;
+        visibility: hidden;
+    }
+    .menu2 {
+        display: none;
+        visibility: hidden;
+    }
+    .ccmgeneral .blocText {
+        margin-top: 47px;
+        padding: 0;
+        background: #ffffff;
+        background: rgba(255, 255, 255, .65);
+    }
+    .ccmgeneral .titreCadre {
+        margin-top: -3%;
+        margin-bottom: 20px;
+        margin-left: 37%;
+        height:60px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 20px;
+    }
+    .ccmEntete {
+        margin-top: 5px;
+        margin-left: 0;
+        font-weight: bold;
+    }
+    .ccmRowButtons {
+        padding-bottom: 25px;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 35px;
+        border-bottom: solid 1px;
+    }
+    #ccmobservclick {
+        margin-left: 30%;
+        width: 70%;
+        height: 50px;
+    }
+    #ccmnaturalisteclick {
+        width: 70%;
+        height: 50px;
+        margin-left: 15%;
+    }
+    .stepwizard-row:before {
+        top: 11px;
+        height: 98%;
+    }
+    .stepwizard-row2:before {
+        top: 11px;
+        height: 98%;
+    }
+    .bq-success {
+        margin-right: 40px;
+        margin-left: 60px;
+    }
+    .bq-title {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: bold
+    }
+    .ccmgeneral .card-title {
+        font-size: 16px;
+        text-align:left;
+        padding-left: 20px;
+        width: 95%;
+    }
+    .ccmgeneral .card-text {
+        font-family: Roboto;
+        font-size: 15px;
+        margin-left: 20px;
+        margin-right: 20px
+    }
+    .ccmgeneral li {
+        font-size: 15px;
+    }
+    .ccmRowButtons2 {
+        margin-bottom: 33px;
+        margin-left: 4%;
+    }
+
+    .aogeneral .titreCadre {
+        margin-bottom: 30px;
+    }
+    #aoTitreH4 {
+        text-align: left;
+        font-size: 20px;
+        padding-left: 28px;
+        width: 32%;
+    }
+    #aoTitre2H4 {
+        text-align: left;
+        font-size: 20px;
+        padding-left: 28px;
+        width: 33%;
+    }
+    #aoTitre3H4 {
+        text-align: left;
+        font-size: 20px;
+        padding-left: 28px;
+        width: 36%;
+    }
+    #aoTitre4H4 {
+        text-align: left;
+        font-size: 20px;
+        padding-left: 28px;
+        width: 28%;
+    }
+    #aoTitre5H4 {
+        text-align: left;
+        font-size: 20px;
+        padding-left: 28px;
+        width: 70%;
+    }
+    .aogeneral .aobutton {
+        width: 170px;
+        margin-left: -17px;
+    }
+
+    .aoRowButtons2 {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    .aogeneral .card-title {
+        font-size: 15px;
+        text-align:left;
+        padding-left: 20px;
+        width: 95%;
+    }
+    .aogeneral .card-text {
+        font-family: Roboto;
+        font-size: 14px;
+        padding-right: 10px;
+        margin-left: 15px;
+        margin-right: 15px
+    }
+    .aogeneral h5 {
+        padding-left: 35px;
+        padding-right: 25px;
+        padding-top: 15px;
+    }
+    .aogeneral .ulbloctext {
+        padding-left: 20px;
+    }
+    .aogeneral li {
+        font-size: 14px;
+    }
+    #aolien1, #aolien2 {
+        font-size: 14px;
+        font-weight: bold;
+        color: #00695c;
+        text-decoration: none;
+    }
+    .aogeneral .ulssliste {
+        padding-left: 35px;
+        line-height: 1.25em;
+    }
+
+    .mlgeneral .titreCadre {
+        margin-top: -4%;
+        margin-bottom: 40px;
+        margin-left: 35%;
+        height:60px;
+        width: 350px;
+        font-family: Amiko;
+        font-size: 20px;
+        padding-top: 15px;
+    }
+    .mlBirdImg {
+        margin-left: 17%;
+        margin-top: -14px
+    }
+    .mlgeneral .card-title {
+        font-size: 20px;
+        text-align:left;
+        padding-left: 30px;
+        width: 95%;
+    }
+    .mlgeneral .card-text {
+        font-family: Roboto;
+        font-size: 15px;
+        margin-left: 80px;
+        margin-right: 80px;
+        margin-bottom:30px;
+    }
+
+    .contactBirdImg {
+        width: 7%;
+        margin-left: 23%;
+        margin-top: 54%;
+    }
+    .contactgeneral .blocText {
+        margin-top: 25px;
+        padding-bottom: 26px;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .contactgeneral .titreCadre {
+        margin-top: -4%;
+        margin-bottom: 15px;
+        margin-left: 38%;
+        height: 50px;
+        width: 180px;
+        font-family: Amiko;
+        font-size: 15px;
+        padding-top: 15px;
+    }
+    .contactgeneral .cadreInfo {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        padding: 12px;
+    }
+    .contactgeneral textarea {
+        height: 150px;
+        font-family: Roboto;
+        font-size: 15px;
+        margin-bottom: 14px;
+    }
+    .contactgeneral label {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 5%;
+        margin-bottom: 0;
+        font-size: 15px;
+        color: #2b2b2b;
+    }
+    .contactgeneral input, input[type="email"] {
+        height:10%;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

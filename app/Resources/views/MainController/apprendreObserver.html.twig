@@ -9,92 +9,100 @@
 {% block body %}
 <body id="aofond">
 <!-- Bouton qui permet de remonter en haut de page -->
-<div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+<div class="fixed-action-btn smooth-scroll hidden-sm-down" style="bottom: 45px; right: 24px;">
     <a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
         <i class="fa fa-arrow-up"></i>
     </a>
 </div>
+<!-- MENU2 MOBILE -->
+<div class="menu2">
 
+    <ul>
+        <a class="cross"><li class="licross"><i class="fa fa-close"></i> FERMER</li></a>
+        <a href="{{ path('home') }}" ><li class="teal lighten-3 ">ACCUEIL</li></a>
+        <a href="{{ path('association') }}" ><li class="teal lighten-2">L' ASSOCIATION</li></a>
+        <a href="{{ path('modeemploi') }}" ><li class="teal">COMMENT CA MARCHE ?</li></a>
+        <a href="{{ path('app_search') }}" ><li class="teal darken-1">RECHERCHER</li></a>
+        <a href="{{ path('apprendreObserver') }}" ><li class="teal darken-3">APPRENDRE A OBSERVER</li></a>
+        <a href="{{ path('contact') }}"  ><li class="teal darken-4">CONTACT</li></a>
+    </ul>
+</div>
+<!-- /.END MENU2 MOBILE -->
+<!-- Modal Login -->
+{% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+    <!--Modal: Login Form-->
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content teal darken-3" >
+                <!--Header-->
+                <div class="modal-header white-text">
+                    <h4 class="title"><button type="button" class="close waves-effect waves-light white-text" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">&times;</span>
+                        </button>
+                        Se connecter</h4>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    {{ render(controller('FOSUserBundle:Security:login')) }}
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer">
+                    <div class="options text-md-center mt-1  white-text" style="width: 100%">
+                        <p><a href="{{ path('fos_user_registration_register') }}">Pas encore membre? S'enregistrer</a></p>
+                        <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}">Mot de passe?</a></p>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Content -->
+        </div>
+    </div>
+    <!--Modal: Login Form-->
+{% endif %}
+<!-- ./END Modal Login -->
     <div class="container container-fluid aogeneral" style="position: relative;margin-bottom: 0">
         {{ include("header.html.twig") }}
-        <div class="container contGen" style="margin-bottom: 170px;">
+        <div class="container contGen" id="top-section">
             <!-- image du piou -->
-            <img src="{{ asset('img/apprendreaobserver/aobird.png') }}" style="position: absolute;z-index: 202; margin-left: 40%; margin-top: -15px" >
-                <!--Modal: Login Form-->
-                <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog cascading-modal" role="document">
-                        <!--Content-->
-                        <div class="modal-content">
-                            <!--Header-->
-                            <div class="modal-header light-blue darken-3 white-text">
-                                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
-                            </div>
-                            <!--Body-->
-                            <div class="modal-body">
-                                <div class="md-form form-sm">
-                                    <i class="fa fa-envelope prefix"></i>
-                                    <input type="text" id="form30" class="form-control">
-                                    <label for="form30">Your email</label>
-                                </div>
-
-                                <div class="md-form form-sm">
-                                    <i class="fa fa-lock prefix"></i>
-                                    <input type="password" id="form31" class="form-control">
-                                    <label for="form31">Your password</label>
-                                </div>
-
-                                <div class="text-center mt-2">
-                                    <button class="btn btn-info">Log in <i class="fa fa-sign-in ml-1"></i></button>
-                                </div>
-
-                            </div>
-                            <!--Footer-->
-                            <div class="modal-footer">
-                                <div class="options text-center text-md-right mt-1">
-                                    <p>Not a member? <a href="#">Sign Up</a></p>
-                                    <p>Forgot <a href="#">Password?</a></p>
-                                </div>
-                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close <i class="fa fa-times-circle ml-1"></i></button>
-                            </div>
-                        </div>
-                        <!--/.Content-->
-                    </div>
-                </div>
-                <!--Modal: Login Form-->
+            <img src="{{ asset('img/apprendreaobserver/aobird.png') }}" class="aoBirdImg" >
             <div class="row">
                 <!-- MENU Général gauche-->
-                <div class="col-2" style="margin: 0;padding: 0;">
+                <div class="col-lg-2 col-xl-2 hidden-sm-down hidden-md-down" style="margin: 0;padding: 0;">
                     {{ include('menu.html.twig') }}
                 </div>
                 <!-- Bloc Menu et texte à côté du menu principal-->
-                <div class="col-10 container-fluid" style="margin: 0;">
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12" style="margin: 0;">
                     <div class="row" style="margin: 0">
                         <!-- Bloc Menu -->
-                        <div class="col-2" style="margin-top: 47px;padding: 0">
-                                <button id="aoquandclick" class="btn btn-link aobutton align-middle">Quand les observer?</button>
-                                <button id="aoemporterclick" class="btn btn-link aobutton align-middle">Que faut-il emporter?</button>
-                                <button id="aocommentclick" class="btn btn-link aobutton align-middle">Comment les observer?</button>
-                                <button id="aonoterclick" class="btn btn-link aobutton align-middle">Que faut-il noter?</button>
+                        <div class="col-xl-2 col-lg-2 col-md-12 hidden-md-down hidden-sm-down" style="margin-top: 47px;padding: 0">
+                                <button id="aoquandclick" class="btn btn-link aobutton align-middle">Quand les observer ?</button>
+                                <button id="aoemporterclick" class="btn btn-link aobutton align-middle">Que faut-il emporter ?</button>
+                                <button id="aocommentclick" class="btn btn-link aobutton align-middle">Comment les observer ?</button>
+                                <button id="aonoterclick" class="btn btn-link aobutton align-middle">Que faut-il noter ?</button>
                                 <button id="aocharteclick" class="btn btn-link aobutton align-middle" style="height: 80px">Charte du respect et <br>de la protection <br>des oiseaux</button>
                         </div>
                         <!-- /Bloc Menu -->
-
                         <!-- Bloc Texte -->
-                        <div class="col-10 blocText" style="padding: 0">
+                        <div class="col blocText">
                             <!-- Titre du cadre -->
-                            <div class="col-4 offset-4 titreCadre" >APPRENDRE A OBSERVER</div>
+                            <div class="col-xl-4 offset-xl-4 col-lg-3 offset-lg-5 col-md-4 col-sm-3 text-center z-depth-2 titreCadre" >APPRENDRE A OBSERVER</div>
                             <!-- les différents textes-->
 
                                 <!-- Quand les observer -->
-                                <div class="card-block" id="aoquand" style="padding-left: 0" >
-                                    <!--Titre-->
-                                    <h4 class="card-title" id="h4court">Quand les Observer?</h4>
-                                             <!--Titre secondaire-->
-                                        <h5 id="top-section">A quelle heure ?</h5>
-                                            <ul class="ulbloctext">
+                                <!--Titre-->
+                                <h4 class="card-title collapse-title" id="aoTitreH4">Quand les Observer?
+                                    <a class="btn-floating btn-small teal darken-3"  id="collapseAoquandButton" data-toggle="collapse" data-target="#collapseAoquand" aria-expanded="false" aria-controls="collapseAoquand">
+                                        <i class="fa fa-plus" id="collapseAssoPlus"></i>
+                                        <i class="fa fa-minus" id="collapseAssoMinus"></i>
+                                    </a>
+                                </h4>
+                                <div class="card-block collapse" id="collapseAoquand">
+                                    <!--Titre secondaire-->
+                                    <h5>A quelle heure ?</h5>
+                                        <ul class="ulbloctext">
                                                 <li class="libloctext">
                                                     Les oiseaux sont en général plus actifs le matin (une 1/2h avant le lever du soleil, puis pendant 4 ou 5 heures) pour se nourrir et défendre leur territoire après la nuit, puis l’activité reprend en fin de journée.
                                                 </li>
@@ -106,8 +114,8 @@
                                                 </li>
                                             </ul>
                                         <!--Titre secondaire-->
-                                        <h5> Les saisons:</h5>
-                                            <ul class="ulbloctext">
+                                    <h5> Les saisons:</h5>
+                                        <ul class="ulbloctext">
                                             <li class="libloctext">
                                                 Le printemps est une excellente saison pour observer les oiseaux : ils sont très actifs pour défendre leur territoire, chercher une femelle, construire le nid et nourrir les jeunes. Les chants résonnent partout. Les mâles arborent leur plus beau plumage et sont postés bien en vue pour surveiller leur territoire.
                                             </li>
@@ -121,8 +129,8 @@
                                                 L'hiver est la saison la plus creuse, mais quelques espèces d'oiseaux venant du Nord et de l'Est de l'Europe hivernent chez nous (oiseaux d'eau et passereaux). On peut aussi parfois observer des oiseaux plus rares.
                                             </li>
                                         </ul>
-                                        <h5>Astuces météo:</h5>
-                                            <ul class="ulbloctext">
+                                    <h5>Astuces météo:</h5>
+                                        <ul class="ulbloctext">
                                             <li class="libloctext">
                                                 En général, les oiseaux sont plus actifs lors des journées ensoleillées sans trop de vent.
                                             </li>
@@ -140,10 +148,14 @@
                                 <!--/.Quand les observer-->
 
                                 <!-- Que faut-il emporter -->
-                                <div class="card-block" id="aoemporter" style="padding-left: 0; display: none;" >
-                                    <!--Titre-->
-                                    <h4 class="card-title" id="h4court">Que faut-il emporter?</h4>
-                                    <p class="card-text" style="padding-left: 10%">
+                                <!--Titre-->
+                                <h4 class="card-title collapse-title" id="aoTitre2H4">Que faut-il emporter?
+                                    <a class="btn-floating btn-small teal darken-3"  id="collapseAoemporterButton" data-toggle="collapse" data-target="#collapseAoemporter" aria-expanded="false" aria-controls="collapseAoemporter">
+                                        <i class="fa fa-plus" id="collapseAssoPlus"></i>
+                                        <i class="fa fa-minus" id="collapseAssoMinus"></i>
+                                    </a>
+                                </h4>
+                                <div class="card-block collapse" id="collapseAoemporter" style="margin-bottom: 0;padding-bottom: 0">
                                         <!--Titre secondaire-->
                                     <h5>Le matériel:</h5>
                                     <ul class="ulbloctext">
@@ -152,7 +164,7 @@
                                             Eventuellement une longue-vue, avec un trépied pour la stabiliser et réaliser des observations sans trembler.                                        </li>
                                         </li>
                                         <li class="libloctext">
-                                            Un guide d'identification des oiseaux que vous trouverez sur <a href="#">ce site</a>.
+                                            Un guide d'identification des oiseaux que vous trouverez sur <a href="#" id="aolien1">ce site</a>.
                                         </li>
                                         <li class="libloctext">
                                             Pour prendre des notes : vous pouvez noter et déposez vos observations directement sur notre site.
@@ -160,7 +172,6 @@
                                         <li class="libloctext">
                                             Des fichiers MP3 pour écouter et comparer les chants entendus.
                                         </li>
-
                                     </ul>
                                     <!--Titre secondaire-->
                                     <h5>Les vêtements:</h5>
@@ -172,20 +183,23 @@
                                             Par temps frais, emportez des vêtements chauds pour ne pas vous refroidir si vous prévoyez de longues heures d'observation !
                                         </li>
                                     </ul>
-                                    </p>
                                  </div>
                                 <!--/.Que faut-il emporter-->
 
                                 <!-- Comment les observer -->
-                                <div class="card-block" id="aocomment" style="padding-left: 0; display: none;" >
-                                    <!--Titre-->
-                                    <h4 class="card-title" id="h4long">Comment les observer?</h4>
-                                    <p class="card-text" style="padding-left: 10%">
-                                        <!--Titre secondaire-->
+                                <!--Titre-->
+                                <h4 class="card-title collapse-title" id="aoTitre3H4">Comment les observer?
+                                    <a class="btn-floating btn-small teal darken-3"  id="collapseAocommentButton" data-toggle="collapse" data-target="#collapseAocomment" aria-expanded="false" aria-controls="collapseAocomment">
+                                    <i class="fa fa-plus" id="collapseAssoPlus"></i>
+                                    <i class="fa fa-minus" id="collapseAssoMinus"></i>
+                                </a>
+                                </h4>
+                                <div class="card-block collapse" id="collapseAocomment" style="margin-bottom: 0;padding-bottom: 0" >
+                                    <!--Titre secondaire-->
                                     <h5>Où chercher?</h5>
                                     <ul class="ulbloctext">
                                         <li class="libloctext">
-                                            Choisir sa zone de prospection : pour connaître les régions où l’on peut observer l’espèce, consultez notre carte de répartition géographique de l’espèce(<a href="#">cliquez ici</a>).
+                                            Choisir sa zone de prospection : pour connaître les régions où l’on peut observer l’espèce, consultez notre carte de répartition géographique de l’espèce(<a href="#" id="aolien2">cliquez ici</a>).
                                         </li>
                                         <li class="libloctext">
                                             Etudier le terrain : une carte IGN ou des photos satellite vous aideront à identifier les zones à prospecter (plans d'eau, grandes haies, falaises, etc.).
@@ -204,14 +218,18 @@
                                         <li class="libloctext">
                                             N'hésitez pas à attendre un peu, scrutez plusieurs fois les habitats intéressants…                                       </li>
                                     </ul>
-                                    </p>
                                 </div>
                                <!-- /.Comment les observer -->
 
                                 <!-- Que faut-il noter -->
-                                <div class="card-block" id="aonoter" style="padding-left: 0; display: none;" >
-                                    <!-- Titre -->
-                                    <h4 class="card-title" style="width: 30%">Que faut-il noter?</h4>
+                                <!--Titre-->
+                                <h4 class="card-title collapse-title" id="aoTitre4H4">Que faut-il noter?
+                                    <a class="btn-floating btn-small teal darken-3"  id="collapseAonoterButton" data-toggle="collapse" data-target="#collapseAonoter" aria-expanded="false" aria-controls="collapseAonoter">
+                                        <i class="fa fa-plus" id="collapseAssoPlus"></i>
+                                        <i class="fa fa-minus" id="collapseAssoMinus"></i>
+                                    </a>
+                                </h4>
+                                <div class="card-block collapse" id="collapseAonoter" style="margin-bottom: 0;padding-bottom: 0" >
                                     <!-- Texte -->
                                     <ul class="ulbloctext" style="margin-bottom: 28px">
                                         <li class="libloctext">
@@ -223,7 +241,7 @@
                                         <li class="libloctext">
                                             Certaines observations sont particulièrement appréciées, comme par exemple :
                                         </li>
-                                            <ul class="ulssliste list-circle" style="line-height: 180%">
+                                            <ul class="ulssliste list-circle">
                                                     <li><i class="fa fa-dot-circle-o" aria-hidden="true" style="font-size: 10px;font-weight: bold"></i> La description d’un dortoir (réunion d’un grand nombre d’oiseaux dans un même lieu pour passer la nuit),</li>
                                                     <li><i class="fa fa-dot-circle-o" aria-hidden="true" style="font-size: 10px;font-weight: bold"></i> Des comportements anormaux,</li>
                                                     <li><i class="fa fa-dot-circle-o" aria-hidden="true" style="font-size: 10px;font-weight: bold"></i> Des oiseaux au plumage aberrant,</li>
@@ -237,63 +255,67 @@
                                 <!--/.Que faut-il noter-->
 
                                 <!-- Charte -->
-                                <div class="card-block" id="aocharte" style="padding-left: 0; display: none;" >
-                                    <!--Titre-->
-                                    <h4 class="card-title" id="h4treslong">Code d’éthique pour ne pas déranger les oiseaux:</h4>
-                                    <div class="row">
-                                        <!-- Colonne Gauche -->
-                                        <div class="col-6" style="padding: 0;margin: 0">
-                                            <h5>Les conséquences désastreuses du dérangement :</h5>
-                                            <p class="card-text" style="padding-left: 10%">
-                                                Le dérangement des oiseaux pendant leur observation peut entraîner des effets néfastes à leur survie, ce qui se traduira par :
-                                            </p>
-                                                <ul class="list-circle ml-3 mb-2" style="padding-left: 15%">
-                                                    <li>Des comportements d'alerte ou de panique</li>
-                                                    <li>L'envol des oiseaux</li>
-                                                    <li>La désertion temporaire</li>
-                                                    <li>L'abandon ou la séparation des couvées</li>
-                                                    <li>La prédation des œufs ou des jeunes</li>
-                                                    <li>L'épuisement des oiseaux</li>
-                                                    <li>La diminution des populations</li>
-                                                    <li>L'abandon des colonies</li>
-                                                </ul>
+                                <!--Titre-->
+                                <h4 class="card-title collapse-title" id="aoTitre5H4">Code d’éthique pour ne pas déranger les oiseaux:
+                                    <a class="btn-floating btn-small teal darken-3"  id="collapseAocharteButton" data-toggle="collapse" data-target="#collapseAocharte" aria-expanded="false" aria-controls="collapseAocharte">
+                                        <i class="fa fa-plus" id="collapseAssoPlus"></i>
+                                        <i class="fa fa-minus" id="collapseAssoMinus"></i>
+                                    </a>
+                                </h4>
+                                <div class="card-block collapse" id="collapseAocharte" style="padding-left: 0" >
+                                        <div class="row">
+                                            <!-- Colonne Gauche -->
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="padding: 0;margin: 0">
+                                                <h5>Les conséquences désastreuses du dérangement :</h5>
+                                                <p class="card-text" style="padding-left: 10%">
+                                                    Le dérangement des oiseaux pendant leur observation peut entraîner des effets néfastes à leur survie, ce qui se traduira par :
+                                                </p>
+                                                    <ul class="list-circle ml-3 mb-2" style="padding-left: 15%">
+                                                        <li>Des comportements d'alerte ou de panique</li>
+                                                        <li>L'envol des oiseaux</li>
+                                                        <li>La désertion temporaire</li>
+                                                        <li>L'abandon ou la séparation des couvées</li>
+                                                        <li>La prédation des œufs ou des jeunes</li>
+                                                        <li>L'épuisement des oiseaux</li>
+                                                        <li>La diminution des populations</li>
+                                                        <li>L'abandon des colonies</li>
+                                                    </ul>
 
+                                            </div>
+                                            <!-- Colonne de droite -->
+                                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12" style="padding: 0;margin: 0">
+                                                <h5 class="text-left">Pour limiter les risques de déranger les oiseaux, vous devez impérativement :</h5>
+                                                <ul class="list-circle ml-3 mb-2" style="padding-left: 15%; padding-right: 5%">
+                                                    <li>Eviter de poursuivre ou d'encercler les oiseaux</li>
+                                                    <li>Eviter les gestes brusques</li>
+                                                    <li>Eviter de faire du bruit </li>
+                                                    <li>Garder une distance de sécurité et utiliser des jumelles ou une longue vue</li>
+                                                    <li>Réduire le temps de présence inutile </li>
+                                                    <li>Rester éloigné des oiseaux qui couvent leurs oeufs</li>
+                                                    <li>Ne jamais toucher ou déplacer un nid, des œufs ou des oisillons</li>
+                                                    <li>Signaler tout comportement suspect d’une personne envers les oiseaux</li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <!-- Colonne de droite -->
-                                        <div class="col-6" style="padding: 0;margin: 0">
-                                            <h5>Pour limiter les risques de déranger les oiseaux, vous devez impérativement :</h5>
-                                            <ul class="list-circle ml-3 mb-2" style="padding-left: 15%; padding-right: 5%">
-                                                <li>Eviter de poursuivre ou d'encercler les oiseaux</li>
-                                                <li>Eviter les gestes brusques</li>
-                                                <li>Eviter de faire du bruit </li>
-                                                <li>Garder une distance de sécurité et utiliser des jumelles ou une longue vue</li>
-                                                <li>Réduire le temps de présence inutile </li>
-                                                <li>Rester éloigné des oiseaux qui couvent leurs oeufs</li>
-                                                <li>Ne jamais toucher ou déplacer un nid, des œufs ou des oisillons</li>
-                                                <li>Signaler tout comportement suspect d’une personne envers les oiseaux</li>
-                                            </ul>
-                                        </div>
+                                        <h5 style="text-align: center">Mieux vaut ne pas collecter d’informations,
+                                            plutôt que de les collecter en dérangeant les oiseaux.
+                                        </h5>
+                                        <p class="card-text text-center">Respectez ce code d'éthique et sensibilisez vos accompagnateurs !</p>
                                     </div>
-                                    <h5 style="text-align: center">Mieux vaut ne pas collecter d’informations,
-                                        plutôt que de les collecter en dérangeant les oiseaux.
-                                    </h5>
-                                    <p class="card-text" style="text-align: center">Respectez ce code d'éthique et sensibilisez vos accompagnateurs !</p>
-                                </div>
                                 <!--/.Charte-->
                             <!-- Boutons -->
-                            <div class="row" style="margin-bottom: 33px;">
-                                <div class="col-2 offset-2"><a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary btn-rounded teal darken-3">JE CREE MON COMPTE</a></div>
-                                <div class="col-2 offset-3"><a href="{{ path('home') }}" class="btn btn-primary btn-rounded teal darken-3">J'OBSERVE UN OISEAU</a></div>
+                            <div class="row aoRowButtons2">
+                                <div class="col-xl-2 offset-xl-2 col-lg-2 offset-lg-2 col-md col-sm text-center"><a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary btn-rounded teal darken-3">JE CREE MON COMPTE</a></div>
+                                <div class="col-xl-2 offset-xl-3 col-lg-2 offset-lg-3 col-md col-sm text-center"><a href="{{ path('app_search') }}" class="btn btn-primary btn-rounded teal darken-3">J'OBSERVE UN OISEAU</a></div>
                             </div>
                         </div>
-                            <!--</div>-->
-                            <!--/.les différents textes-->
-                        </div>
                         <!--/ End Block texte -->
+                            <!--/.les différents textes-->
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
     {% block footer %}
         {{ include('footer.html.twig') }}

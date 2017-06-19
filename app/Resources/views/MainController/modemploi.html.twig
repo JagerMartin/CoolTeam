@@ -9,86 +9,90 @@
 {% block body %}
     <body id="ccmfond">
     <!-- Bouton qui permet de remonter en haut de page -->
-    <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+    <div class="fixed-action-btn smooth-scroll  hidden-sm-down" style="bottom: 45px; right: 24px;">
         <a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
             <i class="fa fa-arrow-up"></i>
         </a>
     </div>
-    <div class="container container-fluid ccmgeneral" style="position: relative;margin-bottom: 0%">
-        {{ include("header.html.twig") }}
-        <div class="container contGen" style="margin-bottom: 170px;">
-            <!-- image du piou -->
-            <img src="{{ asset('img/modemploi/mebird.png') }}" style="position: absolute;z-index: 202; margin-left: 25%; margin-top: -35px" >
+    <!-- MENU2 MOBILE -->
+    <div class="menu2">
 
-            <!--Modal: Login Form-->
-            <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <ul>
+            <a class="cross"><li class="licross"><i class="fa fa-close"></i> FERMER</li></a>
+            <a href="{{ path('home') }}" ><li class="teal lighten-3 ">ACCUEIL</li></a>
+            <a href="{{ path('association') }}" ><li class="teal lighten-2">L' ASSOCIATION</li></a>
+            <a href="{{ path('modeemploi') }}" ><li class="teal">COMMENT CA MARCHE ?</li></a>
+            <a href="{{ path('app_search') }}" ><li class="teal darken-1">RECHERCHER</li></a>
+            <a href="{{ path('apprendreObserver') }}" ><li class="teal darken-3">APPRENDRE A OBSERVER</li></a>
+            <a href="{{ path('contact') }}"  ><li class="teal darken-4">CONTACT</li></a>
+        </ul>
+    </div>
+    <!-- /.END MENU2 MOBILE -->
+    <!-- POPUP LOGIN-->
+    {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+        <!--Modal: Login Form-->
+        <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog cascading-modal" role="document">
+                <!--Content-->
+                <div class="modal-content teal darken-3" >
+                    <!--Header-->
+                    <div class="modal-header white-text">
+                        <h4 class="title"><button type="button" class="close waves-effect waves-light white-text" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                            Se connecter</h4>
+                    </div>
 
-                <!--Form with header-->
-                <div class="card">
-                    <div class="card-block">
-
-                        <!--Header-->
-                        <div class="form-header  purple darken-4">
-                            <h3><i class="fa fa-lock"></i> Login:</h3>
-                        </div>
-
-                        <!--Body-->
-                        <div class="md-form">
-                            <i class="fa fa-envelope prefix"></i>
-                            <input type="text" id="form2" class="form-control">
-                            <label for="form2">Your email</label>
-                        </div>
-
-                        <div class="md-form">
-                            <i class="fa fa-lock prefix"></i>
-                            <input type="password" id="form4" class="form-control">
-                            <label for="form4">Your password</label>
-                        </div>
-
-                        <div class="text-center">
-                            <button class="btn btn-deep-purple">Login</button>
-                        </div>
-
+                    <!--Body-->
+                    <div class="modal-body">
+                        {{ render(controller('FOSUserBundle:Security:login')) }}
                     </div>
 
                     <!--Footer-->
                     <div class="modal-footer">
-                        <div class="options">
-                            <p>Not a member? <a href="#">Sign Up</a></p>
-                            <p>Forgot <a href="#">Password?</a></p>
+                        <div class="options text-md-center mt-1  white-text" style="width: 100%">
+                            <p><a href="{{ path('fos_user_registration_register') }}">Pas encore membre ? S'enregistrer</a></p>
+                            <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}">Mot de passe ?</a></p>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-                <!--/Form with header-->
+                <!-- End Content -->
             </div>
-            <!--Modal: Login Form-->
+        </div>
+        <!--Modal: Login Form-->
+    {% endif %}
+    <!-- FIN POPUP LOGIN -->
+    <div class="container container-fluid ccmgeneral" id="top-section" style="position: relative;margin-bottom: 0%">
+        {{ include("header.html.twig") }}
+        <div class="container contGen">
+            <!-- image du piou -->
+            <img src="{{ asset('img/modemploi/mebird.png') }}" class="ccmBirdImg" >
 
             <div class="row">
                 <!-- MENU Général gauche-->
-                <div class="col-2" style="margin: 0;padding: 0;">
+                <div class="col-lg-2 col-xl-2 hidden-sm-down hidden-md-down" style="margin: 0;padding: 0;">
                     {{ include('menu.html.twig') }}
                 </div>
                 <!-- Bloc texte à côté du menu principal-->
-                <div class="col-10" style="margin: 0;">
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12" style="margin: 0;">
                     <div class="row">
                         <!-- Bloc Texte -->
                         <div class="col-12 blocText">
                             <!-- Titre du cadre -->
-                            <div class="col-4 offset-4 titreCadre" >COMMENT CA MARCHE?</div>
+                            <div class="col-xl-3 offset-xl-4 col-lg-3 offset-lg-5 col-md-4 col-sm-3 text-center z-depth-2 titreCadre" >COMMENT CA MARCHE?</div>
                             <!-- les différents textes-->
-                            <p class="card-block" style="margin: inherit; padding: inherit">
                                 <!-- Vous êtes -->
-                                <p class="card-text" id="top-section" style="text-align: center;margin-top: 5px;margin-left: 300px;margin-right: 370px;padding: inherit;" >Vous êtes...</p>
+                                <p class="card-title ccmEntete text-center">Vous êtes...</p>
                                 <!-- Boutons -->
-                                <div class="row" style="padding-bottom: 25px;margin-right: 0px;margin-left: 0px;margin-bottom: 35px;border-bottom-color: #636c72;border-bottom-style: solid;">
-                                        <div class="col-4 offset-1"> <button id="ccmobservclick" class="btn btn-primary btn-rounded teal darken-3" style="padding: 5px; width: 70%">Observateur amateur</button></div>
-                                        <div class="col-4 offset-2"><button id="ccmnaturalisteclick" class="btn btn-primary btn-rounded teal darken-3" style="padding: 5px">Professionnel, naturaliste ou ornithologue</button></div>
-                                    </div>
+                                <div class="row ccmRowButtons">
+                                        <div class="col-xl-4 offset-xl-1 col-lg-4 offset-lg-1 col-md col-sm-3"> <button id="ccmobservclick" class="btn btn-primary btn-rounded teal darken-3" >Observateur amateur</button></div>
+                                        <div class="col-xl-4 offset-xl-1 col-lg-4 offset-lg-1 col-md col-sm-3"><button id="ccmnaturalisteclick" class="btn btn-primary btn-rounded teal darken-3">Professionnel, naturaliste <br>ou ornithologue</button></div>
+                                </div>
                             <div class="row" id="ccmobserv" style="margin: 0">
                                     <!--Vous êtes un observateur amateur-->
-                                <h4 class="card-title" style="width: 40%">Vous êtes un observateur amateur</h4>
-                                <p class="card-text" style="text-align: center;margin-left: 40px; margin-right: 40px">
+                                <h4 class="card-title">Vous êtes un observateur amateur</h4>
+                                <p class="card-text text-center">
                                     Notre application participative peut tout aussi bien être utilisée à partir de votre smartphone
                                     ou depuis votre ordinateur personnel. Son principe est simple :
                                 </p>
@@ -99,7 +103,7 @@
                                         <div class="stepwizard-step">
                                             <button type="button" class="btn-floating btn-sm teal darken-3">1</button>
                                         </div>
-                                        <p class="card-text" style="margin-left: 20px">
+                                        <p class="card-text">
                                             Grâce à nos fiches d’identification, nous vous aidons à identifier les oiseaux que vous observez :
                                         </p>
                                                 <ul class="ulbloctext">
@@ -118,15 +122,15 @@
                                         <div class="stepwizard-step">
                                             <button type="button" class="btn-floating btn-sm teal darken-3">2</button>
                                         </div>
-                                        <p class="card-text" style="margin-left: 20px;margin-right: 40px">
+                                        <p class="card-text">
                                             Si vous pensez avoir identifié l’espèce que vous observez, envoyez-nous vos observations (pour envoyer une observation, vous devrez préalablement avoir créé un compte utilisateur) :
                                         </p>
                                         <ul class="ulbloctext">
                                             <li class="libloctext">Vous indiquerez à minima : la date de l’observation, l’heure et la position GPS (renseignés automatiquement sur votre smartphone grâce à la géolocalisation).</li>
                                             <li class="libloctext">Vous pouvez aussi laisser des commentaires et télécharger vos photos.</li>
                                         </ul>
-                                        <blockquote class="blockquote bq-danger" style="margin-left: 10%;margin-top: 18px"><p class="card-text" style="margin-right: 40px;font-size: 15px;font-family: Roboto;">Vous ne savez pas bien ce que vous devez observer ? Pas de panique !</p></blockquote>
-                                         <blockquote class="blockquote bq-success" style="margin-left: 10%;"><p class="card-text" style="margin-right: 40px;font-size: 15px;font-family: Roboto;">Consulter notre rubrique « apprendre à observer » pour savoir ce qu’il faut noter, les techniques d’approche et surtout les règles  fondamentales de respect des oiseaux!</p></blockquote>
+                                        <blockquote class="blockquote bq-danger" style="margin-left: 10%;margin-top: 18px"><p class="card-text">Vous ne savez pas bien ce que vous devez observer ? Pas de panique !</p></blockquote>
+                                         <blockquote class="blockquote bq-success" style="margin-left: 10%;"><p class="card-text">Consulter notre rubrique « apprendre à observer » pour savoir ce qu’il faut noter, les techniques d’approche et surtout les règles  fondamentales de respect des oiseaux!</p></blockquote>
 
                                     </div>
                                     <!-- ETAPE 3-->
@@ -134,10 +138,10 @@
                                         <div class="stepwizard-step">
                                             <button type="button" class="btn-floating btn-sm teal darken-3" disabled="disabled">3</button>
                                         </div>
-                                        <p class="card-text" style="margin-left: 20px;margin-right: 40px">
+                                        <p class="card-text">
                                            Votre observation sera alors validée par l’un de nos naturalistes professionnels :
                                         </p>
-                                        <ul class="ulbloctext" style="margin-left: 20px;margin-right: 40px">
+                                        <ul class="ulbloctext">
                                             <li class="libloctext">La date et l’heure de l’observation seront publiés, ainsi que vos commentaires et photos s’ils sont acceptés. Pour des raisons évidentes de protection des espèces rares,
                                                 les coordonnées GPS que vous nous transmettez ne sont pas publiées.</li>
                                             <li class="libloctext">Vous pourrez à tout moment accéder à votre compte et à votre historique d’observations pour les consulter.</li>
@@ -145,10 +149,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" id="ccmnaturaliste" style="margin: 0;;display: none">
+                            <div class="row" id="ccmnaturaliste" style="margin: 0;display: none">
                                 <!--Vous êtes Naturaliste-->
-                                <h4 class="card-title" style="width: 65%"> Vous êtes un professionnel, naturaliste ou ornithologue</h4>
-                                <p class="card-text" style="text-align: center;margin-left: 40px; margin-right: 40px">
+                                <h4 class="card-title"> Vous êtes un professionnel, naturaliste ou ornithologue</h4>
+                                <p class="card-text text-center">
                                     Vous êtes engagés dans la protection des oiseaux et vous souhaitez participer bénévolement à la collecte
                                     et à la validation de centaines d’observations d’oiseaux pour un programme de recherche piloté par le CNRS ?
                                     Alors vous êtes au bon endroit ! Pour cela, il vous suffit simplement de :
@@ -159,7 +163,7 @@
                                         <div class="stepwizard-step">
                                             <button type="button" class="btn-floating btn-sm teal darken-3">1</button>
                                         </div>
-                                        <p class="card-text" style="margin-left: 20px">
+                                        <p class="card-text">
                                             Vous inscrire et nous envoyer vos certifications pour valider votre compte « naturaliste ».
                                         </p>
                                     </div>
@@ -168,7 +172,7 @@
                                         <div class="stepwizard-step">
                                             <button type="button" class="btn-floating btn-sm teal darken-3">2</button>
                                         </div>
-                                        <p class="card-text" style="margin-left: 20px;margin-right: 40px">
+                                        <p class="card-text">
                                             Accéder ensuite au tableau de bord des informations envoyées par nos observateurs,
                                             afin de les consulter en détail et de les valider.
                                         </p>
@@ -186,27 +190,27 @@
                                         <div class="stepwizard-step">
                                             <button type="button" class="btn-floating btn-sm teal darken-3" disabled="disabled">3</button>
                                         </div>
-                                        <p class="card-text" style="margin-left: 20px;margin-right: 40px">
+                                        <p class="card-text">
                                             En tant que naturaliste, vous pouvez aussi jouer le rôle d’un observateur et partager vos observations de terrain, depuis votre smartphone ou votre ordinateur personnel.
                                         </p>
-                                        <blockquote class="blockquote bq-success" style="margin-right: 40px;margin-left: 60px;">
-                                            <p class="bq-title" style="font-family: Roboto;font-size: 18px;font-weight: bold">Vous êtes spécialisé dans une ou plusieurs espèces en particulier ?</p>
-                                            <p class="card-text" style="font-family: Roboto;font-size: 15px;font-weight: bold">Recevez ces observations en priorité grâce à notre judicieux système d’abonnement!</p>
+                                        <blockquote class="blockquote bq-success">
+                                            <p class="bq-title">Vous êtes spécialisé dans une ou plusieurs espèces en particulier ?</p>
+                                            <p class="card-text">Recevez ces observations en priorité grâce à notre judicieux système d’abonnement!</p>
                                         </blockquote>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" style="margin: 0; padding-bottom: 20px;">
-                                <div class="col-11 purple-text" style="margin-left: 40px;margin-right: 40px;text-align: center">
+                            <div class="row" style="margin-top: 30px; margin-bottom: 30px;font-weight: bold">
+                                <div class="col purple-text text-center" style="margin: 20px">
                                     La protection des oiseaux est notre priorité absolue. Les coordonnées GPS transmises par les observateurs
                                     et auxquelles vous aurez accès en tant que « naturaliste » ne seront pas publiées sur le site,
                                     ni aucune information sensible qui pourrait porter atteinte à la sécurité des espèces.
                                 </div>
                             </div>
                             <!-- Boutons -->
-                            <div class="row" style="margin-bottom: 33px;">
-                                    <div class="col-2 offset-2"><a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary btn-rounded teal darken-3">JE CREE MON COMPTE</a></div>
-                                    <div class="col-2 offset-3"><a href="{{ path('home') }}" class="btn btn-primary btn-rounded teal darken-3">J'OBSERVE UN OISEAU</a></div>
+                            <div class="row ccmRowButtons2">
+                                    <div class="col-xl-2 offset-xl-2 col-lg-2 offset-lg-2 col-md col-sm text-center"><a href="{{ path('fos_user_registration_register') }}" class="btn btn-rounded teal darken-3">JE CREE MON COMPTE</a></div>
+                                    <div class="col-xl-2 offset-xl-3 col-lg-2 offset-lg-3 col-md col-sm text-center"><a href="{{ path('home') }}" class="btn btn-primary btn-rounded teal darken-3">J'OBSERVE UN OISEAU</a></div>
                             </div>
 
                         </div>

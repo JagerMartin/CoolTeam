@@ -12,30 +12,27 @@ html,body {
     padding: 0;
     margin: 0;
 }
-
 body {
     font-family: Roboto;
 }
 a, a:hover {
     text-decoration: none;
 }
-.btn{
-    border-radius: 5px;
+.inputnewsletter {
+    font-family: Roboto;
+    font-size: 15px;
+    /*font-weight: lighter;*/
+    color: #405b54;
+}
+#newsletterForm {
+    margin: 0;
+    padding: 0;
 }
 
-/***************************************/
-/*  BARRE VERTICAL SEPARATION COLONNES*/
-/*************************************/
-.row.vdivide [class*='col-']:not(:last-child):after {
-  background: #2b2b2b;
-  width: 1px;
-  content: "";
-  display:block;
-  position: absolute;
-  top:0;
-  bottom: 0;
-  right: 0;
-  min-height: 70px;
+#bonjour {
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 18px;
 }
 
 /******************
@@ -49,20 +46,38 @@ header {
     height: 900px;
     z-index: 1;
 }
-
+.btn {
+    box-shadow :1px 3px 3px 1px rgba(0,0,0,.3), 1px 2px 1px 1px rgba(0,0,0,.2);
+    font-family: Titillium Web;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height : 1rem;
+    padding: .7rem;
+    border-radius: 5px;
+}
+.btnparticipe {
+    width : 200px ;
+    height : 50px ;
+    font-weight : 700;
+    line-height: 1.8rem;
+    font-family: "Titillium Web";
+}
 /********************
  *  BOUTONS MENU    *
  ********************/
 .menuB {
     width: 150px;
     height: 40px;
-    font-family: Titillium Web;
+    font-family: "Titillium Web";
     font-weight: 700;
     font-size: 13px;
-    padding-left: 0px;
-    padding-right: 0px;
     /* espace entre les boutons*/
-    margin:0 0 3px 0;
+    margin:0 0 6px 0;
+}
+.menuB a, a:hover, a:focus {
+    font-family: "Titillium Web";
+    font-weight: 700;
+    font-size: 13px;
 }
 .menuB .textcourt {
     vertical-align: middle;
@@ -71,29 +86,236 @@ header {
     padding-top:4px;
 }
 
-/**************
- *    logo    *
- **************/
-.logo {
-    max-height:300px; 
-    max-width: 163px;
-}
-
 /********************************
  *  S'inscrire | S'identifier   *
  ********************************/
 .sisi {
-    padding:0;
-    margin-top:32px; 
-    height:30px;
+    margin-left: 0;
+    padding: 0;
+    height: 30px;
     font-weight: 700;
-    font-size: 18px;
     font-family: Titillium Web;
     color: #ffffff
 }
-.sisi a {
+.sisi a, a:hover, a:focus {
     text-decoration: none;
     color: #ffffff;
+}
+.sisi ul {
+    text-align: right;
+}
+.sisi li {
+    font-family: Titillium Web;
+    font-weight: 700;
+}
+#lieninscrire, #lienidentifier  {
+    font-family: Titillium Web;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+
+/******************************
+ *          Menu MOBILE
+ *           HAMBURGER
+ *******************************/
+.hamburger {
+    position:absolute;
+    height: 35px;
+    width: 35px;
+    top:0;
+    right:0;
+    border:0;
+    font-size:1.4em;
+    font-weight:bold;
+    cursor:pointer;
+    outline:none;
+    z-index:10000000000000;
+    color: #FFFFFF;
+}
+.cross{
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    text-align: right;
+}
+.licross {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.divMenu2 {
+    top: 10px;
+    right: 0;
+    position: absolute;
+    display: none;
+    visibility: hidden;
+    z-index: 1000002;
+}
+.menu2 {
+    z-index: 1000001;
+    font-weight: bold;
+    font-size: 0.8em;
+    width: 0px;
+    height: 100%;
+    background: #00695c;
+    position: absolute;
+    text-align: center;
+    font-size: 12px;
+    top: 0;
+    display: none;
+    visibility: hidden;
+}
+.menu2 a, a:hover {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Titillium Web";
+    text-decoration: none;
+}
+.menu2 li {
+    color: #FFFFFF;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/********************************
+ *        Menu BIRDYGO          *
+ ********************************/
+.menuBirdygo2 {
+    padding: 0;
+    margin-right: 0;
+    margin-top: 32px;
+    color: #ffffff;
+    width: 290px;
+    height:55px;
+    position: absolute;
+    top: 20px;
+    right:0;
+}
+.margeImageB2 {
+    z-index: 2;
+    margin-left: 40%;
+}
+#divbutton2 {
+    right:30%;
+    height: 50px;
+    width: 8%;
+    margin-top: 2px;
+    left: 2px;
+    background-color: #80cbc4;
+    border-radius: 0px 50px 50px 0;
+    z-index: 1;
+    padding-top: 10px;
+    margin-left: 1px;
+    padding-left: 7px;
+    font-size: 20px;
+}
+#itembirdygo2 {
+    padding-top: 10px;
+    background-color: #80cbc4;
+    height:50px;
+    margin-top:2px;
+    color: #ffffff;
+    font-size: 18px;
+    margin-left: -40%;
+    padding-right: 5px;
+    padding-left: 20px;
+    width: 40%;
+}
+#iconeB2 {
+    margin:0;
+    padding: 0;
+    height: 15px;
+    width: auto;
+    padding-right: 7px;
+    text-align: center;
+}
+.faUserMenu {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+.faPoweroffMenu {
+    padding-left: 7px;
+    padding-right: 0;
+}
+#itembirdygo2 a, a:hover {
+    font-size: 18px;
+}
+#arrowbirdygo2 {
+    color: #00695c;
+}
+
+/***************************************
+ *        Menu BIRDYGO Mobile          *
+ ***************************************/
+.menuMobileBirdygo {
+    padding: 0;
+    margin-right: 0;
+    margin-top: 20%;
+    color: #ffffff;
+    width: 150px;
+    height:35px;
+    position: absolute;
+    right:0;
+}
+.margeImageMobileB {
+    z-index: 2;
+    margin-left: 55%;
+}
+#MenuImgBirdyGoMobile {
+    height: 35px;
+    width: 35px;
+}
+#divbuttonMobile {
+    right:30%;
+    height: 30px;
+    width: 13%;
+    margin-top: 2px;
+    left: 5px;
+    background-color: #80cbc4;
+    border-radius: 0px 50px 50px 0;
+    z-index: 1;
+    margin-left: 1px;
+    padding-left: 7px;
+    font-size: 20px;
+}
+#itembirdygoMobile {
+    display: none;
+    padding-top: 1px;
+    background-color: #80cbc4;
+    height:30px;
+    margin-top:2px;
+    color: #ffffff;
+    font-size: 10px;
+    margin-left: -3%;
+    padding-right: 5px;
+    padding-left: 20px;
+    width: 60%;
+}
+#iconeMobileB {
+    margin:0;
+    padding: 0;
+    height: 15px;
+    width: auto;
+    padding-right: 7px;
+    text-align: center;
+}
+.faUserMenuMobile {
+    padding-right: 7px;
+    padding-left: 7px;
+}
+.faPoweroffMenuMobile {
+    padding-left: 7px;
+    padding-right: 0;
+}
+#itembirdygoMobile a, a:hover {
+    font-size: 18px;
+}
+#arrowbirdygoMobile {
+    color: #00695c;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 /*******************
@@ -113,7 +335,6 @@ header {
 .view {
     height: 100%;
 }
-
 /* Carousel*/
 .carousel,
 .carousel-item,
@@ -129,12 +350,34 @@ header {
  **     DECOUVREZ NOTRE APPLICATION     **
  *****************************************
  *****************************************/
- .dna {
+.dna {
     padding:0;
- }
+}
+/******************************************
+ ******************************************
+ **         RESPECTER ET OBSERVER        **
+ ******************************************
+ ******************************************/
+.obsResp {
+    margin-bottom: 50px;
+}
+.obsRespDivTitre {
+    margin-top:70px;
+    text-align: center;
+}
+.obsRespDivTitreH3 {
+    font-size: 1.25em;
+    font-weight : 400
+}
+.obsRespButton {
+    Width : 300px;
+    Font-weight : 500;
+    font-size: 16px;
+    font-family: Titillium Web;
+    text-transform: uppercase;
+}
 
 /******************
- ******************
  **    SLIDER    **
  ******************
  ******************/
@@ -172,13 +415,13 @@ header {
 }
 /******* Overlay + texte ********/
 .slider .overlaytest {
-  background: #333;
-  background: rgba(0, 0, 0, .4);
-  position: relative;
-  float: right;
-  z-index: 500;
-  width: 35%;
-  height: 100%;
+    background: #333;
+    background: rgba(0, 0, 0, .4);
+    position: relative;
+    float: right;
+    z-index: 500;
+    width: 35%;
+    height: 100%;
 }
 .overlaySlide {
     font-family: Roboto;
@@ -194,7 +437,6 @@ header {
     text-align: left;
     color:#80cbc4;
 }
-
 .overlaySlide .sliderParag {
     border-color: #ffffff;
     font-size: 15px;
@@ -202,7 +444,6 @@ header {
     text-align: left;
     padding-bottom: 0;
 }
-
 .overlaySlide .sliderListe {
     border-color: #ffffff;
     font-size: 18px;
@@ -212,7 +453,6 @@ header {
     padding:0 0 0 18px;
     color:#80cbc4;
 }
-
 .overlaySlide .sliderListe2 {
     border-color: #ffffff;
     font-size: 15px;
@@ -234,11 +474,11 @@ header {
  **    DERNIERS AJOUTS    **
  ***************************
  **************************/
- .da {
+.da {
     margin-top: 70px;
     font-family: Roboto;
     font-size: 15px;
- }
+}
 .da img {
     height: 100px;
     width: 100px;
@@ -246,13 +486,17 @@ header {
     padding: 0;
     z-index:901;
 }
- .da .row {
+.da .row {
     padding: 0;
 }
- .da .espcercle {
-    margin-bottom: 15px;    
- }
- .myB {
+.da .espcercle {
+    margin-bottom: 15px;
+}
+.daImg {
+    box-shadow :2px 1px 2px 1px rgba(0,0,0,.4);
+    margin-top: 7px;
+}
+.myB {
     margin-right: 0%;
     margin-left: 25%;
     margin-top:3%;
@@ -260,8 +504,8 @@ header {
     position: absolute;
     z-index:900;
 
- }
- .da button {
+}
+.da button {
     padding-top: 5px;
     padding-bottom: 0;
     padding-left: 12px;
@@ -271,16 +515,17 @@ header {
     border-radius: 25px 25px 25px 25px;
     background-color: #009688;
     text-transform:capitalize;
- }
- .da a, a:hover {
+}
+.da a, a:hover {
     text-decoration: none;
-     color: #FFFFFF;
-    font-family: Roboto;
+    color: #FFFFFF;
+    font-family: "Titillium Web";
     font-size: 16px;
- }
- .da h2 {
+    font-weight: bold;
+}
+.da h2 {
     color: #2b2b2b;
- }
+}
 .da p {
     padding: 0px;
     margin:.5em 0;
@@ -290,9 +535,14 @@ header {
 .da .pnom {
     font-size: 18px;
 }
- .da .mappy {
+.da .mappy {
     height: 560px;
     padding: 0;
+}
+.map {
+    box-shadow :2px 1px 2px 1px rgba(0,0,0,.4);
+    margin-left: 10%;
+    padding: 0
 }
 
 /********************
@@ -300,18 +550,7 @@ header {
  **    PARALLAX    **
  ********************
  ********************/
-.parallax1 {
-    padding: 0;
-    margin-top:70px;
-    background-color: #256;
-    height: 500px;
-}
-#section1 {
-    padding: 0;
-    background-image: url("../img/homepage/parallax/1.jpg");
-    width: 100%;
-    height: 500px;
-}
+
 .parallax2 {
     padding: 0;
     margin-top:70px;
@@ -411,7 +650,7 @@ header {
     font-size: 15px;
     color: #FFFFFF;
     font-weight: bold;
-    border-bottom-width: 100%;
+    border-bottom-width: 100px;
     border-bottom: #ffffff;
     border-bottom-style: solid;
 
@@ -472,10 +711,15 @@ header {
     margin-left: 15%;
     margin-right: 15%;
 }
+#modalLogin .btn {
+    height: 40px;
+    padding-top: 0px;
+}
 #modalLogin .modal-footer {
     margin: 0;
     height: 100px;
     border: none;
+    font-size: 12px;
 }
 #modalLogin .form-control {
     padding-top: 5px;
@@ -485,19 +729,19 @@ header {
     color: #cbcaca;
     font-size: 15px;
     font-family: Roboto;
-    border-bottom: 2px solid cbcaca;
+    border-bottom: 2px solid #cbcaca;
 }
-#modalLogin input[type=password]:focus, input[type=text]:focus
-{
+#modalLogin input[type=password]:focus, input[type=text]:focus {
     background-color: #00695c;
     color:white;
     border-bottom: 2px solid white;
-
 }
 #modalLogin a, a:hover{
     text-decoration: none;
     color: white;
+    font-size: 12px;
 }
+
 
 /********************************
  ********************************
@@ -505,34 +749,738 @@ header {
  ********************************
  ********************************/
 
-/* Extra small devices (portrait phones, less than 576px) */ 
-@media (max-width: 575px) { 
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575px) {
+    header {
+        height: 645px;
+    }
+    .logo{
+        background: url(../img/homepage/responsive/logo-final-mobile.png) no-repeat;
+        background-size: 98px auto;
+        margin-top: 20px;
+        min-height: 120px;
+        min-width: 90px;
+        margin-left: 10%;
+    }
+    .divMenu2 {
+        display: block;
+        visibility: visible;
+    }
+    .menu2 {
+        display: block;
+        visibility: visible;
+    }
 
+    .menuBirdygo2 {
+        display: none;
+        visibility: hidden;
+    }
+    .imgHeaderMobile {
+        margin-right: 0px;
+        margin-left: 0px;
+        padding: 0;
+        position: absolute;
+        left:0px;
+        top: 0px;
+        background: url(../img/homepage/responsive/Accueil_fond.jpg) no-repeat;
+        background-size: 100% 100%;
+        min-height: 643px;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .monCarousel {
+        display: none;
+        visibility: hidden;
+    }
+    .menu {
+        display: none;
+    }
+    .sisi {
+        margin-top: 0px;
+    }
+    .sisi ul {
+        text-align: center;
+    }
+    .sisi li {
+        font-size: 15px;
+    }
+    #lieninscrire, #lienidentifier  {
+        font-size: 15px;
+    }
+    #lienidentifier {
+        padding-left: 30px;
+    }
+    #lieninscrire{
+        padding-right: 30px;
+    }
+
+    .smooth-scroll {
+        display: none;
+        visibility: hidden;
+    }
+
+    .qsn {
+        display: none;
+        visibility: hidden;
+    }
+
+    .dna{
+        padding: 0;
+        position: relative;
+        top: -540px;
+    }
+    .dnaOverlay {
+        visibility: hidden;
+        display: none;
+    }
+    .parallax1 {
+        padding: 0;
+        margin-top:70px;
+        background-color: transparent;
+        height: 470px;
+    }
+    #section1 {
+        margin-top:0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: #37474F;
+        background: rgba(0, 0, 0, .4);
+    }
+    .dna h1 {
+        margin: 0;
+        padding: 0;
+        font-size:  18px;
+        color: #ffffff;
+        font-family: Amiko;
+        font-weight: 400;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    .dnaBirdyGo {
+        margin-bottom: 10px;
+        padding-top: 0px;
+        height: 55px;
+        width: auto;
+        margin-left: 25%;
+    }
+    .dnaText {
+        margin: 0;
+        line-height: 1em;
+        text-align: center;
+        padding-top: 20px;
+        margin-bottom: 10px;
+    }
+    .divbtnparticipe {
+        margin-bottom: 20px;
+    }
+
+    .obsResp {
+        top: -495px;
+    }
+    .obsRespDivTitreH2 {
+        font-size: 16px;
+    }
+    .obsRespDivTitreH3 {
+        font-size: 15px;
+        font-weight : 400;
+    }
+    .obsRespDivTitreH3P {
+        line-height: 1.65em;
+        margin-bottom:20px;
+        font-size: 12px;
+    }
+    .obsRespDivTitreH3P2 {
+        margin-bottom:20px;
+        line-height: 1em;
+        font-size: 12px;
+    }
+    .obsRespDivTitreH3P3 {
+        line-height: 1.75em;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    .vdivide {
+        margin-top:20px;
+    }
+    .obsRespButton {
+        Width : 200px;
+        margin-bottom: 20px;
+    }
+    .obsRespDivButton {
+        border-bottom: solid 2px #2b2b2b;
+        margin-bottom: 20px;
+    }
+
+    .slider, .da, .cpteurs, .partenaires, .rsfooter {
+        display: none;
+        visibility: hidden;
+    }
+
+    .parallax2 {
+        padding: 0;
+        top: -561px;
+        background-color: #256;
+        height: 200px;
+    }
+    #section2 {
+        padding: 0;
+        background-image: url("../img/homepage/responsive/parallax2.jpg");
+        background-size: 100% 100%;
+        min-height: 200px;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .rs {
+        top: -500px;
+        margin-bottom: -480px;
+    }
+    .rsH2 {
+        font-size: 16px;
+    }
+    .rsFacebook {
+        left:0;
+        margin: 0;
+    }
+    .rsInstagram {
+        left:0;
+        margin: 0;
+    }
+    .rsFacebookImg {
+        width: 60px;
+        height: 60px;
+    }
+    .rsInstagramImg {
+        width: 60px;
+        height: 60px;
+    }
 
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767px) {
-
-    .carousel {
-        display: none;
+    /**********************
+    *    Menu hamburger
+    ************************/
+    .hamburger{
+        position:absolute;
+        height: 35px;
+        width: 35px;
+        top:0;
+        right:0;
+        border:0;
+        font-size:1.4em;
+        font-weight:bold;
+        cursor:pointer;
+        outline:none;
+        z-index:10000000000000;
+        color: #FFFFFF;
+    }
+    .cross{
+        color: #FFFFFF;
+        position:absolute;
+        top:0px;
+        right:0;
+        padding:7px 15px 0px 15px;
+        border:0;
+        font-size:3em;
+        line-height:65px;
+        font-weight:bold;
+        cursor:pointer;
+        outline:none;
+        z-index:10000000000000;
+    }
+    .menu2 {
+        z-index:1000000;
+        font-weight:bold;
+        font-size:0.8em;
+        width: 0px;
+        height:100%;
+        background:#00695c;
+        position: relative;
+        text-align:center;
+        font-size:12px;
+        top:10%;
     }
 
- }
+    .menuBirdygo2 {
+        display: none;
+        visibility: hidden;
+    }
+    /**************
+     *    logo    *
+     **************/
+    .logo{
+        background: url(../img/homepage/responsive/logo-final-mobile.png) no-repeat;
+        background-size: 100px auto;
+        margin-top: 20px;
+        min-height: 120px;
+        min-width: 65px;
+        margin-left:10%;
+    }
+    .imgHeaderMobile {
+        margin-right: 0px;
+        margin-left: 0px;
+        padding: 0;
+        position: absolute;
+        left:0px;
+        top: 0px;
+        background: url(../img/homepage/responsive/Accueil_fond.jpg) no-repeat;
+        background-size: 640px auto;
+        min-width: 100%;
+        min-height: 100%;
+    }
+    .monCarousel {
+        display: none;
+        visibility: hidden;
+    }
+    .menu {
+        display: none;
+    }
+    .smooth-scroll {
+        display: none;
+        visibility: hidden;
+    }
+    .sisi {
+        margin-top: 15px;
+    }
+    .sisi ul {
+        text-align: center;
+    }
+    .qsn {
+        display: none;
+        visibility: hidden;
+    }
+    .parallax1 {
+        padding: 0;
+        margin-top:70px;
+        background-color: transparent;
+        height: 500px;
+    }
+    #section1 {
+        padding: 0;
+        background-color: transparent;
+        width: 100%;
+        height: 500px;
+    }
+    .obsResp {
+        top: -495px;
+    }
+    .obsRespDivTitreH2 {
+        font-size: 16px;
+    }
+    .obsRespDivTitreH3 {
+        font-size: 15px;
+        font-weight : 400;
+    }
+    .obsRespDivTitreH3P {
+        line-height: 1.65em;
+        margin-bottom:20px;
+        font-size: 12px;
+    }
+    .obsRespDivTitreH3P2 {
+        margin-bottom:20px;
+        line-height: 1em;
+        font-size: 12px;
+    }
+    .obsRespDivTitreH3P3 {
+        line-height: 1.75em;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+    .vdivide {
+        margin-top:20px;
+    }
+    .obsRespButton {
+        Width : 200px;
+        margin-bottom: 20px;
+    }
+    .obsRespDivButton {
+        border-bottom: solid 2px #2b2b2b;
+        margin-bottom: 20px;
+    }
+}
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991px) {
+    .menuMobileBirdygo {
+        display: none;
+        visibility: hidden;
+    }
+    .hamburger, .menu2, .cross {
+        display: none;
+        visibility: hidden;
+    }
+    /**************
+    *    logo    *
+    **************/
+    .logo{
+        background: url(../img/homepage/responsive/logo-final-mobile.png) no-repeat;
+        background-size: 200px auto;
+        margin-top: 20px;
+        min-height: 200px;
+        min-width: 65px;
+    }
+    .imgHeaderMobile {
+        margin-right: 0px;
+        margin-left: 0px;
+        padding: 0;
+        position: absolute;
+        left:0px;
+        top: 0px;
+        background: url(../img/homepage/carousselheader/1.jpg) no-repeat;
+        background-size: auto 100%;
+        min-height: 643px;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .monCarousel {
+        display: none;
+        visibility: hidden;
+    }
+    .sisi {
+        margin-top: 32px;
+        height: 30px;
+        font-size: 18px;
+    }
+    .qsn {
+        margin-top: -280px;
+    }
+    .qsnDivCercles {
+        padding-top: 150px;
+    }
+    .qsnImgCercles {
+        height: 40%;
+        width: auto;
+    }
+
+    .parallax1 {
+        padding: 0;
+        margin-top:70px;
+        background-color: #256;
+        height: 500px;
+    }
+    #section1 {
+        padding: 0;
+        background-image: url("../img/homepage/parallax/1.jpg");
+        width: 100%;
+        height: 500px;
+    }
+    .dnaText {
+        font-size: 18px;
+        text-align: center;
+        padding-top: 19px;
+        margin-bottom: 19px;
+        background: #37474F;
+        background: rgba(0, 0, 0, .4);
+    }
+    .dna h1 {
+        margin: 0;
+        padding: 0;
+        font-size:  25px;
+        color: #ffffff;
+        font-family: Amiko;
+        font-weight: 400;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .dnaBirdyGo {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        padding-top: 0px;
+        margin-left: 33%;
+        height: 55px;
+        width: auto;
+    }
+    .dnaText {
+        margin: 0;
+        line-height: 1em;
+        text-align: center;
+        padding-top: 20px;
+        margin-bottom: 20px;
+    }
+    .divbtnparticipe {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .vdivide {
+        margin-top:20px;
+    }
+    .obsRespDivTitreH2 {
+        margin-top: 40px;
+    }
+    .obsRespButton {
+        margin-bottom: 20px;
+    }
+    .obsRespDivButton {
+        border-bottom: solid 2px #2b2b2b;
+        margin-bottom: 20px;
+    }
+
+    .parallax2 {
+        margin-top:70px;
+        background-color: #256;
+        height: 200px;
+    }
+    #section2 {
+        background-image: url("../img/homepage/responsive/parallax2.jpg");
+        background-size: 100% 100%;
+        min-height: 200px;
+        min-width: 100%;
+        max-width: 100%;
+        margin-bottom: 70px;
+    }
+
+    /******* Overlay + texte ********/
+    .slider .overlaytest {
+        width: 47%;
+    }
+    .overlaySlide .sliderListe {
+        font-size: 15px;
+        margin-top: 65px;
+    }
+    .overlaySlide .sliderListe2 {
+        font-size: 13px;
+        margin-top: 65px;
+        line-height:23px;
+    }
+
+    .cpteurs {
+        margin-top: 150px;
+    }
 
 }
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 992px) and (max-width: 1280px) {
+    .imgHeaderMobile {
+        display: none;
+    }
+    .hamburger, .menu2, .cross {
+        display: none;
+        visibility: hidden;
+    }
+    .menuMobileBirdygo {
+        display: none;
+        visibility: hidden;
+    }
+    .sisi {
+        margin-top: 32px;
+        height: 30px;
+        font-size: 18px;
+    }
+    .logo {
+        background: url(../img/homepage/logo.png) no-repeat;
+        background-size: 300px 163px;
+        margin-top: 60px;
+        margin-left: 35px;
+        padding-right: 0;
+    }
+    .dna h1 {
+        padding: 0;
+        color: #ffffff;
+        font-family: Amiko;
+        font-weight: 400;
+        margin-top: 30px;
+    }
+    .dnaOverlay {
+        width: 100%;
+        height: 100%;
+    }
+    .dnaBirdyGo {
+        margin-top: 39px;
+        padding-top: 0px;
+        margin-left: 25%;
+        height: auto;
+        width: 150%;
 
+    }
+    .parallax1 {
+        padding: 0;
+        margin-top:39px;
+        background-color: #256;
+        height: 500px;
+    }
+    #section1 {
+        padding: 0;
+        background-image: url("../img/homepage/parallax/1.jpg");
+        width: 100%;
+        height: 500px;
+    }
+    .dnaText {
+        text-align: center;
+        margin-top: 39px;
+        margin-bottom: 19px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background: #37474F;
+        background: rgba(0, 0, 0, .4);
+    }
+    .divbtnparticipe {
+        margin-top: 10px;
+        margin-bottom: 29px;
+    }
+    /*  BARRE VERTICAL SEPARATION COLONNES RESPECTER ET OBSERVER */
+    .row.vdivide [class*='col']:not(:last-child):after {
+        background: #2b2b2b;
+        width: 1px;
+        content: "";
+        display:block;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        right: 0;
+        min-height: 70px;
+    }
+    .vdivide {
+        margin-top:70px;
+    }
+    .obsResp {
+        margin-top: 70px;
+    }
+    .obsRespDivTitreH3P {
+        line-height: 1.65em;
+        margin-bottom:80px;
+    }
+    .obsRespDivTitreH3P2 {
+        line-height: 1.25em;
+    }
+    .obsRespDivTitreH3P3 {
+        line-height: 1.75em;
+        margin-bottom: 70px;
+    }
+
+    /******* Overlay + texte ********/
+    .slider .overlaytest {
+        width: 47%;
+    }
+    .overlaySlide .sliderListe {
+        font-size: 16px;
+        margin-top: 65px;
+    }
+    .overlaySlide .sliderListe2 {
+        font-size: 13px;
+        margin-top: 65px;
+        line-height:24px;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
+@media (min-width: 1281px) {
+    #imgHeaderMobile {
+        display: none;
+    }
+    .hamburger, .menu2, .cross {
+        display: none;
+        visibility: hidden;
+    }
+    .menuMobileBirdygo {
+        display: none;
+        visibility: hidden;
+    }
+    .logo {
+        background: url(../img/homepage/logo.png) no-repeat;
+        background-size: 300px 163px;
+        margin-top: 60px;
+        margin-left: 35px;
+        padding-right: 0;
+    }
+    .sisi {
+        margin-top: 32px;
+        height: 30px;
+        font-size: 18px;
+    }
+    .sisi li {
+        font-size: 18px;
+    }
+    #lieninscrire, #lienidentifier  {
+        font-size: 18px;
+    }
+    .dna h1 {
+        padding: 0;
+        color: #ffffff;
+        font-family: Amiko;
+        font-weight: 400;
+        margin-top: 30px;
+    }
+    .dnaOverlay {
+        width: 100%;
+        height: 100%;
+    }
+    .dnaBirdyGo {
+        margin-top: 39px;
+        padding-top: 0px;
+        margin-left: 25%;
+        height: auto;
+        width: 150%;
+
+    }
+    .parallax1 {
+        padding: 0;
+        margin-top:39px;
+        background-color: #256;
+        height: 500px;
+    }
+    #section1 {
+        padding: 0;
+        background-image: url("../img/homepage/parallax/1.jpg");
+        width: 100%;
+        height: 500px;
+    }
+    .dnaText {
+        text-align: center;
+        margin-top: 39px;
+        margin-bottom: 19px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background: #37474F;
+        background: rgba(0, 0, 0, .4);
+    }
+    .divbtnparticipe {
+        margin-top: 10px;
+        margin-bottom: 29px;
+    }
+    /*  BARRE VERTICAL SEPARATION COLONNES RESPECTER ET OBSERVER */
+    .row.vdivide [class*='col']:not(:last-child):after {
+        background: #2b2b2b;
+        width: 1px;
+        content: "";
+        display:block;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        right: 0;
+        min-height: 70px;
+    }
+    .vdivide {
+        margin-top:70px;
+    }
+    .obsResp {
+        margin-top: 70px;
+    }
+    .obsRespDivTitreH3P {
+        line-height: 1.65em;
+        margin-bottom:80px;
+    }
+    .obsRespDivTitreH3P2 {
+        line-height: 1.25em;
+    }
+    .obsRespDivTitreH3P3 {
+        line-height: 1.75em;
+        margin-bottom: 70px;
+    }
+    .map {
+        margin-left:100px;
+    }
 
 
 }
 
+/*************************************************************************
+ *  icones reseaux sociaux footer masqués pour le footer de la homepage  *
+ *************************************************************************/
+.rsfooter {
+    display: none;
+}

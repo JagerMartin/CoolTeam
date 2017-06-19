@@ -15,7 +15,7 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add('isCharterAccepted', CheckboxType::class, array(
-                'label' => 'J\'accepte la Charte du Respect et de la protection des oiseaux.',
+                'label' => 'J\'accepte la Charte du Respect et de la protection des oiseaux.(Obligatoire pour pouvoir valider)',
                 'required' => true,
                 'data' => false,
                 'constraints' => array(
