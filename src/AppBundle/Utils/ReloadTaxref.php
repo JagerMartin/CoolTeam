@@ -38,8 +38,7 @@ class ReloadTaxref
             return false;
         }
 
-        $this->resetTable();
-        $this->loadTable($data);
+        $this->updateChanges($data);
         return true;
     }
 
@@ -56,26 +55,6 @@ class ReloadTaxref
         }
     }
 
-    private function resetTable()
-    {
-        $em = $this->em;
-        $taxrefs = $em->getRepository('AppBundle:Taxref')->findAll();
-        $i = 0;
-        foreach ($taxrefs as $taxref){
-            $taxref = $em->merge($taxref);
-            $em->remove($taxref);
-
-            // FLUSH toutes les 25 persistances pour améliorer les performances de chargement
-            if($i % 25 == 0){
-                $em->flush();
-                $em->clear();
-            }
-            $i = $i + 1;
-        }
-        $em->flush();
-        $em->clear();
-    }
-
     private function getLastFileUrl()
     {
         $lastTaxref = $this->em->getRepository('AppBundle:TaxrefFile')->getLastFile();
@@ -83,57 +62,104 @@ class ReloadTaxref
         return $url;
     }
 
-    private function loadTable($data)
+    private function updateChanges($data)
     {
-        $em = $this->em;
+        $repository = $this->em->getRepository('AppBundle:Taxref');
+
         $i = 0;
-
         foreach ($data as $datum){
-            $taxref = new Taxref();
-            $taxref->setReign($datum['REGNE']);
-            $taxref->setPhylum($datum['PHYLUM']);
-            $taxref->setCategory($datum['CLASSE']);
-            $taxref->setOrder($datum['ORDRE']);
-            $taxref->setFamily($datum['FAMILLE']);
-            $taxref->setCdName($datum['CD_NOM']);
-            $taxref->setCdTaxsup($datum['CD_TAXSUP']);
-            $taxref->setCdRef($datum['CD_REF']);
-            $taxref->setRank($datum['RANG']);
-            $taxref->setLbName($datum['LB_NOM']);
-            $taxref->setLbAuthor($datum['LB_AUTEUR']);
-            $taxref->setFullName($datum['NOM_COMPLET']);
-            $taxref->setValidName($datum['NOM_VALIDE']);
-            $taxref->setVernacularName($datum['NOM_VERN']);
-            $taxref->setEngVernacularName($datum['NOM_VERN_ENG']);
-            $taxref->setHabitat($datum['HABITAT']);
-            $taxref->setFr($datum['FR']);
-            $taxref->setGf($datum['GF']);
-            $taxref->setMar($datum['MAR']);
-            $taxref->setGua($datum['GUA']);
-            $taxref->setSm($datum['SM']);
-            $taxref->setSb($datum['SB']);
-            $taxref->setSpm($datum['SPM']);
-            $taxref->setMay($datum['MAY']);
-            $taxref->setEpa($datum['EPA']);
-            $taxref->setReu($datum['REU']);
-            $taxref->setSa($datum['SA']);
-            $taxref->setTa($datum['TA']);
-            $taxref->setTaaf($datum['TAAF']);
-            $taxref->setNc($datum['NC']);
-            $taxref->setWf($datum['WF']);
-            $taxref->setPf($datum['PF']);
-            $taxref->setCli($datum['CLI']);
-
-            $em->persist($taxref);
-
-            // FLUSH toutes les 25 persistances pour améliorer les performances de chargement
-            if($i % 25 == 0){
-                $em->flush();
-                $em->clear();
+            if(!$repository->find($datum['CD_NOM'])){
+                $this->insertSpecie($datum);
+            } else {
+                $this->updateSpecie($datum);
             }
-            $i = $i + 1;
+
+            if($i % 25 == 0){
+                $this->em->flush();
+                $this->em->clear();
+            }
         }
-        $em->flush();
+        $this->em->flush();
+    }
+
+    private function insertSpecie($datum){
+        $taxref = new Taxref();
+        $taxref->setReign($datum['REGNE']);
+        $taxref->setPhylum($datum['PHYLUM']);
+        $taxref->setCategory($datum['CLASSE']);
+        $taxref->setOrder($datum['ORDRE']);
+        $taxref->setFamily($datum['FAMILLE']);
+        $taxref->setCdName($datum['CD_NOM']);
+        $taxref->setCdTaxsup($datum['CD_TAXSUP']);
+        $taxref->setCdRef($datum['CD_REF']);
+        $taxref->setRank($datum['RANG']);
+        $taxref->setLbName($datum['LB_NOM']);
+        $taxref->setLbAuthor($datum['LB_AUTEUR']);
+        $taxref->setFullName($datum['NOM_COMPLET']);
+        $taxref->setValidName($datum['NOM_VALIDE']);
+        $taxref->setVernacularName($datum['NOM_VERN']);
+        $taxref->setEngVernacularName($datum['NOM_VERN_ENG']);
+        $taxref->setHabitat($datum['HABITAT']);
+        $taxref->setFr($datum['FR']);
+        $taxref->setGf($datum['GF']);
+        $taxref->setMar($datum['MAR']);
+        $taxref->setGua($datum['GUA']);
+        $taxref->setSm($datum['SM']);
+        $taxref->setSb($datum['SB']);
+        $taxref->setSpm($datum['SPM']);
+        $taxref->setMay($datum['MAY']);
+        $taxref->setEpa($datum['EPA']);
+        $taxref->setReu($datum['REU']);
+        $taxref->setSa($datum['SA']);
+        $taxref->setTa($datum['TA']);
+        $taxref->setTaaf($datum['TAAF']);
+        $taxref->setNc($datum['NC']);
+        $taxref->setWf($datum['WF']);
+        $taxref->setPf($datum['PF']);
+        $taxref->setCli($datum['CLI']);
+
+        $this->em->persist($taxref);
+    }
+
+
+    private function updateSpecie($datum){
+        $em = $this->em;
+
+        $taxref = $em->getRepository('AppBundle:Taxref')->find($datum['CD_NOM']);
+        $taxref->setReign($datum['REGNE']);
+        $taxref->setPhylum($datum['PHYLUM']);
+        $taxref->setCategory($datum['CLASSE']);
+        $taxref->setOrder($datum['ORDRE']);
+        $taxref->setFamily($datum['FAMILLE']);
+        $taxref->setCdTaxsup($datum['CD_TAXSUP']);
+        $taxref->setCdRef($datum['CD_REF']);
+        $taxref->setRank($datum['RANG']);
+        $taxref->setLbName($datum['LB_NOM']);
+        $taxref->setLbAuthor($datum['LB_AUTEUR']);
+        $taxref->setFullName($datum['NOM_COMPLET']);
+        $taxref->setValidName($datum['NOM_VALIDE']);
+        $taxref->setVernacularName($datum['NOM_VERN']);
+        $taxref->setEngVernacularName($datum['NOM_VERN_ENG']);
+        $taxref->setHabitat($datum['HABITAT']);
+        $taxref->setFr($datum['FR']);
+        $taxref->setGf($datum['GF']);
+        $taxref->setMar($datum['MAR']);
+        $taxref->setGua($datum['GUA']);
+        $taxref->setSm($datum['SM']);
+        $taxref->setSb($datum['SB']);
+        $taxref->setSpm($datum['SPM']);
+        $taxref->setMay($datum['MAY']);
+        $taxref->setEpa($datum['EPA']);
+        $taxref->setReu($datum['REU']);
+        $taxref->setSa($datum['SA']);
+        $taxref->setTa($datum['TA']);
+        $taxref->setTaaf($datum['TAAF']);
+        $taxref->setNc($datum['NC']);
+        $taxref->setWf($datum['WF']);
+        $taxref->setPf($datum['PF']);
+        $taxref->setCli($datum['CLI']);
+
+        $em->persist($taxref);
     }
 
 }
