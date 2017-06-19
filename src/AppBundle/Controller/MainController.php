@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Contact;
 use AppBundle\Entity\Newsletter;
+use AppBundle\Entity\Observation;
 use AppBundle\Form\ContactType;
 use AppBundle\Form\NewsletterType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -22,7 +23,7 @@ class MainController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $lastObservations = $em->getRepository('AppBundle:Observation')->findBy(array(), array('datetime' => 'DESC'), 5, 0);
+        $lastObservations = $em->getRepository('AppBundle:Observation')->findBy(array('status' => Observation::VALIDATE), array('datetime' => 'DESC'), 5, 0);
 
         // Génération de la carte pour ces observations
         $map = $this->get('app.create_map_with_observations')->createMapWithObservations($lastObservations);
