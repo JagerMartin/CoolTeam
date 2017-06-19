@@ -88,4 +88,15 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleScalarResult();
         return $query;
     }
+
+    public function getNbObservations()
+    {
+        $query = $this->createQueryBuilder('o')
+            ->select('COUNT(o.id)')
+            ->where('o.status = :status')
+            ->setParameter('status', Observation::VALIDATE)
+            ->getQuery()
+            ->getSingleScalarResult();
+        return $query;
+    }
 }

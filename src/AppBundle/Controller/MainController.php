@@ -30,14 +30,19 @@ class MainController extends Controller
         $map->setHtmlId('map_home_canvas');
         $map->setStylesheetOptions(array('width' => '100%', 'height' => '100%'));
 
-        $repository = $this->getDoctrine()->getManager()->getRepository('AppBundle:User');
-        $observerCount = $repository->getUsersCountByRole("ROLE_OBSERVER");
-        $naturalistCount = $repository->getUsersCountByRole("ROLE_NATURALIST");
+        $userRepository = $em->getRepository('AppBundle:User');
+        $observerCount = $userRepository->getUsersCountByRole("ROLE_OBSERVER");
+        $naturalistCount = $userRepository->getUsersCountByRole("ROLE_NATURALIST");
+        $observationCount = $em->getRepository('AppBundle:Observation')->getNbObservations();
+        $specieCount = $em->getRepository('AppBundle:Taxref')->getNbSpecies();
+
         return $this->render('default/homepage.html.twig', array(
             'map' => $map,
             'lastObservations' => $lastObservations,
             'observerCount' => $observerCount,
-            'naturalistCount' => $naturalistCount
+            'naturalistCount' => $naturalistCount,
+            'observationCount' => $observationCount,
+            'specieCount' => $specieCount
         ));
 
     }

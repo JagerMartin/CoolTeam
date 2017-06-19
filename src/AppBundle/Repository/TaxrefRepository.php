@@ -57,4 +57,13 @@ class TaxrefRepository extends \Doctrine\ORM\EntityRepository
         // On retourne l'objet Paginator correspondant à la requête construite
         return new Paginator($query, true);
     }
+
+    public function getNbSpecies()
+    {
+        $query = $this->createQueryBuilder('t')
+            ->select('COUNT(t.cdName)')
+            ->getQuery()
+            ->getSingleScalarResult();
+        return $query;
+    }
 }
