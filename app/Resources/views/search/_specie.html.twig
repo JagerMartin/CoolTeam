@@ -13,7 +13,10 @@
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm divImgEsp">
                 {{ render(controller(
                 'AppBundle:Search:specieImage',
-                { 'cdName': specie.cdName }
+                {
+                    'cdName': specie.cdName,
+                    'imgClass': 'imgEspece2'
+                }
                 )) }}
             </div>
         </div>

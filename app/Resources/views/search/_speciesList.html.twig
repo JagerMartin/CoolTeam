@@ -4,7 +4,10 @@
             <a href="{{ path('app_search') }}" id="{{ specie.lbName }}" class="seeSpecie" style="color: #636c72;font-size: 12px">
                 {{ render(controller(
                 'AppBundle:Search:specieImage',
-                { 'cdName': specie.cdName }
+                {
+                    'cdName': specie.cdName,
+                    'imgClass': 'imgEspece'
+                }
                 )) }}
                   <p class="card-text" style="text-align: center;padding-left: 10px;padding-right: 10px"><strong>{{ specie.vernacularName | default(specie.lbname) }}</strong></p></a>
 
