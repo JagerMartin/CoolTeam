@@ -239,7 +239,7 @@ header {
     padding-left: 7px;
     padding-right: 0;
 }
-#itembirdygo2 a, a:hover {
+#itembirdygo2  {
     font-size: 18px;
 }
 #arrowbirdygo2 {
@@ -736,7 +736,7 @@ header {
     color:white;
     border-bottom: 2px solid white;
 }
-#modalLogin a, a:hover{
+#modalLogin:hover{
     text-decoration: none;
     color: white;
     font-size: 12px;
