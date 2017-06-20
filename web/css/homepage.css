@@ -387,31 +387,9 @@ header {
     height: 525px;
     background-color: #00134c;
 }
-#myCarousel2 .item:nth-child(1) {
-    background-image: url(../img/homepage/caroussel2/1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    /*opacity: 0.4;*/
-}
-#myCarousel2 .item:nth-child(2)  {
-    background-image: url(../img/homepage/caroussel2/2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-#myCarousel2 .item:nth-child(3) {
-    background-image: url(../img/homepage/caroussel2/3.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-#myCarousel2 .item:nth-child(4) {
-    background-image: url(../img/homepage/caroussel2/4.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-#myCarousel2 .item:nth-child(5) {
-    background-image: url(../img/homepage/caroussel2/5.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+#myCarousel2 img {
+    position: absolute;
+    z-index:456;
 }
 /******* Overlay + texte ********/
 .slider .overlaytest {
@@ -422,6 +400,7 @@ header {
     z-index: 500;
     width: 35%;
     height: 100%;
+    margin-right:0;
 }
 .overlaySlide {
     font-family: Roboto;
