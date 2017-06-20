@@ -6,7 +6,7 @@ security:
     role_hierarchy:
         ROLE_OBSERVER:    ROLE_OBSERVER
         ROLE_NATURALIST:  ROLE_NATURALIST
-        ROLE_SUPER_ADMIN: [ROLE_SUPER_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         fos_userbundle:

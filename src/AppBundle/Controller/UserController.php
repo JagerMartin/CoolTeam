@@ -56,12 +56,11 @@ class UserController extends Controller
 
     /**
      * @Route("/admin/utilisateurs/profile/{id}", name="admin_user_profile", requirements={"id": "\d+"})
-     * @Security("has_role('ROLE_USER')")
      */
     public function userProfileAction(Request $request, User $user)
     {
         // Le profil d'un utilisateur ne peut être consulter que par l'utilisateur lui même ou par un admin
-        $currentUser = $this->get('security.token_storage')->getToken()->getUser();
+        $currentUser = $this->getUser();
         if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN') && !($user->getId() == $currentUser->getId())) {
             throw $this->createAccessDeniedException();
         }
