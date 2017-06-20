@@ -1531,7 +1531,10 @@ header {
     margin-top: 0;
     margin-bottom: 5px;
 }
-
+#map_canvas {
+    height: 300px;
+    width: auto;
+}
 
 /********************************
  ********************************
@@ -1554,6 +1557,11 @@ header {
     .menu {
         display: none;
         visibility: hidden;
+    }
+
+    #map_canvas {
+        height: 270px;
+        width: auto;
     }
 
     .divMenu2 {
@@ -1917,34 +1925,44 @@ header {
         height: 60px;
 
     }
+    .rechgeneral .imgEspece2 {
+        width: 60px;
+        height: 60px;
+
+    }
+    .rechgeneral .lienRech {
+        font-size: 18px;
+    }
+    .lienRech:hover {
+        font-size: 18px;
+    }
 
     /**** Element du cadre des observations ****/
     .rechgeneral .divImgEsp {
-        margin-left: -15px;
-        padding: 0;
-        margin-bottom: 28px
-    }
-    .rechgeneral .divImgEsp::before{
-        width: 60px;
-        height: 60px;
         position: absolute;
-        right: 0;
-        margin-top: -23%;
+        left: 80%;
+        margin-top: 0%;
     }
     .rechgeneral .card-block {
         padding-top: 20px;
         padding-bottom: 5px;
         margin-top: 7px;
+        margin-right: 5%;
     }
     .rechgeneral .imgCardBlock {
         font-size: 11px;
-        padding-left: 55px;
+        padding-left: 45px;
+        margin-bottom: 10px;
     }
     .rechgeneral .divDateObserv {
         font-size: 11px;
+        text-align: center;
+        padding-bottom: 10px;
     }
     .rechgeneral .divDepartObserv {
         font-size: 11px;
+        text-align: center;
+        padding-bottom: 10px;
     }
 
     #mlfond {
@@ -2433,6 +2451,41 @@ header {
     .registergeneral .divforminscire {
         margin-top:55%
     }
+
+    .rechgeneral .lienRech {
+        font-size: 18px;
+    }
+    .lienRech:hover {
+        font-size: 18px;
+    }
+
+    /**** Element du cadre des observations ****/
+    .rechgeneral .divImgEsp {
+        position: absolute;
+        left: 80%;
+        margin-top: 0%;
+    }
+    .rechgeneral .card-block {
+        padding-top: 20px;
+        padding-bottom: 5px;
+        margin-top: 7px;
+        margin-right: 10%;
+    }
+    .rechgeneral .imgCardBlock {
+        font-size: 11px;
+        padding-left: 45px;
+        margin-bottom: 10px;
+    }
+    .rechgeneral .divDateObserv {
+        font-size: 11px;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .rechgeneral .divDepartObserv {
+        font-size: 11px;
+        text-align: center;
+        padding-bottom: 10px;
+    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991px){
@@ -2802,6 +2855,52 @@ header {
     .registergeneral .titreCadre {
         margin-left: 33%;
     }
+
+    .rechgeneral .lienRech {
+        font-size: 18px;
+    }
+    .lienRech:hover {
+        font-size: 18px;
+    }
+
+    .rechgeneral .titreCadre {
+        margin-left: 33%;
+    }
+    .rechBirdImg {
+        margin-left: 10%;
+    }
+    /**** Element du cadre des observations ****/
+    .rechgeneral .divImgEsp {
+        position: absolute;
+        left: 75%;
+        margin-top: -4%;
+    }
+    .rechgeneral .card-block {
+        padding-top: 20px;
+        padding-bottom: 5px;
+        margin-top: 7px;
+        margin-right: 10%;
+    }
+    .rechgeneral .imgCardBlock {
+        font-size: 11px;
+        padding-left: 45px;
+        margin-bottom: 10px;
+    }
+    .rechgeneral .divDateObserv {
+        font-size: 15px;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .rechgeneral .divDepartObserv {
+        font-size: 15px;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .rechgeneral .imgEspece .imgEspece2 {
+        height: 90px;
+        width: 90px;
+    }
+
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1280px) {
