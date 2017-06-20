@@ -251,6 +251,9 @@ header {
     /* espace entre les boutons*/
     margin:0 0 6px 0;
 }
+.menuB:hover {
+    margin:0 0 6px 0;
+}
 .menuB a, a:hover, a:focus {
     font-family: "Titillium Web";
     font-weight: 700;
@@ -967,7 +970,8 @@ header {
 }
 .rechgeneral .blocText {
     margin-top: 47px;
-    padding: 0;
+
+    padding: 15px;
     background: #ffffff;
     background: rgba(255, 255, 255, .65);
 }
@@ -1069,6 +1073,7 @@ header {
     padding: 0;
     margin-bottom: 28px
 }
+
 .rechgeneral .card-block {
     padding-top: 20px;
     padding-bottom: 5px;
@@ -1448,12 +1453,16 @@ header {
     color:white;
     border-bottom: 2px solid white;
 }
-#modalLogin a, a:hover{
+
+.modalLoginlien {
+    font-size: 12px;
     text-decoration: none;
     color: white;
-    font-size: 12px;
-    margin:0;
 }
+.modalLoginlien:hover {
+    color: white;
+}
+
 
 /*
     Icone Hamburger
@@ -1500,23 +1509,30 @@ header {
     background: #00695c;
     position: absolute;
     text-align: center;
-    font-size: 12px;
     top: 0;
     display: none;
     visibility: hidden;
 }
-.menu2 a, a:hover {
+.menu2 >a:hover {
     color: #FFFFFF;
-    font-size: 18px;
     font-weight: 700;
     font-family: "Titillium Web";
     text-decoration: none;
+
 }
 .menu2 li {
     color: #FFFFFF;
     padding-top: 30px;
     padding-bottom: 30px;
+    font-size: 18px;
 }
+
+.btn-floating {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+
 /********************************
  ********************************
  **   LES DIFFERENTS MEDIAS    **
@@ -1890,22 +1906,6 @@ header {
         font-size: 13px;
         padding-top: 20px;
     }
-    .aogeneral .blocText {
-        margin-top: 47px;
-        padding: 0;
-        background: #ffffff;
-        background: rgba(255, 255, 255, .65);
-    }
-    .aogeneral .titreCadre {
-        margin-top: -9%;
-        margin-bottom: 20px;
-        margin-left: 20%;
-        height:60px;
-        width: 200px;
-        font-family: Amiko;
-        font-size: 13px;
-        padding-top: 20px;
-    }
     .rechgeneral .formFamily {
         margin-left: 25%;
     }
@@ -1915,12 +1915,21 @@ header {
     .rechgeneral .imgEspece {
         width: 60px;
         height: 60px;
+
     }
+
     /**** Element du cadre des observations ****/
     .rechgeneral .divImgEsp {
         margin-left: -15px;
         padding: 0;
         margin-bottom: 28px
+    }
+    .rechgeneral .divImgEsp::before{
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        right: 0;
+        margin-top: -23%;
     }
     .rechgeneral .card-block {
         padding-top: 20px;
@@ -2229,7 +2238,7 @@ header {
     .ccmgeneral .titreCadre {
         margin-top: -6%;
         margin-bottom: 20px;
-        margin-left: 40%;
+        margin-left: 36%;
         height:60px;
         font-family: Amiko;
         font-size: 15px;

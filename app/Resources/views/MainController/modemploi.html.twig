@@ -28,7 +28,7 @@
         </ul>
     </div>
     <!-- /.END MENU2 MOBILE -->
-    <!-- POPUP LOGIN-->
+    <!-- Modal Login -->
     {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
         <!--Modal: Login Form-->
         <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -51,8 +51,8 @@
                     <!--Footer-->
                     <div class="modal-footer">
                         <div class="options text-md-center mt-1  white-text" style="width: 100%">
-                            <p><a href="{{ path('fos_user_registration_register') }}">Pas encore membre ? S'enregistrer</a></p>
-                            <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}">Mot de passe ?</a></p>
+                            <p><a href="{{ path('fos_user_registration_register') }}" class="modalLoginlien">Pas encore membre? S'enregistrer</a></p>
+                            <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}" class="modalLoginlien">Mot de passe?</a></p>
                         </div>
 
                     </div>
@@ -62,7 +62,7 @@
         </div>
         <!--Modal: Login Form-->
     {% endif %}
-    <!-- FIN POPUP LOGIN -->
+    <!-- ./END Modal Login -->
     <div class="container container-fluid ccmgeneral" id="top-section" style="position: relative;margin-bottom: 0%">
         {{ include("header.html.twig") }}
         <div class="container contGen">

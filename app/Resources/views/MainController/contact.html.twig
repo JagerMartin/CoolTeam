@@ -14,17 +14,20 @@
             <i class="fa fa-arrow-up"></i>
         </a>
     </div>
-
+    <!-- MENU2 MOBILE -->
     <div class="menu2">
+
         <ul>
-            <a href="{{ path('home') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal lighten-3 menuB textCourt"><li>ACCUEIL</li></a>
-            <a href="{{ path('association') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal lighten-2 menuB textCourt" ><li>L' ASSOCIATION</li></a>
-            <a href="{{ path('modeemploi') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal menuB textlong"><li>COMMENT CA <br>MARCHE ?</li></a>
-            <a href="{{ path('app_search') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-1 menuB textcourt"><li>RECHERCHER</li></a>
-            <a href="{{ path('apprendreObserver') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-3 menuB textlong"><li>APPRENDRE <br>A OBSERVER</li></a>
-            <a href="{{ path('contact') }}" style="font-family: Titillium Web; font-weight: 700;font-size: 13px;" class="btn btn-default teal darken-4 menuB textcourt"><li>CONTACT</li></a>
+            <a class="cross"><li class="licross"><i class="fa fa-close"></i> FERMER</li></a>
+            <a href="{{ path('home') }}" ><li class="teal lighten-3 ">ACCUEIL</li></a>
+            <a href="{{ path('association') }}" ><li class="teal lighten-2">L' ASSOCIATION</li></a>
+            <a href="{{ path('modeemploi') }}" ><li class="teal">COMMENT CA MARCHE ?</li></a>
+            <a href="{{ path('app_search') }}" ><li class="teal darken-1">RECHERCHER</li></a>
+            <a href="{{ path('apprendreObserver') }}" ><li class="teal darken-3">APPRENDRE A OBSERVER</li></a>
+            <a href="{{ path('contact') }}"  ><li class="teal darken-4">CONTACT</li></a>
         </ul>
     </div>
+    <!-- /.END MENU2 MOBILE -->
     <!-- Modal Login -->
     {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
         <!--Modal: Login Form-->
@@ -48,8 +51,8 @@
                     <!--Footer-->
                     <div class="modal-footer">
                         <div class="options text-md-center mt-1  white-text" style="width: 100%">
-                            <p><a href="{{ path('fos_user_registration_register') }}">Pas encore membre? S'enregistrer</a></p>
-                            <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}">Mot de passe?</a></p>
+                            <p><a href="{{ path('fos_user_registration_register') }}" class="modalLoginlien">Pas encore membre? S'enregistrer</a></p>
+                            <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}" class="modalLoginlien">Mot de passe?</a></p>
                         </div>
 
                     </div>
