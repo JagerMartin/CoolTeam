@@ -396,7 +396,7 @@
 							<div class="col-6" style="padding-left:12%">
                                 {% for picture in observation.pictures %}
                                     {% if loop.first %}
-										<img src="../{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ picture.imageName }}" class="rounded-circle daImg"/>
+										<img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}" alt="{{ picture.imageName }}" class="rounded-circle daImg"/>
                                     {% endif %}
                                 {% else %}
 									<img src="{{ absolute_url(asset('img/no-photos.png')) }}" alt="Avatar vide" class="rounded-circle daImg">
