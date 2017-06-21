@@ -326,7 +326,13 @@
 							<div class="row">
 								<div class="col-1 sliderTitre"></div>
 								<div class="col-6  sliderTitre">
-									<h3>{{ observation.taxref.vernacularName }}</h3>
+									<h3>
+										{% if observation.taxref.vernacularName|length > 0 %}
+											{{ observation.taxref.vernacularName }}
+										{% else %}
+                                            {{ observation.taxref.lbName }}
+										{% endif %}
+									</h3>
 								</div>
 							</div>
 							<div class="row">
@@ -339,16 +345,24 @@
 									<ul>
 										<li>Ordre: </li>
 										<li>Famille: </li>
-										<li>Nom Anglais: </li>
-										<li>Découvert par: </li>
+										{% if observation.taxref.engVernacularName|length > 0 %}
+											<li>Nom Anglais: </li>
+										{% endif %}
+                    					{% if observation.taxref.lbAuthor|length > 0 %}
+											<li>Découvert par: </li>
+                                        {% endif %}
 									</ul>
 								</div>
 								<div class="col-3 offset-1 sliderListe2">
 									<ul>
 										<li>{{ observation.taxref.order }}</li>
 										<li>{{ observation.taxref.family }}</li>
-										<li>{{ observation.taxref.engVernacularName }}</li>
-										<li>{{ observation.taxref.lbAuthor }}</li>
+                    					{% if observation.taxref.engVernacularName|length > 0 %}
+											<li>{{ observation.taxref.engVernacularName }}</li>
+                                        {% endif %}
+                    					{% if observation.taxref.lbAuthor|length > 0 %}
+											<li>{{ observation.taxref.lbAuthor }}</li>
+                                        {% endif %}
 									</ul>
 								</div>
 							</div>
