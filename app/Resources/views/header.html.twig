@@ -22,7 +22,7 @@
                         <a href="{{ path('dashboard') }}" title="Tableau de bord" style="color: white;"><img src="{{ asset('img/B.png') }}" id="iconeB2" /></a>
                         |
                         {% if is_granted("ROLE_NATURALIST") %}
-                            <a href="{{ path('app_observations_validate' }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenu" aria-hidden="true"></i></a>
+                            <a href="{{ path('app_observations_validate') }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenu" aria-hidden="true"></i></a>
                         {% else %}
                             <a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" title="Mon profil" style="color: white;"><i class="fa fa-user faUserMenu" aria-hidden="true"></i></a>
                         {% endif %}
@@ -48,7 +48,7 @@
                         <a href="{{ path('dashboard') }}" title="Tableau de bord" style="color: white;"><img src="{{ asset('img/B.png') }}" id="iconeMobileB" /></a>
                         |
                         {% if is_granted("ROLE_NATURALIST") %}
-                            <a href="{{ path('app_observations_validate' }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenuMobile" aria-hidden="true"></i></a>
+                            <a href="{{ path('app_observations_validate') }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenuMobile" aria-hidden="true"></i></a>
                         {% else %}
                             <a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" title="Mon profil" style="color: white;"><i class="fa fa-user faUserMenuMobile" aria-hidden="true"></i></a>
                         {% endif %}
