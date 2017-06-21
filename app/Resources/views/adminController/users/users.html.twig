@@ -1,0 +1,180 @@
+{% extends ':adminController/dashboard:dashboardbase.html.twig'%}
+{% block title %}Gestion des Utilisateurs - {{ parent() }}{% endblock %}
+
+{% block body %}
+    {% block container %}
+<div class="container-fluid" id="listUsers">
+    <!-- Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header" style="font-size: 25px;font-weight: 600;color: #ffffff;text-transform: uppercase">
+                <i class="fa fa-group"></i> Gestion des utilisateurs
+            </h1>
+        </div>
+    </div>
+    <!-- Page messages d'erreur -->
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2" >
+            {% for message in app.session.flashbag.get('info') %}
+                <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+            {% endfor %}
+            {% for message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Filtre utilisateurs -->
+    <div class="row" >
+        {{ render(controller(
+        'AppBundle:User:indexUserMenu',
+        { 'filter': filter }
+        )) }}
+    </div>
+    <hr>
+    <!-- Liste utilisateurs -->
+    <div class="row">
+        <label class="checkbox-inline"><input type="checkbox" value="" id="selectAll">Tout sélectionner</label>
+        <label class="checkbox-inline"><a href="{{ path('admin_user_list') }}" id="disableLink">Tout désactiver</a></label>
+        <label class="checkbox-inline"><a href="{{ path('admin_user_list') }}" id="enableLink">Tout réactiver</a></label>
+        <hr>
+        <table class="table table-striped" id="usersTable">
+            <tr>
+                <th></th>
+                <th>Date</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Contacter</th>
+                <th>Action</th>
+            </tr>
+            {% for user in usersList %}
+                <tr id="{{ user.id }}" {% if not user.enabled %}class="disabled"{% endif %}>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>
+                        {{ user.registrationDate|date('d/m/Y') }}
+                    </td>
+                    <td>
+                        {{ user.firstName }} {{ user.lastName }}
+                    </td>
+                    <td>
+                        {{ user.email }}
+                    </td>
+                    <td>
+                        {% if 'ROLE_SUPER_ADMIN' in user.roles %}
+                            Administrateur
+                        {% elseif 'ROLE_ADMINISTRATIF' in user.roles %}
+                            Administratif
+                        {% elseif 'ROLE_NATURALIST' in user.roles %}
+                            Naturaliste
+                        {% elseif 'ROLE_OBSERVER' in user.roles %}
+                            <a href="{{ path('admin_user_promote_naturalist', {'id': user.id}) }}"><i class="fa fa-caret-square-o-up fa-lg" aria-hidden="true"></i></a> Observateur
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="mailto:{{ user.email }}" style="font-size: 25px"><i class="fa fa-envelope"></i></a>
+                    </td>
+                    <td>
+                        <a href="{{ path('admin_user_profile', {'id': user.id}) }}" style="font-size: 25px"><i class="fa fa-eye"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>
+                        Aucun résultat
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <!-- Pagination -->
+        {% if nbPageTotal > 1 %}
+            <div class="text-center">
+                <ul class="pagination">
+                    {% for p in range(1, nbPageTotal) %}
+                        <li{% if p == page %} class="active"{% endif %}>
+                            <a href="{{ path('admin_user_list', {'filter': filter, 'page': p}) }}">{{ p }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</div>
+    {% endblock %}
+{% endblock %}
+
+{% block monscript %}
+    <script>
+        $(function(){
+            // ===========================================
+            //       COCHER TOUTES LES CHECKBOXS
+            // ===========================================
+            $('#selectAll').change(function(){
+                if(!$(this).prop('checked')){
+                    $(':checkbox').prop('checked', false);
+                } else {
+                    $(':checkbox').prop('checked',true);
+                }
+            });
+            // ===========================================
+            //       DESACTIVER USERS SELECTIONNES
+            // ===========================================
+            $('#disableLink').click(function(e){
+                e.preventDefault();
+                var checkedIDs = getCheckedIDs();
+                AjaxChangeUserStatus(checkedIDs, 0);
+            });
+            // ===========================================
+            //       ACTIVER USERS SELECTIONNES
+            // ===========================================
+            $('#enableLink').click(function(e){
+                e.preventDefault();
+                var checkedIDs = getCheckedIDs();
+                AjaxChangeUserStatus(checkedIDs, 1);
+            });
+            // ============================================================
+            //   RECUPERER LES ID DES USERS DONT LA CHECKBOX EST COCHEE
+            // ============================================================
+            function getCheckedIDs(){
+                var checkedIDs = [];
+                $('#usersTable :checkbox').each(function(){
+                    if($(this).prop('checked')){
+                        checkedIDs.push($(this).parent().parent().attr('id'));
+                    }
+                });
+                return checkedIDs;
+            }
+            // ================================================================================
+            //   REQUETE AJAX => CHANGER ACTIVATION POUR TOUS les IDs utilisateurs du tableau
+            // ================================================================================
+            function AjaxChangeUserStatus(IDs, enabled){
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('admin_user_status') }}',
+                    dataType: "json",
+                    data: 'IDs='+JSON.stringify(IDs)+'&enabled='+enabled
+                })
+                    .done(function () {
+                        changeUsersClass(IDs, enabled);
+                        $(':checkbox').prop('checked', false);
+                    })
+                    .fail(function () {
+                        alert('Les utilisateurs demandés n\'ont pas pu être désactivés.');
+                    });
+            }
+            // ================================================================================
+            //   MISE A JOUR DE L'APPARENCE DES LIGNES (activé/désactivé) APRES EXECUTION AJAX
+            // ================================================================================
+            function changeUsersClass(IDs, enabled){
+                IDs.forEach(function(entry){
+                    if(enabled === 1){
+                        $('#'+entry).removeClass('disabled');
+                    } else {
+                        $('#'+entry).addClass('disabled');
+                    }
+                })
+            }
+        });
+    </script>
+{% endblock %}

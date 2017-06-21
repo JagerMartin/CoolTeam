@@ -18,7 +18,10 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            new SC\DatetimepickerBundle\SCDatetimepickerBundle(),
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

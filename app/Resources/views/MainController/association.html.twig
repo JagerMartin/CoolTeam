@@ -1,0 +1,213 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}{{ parent() }} - L'Association{% endblock %}
+
+{% block body %}
+<body id="assocfond">
+    <!-- Bouton qui permet de remonter en haut de page -->
+    <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+        <a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
+            <i class="fa fa-arrow-up"></i>
+        </a>
+    </div>
+    <!-- MENU2 MOBILE -->
+    <div class="menu2">
+
+        <ul>
+            <a class="cross"><li class="licross"><i class="fa fa-close"></i> FERMER</li></a>
+            <a href="{{ path('home') }}" ><li class="teal lighten-3 ">ACCUEIL</li></a>
+            <a href="{{ path('association') }}" ><li class="teal lighten-2">L' ASSOCIATION</li></a>
+            <a href="{{ path('modeemploi') }}" ><li class="teal">COMMENT CA MARCHE ?</li></a>
+            <a href="{{ path('app_search') }}" ><li class="teal darken-1">RECHERCHER</li></a>
+            <a href="{{ path('apprendreObserver') }}" ><li class="teal darken-3">APPRENDRE A OBSERVER</li></a>
+            <a href="{{ path('contact') }}"  ><li class="teal darken-4">CONTACT</li></a>
+        </ul>
+    </div>
+    <!-- /.END MENU2 MOBILE -->
+    <!-- Modal Login -->
+    {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+        <!--Modal: Login Form-->
+        <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog cascading-modal" role="document">
+                <!--Content-->
+                <div class="modal-content teal darken-3" >
+                    <!--Header-->
+                    <div class="modal-header white-text">
+                        <h4 class="title"><button type="button" class="close waves-effect waves-light white-text" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                            Se connecter</h4>
+                    </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+                        {{ render(controller('FOSUserBundle:Security:login')) }}
+                    </div>
+
+                    <!--Footer-->
+                    <div class="modal-footer">
+                        <div class="options text-md-center mt-1  white-text" style="width: 100%">
+                            <p><a href="{{ path('fos_user_registration_register') }}" class="modalLoginlien">Pas encore membre? S'enregistrer</a></p>
+                            <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}" class="modalLoginlien">Mot de passe?</a></p>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Content -->
+            </div>
+        </div>
+        <!--Modal: Login Form-->
+    {% endif %}
+    <!-- ./END Modal Login -->
+    <div class="container container-fluid assocgeneral" id="top-section" style="position: relative;margin-bottom: 0%">
+        {{ include("header.html.twig") }}
+        <div class="container contGen">
+            <!-- image du piou -->
+            <img src="{{ asset('img/association/assbird.png') }}" class="img-fluid assBirdImg" >
+            <div class="row">
+                <!-- MENU Général gauche-->
+                <div class="col-lg-2 col-xl-2 hidden-sm-down hidden-md-down" style="margin: 0;padding: 0;">
+                    {{ include('menu.html.twig') }}
+                </div>
+                <!-- Bloc texte à côté du menu principal-->
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12" style="margin: 0;">
+                    <div class="row">
+                        <!-- Bloc Texte -->
+                        <div class="col blocText">
+                            <!-- Titre du cadre -->
+                            <div class="col-xl-3 offset-xl-4 col-lg-3 offset-lg-5 col-md-3 col-sm-3 text-center z-depth-2 titreCadre">L'ASSOCIATION</div>
+                            <!-- les différents textes-->
+                                    <!--Titre l'association-->
+                                    <h4 class="card-title collapse-title" id="assTitreH4">L'association
+                                         <a class="btn-floating btn-small teal darken-3 myBtnFloating"  id="collapseAssoButton" data-toggle="collapse" data-target="#collapseAsso" aria-expanded="false" aria-controls="collapseAsso">
+                                            <i class="fa fa-plus" id="collapseAssoPlus"></i>
+                                            <i class="fa fa-minus" id="collapseAssoMinus"></i>
+                                         </a>
+                                    </h4>
+                                    <div class="collapse" id="collapseAsso">
+                                    <!--Paragraphe 1-->
+                                    <p class="card-text">
+                                        L’association Nos Amis Les Oiseaux a été créée en 2010 et regroupe aujourd’hui plus de 1200 passionnés d’ornithologie
+                                        qui œuvrent chaque jour pour la protection et la préservation des espèces.
+                                    </p>
+                                    <!--Paragraphe 2-->
+                                    <p class="card-text">
+                                        L’association NAO a été fondée par Michel Dujardin, actuel président, vétérinaire
+                                        et directeur d’un centre de soins de la faune sauvage.
+                                    </p>
+                                    <!--Paragraphe 3-->
+                                    <p class="card-text">
+                                        Grâce à son réseau d’adhérents et de bénévoles,
+                                        l’association NAO est activement engagée dans plusieurs actions concrètes :
+                                    </p>
+                                    <!-- Liste -->
+                                       <ul class="ulbloctext">
+                                            <li class="libloctext">
+                                                Collecte de fonds pour la construction de refuges,
+                                            </li>
+                                            <li class="libloctext">
+                                                Accueil dans des centres de soins et de sauvegarde d’oiseaux blessés, tombés du nid ou mazoutés,
+                                            </li>
+                                            <li class="libloctext">
+                                                Conseil auprès des collectivités régionales et locales, notamment pour la préservation du patrimoine naturel lors de projets d’infrastructures,
+                                            </li>
+                                            <li class="libloctext">
+                                                Signalement d’infractions relatives à la protection de la nature et de l’environnement,
+                                            </li>
+                                            <li class="libloctext">
+                                                Education et sensibilisation : organisation d’ateliers, de visites guidées, de conférences et d’expositions,
+                                            </li>
+                                            <li class="libloctext">
+                                                Participation à des programmes de recherche nationaux et internationaux.
+                                            </li>
+                                        </ul>
+                                    <!-- Bouton -->
+                                    <p class="card-text pbouton">
+                                        <a href="http://helloasso.com" target="_blank" class="btn btn-primary teal darken-3">DEVENIR MEMBRE</a>
+                                    </p>
+                                </div>
+                                    <!--Titre le programme de recherche-->
+                                    <h4 class="card-title collapse-title" id="assTitre2H4">Le programme de recherche
+                                        <a class="btn-floating btn-small teal darken-3"  id="collapseProgRechButton" data-toggle="collapse" data-target="#collapseProgRech" aria-expanded="false" aria-controls="collapseProgRech">
+                                            <i class="fa fa-plus" id="collapseAssoPlus"></i>
+                                            <i class="fa fa-minus" id="collapseAssoMinus"></i>
+                                        </a>
+                                    </h4>
+                                    <div class="collapse" id="collapseProgRech">
+                                    <p class="card-text" style="padding-left: 10%">
+                                        Aujourd’hui, pour franchir une nouvelle étape, l’association NAO a relevé
+                                        le défi de collecter des observations à grande échelle afin d’alimenter activement
+                                        un programme de recherche du CNRS qui vise à étudier les effets du climat,
+                                        de l’urbanisation et de l’agriculture sur la biodiversité.
+                                    </p>
+                                    <p class="card-text" style="padding-left: 10%">
+                                        L’enjeu de ce programme inédit est de vérifier et de mettre en évidence,
+                                        de manière incontestable, les menaces actuelles sur l’équilibre de notre environnement naturel,
+                                        afin de pouvoir exercer une influence significative sur les politiques environnementales des années
+                                        à venir, au niveau national et international.
+                                    </p>
+                                    <p class="card-text" style="padding-left: 10%">
+                                        Grâce à notre site participatif, chaque observation que vous nous transmettez est vitale pour
+                                        la réussite de ce défi ! Alors aidez-nous dès maintenant à protéger les oiseaux et la nature !
+                                    </p>
+                                    <p class="card-text pbouton" style="margin-top: 20px;margin-bottom: 40px">
+                                        <a href="{{ path('modeemploi') }}" class="btn btn-primary teal darken-3">COMMENT CA MARCHE</a>
+                                    </p>
+                                </div>
+                                    <!--Titre Nos partenaires-->
+                                    <h4 class="card-title collapse-title" id="assTitre3H4">Nos partenaires
+                                        <a class="btn-floating btn-small teal darken-3" id="collapsePartenaires" data-toggle="collapse" data-target="#collapsePart" aria-expanded="false" aria-controls="collapsePart">
+                                            <i class="fa fa-plus" id="collapseAssoPlus"></i>
+                                            <i class="fa fa-minus" id="collapseAssoMinus"></i>
+                                        </a>
+                                    </h4>
+                                    <div class="collapse" id="collapsePart">
+                                            <div class="container" style="margin-bottom: 65px;">
+                                                <div class="row">
+                                                    <!-- Ligue -->
+                                                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 ligue">
+                                                        <img src="{{ asset('img/homepage/partenaires/1.png') }}" class="img-fluid assImgPartenaires"  alt="LPO">
+
+                                                        <p class="text-center">
+                                                            Ligue pour la protection <br>des oiseaux
+                                                        </p>
+                                                    </div>
+                                                    <!-- Museum -->
+                                                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 ligue" style="text-align: center">
+                                                        <img src="{{ asset('img/homepage/partenaires/2.png') }}" class="assImgPartenaires" id="MNHM" alt="MNHN">
+                                                        <p class="text-center">
+                                                            Museum National <br> d'histoire naturelle
+                                                        </p>
+                                                    </div>
+                                                    <!-- Conservatoire du littoral -->
+                                                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 ligue">
+                                                        <img src="{{ asset('img/homepage/partenaires/3.png') }}" class="img-fluid assImgPartenaires" id="conservLitt" style="width: 40%" alt="Conservatoire du littoral">
+                                                        <p class="text-center">Conservatiore du<br>littoral</p>
+                                                    </div>
+                                                    <!-- CNRS -->
+                                                    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                        <img src="{{ asset('img/homepage/partenaires/4.png') }}" class="img-fluid" id="CNRS" alt="CNRS">
+                                                        <p class="text-center">
+                                                            Centre National de <br>la Recherche Scientifique
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                    </div>
+                        </div>
+                        <!--/ End Block texte -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block footer %}
+        {{ include('footer.html.twig') }}
+    {% endblock %}
+
+{% endblock %}

@@ -1,13 +1,80 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+        <title>{% block title %}{% endblock %} - Nos amis les oiseaux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+      <link rel="icon" type="image/gif" href="{{ asset('img/favicon2.gif') }}" />
+      <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
+    {% block stylesheets %}
+        <!-- Font Amiko -->
+        <link href="https://fonts.googleapis.com/css?family=Amiko" rel="stylesheet">
+        <!-- Font Roboto -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <!-- Font Titillium web -->
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('css/global/font-awesome/css/font-awesome.min.css') }}">
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset('css/global/bootstrap.min.css') }}" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="{{ asset('css/global/mdb.min.css') }}" rel="stylesheet">
+        <!-- Preloader -->
+        <link href="{{ asset('css/global/preloader.css') }}" rel="stylesheet">
+        <!-- Footer -->
+        <link href="{{ asset('css/global/footer.css') }}" rel="stylesheet">
+
+    {% endblock %}
+
+  </head>
+
+    {% block body %}{% block container %}{% endblock %}{% block footer %}{% endblock %}{% endblock %}
+    {% block sidebar %}{% endblock %}
+
+    <!-- NewsletterModal -->
+    <div class="modal fade" id="newsletterModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="newsletterModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <p id="newsletterModalBody"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <!-- JQuery -->
+        <script type="text/javascript" src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+        <!-- JQUERY UI POUR AUTOCOMPLETION -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="{{ asset('js/tether.min.js') }}"></script>
+
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
+        {% block scriptSearch %} {% endblock %}
+        {% block monScript %} {% endblock %}
+    {% endblock %}
+</body>
+
 </html>

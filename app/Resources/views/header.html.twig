@@ -1,0 +1,81 @@
+<!-- HEADER-->
+<header class="container-fluid">
+    <!-- Bouton hamburger -->
+  <!--  <a href="#" data-activates="slide-out" class="btn btn-rounded button-collapse teal darken-3"><i class="fa fa-bars"></i></a>
+      <div class="" style="background-color: #0b51c5; top: 70px;right: 0; width: 60px;height: 50px;position: absolute;">
+        <img src="{{ asset('img/B-mobile-1.png') }}" />
+    </div>-->
+
+    <div class="divMenu2">
+        <button class="hamburger" style="background-color: #00695C">&#9776;</button>
+    </div>
+
+    <div class="row">
+        <!-- Logo -->
+        <div class="col logo"></div>
+        <!-- S'inscrire | S'identifier -->
+        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+            <!--BirdyGo Desktop dépliant -->
+            <div class="menuBirdygo2">
+                <div class="row">
+                    <!-- Image BirdyGo -->
+                    <div class="margeImageB2">
+                        <img src="{{ asset('img/birdygo.png') }}"  id="MenuImgBirdyGo2"/>
+                    </div>
+                    <!-- Icones du menu -->
+                    <div id="itembirdygo2">
+                        <a href="{{ path('dashboard') }}" title="Tableau de bord" style="color: white;"><img src="{{ asset('img/B.png') }}" id="iconeB2" /></a>
+                        |
+                        {% if is_granted("ROLE_NATURALIST") %}
+                            <a href="{{ path('app_observation',{'id': app.user.id }) }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenu" aria-hidden="true"></i></a>
+                        {% else %}
+                            <a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" title="Mon profil" style="color: white;"><i class="fa fa-user faUserMenu" aria-hidden="true"></i></a>
+                        {% endif %}
+                        |
+                        <a href="{{ path('fos_user_security_logout') }}" title="Se deconnecter" style="color: white;"><i class="fa fa-power-off faPoweroffMenu" style="" aria-hidden="true"></i></a>
+                    </div>
+                    <!-- Bouton -->
+                    <div id="divbutton2">
+                        <a href="#" style="font-size: 18px"><i id="arrowbirdygo2" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- End BirdyGo Desktop -->
+            <!--BirdyGo Mobile  -->
+            <div class="menuMobileBirdygo">
+                <div class="row">
+                    <!-- Image BirdyGo -->
+                    <div class="margeImageMobileB">
+                        <img src="{{ asset('img/B-mobile-1.png') }}"  id="MenuImgBirdyGoMobile"/>
+                    </div>
+                    <!-- Icones du menu -->
+                    <div id="itembirdygoMobile">
+                        <a href="{{ path('dashboard') }}" title="Tableau de bord" style="color: white;"><img src="{{ asset('img/B.png') }}" id="iconeMobileB" /></a>
+                        |
+                        {% if is_granted("ROLE_NATURALIST") %}
+                            <a href="{{ path('app_observation',{'id': app.user.id }) }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenuMobile" aria-hidden="true"></i></a>
+                        {% else %}
+                            <a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" title="Mon profil" style="color: white;"><i class="fa fa-user faUserMenuMobile" aria-hidden="true"></i></a>
+                        {% endif %}
+                        |
+                        <a href="{{ path('fos_user_security_logout') }}" title="Se deconnecter" style="color: white;"><i class="fa fa-power-off faPoweroffMenu" style="" aria-hidden="true"></i></a>
+                    </div>
+                    <!-- Bouton -->
+                    <div id="divbuttonMobile">
+                        <a href="#" style="font-size: 18px"><i id="arrowbirdygoMobile" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- End BirdyGo Mobile -->
+        {% else %}
+            <div class="col-xl col-lg col-md col-sm-12 sisi">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="{{ path('fos_user_registration_register') }}" id="lieninscrire" >S'INSCRIRE</a></li>
+                    <li class="list-inline-item">|</li>
+                    <li class="list-inline-item "><a href="{{ path('fos_user_security_login') }}" id="lienidentifier" data-toggle="modal" data-target="#modalLogin">S'IDENTIFIER</a></li>
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</header>
+<!-- FIN HEADER -->

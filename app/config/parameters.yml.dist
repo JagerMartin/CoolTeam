@@ -11,3 +11,4 @@ parameters:
     mailer_password: mail_password
     secret: fvdfdgbd5bdfg45fg4b5fg4b4fgb54é54454
     locale: fr
+    google_map_api_key: AIzaSyA6jv-xrqUOdmXVq6BnYVYXVWnm0T1wSg4

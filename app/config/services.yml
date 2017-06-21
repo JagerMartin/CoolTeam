@@ -4,6 +4,33 @@ parameters:
     #parameter_name: value
 
 services:
-    #service_name:
-    #    class: AppBundle\Directory\ClassName
-    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    app.reload_taxref_link:
+        class: AppBundle\Utils\ReloadTaxrefLink
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@vich_uploader.templating.helper.uploader_helper"
+
+    app.reload_taxref:
+        class: AppBundle\Utils\ReloadTaxref
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@vich_uploader.templating.helper.uploader_helper"
+
+    app.create_map_with_observations:
+        class: AppBundle\Utils\CreateMapWithObservations
+
+    app.send_contact_mail:
+        class: AppBundle\Utils\SendContactMail
+        arguments:
+            - "@mailer"
+            - "@templating"
+            - "%mailer_user%"
+
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
+
+    app.pictures:
+                class: AppBundle\Utils\Pictures
+                arguments: ['@doctrine.orm.entity_manager']

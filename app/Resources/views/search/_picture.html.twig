@@ -1,0 +1,6 @@
+
+{% if picture is not null %}
+    <img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}" id="idImgEspece" class="rounded-circle {{ imgClass }}" alt="{{ picture.imageName }}" />
+{% else %}
+    <img src="{{ absolute_url(asset('img/no-photos.png')) }}" id="idImgEspece" alt="Avatar vide" class="rounded-circle {{ imgClass }}" />
+{% endif %}

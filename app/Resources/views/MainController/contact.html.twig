@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}{{ parent() }} - Contact{% endblock %}
+
+{% block body %}
+    <body id="contactfond">
+    <!-- Bouton qui permet de remonter en haut de page -->
+    <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+        <a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
+            <i class="fa fa-arrow-up"></i>
+        </a>
+    </div>
+    <!-- MENU2 MOBILE -->
+    <div class="menu2">
+
+        <ul>
+            <a class="cross"><li class="licross"><i class="fa fa-close"></i> FERMER</li></a>
+            <a href="{{ path('home') }}" ><li class="teal lighten-3 ">ACCUEIL</li></a>
+            <a href="{{ path('association') }}" ><li class="teal lighten-2">L' ASSOCIATION</li></a>
+            <a href="{{ path('modeemploi') }}" ><li class="teal">COMMENT CA MARCHE ?</li></a>
+            <a href="{{ path('app_search') }}" ><li class="teal darken-1">RECHERCHER</li></a>
+            <a href="{{ path('apprendreObserver') }}" ><li class="teal darken-3">APPRENDRE A OBSERVER</li></a>
+            <a href="{{ path('contact') }}"  ><li class="teal darken-4">CONTACT</li></a>
+        </ul>
+    </div>
+    <!-- /.END MENU2 MOBILE -->
+    <!-- Modal Login -->
+    {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+        <!--Modal: Login Form-->
+        <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog cascading-modal" role="document">
+                <!--Content-->
+                <div class="modal-content teal darken-3" >
+                    <!--Header-->
+                    <div class="modal-header white-text">
+                        <h4 class="title"><button type="button" class="close waves-effect waves-light white-text" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                            Se connecter</h4>
+                    </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+                        {{ render(controller('FOSUserBundle:Security:login')) }}
+                    </div>
+
+                    <!--Footer-->
+                    <div class="modal-footer">
+                        <div class="options text-md-center mt-1  white-text" style="width: 100%">
+                            <p><a href="{{ path('fos_user_registration_register') }}" class="modalLoginlien">Pas encore membre? S'enregistrer</a></p>
+                            <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}" class="modalLoginlien">Mot de passe?</a></p>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Content -->
+            </div>
+        </div>
+        <!--Modal: Login Form-->
+    {% endif %}
+    <!-- ./END Modal Login -->
+    <div class="container container-fluid contactgeneral" id="top-section" style="position: relative;margin-bottom: 0%">
+        {{ include("header.html.twig") }}
+        <div class="container contGen">
+            <!-- image du piou -->
+            <img src="{{ asset('img/contact/contbird.png') }}" class="contactBirdImg">
+            <div class="row">
+                <!-- MENU Général gauche-->
+                <div class="col-lg-2 col-xl-2 hidden-sm-down hidden-md-down" style="margin: 0;padding: 0;">
+                    {{ include('menu.html.twig') }}
+                </div>
+                <!-- Bloc texte à côté du menu principal-->
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12" style="margin: 0;">
+                    <div class="row">
+                        <!-- Bloc Texte -->
+                        <div class="col-xl-11 offset-xl-1 col-lg-11 offset-lg-1 col-md-12 col-sm-12 blocText">
+                            <!-- Titre du cadre -->
+                            <div class="col-xl-4 offset-xl-4 col-lg-3 offset-lg-5 col-md-4 col-sm-3 text-center z-depth-2 titreCadre" >CONTACTEZ-NOUS !</div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center z-depth-2 cadreInfo">Une Question ? Besoin d'informations sur l'adhésion ou la donation ?</div>
+                            {% for message in app.session.flashbag.get('info') %}
+                                <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+                            {% endfor %}
+
+                            {{ form_start(form) }}
+                            <div class="col-lg-12 col-md-12 text-lg-left">
+                                {{ form_widget(form) }}
+                            </div>
+                            <!-- Bouton -->
+                            <div class="col-lg-12 col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary teal darken-3" formnovalidate>Envoyer</button>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% block footer %}
+        {{ include('footer.html.twig') }}
+    {% endblock %}
+{% endblock %}

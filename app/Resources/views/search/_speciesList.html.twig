@@ -1,0 +1,59 @@
+<div class="row" style="text-align: center">
+    {% for specie in speciesList %}
+        <div class="col-sm-2">
+            <a href="{{ path('app_search') }}" id="{{ specie.lbName }}" class="seeSpecie" style="color: #636c72;font-size: 12px">
+                {{ render(controller(
+                'AppBundle:Search:specieImage',
+                {
+                    'cdName': specie.cdName,
+                    'imgClass': 'imgEspece'
+                }
+                )) }}
+                  <p class="card-text" style="text-align: center;padding-left: 10px;padding-right: 10px"><strong>{{ specie.vernacularName | default(specie.lbname) }}</strong></p></a>
+
+        </div>
+    {% else %}
+    <div class="col-12" style="padding-top: 25px">
+        <p class="text-center">Pas encore d'espèce observée dans cette région.</p>
+    </div>
+    {% endfor %}
+
+
+{% if nbPageTotal is defined %}
+    {% if nbPageTotal > 1 %}
+    <div class="col-12" style="text-align: center; margin-top: 25px">
+            <ul class="pagination pg-teal flex-center">
+                <!--Arrow left-->
+                <li class="page-item">
+                    <a class="page-link waves-effect waves-effect" aria-label="Previous">
+                        <span aria-hidden="true"><font><font>« </font></font></span>
+                        <span class="sr-only"><font><font>Précédent</font></font></span>
+                    </a>
+                </li>
+
+                <!--Numbers-->
+                {% for p in range(1, nbPageTotal) %}
+                    {% if p == page %}
+                        <li class="page-item active">
+                            <a class="page-link waves-effect waves-effect teal darken-2" href="{{ path('app_search') }}">{{ p }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link waves-effect waves-effect" href="{{ path('app_search') }}" style="color: #636c72">{{ p }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                <!--Arrow right-->
+                <li class="page-item">
+                    <a class="page-link waves-effect waves-effect" aria-label="Next">
+                        <span aria-hidden="true"><font><font>» </font></font></span>
+                        <span class="sr-only"><font><font>Suivant</font></font></span>
+                    </a>
+                </li>
+            </ul>
+    </div>
+    {% endif %}
+{% endif %}
+
+</div>

@@ -1,0 +1,157 @@
+<div class="row" style="margin: 0">
+    <div class="col-sm-6">
+        <div class="row" style="margin:0;vertical-align: middle">
+            <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 col-md-8 col-sm-8 offset-sm-1" style="vertical-align: middle">
+                {% if specie.vernacularName|length > 0 %}
+                    <h2>{{ specie.vernacularName }}</h2>
+                {% else %}
+                    <h2>{{ specie.lbName }}</h2>
+                {% endif %}
+
+                <h5>{{ specie.lbName  }}</h5>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm divImgEsp zoom">
+                {{ render(controller(
+                'AppBundle:Search:specieImage',
+                {
+                    'cdName': specie.cdName,
+                    'imgClass': 'imgEspece2'
+                }
+                )) }}
+            </div>
+        </div>
+        <div class="row" style="margin: 0">
+           <div class="col-11 offset-1" >
+               <div class="row" style="padding-bottom: 24px;">
+                   <div class="col-5" style="color: #009688;font-weight: 500;">Ordre :</div>
+                   <div class="col-7" style="text-align: center">{{ specie.order }}</div>
+               </div>
+               <div class="row" style="padding-bottom: 24px;">
+                   <div class="col-5" style="color: #009688;font-weight: 500;">Famille :</div>
+                   <div class="col-7" style="text-align: center">{{ specie.family }}</div>
+               </div>
+               <div class="row" style="padding-bottom: 24px;">
+                   <div class="col-5" style="color: #009688;font-weight: 500;">Découvert par :</div>
+                   <div class="col-7" style="text-align: center">{{ specie.lbAuthor }}</div>
+               </div>
+               <div class="row" style="padding-bottom: 48px;">
+                   <div class="col-5" style="color: #009688;font-weight: 500;">Nom anglais :</div>
+                   {% if specie.engVernacularName|length > 0 %}
+                    <div class="col-7" style="text-align: center">{{ specie.engVernacularName }}</div>
+                   {% else %}
+                   <div class="col-7" style="text-align: center">non référencé</div>
+                   {% endif %}
+               </div>
+           </div>
+        </div>
+    </div>
+    <!-- Google Map -->
+    <div class="col col-md-3 col-sm-6" style="margin:5%;padding: 0" id="map">
+        {{ ivory_google_map(map) }}
+        {{ ivory_google_api([map]) }}
+    </div>
+</div>
+
+<hr>
+<!-- Bouton Déposer une observ + titre-->
+<div class="row" style="margin: 0; padding-bottom: 24px">
+
+    <div class="col-xl-3 offset-xl-2 col-lg-3 offset-lg-2 col-md-12 col-sm-12 text-center">
+        {% if is_granted('ROLE_OBSERVER') or is_granted('ROLE_NATURALIST') or is_granted('ROLE_SUPER_ADMIN')%}
+            <a href="{{ path('app_observation_add', {'cdName': specie.cdName}) }}" class="btn btn-default btn-rounded" style="background-color: #4db6ac"><i class="fa fa-plus"></i> Déposer une observation</a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin" class="btn btn-default btn-rounded" style="background-color: #4db6ac"><i class="fa fa-plus"></i> Déposer une observation</a>
+        {% endif %}
+    </div>
+    <div class="col-xl-2 col-lg-2 col-md-2 col-sm" style="text-align: center; padding-top: 15px">
+        Observations
+    </div>
+</div>
+<!-- ./END Bouton Déposer une observ + titre-->
+
+
+
+<!-- Listing des observations-->
+{% for observation in observationsList %}
+
+<div class="row" style="margin: 0; padding-top: 20px;padding-bottom: 20px;">
+    <div class="col-12">
+        <div class="row" >
+            <div class="col-1 divImgListObserv">
+                {% for picture in observation.pictures %}
+                    {% if loop.first %}
+                        <img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}" alt="{{ picture.imageName }}" class="rounded-circle imgEspece zoom"/>
+                    {% endif %}
+                    {% else %}
+                       <img src="{{ absolute_url(asset('img/no-photos.png')) }}" alt="Avatar vide" class="rounded-circle imgEspece "/>
+                    {% endfor %}
+            </div>
+            <div class="col-xl-11 col-sm-12" style="z-index: 98;position: relative;left: 5%">
+                <div class="card card-block" >
+                    <div class="row" style="padding: 0">
+                        <div class="col-xl-1 col-lg-1 col-md-6 col-sm-6 imgCardBlock">
+                            {{ observation.pictures.count }} photos
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 divDateObserv">
+                            {{ observation.datetime|date('d/m/Y') }} à {{ observation.datetime|date('h') }}:{{ observation.datetime|date('i') }}
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 divDepartObserv"> Département: {{ observation.department }}</div>
+                        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="#map" ><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('app_observation',{'id': observation.id} ) }}" class="lienRech"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
+                        {% else %}
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin" class="lienRech"><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin" class="lienRech"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% else %}
+    <div class="col-12" style="padding-top: 44px">
+        <p class="text-center">Pas encore d'observation pour cette espèce.</p>
+    </div>
+
+</div>
+{% endfor %}
+<!-- ./ END Listing des observations-->
+<!-- Pagination -->
+{% if nbPageTotal is defined %}
+    {% if nbPageTotal > 1 %}
+        <div class="col-12" style="text-align: center">
+            <ul class="pagination pg-teal flex-center">
+                <!--Arrow left-->
+                <li class="page-item">
+                    <a class="page-link waves-effect waves-effect" aria-label="Previous">
+                        <span aria-hidden="true"><font><font>« </font></font></span>
+                        <span class="sr-only"><font><font>Précédent</font></font></span>
+                    </a>
+                </li>
+
+                <!--Numbers-->
+                {% for p in range(1, nbPageTotal) %}
+                    {% if p == page %}
+                        <li class="page-item active">
+                            <a class="page-link waves-effect waves-effect teal darken-2" href="{{ path('app_search') }}">{{ p }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link waves-effect waves-effect" href="{{ path('app_search') }}" style="color: #636c72">{{ p }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                <!--Arrow right-->
+                <li class="page-item">
+                    <a class="page-link waves-effect waves-effect" aria-label="Next">
+                        <span aria-hidden="true"><font><font>» </font></font></span>
+                        <span class="sr-only"><font><font>Suivant</font></font></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
+{% endif %}
+<!-- ./ END Pagination -->

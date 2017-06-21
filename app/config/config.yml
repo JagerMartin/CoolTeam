@@ -70,8 +70,6 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
-    group:
-        group_class: AppBundle\Entity\Group
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
@@ -79,6 +77,8 @@ fos_user:
         confirmation:
             enabled:    true
             template:   FOSUserBundle:Registration:email.txt.twig
+        form:
+            type: AppBundle\Form\RegistrationType
 
 # assetic Configuration
 assetic:
@@ -86,3 +86,61 @@ assetic:
     use_controller: "%kernel.debug%"
     filters:
       cssrewrite: ~
+
+# VichUploader Configuration
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        taxref_file:
+            uri_prefix: ../app/Resources/taxref
+            upload_destination: '%kernel.root_dir%/../app/Resources/taxref'
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        taxref_link_file:
+            uri_prefix: ../app/Resources/taxreflink
+            upload_destination: '%kernel.root_dir%/../app/Resources/taxreflink'
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        observation_picture:
+            uri_prefix: ../web/pictures
+            upload_destination: '%kernel.root_dir%/../web/pictures'
+            namer: vich_uploader.namer_uniqid
+            inject_on_load:     true
+
+        user_profile_photo:
+            uri_prefix: ../web/uploads/profile
+            upload_destination: '%kernel.root_dir%/../web/uploads/profile'
+            namer: vich_uploader.namer_uniqid
+            inject_on_load:     true
+            delete_on_remove:   true
+
+# DateTimePicker Configuration
+sc_datetimepicker:
+    picker: ~
+
+# IvoryGoogleMap Configuration
+ivory_google_map:
+    map:
+        debug: "%kernel.debug%"
+        language: "%locale%"
+        api_key: "%google_map_api_key%"
+
+# Knp Paginator
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: 'KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig'     # sliding pagination controls template
+        sortable: 'KnpPaginatorBundle:Pagination:sortable_link.html.twig' # sort link template
+
+parameters:
+    admin_entry_per_page: 10

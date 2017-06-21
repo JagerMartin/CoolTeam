@@ -1,0 +1,82 @@
+
+.btn {
+    font-family: Roboto;
+    font-size: 15px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+#map_canvas {
+    border: 1px solid #DDD;
+    height: 300px;
+    box-shadow: #AAA 0 0 15px;
+}
+
+.valider:before {
+    content: "\f00c";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+.acorriger:before {
+    content: "\f05a";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
+.confirmDeletionBlock{
+    display: none;
+}
+label, p, input {
+    font-size: 15px;
+    font-family: Roboto;
+}
+.ptitre {
+    font-weight: bold;
+    margin-left: 0;
+    padding-left: 0;
+}
+input[type="text"], input[type="date"] {
+    font-weight: lighter;
+}
+input[type="text"]:focus, input[type="date"]:focus {
+    font-weight: normal;
+}
+.form-group{
+    margin-left: 0;
+}
+#observation_init_datetime{
+    width: 250px;
+}
+#observation_init_observation {
+    width: 90%;
+    height: 150px;
+}
+input[type="checkbox"], input[type="radio"] {
+    margin: 10px;
+}
+
+.zoom {
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: zoom-in;
+}
+
+.zoom:hover,
+.zoom:active,
+.zoom:focus {
+    /**adjust scale to desired size,
+    add browser prefixes**/
+    -ms-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -webkit-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+    position:relative;
+    z-index:100;
+}

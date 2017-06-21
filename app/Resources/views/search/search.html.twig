@@ -1,0 +1,251 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+            <!-- JQUERY UI POUR AUTOCOMPLETION -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+{% endblock %}
+
+{% block title %}{{ parent() }} - Rechercher{% endblock %}
+
+{% block body %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+<body id="rechfond">
+<!-- Bouton qui permet de remonter en haut de page -->
+    <div class="fixed-action-btn smooth-scroll" style="bottom: 45px; right: 24px;">
+    <a href="#top-section" class="btn-floating btn-large teal darken-3 waves-effect waves-light">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+</div>
+
+<!-- MENU2 MOBILE -->
+<div class="menu2">
+
+    <ul>
+        <a class="cross"><li class="licross"><i class="fa fa-close"></i> FERMER</li></a>
+        <a href="{{ path('home') }}" ><li class="teal lighten-3 ">ACCUEIL</li></a>
+        <a href="{{ path('association') }}" ><li class="teal lighten-2">L' ASSOCIATION</li></a>
+        <a href="{{ path('modeemploi') }}" ><li class="teal">COMMENT CA MARCHE ?</li></a>
+        <a href="{{ path('app_search') }}" ><li class="teal darken-1">RECHERCHER</li></a>
+        <a href="{{ path('apprendreObserver') }}" ><li class="teal darken-3">APPRENDRE A OBSERVER</li></a>
+        <a href="{{ path('contact') }}"  ><li class="teal darken-4">CONTACT</li></a>
+    </ul>
+</div>
+<!-- /.END MENU2 MOBILE -->
+<!-- Modal Login -->
+{% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+    <!--Modal: Login Form-->
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content teal darken-3" >
+                <!--Header-->
+                <div class="modal-header white-text">
+                    <h4 class="title"><button type="button" class="close waves-effect waves-light white-text" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">&times;</span>
+                        </button>
+                        Se connecter</h4>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    {{ render(controller('FOSUserBundle:Security:login')) }}
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer">
+                    <div class="options text-md-center mt-1  white-text" style="width: 100%">
+                        <p><a href="{{ path('fos_user_registration_register') }}" class="modalLoginlien">Pas encore membre? S'enregistrer</a></p>
+                        <p>Vous avez oubliez votre <a href="{{ path('fos_user_change_password') }}" class="modalLoginlien">Mot de passe?</a></p>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Content -->
+        </div>
+    </div>
+    <!--Modal: Login Form-->
+{% endif %}
+<!-- ./END Modal Login -->
+
+<!-- PAGE RECHERCHER -->
+    <div id="top-section" class="container container-fluid rechgeneral" style="position: relative;margin-bottom: 0%">
+        {{ include("header.html.twig") }}
+        <div class="container contGen">
+            <!-- image du piou -->
+            <img src="{{ asset('img/search/rechbird.png') }}" class="rechBirdImg">
+
+            <div class="row">
+                <!-- MENU Général gauche-->
+                <div class="col-lg-2 col-xl-2 hidden-sm-down hidden-md-down" style="margin: 0;padding: 0;">
+                    {{ include('menu.html.twig') }}
+                </div>
+                <!-- Bloc texte à côté du menu principal-->
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12" style="margin: 0;">
+                    <div class="row">
+                        <!-- Bloc Texte -->
+                        <div class="col-12 blocText">
+                            <!-- Titre du cadre -->
+                            <div class="col-xl-4 offset-xl-4 col-lg-3 offset-lg-5 col-md-4 col-sm-3 text-center z-depth-2 titreCadre" >RECHERCHER</div>
+                            <!-- MESSAGE INFO OU ERREUR -->
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    {% for message in app.session.flashbag.get('info') %}
+                                        <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+                                    {% endfor %}
+                                    {% for message in app.session.flashbag.get('error') %}
+                                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <!-- ./END MESSAGE INFO OU ERREUR -->
+                            <!-- les différents textes-->
+                            <!--Paragraphe 1-->
+                                <p class="card-text" style="padding-left: 10%; padding-right: 10%;margin-top: 18px;text-align: center">
+                                    Afin de vous aider à identifier ou rechercher un oiseau, veuillez au moins remplir un des champs ci-dessous.
+                                </p>
+                            <!-- FORMULAIRE RECHERCHER -->
+                            <div class="container">
+                                <div class="row" style="margin: 0;text-align: center">
+                                    <div class="input-field col-xl-3 offset-xl-1 col-lg-3 offset-lg-1 col-md col-sm">
+                                        {{ form_row(form.name) }}
+                                    </div>
+                                    <div class="md-form-12 form-sm-12 text-center formFamily">
+                                        {{ form_row(form.family) }}
+                                    </div>
+                                    <div class="md-form-3 form-sm3 offset-1 text-center formDep">
+                                        {{ form_row(form.department) }}
+                                    </div>
+                                </div>
+                                <div class="row" style="text-align: center">
+                                    <div class="col-12">
+                                        <button id="searchBtn" type="submit" class="btn btn-primary btn-rounded teal darken-3" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Recherche en cours..." formnovalidate>Rechercher</button>
+                                        {{ form_end(form)}}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div id="searchView">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- END PAGE RECHERCHER -->
+
+    {% block footer %}
+        {{ include('footer.html.twig') }}
+    {% endblock %}
+
+
+    {% block scriptSearch %}
+    <script src="{{ asset('js/search.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+
+            // ================================================
+            // AUTOCOMPLETION NOM ESPECE
+            // ================================================
+            $('#search_name').autocomplete({
+                source : function(request, response){
+                    var val = $('#search_name').val();
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ path('app_search_autocomplete') }}',
+                        data: 'val='+val,
+
+                        success: function(donnee){
+                            var list = JSON.parse(donnee['list']);
+                            response(list);
+                        }
+
+                    });
+                },
+                minLength: 3
+            });
+
+            // ================================================
+            // REQUETE AJAX RECHERCHE
+            // ================================================
+            var name = "";
+            var family = "";
+            var department = "";
+            var page = 1;
+
+            $('#searchBtn').click(function(e) {
+                e.preventDefault();
+                name = $('#search_name').val();
+                family = $('#search_family').val();
+                department = $('#search_department').val();
+                page = 1;
+
+                triggerSearch();
+                $('#searchBtn').button('loading');
+            });
+
+            function triggerSearch(){
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ path('app_search_refresh') }}',
+                    data: 'name=' + name + '&family=' + family + '&department=' + department + '&page=' + page
+                })
+                    .done(function (data, textStatus, jqXHR) {
+                        if (typeof jqXHR.responseJSON !== 'undefined') {
+                            if (jqXHR.responseJSON.hasOwnProperty('response')) {
+                                $('#searchView').html(jqXHR.responseJSON.response);
+                                initializeListeners();
+                            }
+                        } else {
+                            alert('Error');
+                        }
+                        $('#searchBtn').button('reset');
+                    })
+                    .fail(function () {
+                        $('#searchBtn').button('reset');
+                        alert('Failed');
+                    });
+            }
+
+            // =======================================================
+            // INITIALISATION LISTENERS APRES REQUETE AJAX
+            // =======================================================
+            function initializeListeners(){
+                $('.pagination a').click(function(e) {
+                    e.preventDefault();
+                    page = $(this).text();
+                    triggerSearch();
+                });
+
+                $('.seeSpecie').click(function(e) {
+                    e.preventDefault();
+                    name = $(this).attr('id');
+                    triggerSearch();
+                });
+            }
+
+            // ================================================
+            // Affichage de la fiche espèce si passée en paramètre
+            // ================================================
+            {% if searchSpecie is not null %}
+            var searchSpecie = "{{ searchSpecie }}";
+            {% else %}
+            var searchSpecie = 'undefined';
+            {% endif %}
+
+            if(searchSpecie != 'undefined'){
+                name = searchSpecie;
+                triggerSearch();
+            }
+        });
+    </script>
+    {% endblock %}
+{% endblock %}
+
+
+
+
+

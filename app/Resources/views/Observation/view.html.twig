@@ -1,0 +1,114 @@
+{% extends ':adminController/dashboard:dashboardbase.html.twig'%}
+{% block title %}Details d'une observation - {{ parent() }}{% endblock %}
+
+{% block body %}
+    {% block container %}
+        <div class="container-fluid" id="detailsObserv">
+            <!-- Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header" style="font-size: 25px;font-weight: 600;color: #ffffff;text-transform: uppercase">
+                        <i class="fa fa-eye"></i> Détails d'une observation
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    {% for message in app.session.flashbag.get('info') %}
+                        <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+                    {% endfor %}
+                    {% for message in app.session.flashbag.get('error') %}
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p class="ptitre" style="margin-top:15px">Date et heure :</p>
+                            <p>{{ observation.datetime|date('d/m/y - h:i') }}</p>
+                    </div>
+                    <div class="col-sm-12"><p class="ptitre">Famille :</p></div>
+                    <div class="col-sm-12"><p>{{ observation.taxref.family }}</p></div>
+                    <div class="col-sm-12"><p class="ptitre">Nom_vernaculaire : </p></div>
+                    <div class="col-sm-12"><p>{{ observation.taxref.vernacularName }}</p></div>
+                    <div class="col-sm-12">
+                        <p class="ptitre">Sexe : </p><p>{{ observation.sex }}</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <p class="ptitre">Observation : </p><p>{{ observation.observation }}</p>
+                    </div>
+                    {% if observation.comment != null %}
+                        <div class="col-sm-12">
+                            <p class="ptitre">Commentaire : </p><p>{{ observation.comment }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <p class="ptitre">Localisation :</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 ">
+                    {% if (app.user.id == observation.user.id) or (is_granted('ROLE_NATURALIST') or (is_granted('ROLE_SUPER_ADMIN'))) %}
+                        <div>
+                            <p>Latitude : {{ observation.latitude }}</p>
+                        </div>
+                        <div>
+                            <p>Longitude : {{ observation.longitude }}</p>
+                        </div>
+                    {% endif %}
+                        <div>
+                            <p>Département : {{ observation.department }}</p>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        {{ ivory_google_map(map) }}
+                        {{ ivory_google_api([map]) }}
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-12">
+                        {% if observation.pictures.count != null %}
+                            <div class="col-sm-6">
+                                <p>Photos : </p>
+                                {% for picture in observation.pictures %}
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-12">
+                                            <div class="thumbnail zoom">
+                                                <img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}" alt=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if app.user.id != observation.user.id %}
+                            <div class="col-sm-6">
+                                <p>Nom de l'observateur : {{ observation.user.lastName }}</p>
+                                <p>Prénom de l'observateur : {{ observation.user.firstName }}</p>
+                                <a href="mailto:{{ observation.user.email }}">Contacter l'observateur</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- Seul le user de l'observation peut modifier celle ci -->
+                {% if (app.user.id == observation.user.id) and (observation.status != constant('VALIDATE', observation)) %}
+                <div class="row" style="margin-top: 25px">
+                    <div class="col-sm-12 text-center">
+                            <a href="{{ path('app_observation_update', {'id': observation.id }) }}" class="btn btn-default btn-primary">
+                                Modifier
+                            </a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endblock %}
+
+{% endblock %}

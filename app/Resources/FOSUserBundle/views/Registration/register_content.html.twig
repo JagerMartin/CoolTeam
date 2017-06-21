@@ -1,0 +1,59 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{{form_start(form, {'method': 'POST', 'attr':{'class': 'register divforminscire'}})}}
+<div class="row">
+    <div class="input-field col-sm-12">
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username) }}
+    </div>
+    {{ form_errors(form.username) }}
+</div>
+<div class="row no-padding">
+    <div class="input-field col-sm-12">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+    {{ form_errors(form.email) }}
+</div>
+<div class="row no-padding">
+    <div class="input-field col-sm-12">
+        {{ form_label(form.plainPassword.first) }}
+        {{ form_widget(form.plainPassword.first) }}
+    </div>
+    {{ form_errors(form.plainPassword.first) }}
+</div>
+<div class="row no-padding">
+    <div class="input-field col-sm-12">
+        {{ form_label(form.plainPassword.second) }}
+        {{ form_widget(form.plainPassword.second) }}
+    </div>
+    {{ form_errors(form.plainPassword.second) }}
+</div>
+<div class="row no-padding">
+    <div class="col-sm-12">
+        <fieldset class="form-group">
+            {{ form_widget(form.isCharterAccepted) }}
+            {{ form_label(form.isCharterAccepted) }}
+        </fieldset>
+    </div>
+    <div class="ccol-sm-12">
+        {{ form_errors(form.isCharterAccepted) }}
+    </div>
+</div>
+<div class="row no-padding">
+    <div class="col-sm-12">
+        <fieldset class="form-group">
+            {{ form_widget(form.isNewsletterSubscriber) }}
+            {{ form_label(form.isNewsletterSubscriber) }}
+        </fieldset>
+    </div>
+    <div class="col-sm-12">
+        {{ form_errors(form.isNewsletterSubscriber) }}
+    </div>
+</div>
+<div align="center" class="button-wrap">
+    <button class="btn btn-info teal darken-3" type="submit" name="action" formnovalidate>
+        {{ 'registration.submit'|trans }}
+
+    </button>
+</div>
+{{ form_end(form) }}

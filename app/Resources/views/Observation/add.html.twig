@@ -1,0 +1,135 @@
+{% extends ':adminController/dashboard:dashboardbase.html.twig'%}
+{% block title %}Deposer une observation - {{ parent() }}{% endblock %}
+
+{% block body %}
+    {% block container %}
+        <div class="container-fluid" id="depoObserv">
+            <!-- Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header" style="font-size: 25px;font-weight: 600;color: #ffffff;text-transform: uppercase">
+                        <i class="fa fa-plus"></i> Déposer une observation
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    {% for message in app.session.flashbag.get('info') %}
+                        <div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> {{ message }}</div>
+                    {% endfor %}
+                    {% for message in app.session.flashbag.get('error') %}
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> {{ message }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            {{ form_stylesheet(form) }}
+            {{ form_javascript(form) }}
+            <div class="container-fluid">
+                {{ form_start(form) }}
+                <div class="row">
+                        <div class="col-sm-12">
+                            <p style="margin-bottom: 30px">Tous les éléments sont obligatoires sauf les photos.</p>
+                            <div class="form-group">
+                                {{ form_label(form.datetime, 'Date et heure :' ) }}
+                                {{ form_widget(form.datetime, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.datetime) }}
+                            </div>
+                        </div>
+                        <div class="col-sm-12"><p class="ptitre">Famille :</p></div>
+                        <div class="col-sm-12"><p>{{ observation.taxref.family }}</p></div>
+                        <div class="col-sm-12"><p class="ptitre">Nom_vernaculaire : </p></div>
+                        <div class="col-sm-12"><p>{{ observation.taxref.vernacularName }}</p></div>
+                        <div class="col-sm-12">
+                            {{ form_label(form.sex, 'Sexe :' ) }}
+                            <p>{{ form_widget(form.sex) }}</p>
+                            {{ form_errors(form.sex) }}
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                {{ form_label(form.observation, 'Observation :' ) }}
+                                <a href="#" data-toggle="tooltip" title="indiquez ici les informations telles que la couleur, la taille, l'habitat, le nombre, l'environnement"><i class="fa fa-question-circle"></i></a>
+                                {{ form_widget(form.observation, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.observation) }}
+                            </div>
+                        </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <p class="ptitre">Localisation :</p>
+                        <div>
+                            <button type="button" class="btn btn-primary" onclick="initialize()">Me Géolocaliser</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <div class="form-group">
+                            {{ form_label(form.latitude, 'Latitude' ) }}
+                            {{ form_widget(form.latitude, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.latitude) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.longitude, 'Longitude' ) }}
+                            {{ form_widget(form.longitude, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.longitude) }}
+                        </div>
+                        <div class="form-group">
+                             {{ form_label(form.department, 'Département' ) }}
+                             {{ form_widget(form.department, {'attr': {'class': 'form-control', 'readonly': 'readonly'}}) }}
+                             {{ form_errors(form.department) }}
+                        </div>
+                        <div>
+                             <button type="button" class="btn btn-primary" onclick="codeLatLng()">Voir sur la carte</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="map_canvas"></div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-sm-12">
+                         <p class="ptitre">Photos (3 maximum) : </p>
+                             <div class="row">
+                                 {% for picture in form.pictures %}
+                                     <div class="col-sm-3">
+                                         {{ form_errors(picture.imageFile) }}
+                                         {{ form_widget(picture.imageFile, { 'attr': {'class': 'input_file_' ~ loop.index0} }) }}
+                                            <div id="image_preview_input_file_{{ loop.index0 }}" class="col-sm-12">
+                                                <div class="thumbnail zoom hidden">
+                                                    <img src="http://placehold.it/5" alt="">
+                                                    <div class="caption">
+                                                        <p>
+                                                            <button type="button" id="input_file_{{ loop.index0 }}"
+                                                                    class="btn btn-default btn-danger">Annuler
+                                                            </button>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                     </div>
+                                 {% endfor %}
+                             </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 25px">
+                    <div class="col-sm-12 text-center">
+                        <button type="submit" class="btn btn-default btn-primary">DEPOSER</button>
+                    </div>
+                 </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    {% endblock %}
+    {% block monscript %}
+        <script>
+            window.onload = defaultMap();
+
+            var pictureDeletionPath = "{{ path('app_ajax_picture_delete') }}";
+
+        </script>
+    {% endblock %}
+{% endblock %}
