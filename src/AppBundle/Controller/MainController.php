@@ -155,4 +155,15 @@ class MainController extends Controller
         }
         return new JsonResponse(array('title' => $title, 'body' =>$body), 200);
     }
+
+    public function specieImageAction($cdName)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $pictures = $em->getRepository('AppBundle:Picture')->getPicturesWithCdName($cdName);
+        $picture = $pictures ? $pictures[0] : null;
+
+        return $this->render('default/_specie_image.html.twig', array(
+            'picture' => $picture
+        ));
+    }
 }

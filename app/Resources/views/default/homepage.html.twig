@@ -307,219 +307,60 @@
 		<div id="myCarousel2" class="carousel slide carousel-fade" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
-				<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel2" data-slide-to="1"></li>
-				<li data-target="#myCarousel2" data-slide-to="2"></li>
-				<li data-target="#myCarousel2" data-slide-to="3"></li>
-				<li data-target="#myCarousel2" data-slide-to="4"></li>
+				{% for observation in lastObservations %}
+					<li data-target="#myCarousel2" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}></li>
+				{% endfor %}
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-				<!-- First slide -->
-				<div class="carousel-item active">
-					<img src="{{ asset('img/homepage/caroussel2/1.jpg') }}" alt="First slide">
-					<div class="container-fluid mask pattern-6 overlaytest overlaySlide">
-						<div class="row">
-							<div class="col-1 sliderTitre"></div>
-							<div class="col-6  sliderTitre">
-								<h3>Guêpier d'Europe</h3>
+    			{% for observation in lastObservations %}
+					<!-- Slide item -->
+					<div class="carousel-item {% if loop.first %}active{% endif %}">
+                        {{ render(controller(
+                        'AppBundle:Main:specieImage',
+                        {
+                            'cdName': observation.taxref.cdName
+                        }
+                        )) }}
+						<div class="container-fluid mask pattern-6 overlaytest overlaySlide">
+							<div class="row">
+								<div class="col-1 sliderTitre"></div>
+								<div class="col-6  sliderTitre">
+									<h3>{{ observation.taxref.vernacularName }}</h3>
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-6 offset-1 sliderParag">
-								Merops apiaster Linnaeus
+							<div class="row">
+								<div class="col-6 offset-1 sliderParag">
+									{{ observation.taxref.lbName }}
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-3 offset-1 sliderListe">
-								<ul>
-									<li>Ordre: </li>
-									<li>Famille: </li>
-									<li>Nom Anglais: </li>
-									<li>Découvert en: </li>
-								</ul>
+							<div class="row">
+								<div class="col-3 offset-1 sliderListe">
+									<ul>
+										<li>Ordre: </li>
+										<li>Famille: </li>
+										<li>Nom Anglais: </li>
+										<li>Découvert par: </li>
+									</ul>
+								</div>
+								<div class="col-3 offset-1 sliderListe2">
+									<ul>
+										<li>{{ observation.taxref.order }}</li>
+										<li>{{ observation.taxref.family }}</li>
+										<li>{{ observation.taxref.engVernacularName }}</li>
+										<li>{{ observation.taxref.lbAuthor }}</li>
+									</ul>
+								</div>
 							</div>
-							<div class="col-3 offset-1 sliderListe2">
-								<ul>
-									<li>Coraciiformes</li>
-									<li>Meropidae</li>
-									<li>European Beater</li>
-									<li>1758</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-5 offset-1" style="text-align: center;">
-								<a href="{{ path('app_search', {'cdName': 3582} ) }}"  style="text-transform: capitalize" class="btn btn-default teal darken-1">Voir la fiche</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /.item -->
-				<!-- Second slide -->
-				<div class="carousel-item">
-					<img src="{{ asset('img/homepage/caroussel2/2.jpg') }}" alt="Second slide">
-					<div class="container-fluid mask pattern-6 overlaytest overlaySlide">
-						<div class="row">
-							<div class="col-1 sliderTitre"></div>
-							<div class="col-6  sliderTitre">
-								<h3>Guêpier d'Europe</h3>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-6 offset-1 sliderParag">
-								Merops apiaster Linnaeus
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-3 offset-1 sliderListe">
-								<ul>
-									<li>Ordre: </li>
-									<li>Famille: </li>
-									<li>Nom Anglais: </li>
-									<li>Découvert en : </li>
-								</ul>
-							</div>
-							<div class="col-3 offset-1 sliderListe2">
-								<ul>
-									<li>Coraciiformes</li>
-									<li>Meropidae</li>
-									<li>European Beater</li>
-									<li>1758</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-5 offset-1" style="text-align: center;">
-								<button type="button" class="btn btn-default teal darken-1">Voir la fiche</button>
+							<div class="row">
+								<div class="col-5 offset-1" style="text-align: center;">
+									<a href="{{ path('app_search', {'cdName': observation.taxref.cdName} ) }}"  style="text-transform: capitalize" class="btn btn-default teal darken-1">Voir la fiche</a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- /.item -->
-				<!-- Third slide -->
-				<div class="carousel-item">
-					<img src="{{ asset('img/homepage/caroussel2/3.jpg') }}" alt="third slide">
-					<div class="container-fluid mask pattern-6 overlaytest overlaySlide">
-						<div class="row">
-							<div class="col-1 sliderTitre"></div>
-							<div class="col-6  sliderTitre">
-								<h3>Guêpier d'Europe</h3>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-6 offset-1 sliderParag">
-								Merops apiaster Linnaeus
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-3 offset-1 sliderListe">
-								<ul>
-									<li>Ordre: </li>
-									<li>Famille: </li>
-									<li>Nom Anglais: </li>
-									<li>Découvert en : </li>
-								</ul>
-							</div>
-							<div class="col-3 offset-1 sliderListe2">
-								<ul>
-									<li>Coraciiformes</li>
-									<li>Meropidae</li>
-									<li>European Beater</li>
-									<li>1758</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-5 offset-1" style="text-align: center;">
-								<button type="button" class="btn btn-default teal darken-1">Voir la fiche</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /.item -->
-				<!-- Four slide -->
-				<div class="carousel-item">
-					<img src="{{ asset('img/homepage/caroussel2/5.jpg') }}" alt="Four slide">
-					<div class="container-fluid mask pattern-6 overlaytest overlaySlide">
-						<div class="row">
-							<div class="col-1 sliderTitre"></div>
-							<div class="col-6  sliderTitre">
-								<h3>Guêpier d'Europe</h3>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-6 offset-1 sliderParag">
-								Merops apiaster Linnaeus
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-3 offset-1 sliderListe">
-								<ul>
-									<li>Ordre: </li>
-									<li>Famille: </li>
-									<li>Nom Anglais: </li>
-									<li>Découvert en : </li>
-								</ul>
-							</div>
-							<div class="col-3 offset-1 sliderListe2">
-								<ul>
-									<li>Coraciiformes</li>
-									<li>Meropidae</li>
-									<li>European Beater</li>
-									<li>1758</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-5 offset-1" style="text-align: center;">
-								<button type="button" class="btn btn-default teal darken-1">Voir la fiche</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /.item -->
-				<!-- Five slide -->
-				<div class="carousel-item">
-					<img src="{{ asset('img/homepage/caroussel2/5.jpg') }}" alt="Five slide">
-					<div class="container-fluid mask pattern-6 overlaytest overlaySlide">
-						<div class="row">
-							<div class="col-1 sliderTitre"></div>
-							<div class="col-6  sliderTitre">
-								<h3>Guêpier d'Europe</h3>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-6 offset-1 sliderParag">
-								Merops apiaster Linnaeus
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-3 offset-1 sliderListe">
-								<ul>
-									<li>Ordre: </li>
-									<li>Famille: </li>
-									<li>Nom Anglais: </li>
-									<li>Découvert en : </li>
-								</ul>
-							</div>
-							<div class="col-3 offset-1 sliderListe2">
-								<ul>
-									<li>Coraciiformes</li>
-									<li>Meropidae</li>
-									<li>European Beater</li>
-									<li>1758</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-5 offset-1" style="text-align: center;">
-								<button type="button" class="btn btn-default teal darken-1">Voir la fiche</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- /.item -->
+					<!-- /.item -->
+                {% endfor %}
 			</div>
 			<!-- /.carousel-inner -->
 		</div>
