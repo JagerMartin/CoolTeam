@@ -448,6 +448,10 @@ header {
     margin-left: 60px;
     width: 100%;
 }
+.slider img{
+    width:100%;
+    height:auto;
+}
 /***************************
  ***************************
  **    DERNIERS AJOUTS    **
