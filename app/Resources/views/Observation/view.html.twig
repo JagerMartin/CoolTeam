@@ -92,7 +92,9 @@
                             <div class="col-sm-6">
                                 <p>Nom de l'observateur : {{ observation.user.lastName }}</p>
                                 <p>Prénom de l'observateur : {{ observation.user.firstName }}</p>
+                            {% if (is_granted('ROLE_NATURALIST') or (is_granted('ROLE_SUPER_ADMIN'))) %}
                                 <a href="mailto:{{ observation.user.email }}">Contacter l'observateur</a>
+                            {% endif %}
                             </div>
                         {% endif %}
                     </div>
