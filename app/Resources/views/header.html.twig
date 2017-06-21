@@ -1,11 +1,6 @@
 <!-- HEADER-->
 <header class="container-fluid">
     <!-- Bouton hamburger -->
-  <!--  <a href="#" data-activates="slide-out" class="btn btn-rounded button-collapse teal darken-3"><i class="fa fa-bars"></i></a>
-      <div class="" style="background-color: #0b51c5; top: 70px;right: 0; width: 60px;height: 50px;position: absolute;">
-        <img src="{{ asset('img/B-mobile-1.png') }}" />
-    </div>-->
-
     <div class="divMenu2">
         <button class="hamburger" style="background-color: #00695C">&#9776;</button>
     </div>
@@ -27,7 +22,7 @@
                         <a href="{{ path('dashboard') }}" title="Tableau de bord" style="color: white;"><img src="{{ asset('img/B.png') }}" id="iconeB2" /></a>
                         |
                         {% if is_granted("ROLE_NATURALIST") %}
-                            <a href="{{ path('app_observation',{'id': app.user.id }) }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenu" aria-hidden="true"></i></a>
+                            <a href="{{ path('app_observations_validate' }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenu" aria-hidden="true"></i></a>
                         {% else %}
                             <a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" title="Mon profil" style="color: white;"><i class="fa fa-user faUserMenu" aria-hidden="true"></i></a>
                         {% endif %}
@@ -53,7 +48,7 @@
                         <a href="{{ path('dashboard') }}" title="Tableau de bord" style="color: white;"><img src="{{ asset('img/B.png') }}" id="iconeMobileB" /></a>
                         |
                         {% if is_granted("ROLE_NATURALIST") %}
-                            <a href="{{ path('app_observation',{'id': app.user.id }) }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenuMobile" aria-hidden="true"></i></a>
+                            <a href="{{ path('app_observations_validate' }}" title="Mes validations" style="color: white;"><i class="fa fa-binoculars faUserMenuMobile" aria-hidden="true"></i></a>
                         {% else %}
                             <a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" title="Mon profil" style="color: white;"><i class="fa fa-user faUserMenuMobile" aria-hidden="true"></i></a>
                         {% endif %}
