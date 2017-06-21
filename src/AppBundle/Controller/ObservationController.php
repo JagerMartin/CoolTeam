@@ -143,8 +143,14 @@ class ObservationController extends Controller
     public function observationValidateAction(Request $request, Observation $observation)
     {
         // si on est super admin ou naturaliste on peut accéder à cette page
+        $currentUser = $this->getUser();
+        if (!$currentUser->hasRole('ROLE_SUPER_ADMIN') && !$currentUser->hasRole('ROLE_NATURALIST')) {
+            throw $this->createAccessDeniedException();
+        }
         // mais si on est naturaliste et que l'observation est validé alors on ne peut pas
-        // donc un super admin peut modifier la validation d'une observation
+        if($currentUser->hasRole('ROLE_NATURALIST') && ($observation->getStatus() == Observation::VALIDATE)){
+            throw $this->createAccessDeniedException();
+        }
 
         $map = $this->get('app.create_map_with_observations')->createMapWithObservations(array($observation));
 
@@ -182,6 +188,11 @@ class ObservationController extends Controller
     public function observationDeleteAction(Observation $observation)
     {
         // seul un naturaliste ou un super-admin peut supprimer une observation
+        $currentUser = $this->getUser();
+        if (!$currentUser->hasRole('ROLE_SUPER_ADMIN') && !$currentUser->hasRole('ROLE_NATURALIST')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($observation);
         $em->flush();
@@ -196,6 +207,11 @@ class ObservationController extends Controller
     public function observationsNewAction(Request $request, $page)
     {
         // Seul le naturaliste et le super-admin peuvent voir cette page
+        $currentUser = $this->getUser();
+        if (!$currentUser->hasRole('ROLE_SUPER_ADMIN') && !$currentUser->hasRole('ROLE_NATURALIST')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $observations = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:Observation')->findBy(
                 array('status' => Observation::PENDING),
@@ -221,6 +237,11 @@ class ObservationController extends Controller
     public function observationsPendingAction(Request $request, $page)
     {
         // Seul le l'observateur, le naturaliste et le super-admin peuvent voir cette page
+        $currentUser = $this->getUser();
+        if (!$currentUser->hasRole('ROLE_SUPER_ADMIN') && !$currentUser->hasRole('ROLE_NATURALIST') && !$currentUser->hasRole('ROLE_OBSERVER')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $observations = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:Observation')
             ->findBy(
@@ -250,6 +271,11 @@ class ObservationController extends Controller
     public function observationsValidateAction(Request $request, $page)
     {
         // Seul le naturaliste et le super-admin peuvent voir cette page
+        $currentUser = $this->getUser();
+        if (!$currentUser->hasRole('ROLE_SUPER_ADMIN') && !$currentUser->hasRole('ROLE_NATURALIST')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $observations = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:Observation')
             ->findBy(
@@ -274,7 +300,12 @@ class ObservationController extends Controller
      */
     public function observationsGestionAction(Request $request, $page)
     {
-        // Seul le super-admin peuvent voir cette page
+        // Seul le super-admin peut voir cette page
+        $currentUser = $this->getUser();
+        if (!$currentUser->hasRole('ROLE_SUPER_ADMIN')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $observations = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:Observation')
             ->findBy(
@@ -301,6 +332,11 @@ class ObservationController extends Controller
     public function observationInvalidateAction(Observation $observation)
     {
         // seul super-admin peut invalider une observation
+        $currentUser = $this->getUser();
+        if (!$currentUser->hasRole('ROLE_SUPER_ADMIN')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getManager();
         $observation->setStatus(Observation::TOCORRECT);
         $observation->setValidator($this->getUser());
@@ -317,6 +353,11 @@ class ObservationController extends Controller
     public function observationsAction(Request $request, $page)
     {
         // Seul l'observateur, le naturaliste et le super-admin peuvent voir cette page
+        $currentUser = $this->getUser();
+        if (!$currentUser->hasRole('ROLE_SUPER_ADMIN') && !$currentUser->hasRole('ROLE_NATURALIST') && !$currentUser->hasRole('ROLE_OBSERVER')) {
+            throw $this->createAccessDeniedException();
+        }
+        
         $observations = $this->getDoctrine()->getManager()
             ->getRepository('AppBundle:Observation')
             ->findBy(
