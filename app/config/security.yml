@@ -34,5 +34,4 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/adminController/, role: [ROLE_NATURALIST, ROLE_ADMIN, ROLE_SUPER_ADMIN] }
         - { path: ^/adminController/admin_users, role: [ROLE_ADMIN, ROLE_SUPER_ADMIN] }
-        - { path: ^/admin/utilisateurs, role: [ROLE_ADMIN, ROLE_ADMINISTRATIF, ROLE_SUPER_ADMIN]}
         - { path: ^/dashboard, role: [ROLE_OBSERVER, ROLE_NATURALIST, ROLE_ADMINISTRATIF, ROLE_SUPER_ADMIN] }

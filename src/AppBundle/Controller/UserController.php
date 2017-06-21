@@ -116,6 +116,12 @@ class UserController extends Controller
      */
     public function indexAction($filter = "tous", $page = 1)
     {
+        // si on est super admin ou naturaliste on peut accéder à cette page
+        $currentUser = $this->getUser();
+        if (!$currentUser->hasRole('ROLE_SUPER_ADMIN') && !$currentUser->hasRole('ROLE_ADMINISTRATIF')) {
+            throw $this->createAccessDeniedException();
+        }
+
         if($page<1){
             throw new NotFoundHttpException('Page "'.$page.'"inexistante.');
         }
