@@ -64,11 +64,11 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #FFFFFF;font-size: 12px;font-weight: 600"><i class="fa fa-user-circle fa-2x" style="color: #FFFFFF"></i> {{ app.user.username }} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" style="color: #FFFFFF;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-user" style="color: #FFFFFF;font-size: 12px"></i> Mon profil</a>
+                        <a href="{{ path('admin_user_profile',{'id': app.user.id }) }}" class="lienMenuAdmin" ><i class="fa fa-fw fa-user" class="lienMenuAdmin"></i> Mon profil</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="{{ path('fos_user_security_logout') }}" style="color: #FFFFFF;font-size: 12px;font-weight: 600"><i class="fa fa-fw fa-power-off" style="color: #FFFFFF"></i> Log Out</a>
+                        <a href="{{ path('fos_user_security_logout') }}" class="lienMenuAdmin"><i class="fa fa-fw fa-power-off" class="lienMenuAdmin"></i> Log Out</a>
                     </li>
                 </ul>
             </li>

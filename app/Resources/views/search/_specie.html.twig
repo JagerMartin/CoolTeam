@@ -10,7 +10,7 @@
 
                 <h5>{{ specie.lbName  }}</h5>
             </div>
-            <div class="col-xl-2 col-lg-2 col-md-2 col-sm divImgEsp">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm divImgEsp zoom">
                 {{ render(controller(
                 'AppBundle:Search:specieImage',
                 {
@@ -46,7 +46,7 @@
         </div>
     </div>
     <!-- Google Map -->
-    <div class="col-sm-6 map" id="map">
+    <div class="col col-md-3 col-sm-6" style="margin:5%;padding: 0" id="map">
         {{ ivory_google_map(map) }}
         {{ ivory_google_api([map]) }}
     </div>
@@ -56,11 +56,11 @@
 <!-- Bouton Déposer une observ + titre-->
 <div class="row" style="margin: 0; padding-bottom: 24px">
 
-    <div class="col-3 offset-2">
+    <div class="col-xl-3 offset-xl-2 col-lg-3 offset-lg-2 col-md-12 col-sm-12 text-center">
         {% if is_granted('ROLE_OBSERVER') or is_granted('ROLE_NATURALIST') or is_granted('ROLE_SUPER_ADMIN')%}
-            <a href="{{ path('app_observation_add', {'cdName': specie.cdName}) }}" class="btn btn-primary btn-rounded" style="background-color: #4db6ac"><i class="fa fa-plus"></i> Déposer une observation</a>
+            <a href="{{ path('app_observation_add', {'cdName': specie.cdName}) }}" class="btn btn-default btn-rounded" style="background-color: #4db6ac"><i class="fa fa-plus"></i> Déposer une observation</a>
         {% else %}
-            <a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin" class="btn btn-primary btn-rounded" style="background-color: #4db6ac"><i class="fa fa-plus"></i> Déposer une observation</a>
+            <a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin" class="btn btn-default btn-rounded" style="background-color: #4db6ac"><i class="fa fa-plus"></i> Déposer une observation</a>
         {% endif %}
     </div>
     <div class="col-xl-2 col-lg-2 col-md-2 col-sm" style="text-align: center; padding-top: 15px">
@@ -77,13 +77,13 @@
 <div class="row" style="margin: 0; padding-top: 20px;padding-bottom: 20px;">
     <div class="col-12">
         <div class="row" >
-            <div class="col-1" style="position: absolute;z-index: 99;">
+            <div class="col-1 divImgListObserv">
                 {% for picture in observation.pictures %}
                     {% if loop.first %}
-                        <img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}" alt="{{ picture.imageName }}" class="rounded-circle imgEspece"/>
+                        <img src="{{ absolute_url(asset(vich_uploader_asset(picture, 'imageFile'))) }}" alt="{{ picture.imageName }}" class="rounded-circle imgEspece zoom"/>
                     {% endif %}
                     {% else %}
-                       <img src="{{ absolute_url(asset('img/no-photos.png')) }}" alt="Avatar vide" class="rounded-circle imgEspece"/>
+                       <img src="{{ absolute_url(asset('img/no-photos.png')) }}" alt="Avatar vide" class="rounded-circle imgEspece "/>
                     {% endfor %}
             </div>
             <div class="col-xl-11 col-sm-12" style="z-index: 98;position: relative;left: 5%">
@@ -92,16 +92,16 @@
                         <div class="col-xl-1 col-lg-1 col-md-6 col-sm-6 imgCardBlock">
                             {{ observation.pictures.count }} photos
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 divDateObserv">
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 divDateObserv">
                             {{ observation.datetime|date('d/m/Y') }} à {{ observation.datetime|date('h') }}:{{ observation.datetime|date('i') }}
                         </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 divDepartObserv"> Département: {{ observation.department }}</div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 divDepartObserv"> Département: {{ observation.department }}</div>
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                             <div class="col-xl-2 col-lg-2 text-center"><a href="#map" ><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
-                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('app_observation',{'id': observation.id} ) }}"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('app_observation',{'id': observation.id} ) }}" class="lienRech"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
                         {% else %}
-                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
-                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin" class="lienRech"><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
+                            <div class="col-xl-2 col-lg-2 text-center"><a href="{{ path('fos_user_security_login') }}" data-toggle="modal" data-target="#modalLogin" class="lienRech"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
                         {% endif %}
                     </div>
                 </div>
@@ -113,88 +113,7 @@
     <div class="col-12" style="padding-top: 44px">
         <p class="text-center">Pas encore d'observation pour cette espèce.</p>
     </div>
-        <!-- Exemple de visu si pas d'observ
-        <div class="row" style="margin: 0; padding-top: 20px;">
-            <div class="col-12">
-                <div class="row" >
-                    <div class="col-1" style="position: absolute;z-index: 99;">
-                        <img src="{{ asset('img/homepage/cercleda/cercle1.jpg') }}" class="rounded-circle" style="height: 70px;width: 70px">
-                    </div>
-                    <div class="col-11" style="z-index: 98;position: relative;left: 5%">
-                        <div class="card card-block" style="padding-top: 20px;padding-bottom: 5px;margin-top: 7px;">
-                            <div class="row" style="padding: 0">
-                                <div class="col-1" style="font-family:Roboto;font-size:13px;font-weight:200;padding-left: 23px;padding-right: 0px">2 photos</div>
-                                <div class="col-3" style="text-align: left;font-family:Roboto;font-size:15px">12/04/2017 à 10:00</div>
-                                <div class="col-4" style="text-align: center;">Département :44 - Loire atlantique</div>
-                                <div class="col-2"  style="text-align: center;"><a href="#map" ><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
-                                <div class="col-2"  style="text-align: center;"><a href="#map"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin: 0; padding-top: 20px">
-            <div class="col-12">
-                <div class="row" >
-                    <div class="col-1" style="position: absolute;z-index: 99;">
-                        <img src="{{ asset('img/homepage/cercleda/cercle1.jpg') }}" class="rounded-circle" style="height: 70px;width: 70px">
-                    </div>
-                    <div class="col-11" style="z-index: 98;position: relative;left: 5%">
-                        <div class="card card-block" style="padding-top: 20px;padding-bottom: 5px;margin-top: 7px;">
-                            <div class="row" style="padding: 0">
-                                <div class="col-1" style="font-family:Roboto;font-size:13px;font-weight:200;padding-left: 23px;padding-right: 0px">2 photos</div>
-                                <div class="col-3" style="text-align: left;font-family:Roboto;font-size:15px">12/04/2017 à 10:00</div>
-                                <div class="col-4" style="text-align: center;">Département :44 - Loire atlantique</div>
-                                <div class="col-2"  style="text-align: center;"><a href="#map" ><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
-                                <div class="col-2"  style="text-align: center;"><a href="#map"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin: 0; padding-top: 20px">
-            <div class="col-12">
-                <div class="row" >
-                    <div class="col-1" style="position: absolute;z-index: 99;">
-                        <img src="{{ asset('img/homepage/cercleda/cercle1.jpg') }}" class="rounded-circle" style="height: 70px;width: 70px">
-                    </div>
-                    <div class="col-11" style="z-index: 98;position: relative;left: 5%">
-                        <div class="card card-block" style="padding-top: 20px;padding-bottom: 5px;margin-top: 7px;">
-                            <div class="row" style="padding: 0">
-                                <div class="col-1" style="font-family:Roboto;font-size:13px;font-weight:200;padding-left: 23px;padding-right: 0px">2 photos</div>
-                                <div class="col-3" style="text-align: left;font-family:Roboto;font-size:15px">12/04/2017 à 10:00</div>
-                                <div class="col-4" style="text-align: center;">Département :44 - Loire atlantique</div>
-                                <div class="col-2"  style="text-align: center;"><a href="#map" ><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
-                                <div class="col-2"  style="text-align: center;"><a href="#map"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin: 0; padding-top: 20px;padding-bottom: 20px">
-            <div class="col-12">
-                <div class="row" >
-                    <div class="col-1" style="position: absolute;z-index: 99;">
-                        <img src="{{ asset('img/homepage/cercleda/cercle1.jpg') }}" class="rounded-circle" style="height: 70px;width: 70px">
-                    </div>
-                    <div class="col-11" style="z-index: 98;position: relative;left: 5%">
-                        <div class="card card-block" style="padding-top: 20px;padding-bottom: 5px;margin-top: 7px;">
-                            <div class="row" style="padding: 0">
-                                <div class="col-1" style="font-family:Roboto;font-size:13px;font-weight:200;padding-left: 23px;padding-right: 0px">2 photos</div>
-                                <div class="col-3" style="text-align: left;font-family:Roboto;font-size:15px">12/04/2017 à 10:00</div>
-                                <div class="col-4" style="text-align: center;">Département :44 - Loire atlantique</div>
-                                <div class="col-2"  style="text-align: center;"><a href="#map" ><i class="fa fa-map-marker fa-2x" style="color: #004d40"></i></a></div>
-                                <div class="col-2"  style="text-align: center;"><a href="#map"><i class="fa fa-eye fa-2x" style="color: #303030"></i></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-        <!-- ./END Exemple de visu si pas d'observ -->
+
 </div>
 {% endfor %}
 <!-- ./ END Listing des observations-->
